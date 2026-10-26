@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-26T17:55:01+09:00",
-  "last_successful_fetch": "2026-10-26T17:55:01+09:00",
+  "checked_at": "2026-10-26T17:57:08+09:00",
+  "last_successful_fetch": "2026-10-26T17:57:08+09:00",
   "status": "partial",
   "sources": [
     {
@@ -60,25 +60,67 @@
       "id": "seoul_culture",
       "name": "서울시 내 손안에 서울 문화",
       "url": "https://mediahub.seoul.go.kr/news/rss/06",
-      "status": "error",
-      "error_kind": "transport_error",
-      "error": "URLError: <urlopen error timed out>"
+      "status": "ok",
+      "rss_items": 20,
+      "matched": 2,
+      "held": 0,
+      "relevance_counts": {
+        "Direct": 2,
+        "Indirect": 0,
+        "Irrelevant": 18
+      },
+      "category_published": {
+        "관광정책": 0,
+        "인바운드": 0,
+        "여행산업": 0,
+        "항공·숙박": 0,
+        "문화·트렌드": 2,
+        "경제·시장": 0
+      }
     },
     {
       "id": "seoul_economy",
       "name": "서울시 내 손안에 서울 경제",
       "url": "https://mediahub.seoul.go.kr/news/rss/04",
-      "status": "error",
-      "error_kind": "transport_error",
-      "error": "URLError: <urlopen error timed out>"
+      "status": "ok",
+      "rss_items": 20,
+      "matched": 1,
+      "held": 1,
+      "relevance_counts": {
+        "Direct": 1,
+        "Indirect": 1,
+        "Irrelevant": 18
+      },
+      "category_published": {
+        "관광정책": 0,
+        "인바운드": 0,
+        "여행산업": 1,
+        "항공·숙박": 0,
+        "문화·트렌드": 0,
+        "경제·시장": 0
+      }
     },
     {
       "id": "seoul_transport",
       "name": "서울시 내 손안에 서울 교통",
       "url": "https://mediahub.seoul.go.kr/news/rss/01",
-      "status": "error",
-      "error_kind": "transport_error",
-      "error": "URLError: <urlopen error timed out>"
+      "status": "ok",
+      "rss_items": 20,
+      "matched": 0,
+      "held": 0,
+      "relevance_counts": {
+        "Direct": 0,
+        "Indirect": 0,
+        "Irrelevant": 20
+      },
+      "category_published": {
+        "관광정책": 0,
+        "인바운드": 0,
+        "여행산업": 0,
+        "항공·숙박": 0,
+        "문화·트렌드": 0,
+        "경제·시장": 0
+      }
     },
     {
       "id": "seoul_environment",
@@ -86,19 +128,19 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/05",
       "status": "error",
       "error_kind": "transport_error",
-      "error": "URLError: <urlopen error timed out>"
+      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
     }
   ],
   "source_count": 7,
-  "successful_sources": 2,
+  "successful_sources": 5,
   "schema_version": 2,
   "rule_version": "0.2",
   "category_counts": {
     "관광정책": 0,
     "인바운드": 1,
-    "여행산업": 0,
+    "여행산업": 1,
     "항공·숙박": 0,
-    "문화·트렌드": 1,
+    "문화·트렌드": 2,
     "경제·시장": 0
   },
   "review_queue_count": 1

@@ -33,7 +33,7 @@ class CollectorTests(unittest.TestCase):
 
     def test_tourism_classification(self):
         cat, score = classify('방한 외래관광객 증가 및 관광통계 발표')
-        self.assertEqual(cat, '수요')
+        self.assertEqual(cat, '인바운드')
         self.assertGreaterEqual(score, 4)
 
     def test_irrelevant_excluded(self):
@@ -143,15 +143,15 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual(list(xml_items(b'<rss><channel/></rss>')), [])
 
     def test_korean_compound_spacing(self):
-        self.assertEqual(classify('관광 산업 정책 및 관광 통계 발표')[0], '정책')
+        self.assertEqual(classify('관광 산업 정책 및 관광 통계 발표')[0], '관광정책')
 
     def test_description_requires_multiple_industry_signals(self):
-        self.assertEqual(classify('지역 상생 프로그램 발표', '지역관광 안테나숍을 서울관광재단이 지원한다.')[0], '지역')
+        self.assertEqual(classify('지역 상생 프로그램 발표', '지역관광 안테나숍을 서울관광재단이 지원한다.')[0], '문화·트렌드')
         self.assertIsNone(classify('주말 맛집 소개', '관광객도 즐겨 찾는 곳')[0])
         self.assertIsNone(classify('산책 후기', '인근 관광지를 다녀왔다')[0])
 
     def test_wellness_program_is_regional_tourism(self):
-        self.assertEqual(classify('웰니스 트래블 위크 개최')[0], '지역')
+        self.assertEqual(classify('웰니스 트래블 위크 개최')[0], '문화·트렌드')
 
     def test_failure_reason_distinguishes_proxy_and_http(self):
         proxy = urllib.error.URLError('Tunnel connection failed: 403 Forbidden')
@@ -195,9 +195,9 @@ class CollectorTests(unittest.TestCase):
             self.assertEqual(json.loads((Path(tmp) / 'briefing.json').read_text())['items'], [])
 
     def test_all_topics(self):
-        for title, expected in [('관광정책 발표', '정책'), ('외래관광객 증가', '수요'),
-                                ('호텔업 지원', '산업'), ('관광통계 발표', '리서치'),
-                                ('지역관광 개발', '지역'), ('국제회의 개최', 'MICE')]:
+        for title, expected in [('관광정책 발표', '관광정책'), ('외래관광객 증가', '인바운드'),
+                                ('호텔업 지원', '항공·숙박'), ('관광통계 발표', '경제·시장'),
+                                ('지역관광 개발', '문화·트렌드'), ('국제회의 개최', '여행산업')]:
             with self.subTest(title=title):
                 self.assertEqual(classify(title)[0], expected)
 

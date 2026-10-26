@@ -12,4 +12,6 @@ python3 -m http.server 8000 --directory site
 
 [실수집 검증 결과·실패 원인·GitHub Actions 활성화 절차](docs/OPERATIONS_KR.md)
 
-현재는 부분 수집을 검증한 상태이며 GitHub의 예약 실행·배포 성공은 아직 검증하지 않았습니다.
+기존 main의 자동 실행 성공 기록과 별개로, v0.2 변경은 PR 검증 단계입니다. v0.2 운영 반영은 검토·병합 후 확인해야 합니다.
+
+[v0.2 관련성·카테고리·신규 출처·마이그레이션 검증](docs/v02/README.md)

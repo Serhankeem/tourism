@@ -120,6 +120,7 @@ function openDetail(id){let n=NEWS.find(x=>x.id===id);if(!n)return;document.getE
 function drawCharts(){for(const id of ['chart-overview','chart-macro']){let parent=document.getElementById(id);let data=metrics[state.chart],max=state.chart==='count'?2600000:30;let w=640,h=250,left=45,right=18,top=25,bottom=45,plotH=h-top-bottom,plotW=w-left-right;let ticks=state.chart==='count'?[0,650000,1300000,1950000,2600000]:[0,10,20,30];let grid=ticks.map(t=>{let y=top+plotH*(1-t/max);let txt=state.chart==='count'?Math.round(t/10000)+'만':t+'%';return `<line x1="${left}" y1="${y}" x2="${w-right}" y2="${y}" stroke="#e6ecea" stroke-dasharray="${t===0?'0':'4 6'}"/><text x="${left-9}" y="${y+4}" text-anchor="end" fill="#91a0a2" font-size="11">${txt}</text>`}).join('');let barW=66;let bars=data.map((p,i)=>{let x=left+plotW*(i+.5)/data.length,y=top+plotH*(1-p.value/max),bh=top+plotH-y;return `<rect x="${x-barW/2}" y="${y}" width="${barW}" height="${Math.max(0,bh)}" rx="6" fill="${i===2?'#F47735':'#286EB7'}" opacity="${i===2?1:.95}"/><text x="${x}" y="${y-9}" fill="#1B477B" font-size="13" font-weight="700" text-anchor="middle">${p.label}</text><text x="${x}" y="${h-21}" fill="#7e8c90" font-size="12" text-anchor="middle">${p.month}</text>`}).join('');parent.innerHTML=`<svg role="img" aria-label="2026년 5월, 8월, 9월 ${state.chart==='count'?'방한 외래관광객 수':'전년 대비 증가율'} 비교" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet">${grid}${bars}</svg>`}document.querySelectorAll('[data-chart]').forEach(b=>b.classList.toggle('sel',b.dataset.chart===state.chart))}
 function weather(){let a=+document.getElementById('s-arrivals').value,s=+document.getElementById('s-spend').value,air=+document.getElementById('s-air').value;let score=Math.max(0,Math.min(100,Math.round(50+.65*a+.4*s+.25*air)));let title,icon,desc;if(score>=75){title='맑음';icon='☀️';desc='가정한 수요·소비·공급 지표가 모두 비교적 견조한 성장 신호를 보입니다.'}else if(score>=60){title='구름 조금';icon='🌤️';desc='전반적으로 성장 신호가 있으나 일부 항목의 불확실성을 점검해야 합니다.'}else if(score>=45){title='흐림';icon='☁️';desc='지표 간 방향성이 혼재되어 있습니다. 종합적 개선을 단정하기 어렵습니다.'}else{title='비';icon='🌧️';desc='다수의 지표에서 부정적 신호가 나타나는 상황을 가정합니다.'}for(let [id,v] of [['arrivals',a],['spend',s],['air',air]])document.getElementById('v-'+id).textContent=(v>=0?'+':'')+v+'%';document.getElementById('weather-score').textContent=score;document.getElementById('weather-icon').textContent=icon;document.getElementById('weather-title').textContent=title;document.getElementById('weather-description').textContent=desc}
 let CURRENT_BRIEFING=null;
+let newsLoading=false;
 function copyBrief(){
  const lines=['[TOURISM PULSE · 뉴스 브리핑 후보]'];
  if(CURRENT_BRIEFING?.items?.length){
@@ -132,10 +133,14 @@ function copyBrief(){
  else{window.prompt('내용 복사',val);}
 }
 async function loadLiveNews(){
+ if(newsLoading)return;
+ newsLoading=true;
  const status=document.getElementById('rss-health-chip');
  const sidebar=document.getElementById('rss-health-sidebar');
  const note=document.getElementById('news-fetch-status');
+ let health=null;
  try{
+  try {const hr=await fetch('./data/health.json?v='+Date.now(),{cache:'no-store'});if(hr.ok)health=await hr.json();}catch(_){}
   const response=await fetch('./data/news.json?v='+Date.now(),{cache:'no-store'});
   if(!response.ok)throw new Error('새 뉴스 DB가 아직 생성되지 않았습니다.');
   const db=await response.json();
@@ -151,8 +156,14 @@ async function loadLiveNews(){
    sidebar.textContent=`최근 수집 ${last.toLocaleString('ko-KR')} · ${db.count}건`;
    note.textContent=(stale?'⚠️ 갱신 지연 중 · ':'')+`최근 성공 ${last.toLocaleString('ko-KR')} · 수록 ${db.count}건 · 원문 제목/메타데이터 기반 자동 선별`;
   } else {throw new Error('지원되지 않는 데이터 형식입니다.');}
+  if(db.mode==='live_rss' && health && health.status!=='ok'){
+   status.textContent=health.status==='failed'?'FETCH FAILED':'PARTIAL FETCH';
+   const failures=(health.sources||[]).filter(s=>s.status==='error').map(s=>s.name).join(', ');
+   sidebar.textContent=`출처 ${health.successful_sources}/${health.source_count}곳 수집 성공`;
+   note.textContent=`최근 수집 ${health.checked_at} · 실패 출처: ${failures} · 마지막 성공 데이터 ${db.count}건 유지`;
+  }
   NEWS.splice(0, NEWS.length, ...db.articles.slice(0,450).map((a,i)=>({
-   id:1000+i, date:a.date, category:a.category, source:a.source,
+   id:a.id, date:a.date, category:a.category, source:a.source,
    title:a.title, desc:a.desc, url:a.url,
    insight:a.summary_type==='rss_excerpt'?'출처가 제공한 RSS 발췌입니다. AI 자체 분석이 아닙니다.':'제목과 RSS 메타데이터를 기준으로 자동 분류했습니다. 기사 본문은 분석하지 않았습니다.'
   })));
@@ -166,11 +177,16 @@ async function loadLiveNews(){
  }catch(e){
   status.textContent='NEWS NOT CONNECTED';sidebar.textContent='뉴스 수집 데이터 연결 전';
   note.textContent='뉴스 수집 결과가 아직 없습니다. GitHub에서 수집 작업을 실행한 후 표시됩니다. 거시지표는 과거 정적 샘플입니다.';
+  if(health?.status==='failed'){
+   status.textContent='FETCH FAILED';sidebar.textContent='전체 출처 수집 실패';
+   note.textContent=`최근 시도 ${health.checked_at} · 모든 출처 수집 실패 · 이전 데이터가 있으면 유지합니다.`;
+  }
   renderNews();
- }
+ }finally{newsLoading=false;}
 }
 
-document.addEventListener('click',e=>{const nav=e.target.closest('[data-nav],[data-goto]');if(nav){navigate(nav.dataset.nav||nav.dataset.goto);return}const detail=e.target.closest('[data-detail]');if(detail){openDetail(+detail.dataset.detail);return}const bookmark=e.target.closest('[data-bookmark]');if(bookmark){let id=+bookmark.dataset.bookmark;state.saved.has(id)?state.saved.delete(id):state.saved.add(id);renderNews();return}const filt=e.target.closest('[data-filter]');if(filt){state.filter=filt.dataset.filter;renderNews();return}const c=e.target.closest('[data-chart]');if(c){state.chart=c.dataset.chart;drawCharts();return}});
+setInterval(loadLiveNews, 5*60*1000);
+document.addEventListener('click',e=>{const nav=e.target.closest('[data-nav],[data-goto]');if(nav){navigate(nav.dataset.nav||nav.dataset.goto);return}const detail=e.target.closest('[data-detail]');if(detail){openDetail(detail.dataset.detail);return}const bookmark=e.target.closest('[data-bookmark]');if(bookmark){let id=bookmark.dataset.bookmark;state.saved.has(id)?state.saved.delete(id):state.saved.add(id);renderNews();return}const filt=e.target.closest('[data-filter]');if(filt){state.filter=filt.dataset.filter;renderNews();return}const c=e.target.closest('[data-chart]');if(c){state.chart=c.dataset.chart;drawCharts();return}});
 document.getElementById('news-search').addEventListener('input',e=>{state.query=e.target.value;renderNews()});['s-arrivals','s-spend','s-air'].forEach(id=>document.getElementById(id).addEventListener('input',weather));document.getElementById('reset-weather').addEventListener('click',()=>{document.getElementById('s-arrivals').value=21;document.getElementById('s-spend').value=8;document.getElementById('s-air').value=6;weather()});document.getElementById('copy-brief').addEventListener('click',copyBrief);document.getElementById('modal-close').onclick=document.getElementById('modal-done').onclick=()=>document.getElementById('modal-layer').classList.remove('open');document.getElementById('modal-layer').addEventListener('click',e=>{if(e.target.id==='modal-layer')e.currentTarget.classList.remove('open')});document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('modal-layer').classList.remove('open')});
 renderNews();drawCharts();weather();loadLiveNews();
 </script>

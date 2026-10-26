@@ -1,0 +1,81 @@
+name: Tourism Pulse RSS collector
+on:
+  schedule:
+    - cron: '17 */2 * * *'
+    - cron: '30 1 * * *' # 10:30 Asia/Seoul; GitHub may delay scheduled runs.
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'fixtures/**'
+      - 'sources.json'
+      - 'site/index.html'
+      - '.github/workflows/collect.yml'
+permissions:
+  contents: read
+concurrency:
+  group: tourism-pulse-publish
+  cancel-in-progress: false
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run regression tests
+        run: python -m unittest discover -s tests -v
+  collect-and-publish:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Collect real RSS (never demo)
+        id: collect
+        continue-on-error: true
+        run: python src/collector.py
+      - name: Save data and failure health records
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site/data/*.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update RSS news and collection health'
+            git push
+          fi
+      - name: Record collection report
+        if: always()
+        run: |
+          if [ -f site/data/health.json ]; then
+            cat site/data/health.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Keep diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rss-collection-data
+          path: site/data/*.json
+          if-no-files-found: warn
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4
+      - name: Fail run when all sources failed
+        if: steps.collect.outcome == 'failure'
+        run: exit 1

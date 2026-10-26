@@ -27,19 +27,12 @@ from zoneinfo import ZoneInfo
 KST = ZoneInfo('Asia/Seoul')
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'site' / 'data'
-USER_AGENT = 'TourismPulseRSS/0.1 (+metadata-only; contact repository maintainer)'
+USER_AGENT = 'TourismPulseRSS/0.2 (+metadata-only; contact repository maintainer)'
 TRACKING = {'fbclid', 'gclid', 'ref', 'spm', 'source', 'igshid'}
-KEYWORDS = {
-    '정책': ['관광정책', '관광진흥', '국가관광', '관광산업', '관광부', '관광공사', '관광예산', '관광기금', '관광비자', '무비자', '관광세', 'tourism policy', 'tourism strategy'],
-    '수요': ['방한', '외래관광객', '입국 관광객', '인바운드', '해외관광객', '출입국 관광', '관광수요', '관광객 수', '관광객 증가', '관광객 감소', 'inbound tourism', 'visitor arrivals'],
-    '산업': ['호텔업', '호텔시장', '관광숙박', '여행업', '여행사', '관광기업', '관광스타트업', '항공노선', '국제선', '여객수요', '저비용항공', 'ota 플랫폼', '관광플랫폼', '여행플랫폼', 'hospitality', 'travel agency', 'airline routes'],
-    '리서치': ['관광통계', '관광수입', '관광지출', '관광소비', '관광데이터', '관광연구', '관광산업동향', '관광지수', 'tourism statistics', 'tourism research', 'tourism receipts'],
-    '지역': ['지역관광', '관광특구', '관광도시', '관광개발', '관광콘텐츠', '관광축제', '관광지', '관광활성화', '관광재단', '웰니스 관광', '웰니스 트래블', 'regional tourism', 'tourist attraction'],
-    'MICE': ['마이스', 'mice 산업', '컨벤션', '국제회의', '전시산업', '국제전시회', 'convention industry', 'conference tourism']
-}
-WEAK = ['관광', 'travel', 'tourism', '여행', 'tourist', 'visitor', '호텔', '항공', '크루즈', '축제', '숙박', '관광객']
-EXCLUDE = ['연예인 여행', '연예 여행', '영화 줄거리', '여행 예능', '단순 여행 후기', '여행 블로그']
-CAT_ORDER = ['수요', '정책', '리서치', '산업', '지역', 'MICE']
+if __package__:
+    from .relevance import CATEGORIES, LEGACY_CATEGORIES, RULE_VERSION, assess, approve
+else:
+    from relevance import CATEGORIES, LEGACY_CATEGORIES, RULE_VERSION, assess, approve
 
 
 def now_kst():
@@ -100,25 +93,9 @@ def similarity(a, b):
 
 
 def classify(title, description=''):
-    title, description = stripped(title).lower(), stripped(description).lower()
-    if any(bad in title for bad in EXCLUDE):
-        return None, 0
-    # Korean compound terms commonly contain optional spaces in official feeds.
-    title, description = re.sub(r'\s+', '', title), re.sub(r'\s+', '', description)
-    title_hits = {k: sum(re.sub(r'\s+', '', term) in title for term in terms) for k, terms in KEYWORDS.items()}
-    desc_hits = {k: sum(re.sub(r'\s+', '', term) in description for term in terms) for k, terms in KEYWORDS.items()}
-    scores = {k: 4 * title_hits[k] + 2 * desc_hits[k]
-              for k, terms in KEYWORDS.items()}
-    weak_title = sum(1 for term in WEAK if term in title)
-    weak_desc = sum(1 for term in WEAK if term in description)
-    best = max(CAT_ORDER, key=lambda name: (scores[name], -CAT_ORDER.index(name)))
-    score = scores[best] + min(weak_title, 2) + (1 if weak_desc else 0)
-    # A generic travel story without an industry signal does not qualify.
-    if not title_hits[best] and desc_hits[best] < 2:
-        return None, score
-    if score < 4:
-        return None, score
-    return best, score
+    assessment = assess(stripped(title), stripped(description))
+    return (assessment['category'] if assessment['decision'] == 'publish' else None,
+            assessment['score'])
 
 
 def xml_items(xml_bytes):
@@ -155,9 +132,9 @@ def fetch_feed(url, timeout=15):
         return payload
 
 
-def article_from_item(item, source, at=None):
+def article_from_item(item, source, at=None, reviews=None, include_held=False):
     at = at or now_kst()
-    title = stripped(item.get('title', ''))
+    title = stripped(item.get('title', ''))[:240]
     description = stripped(item.get('description', item.get('summary', '')))
     url = canonical_url(item.get('link', ''))
     if not title or not url:
@@ -169,9 +146,16 @@ def article_from_item(item, source, at=None):
     published = timestamp(date_value, dt.datetime.min.replace(tzinfo=KST))
     if published > at + dt.timedelta(minutes=5) or published < at - dt.timedelta(days=45):
         return None
-    category, relevance = classify(title, description)
-    if not category:
+    aid = hashlib.sha256(url.encode('utf-8')).hexdigest()[:18]
+    assessment = assess(title, description)
+    def review_date(value):
+        sentinel = dt.datetime.min.replace(tzinfo=KST)
+        parsed = timestamp(value, sentinel)
+        return None if parsed == sentinel else parsed
+    assessment = approve(assessment, title, url, (reviews or {}).get(aid), at, review_date)
+    if assessment['decision'] == 'exclude' or (assessment['decision'] == 'hold' and not include_held):
         return None
+    category, relevance = assessment['category'], assessment['score']
     reusable = bool(source.get('reuse_excerpt'))
     # Metadata-only by default; do not republish an unlicensed publisher excerpt.
     if reusable and description:
@@ -180,12 +164,12 @@ def article_from_item(item, source, at=None):
     else:
         desc = '원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)'
         summary_type = 'metadata_only'
-    aid = hashlib.sha256(url.encode('utf-8')).hexdigest()[:18]
     return {
         'id': aid, 'published_at': iso(published), 'date': published.strftime('%Y.%m.%d'),
         'category': category, 'source': source['name'], 'source_id': source['id'],
         'title': title[:240], 'desc': desc, 'insight': '원문을 확인한 후 산업적 시사점을 판단해 주세요.',
         'summary_type': summary_type, 'url': url, 'relevance': relevance,
+        'relevance_label': assessment['label'], 'relevance_evidence': assessment,
         'related_sources': [source['name']]
     }
 
@@ -248,21 +232,46 @@ def failure_details(exc):
     return details
 
 
-def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA):
+def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews=None, state_dir=None):
     at = at or now_kst()
+    state_dir = Path(state_dir) if state_dir is not None else data_dir / 'collector_state'
     news_file, brief_file, health_file = [data_dir / f for f in ('news.json', 'briefing.json', 'health.json')]
     old = read_json(news_file, {})
     prior_articles = old.get('articles', []) if old.get('mode') != 'fixture_demo' else []
-    found, health, ok = [], [], 0
+    found, health, held, ok = [], [], [], 0
+    seen_ids = set()
+    decisions = []
     for source in sources:
         if not source.get('enabled', True):
             continue
         try:
             payload = fetcher(source['url'])
             items = list(xml_items(payload))
-            news = [article_from_item(item, source, at) for item in items]
-            found.extend(a for a in news if a is not None)
-            health.append({'id': source['id'], 'name': source['name'], 'url': source['url'], 'status': 'ok', 'rss_items': len(items), 'matched': sum(a is not None for a in news)})
+            for item in items:
+                item_url = canonical_url(item.get('link', ''))
+                item_date = timestamp(item.get('pubDate') or item.get('published') or item.get('updated'), dt.datetime.min.replace(tzinfo=KST))
+                if item_url and at - dt.timedelta(days=45) <= item_date <= at + dt.timedelta(minutes=5):
+                    seen_ids.add(hashlib.sha256(item_url.encode()).hexdigest()[:18])
+            evaluated = [article_from_item(item, source, at, reviews, include_held=True) for item in items]
+            news = [a for a in evaluated if a and a['relevance_evidence']['decision'] == 'publish']
+            pending = [a for a in evaluated if a and a['relevance_evidence']['decision'] == 'hold']
+            found.extend(news)
+            held.extend(pending)
+            labels = {label: 0 for label in ('Direct', 'Indirect', 'Irrelevant')}
+            for item, article in zip(items, evaluated):
+                assessment = assess(stripped(item.get('title', '')), stripped(item.get('description', item.get('summary', ''))))
+                labels[assessment['label']] += 1
+                evidence = article['relevance_evidence'] if article else assessment
+                item_url = canonical_url(item.get('link', ''))
+                rejected_metadata = article is None and assessment['label'] != 'Irrelevant'
+                decisions.append({'id': hashlib.sha256(item_url.encode()).hexdigest()[:18] if item_url else None,
+                                  'title': stripped(item.get('title', ''))[:240], 'url': item_url,
+                                  'source_id': source['id'], 'relevance_evidence': evidence,
+                                  'decision': 'reject_invalid_metadata' if rejected_metadata else evidence['decision']})
+            health.append({'id': source['id'], 'name': source['name'], 'url': source['url'], 'status': 'ok',
+                           'rss_items': len(items), 'matched': len(news), 'held': len(pending),
+                           'relevance_counts': labels,
+                           'category_published': {c: sum(a['category'] == c for a in news) for c in CATEGORIES}})
             ok += 1
         except (ET.ParseError, ValueError, urllib.error.URLError, TimeoutError, OSError) as exc:
             health.append({'id': source['id'], 'name': source['name'], 'url': source['url'], 'status': 'error', **failure_details(exc)})
@@ -273,18 +282,98 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA):
     if not ok:
         # All sources failed: NEVER erase existing news or replace existing briefing.
         return {'status': 'failed', 'articles': len(prior_articles), 'sources_ok': 0}
-    candidates = found + ([] if demo else prior_articles)
+    write_atomic(state_dir / 'decisions.json', {'schema_version': 2, 'checked_at': iso(at),
+                                               'scope': 'successful_sources_this_run', 'items': decisions})
+    # Successful runs migrate taxonomy and re-evaluate legacy metadata. An
+    # outage never triggers migration: the early return above preserves bytes.
+    retained, legacy_archive = [], []
+    for article in ([] if demo else prior_articles):
+        if 'relevance_evidence' not in article:
+            legacy_archive.append(dict(article))
+        if article['id'] in seen_ids:
+            for fresh in found + held:
+                if fresh['id'] == article['id'] and article['category'] in LEGACY_CATEGORIES:
+                    fresh['legacy_category'] = article['category']
+                elif fresh['id'] == article['id'] and article.get('legacy_category'):
+                    fresh['legacy_category'] = article['legacy_category']
+            continue
+        previous = article.get('relevance_evidence', {})
+        if previous.get('rule_version') == RULE_VERSION and previous.get('label') == 'Direct':
+            retained.append(article)
+            continue
+        original = dict(article)
+        if previous.get('rule_version') == RULE_VERSION and previous.get('label') == 'Indirect':
+            pending = {**previous, 'decision': 'hold'}
+            pending.pop('review', None)
+            pending.pop('review_status', None)
+            sentinel = dt.datetime.min.replace(tzinfo=KST)
+            def parse_review(value):
+                date = timestamp(value, sentinel)
+                return None if date == sentinel else date
+            checked = approve(pending, article['title'], article['url'], (reviews or {}).get(article['id']), at, parse_review)
+            updated = {**article, 'relevance_evidence': checked}
+            (retained if checked['decision'] == 'publish' else held).append(updated)
+            continue
+        source = {'id': article['source_id'], 'name': article['source'],
+                  'reuse_excerpt': article.get('summary_type') == 'rss_excerpt'}
+        migrated = article_from_item({'title': article['title'], 'link': article['url'],
+                                     'pubDate': article['published_at'],
+                                     'description': article.get('desc', '')}, source, at, reviews, include_held=True)
+        if migrated and migrated['relevance_evidence']['decision'] == 'publish':
+            migrated['legacy_category'] = article.get('legacy_category', article['category'])
+            retained.append(migrated)
+        elif migrated:
+            held.append(migrated)
+        else:
+            held.append({**original, 'category': LEGACY_CATEGORIES.get(article['category'], article['category']),
+                         'migration_status': 'needs_refetch',
+                         'relevance_evidence': {'rule_version': RULE_VERSION, 'decision': 'hold',
+                                               'reason': '기존 데이터의 저장 메타데이터만으로 관련성을 재확인할 수 없어 원본을 보관합니다.'}})
+    prior_queue = read_json(state_dir / 'review_queue.json', {}).get('articles', [])
+    for pending in prior_queue:
+        if pending['id'] in seen_ids or pending['id'] in {a['id'] for a in held + retained}:
+            continue
+        assessment = pending.get('relevance_evidence', {})
+        if assessment.get('label') == 'Indirect':
+            sentinel = dt.datetime.min.replace(tzinfo=KST)
+            def parse_pending_date(value):
+                date = timestamp(value, sentinel)
+                return None if date == sentinel else date
+            checked = approve(assessment, pending['title'], pending['url'],
+                              (reviews or {}).get(pending['id']), at, parse_pending_date)
+            if checked['decision'] == 'publish':
+                retained.append({**pending, 'relevance_evidence': checked})
+    candidates = found + retained
     combined = deduplicate(candidates)
     cutoff = at - dt.timedelta(days=45)
     combined = [x for x in combined if timestamp(x['published_at']) >= cutoff][:450]
     mode = 'fixture_demo' if demo else 'live_rss'
-    write_atomic(news_file, {'generated_at': iso(at), 'last_successful_fetch': last_success, 'count': len(combined), 'mode': mode, 'articles': combined})
+    write_atomic(news_file, {'schema_version': 2, 'rule_version': RULE_VERSION, 'generated_at': iso(at), 'last_successful_fetch': last_success, 'count': len(combined), 'mode': mode, 'articles': combined})
+    # Queue/state lives outside Pages in the production CLI. Keep candidates
+    # from unavailable sources and archive untouched originals for migration.
+    held_ids = {a['id'] for a in held}
+    published_ids = {a['id'] for a in combined}
+    queue = held + [a for a in prior_queue if a['id'] not in held_ids | published_ids | seen_ids
+                    and timestamp(a['published_at']) >= cutoff]
+    queue = list({a['id']: a for a in reversed(queue) if timestamp(a['published_at']) >= cutoff}.values())[:450]
+    write_atomic(state_dir / 'review_queue.json', {'schema_version': 2, 'updated_at': iso(at), 'articles': queue})
+    if legacy_archive:
+        archive = read_json(state_dir / 'legacy_archive.json', {}).get('articles', [])
+        originals = {a['id']: a for a in archive}
+        for a in legacy_archive:
+            originals.setdefault(a['id'], a)
+        write_atomic(state_dir / 'legacy_archive.json', {'schema_version': 1, 'articles': list(originals.values())})
+    health_data = read_json(health_file, {})
+    health_data.update({'schema_version': 2, 'rule_version': RULE_VERSION,
+                        'category_counts': {c: sum(a['category'] == c for a in combined) for c in CATEGORIES},
+                        'review_queue_count': len(queue[:450])})
+    write_atomic(health_file, health_data)
     within_day = [x for x in combined if at - dt.timedelta(hours=24) <= timestamp(x['published_at']) <= at]
     selected = sorted(within_day, key=lambda x: (x['relevance'], timestamp(x['published_at'])), reverse=True)[:5]
     write_atomic(brief_file, {
-        'generated_at': iso(at), 'status': 'demo' if demo else ('candidates_ready' if selected else 'no_recent_articles'),
+        'schema_version': 2, 'generated_at': iso(at), 'status': 'demo' if demo else ('candidates_ready' if selected else 'no_recent_articles'),
         'mode': mode, 'title': '관광산업 주요 뉴스 브리핑 후보',
-        'items': [{'id': x['id'], 'title': x['title'], 'source': x['source'], 'category': x['category'], 'url': x['url'], 'published_at': x['published_at'], 'desc': x['desc'], 'summary_type': x['summary_type']} for x in selected],
+        'items': [{'id': x['id'], 'title': x['title'], 'source': x['source'], 'category': x['category'], 'url': x['url'], 'published_at': x['published_at'], 'desc': x['desc'], 'summary_type': x['summary_type'], 'relevance_label': x['relevance_label'], 'relevance_evidence': x['relevance_evidence']} for x in selected],
         'notice': '브리핑 후보만 자동 생성. 카카오톡 발송 및 본문 기반 AI 요약은 미구현.'
     })
     return {'status': status, 'articles': len(combined), 'sources_ok': ok, 'briefing_candidates': len(selected), 'mode': mode}
@@ -293,6 +382,7 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--demo', action='store_true', help='Use clearly labeled synthetic test RSS instead of live sources')
+    parser.add_argument('--reviews', default=str(ROOT / 'relevance_reviews.json'), help='Title-bound editorial approvals for Indirect candidates')
     parser.add_argument('--dir', default=str(DATA), help='Destination for site JSON')
     args = parser.parse_args()
     sources = json.loads((ROOT / 'sources.json').read_text(encoding='utf-8'))['sources']
@@ -302,7 +392,9 @@ def main():
         fetcher = lambda url: demo_file.read_bytes()
     else:
         fetcher = fetch_feed
-    result = run(sources, fetcher=fetcher, demo=args.demo, data_dir=Path(args.dir))
+    reviews = read_json(Path(args.reviews), {}).get('approvals', {})
+    state_dir = ROOT / 'collector_state' if Path(args.dir).resolve() == DATA.resolve() else Path(args.dir) / 'collector_state'
+    result = run(sources, fetcher=fetcher, demo=args.demo, data_dir=Path(args.dir), reviews=reviews, state_dir=state_dir)
     print(json.dumps(result, ensure_ascii=False))
     return 1 if result['status'] == 'failed' else 0
 

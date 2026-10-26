@@ -1,20 +1,69 @@
 {
   "sources": [
     {
-      "id": "mcst_press", "name": "문화체육관광부 보도자료", "url": "https://www.mcst.go.kr/common/rss/press.jsp", "enabled": true,
-      "reuse_excerpt": false, "notes": "RSS 서비스 페이지와 개별 기사 공공누리 조건 확인 후 발췌 권한을 변경하세요."
+      "id": "mcst_press",
+      "name": "문화체육관광부 보도자료",
+      "url": "https://www.mcst.go.kr/common/rss/press.jsp",
+      "enabled": true,
+      "reuse_excerpt": false,
+      "notes": "RSS 서비스 페이지와 개별 기사 공공누리 조건 확인 후 발췌 권한을 변경하세요."
     },
     {
-      "id": "korea_net_travel", "name": "Korea.net Food/Travel", "url": "https://www.korea.net/koreanet/rss/news/8", "enabled": true,
-      "reuse_excerpt": false, "notes": "RSS의 재배포·AI 처리 관련 이용조건 확인 필요"
+      "id": "korea_net_travel",
+      "name": "Korea.net Food/Travel",
+      "url": "https://www.korea.net/koreanet/rss/news/8",
+      "enabled": true,
+      "reuse_excerpt": false,
+      "notes": "RSS의 재배포·AI 처리 관련 이용조건 확인 필요"
     },
     {
-      "id": "kosis_recent", "name": "KOSIS 최근수록자료", "url": "https://kosis.kr/rss/themes_rss.jsp", "enabled": true,
-      "reuse_excerpt": false, "notes": "관광 관련 소식만 선별"
+      "id": "kosis_recent",
+      "name": "KOSIS 최근수록자료",
+      "url": "https://kosis.kr/rss/themes_rss.jsp",
+      "enabled": true,
+      "reuse_excerpt": false,
+      "notes": "관광 관련 소식만 선별"
     },
     {
-      "id": "seoul_culture", "name": "서울시 내 손안에 서울 문화", "url": "https://mediahub.seoul.go.kr/news/rss/06", "enabled": true,
-      "reuse_excerpt": false, "notes": "관광산업 관련 내용만 엄격하게 선별"
+      "id": "seoul_culture",
+      "name": "서울시 내 손안에 서울 문화",
+      "url": "https://mediahub.seoul.go.kr/news/rss/06",
+      "enabled": true,
+      "reuse_excerpt": false,
+      "notes": "관광산업 관련 내용만 엄격하게 선별"
+    },
+    {
+      "id": "seoul_economy",
+      "name": "서울시 내 손안에 서울 경제",
+      "url": "https://mediahub.seoul.go.kr/news/rss/04",
+      "enabled": true,
+      "reuse_excerpt": false,
+      "discovery_url": "https://mediahub.seoul.go.kr/staticpage/rss.do",
+      "terms_url": "https://www.seoul.go.kr/helper/copyright.do",
+      "usage_scope": "official_rss_metadata_only",
+      "notes": "공식 RSS 제공 확인. 제목·출처·날짜·원문 링크 및 규칙 근거만 저장. 본문·사진·RSS 설명 재게시 및 AI 처리 미허용. 개별 저작물 권리는 별도 확인."
+    },
+    {
+      "id": "seoul_transport",
+      "name": "서울시 내 손안에 서울 교통",
+      "url": "https://mediahub.seoul.go.kr/news/rss/01",
+      "enabled": true,
+      "reuse_excerpt": false,
+      "discovery_url": "https://mediahub.seoul.go.kr/staticpage/rss.do",
+      "terms_url": "https://www.seoul.go.kr/helper/copyright.do",
+      "usage_scope": "official_rss_metadata_only",
+      "notes": "공식 RSS 제공 확인. 제목·출처·날짜·원문 링크 및 규칙 근거만 저장. 본문·사진·RSS 설명 재게시 및 AI 처리 미허용. 개별 저작물 권리는 별도 확인."
+    },
+    {
+      "id": "seoul_environment",
+      "name": "서울시 내 손안에 서울 환경",
+      "url": "https://mediahub.seoul.go.kr/news/rss/05",
+      "enabled": true,
+      "reuse_excerpt": false,
+      "discovery_url": "https://mediahub.seoul.go.kr/staticpage/rss.do",
+      "terms_url": "https://www.seoul.go.kr/helper/copyright.do",
+      "usage_scope": "official_rss_metadata_only",
+      "notes": "공식 RSS 제공 확인. 제목·출처·날짜·원문 링크 및 규칙 근거만 저장. 본문·사진·RSS 설명 재게시 및 AI 처리 미허용. 개별 저작물 권리는 별도 확인."
     }
   ]
 }

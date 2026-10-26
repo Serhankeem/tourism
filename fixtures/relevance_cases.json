@@ -1,0 +1,257 @@
+{
+  "notice": "오분류 검증용 합성 사례. 실제 기사·기사 본문이 아님.",
+  "cases": [
+    {
+      "title": "관광정책 예산 개편 발표",
+      "description": "",
+      "label": "Direct",
+      "category": "관광정책",
+      "decision": "publish"
+    },
+    {
+      "title": "외래관광객 증가 및 방한객 통계 발표",
+      "description": "",
+      "label": "Direct",
+      "category": "인바운드",
+      "decision": "publish"
+    },
+    {
+      "title": "관광수입 증가와 관광소비 통계",
+      "description": "",
+      "label": "Direct",
+      "category": "경제·시장",
+      "decision": "publish"
+    },
+    {
+      "title": "여행사 실적 및 매출 증가",
+      "description": "",
+      "label": "Direct",
+      "category": "여행산업",
+      "decision": "publish"
+    },
+    {
+      "title": "국제선 항공노선 증편 발표",
+      "description": "",
+      "label": "Direct",
+      "category": "항공·숙박",
+      "decision": "publish"
+    },
+    {
+      "title": "호텔 객실 공급 확대",
+      "description": "",
+      "label": "Direct",
+      "category": "항공·숙박",
+      "decision": "publish"
+    },
+    {
+      "title": "웰니스 트래블 위크 운영",
+      "description": "",
+      "label": "Direct",
+      "category": "문화·트렌드",
+      "decision": "publish"
+    },
+    {
+      "title": "지역 상생 사업 발표",
+      "description": "서울관광재단이 지역관광 안테나숍을 지원한다.",
+      "label": "Direct",
+      "category": "문화·트렌드",
+      "decision": "publish"
+    },
+    {
+      "title": "국제회의 개최 및 컨벤션산업 지원",
+      "description": "",
+      "label": "Direct",
+      "category": "여행산업",
+      "decision": "publish"
+    },
+    {
+      "title": "국내여행수요 통계 발표",
+      "description": "",
+      "label": "Direct",
+      "category": "경제·시장",
+      "decision": "publish"
+    },
+    {
+      "title": "원달러 환율 상승으로 방한 수요 감소",
+      "description": "",
+      "label": "Indirect",
+      "category": "경제·시장",
+      "decision": "hold"
+    },
+    {
+      "title": "유가 상승으로 국제선 운항 축소",
+      "description": "",
+      "label": "Indirect",
+      "category": "경제·시장",
+      "decision": "hold"
+    },
+    {
+      "title": "한류 콘서트로 외래관광객 증가",
+      "description": "",
+      "label": "Indirect",
+      "category": "문화·트렌드",
+      "decision": "hold"
+    },
+    {
+      "title": "태풍 때문에 국제선 결항 증가",
+      "description": "",
+      "label": "Indirect",
+      "category": "항공·숙박",
+      "decision": "hold"
+    },
+    {
+      "title": "고속철 개통에 따라 관광소비 증가",
+      "description": "",
+      "label": "Indirect",
+      "category": "여행산업",
+      "decision": "hold"
+    },
+    {
+      "title": "공연 흥행 소식",
+      "description": "해외팬 입국 증가로 콘서트 기간 객실예약이 급증했다.",
+      "label": "Indirect",
+      "category": "문화·트렌드",
+      "decision": "hold"
+    },
+    {
+      "title": "환율 상승으로 방한 수요 감소 가능성",
+      "description": "",
+      "label": "Indirect",
+      "category": "경제·시장",
+      "decision": "hold"
+    },
+    {
+      "title": "금리 동결과 여행사 지원 대책",
+      "description": "",
+      "label": "Indirect",
+      "category": "경제·시장",
+      "decision": "hold"
+    },
+    {
+      "title": "한국은행 기준금리 동결",
+      "description": "",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "주식시장 상승과 대기업 실적",
+      "description": "",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "새 영화 개봉과 배우 인터뷰",
+      "description": "",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "주말 여행 가볼 만한 곳",
+      "description": "",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "산책 후기와 인근 관광지",
+      "description": "",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "주말 맛집 소개",
+      "description": "관광객도 찾는 맛집이다.",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "관광산업과 무관한 일반 경제 소식",
+      "description": "",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "환율 상승은 방한 수요와 관련 없다",
+      "description": "",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "금리 동결 소식",
+      "description": "은행 예금 금리가 바뀐다. 여행사는 신상품을 발표했다.",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "새 앨범 발매",
+      "description": "음악 축제 소식이다. 호텔업 지원 사업도 소개한다.",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "호텔 객실 할인쿠폰과 추천숙소",
+      "description": "",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "버스 출퇴근 노선 확대",
+      "description": "",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "관광이라는 단어가 담긴 일상 메모",
+      "description": "",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "연예인 여행과 영화 줄거리",
+      "description": "",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "친환경 전시 체험 소식",
+      "description": "관람객 참여 행사를 개최한다.",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "지역 골목 축제 소식",
+      "description": "골목 상권과 연결하여 행사 참여를 지원한다.",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "즐거운 여행 사진 이야기",
+      "description": "여행 사진을 전시한다.",
+      "label": "Irrelevant",
+      "category": null,
+      "decision": "exclude"
+    },
+    {
+      "title": "봉은사 명상부터 한옥 전시까지 웰니스 트래블 위크",
+      "description": "서울 웰니스 관광 및 지역관광 사업을 서울관광재단이 운영한다.",
+      "label": "Direct",
+      "category": "문화·트렌드",
+      "decision": "publish"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-26T19:52:40+09:00",
+  "checked_at": "2026-10-26T23:55:25+09:00",
   "scope": "successful_sources_this_run",
   "items": [
     {
@@ -194,9 +194,9 @@
       "decision": "exclude"
     },
     {
-      "id": "065a4b99bc159252ab",
-      "title": "경상남도함양군기본통계 ( 31 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007190&boardOrgId=808",
+      "id": "76099015fc43603db7",
+      "title": "자금순환표 ( 10 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1976023&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -212,9 +212,9 @@
       "decision": "exclude"
     },
     {
-      "id": "1668a0578fc81c59a2",
-      "title": "경상남도거창군기본통계 ( 62 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007103&boardOrgId=809",
+      "id": "8e37b24b9cae912cfd",
+      "title": "통화금융통계 ( 90 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1976015&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -230,9 +230,49 @@
       "decision": "exclude"
     },
     {
-      "id": "790f12ec9e3eb17c98",
-      "title": "정보통신공사비지수 ( 1 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2012055&boardOrgId=412",
+      "id": "a3d31e94ee6f74b683",
+      "title": "생산자물가조사 ( 5 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1966003&boardOrgId=301",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [
+          "cross_sentence_unproven"
+        ],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "ed8b9001fb37476d36",
+      "title": "수출입물가조사 ( 12 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1976001&boardOrgId=301",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [
+          "cross_sentence_unproven"
+        ],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "239111095fe975ceaf",
+      "title": "지급결제통계 ( 15 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2006012&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -248,9 +288,9 @@
       "decision": "exclude"
     },
     {
-      "id": "c55a111299747d3a3f",
-      "title": "경기도양평군기본통계 ( 39 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007083&boardOrgId=641",
+      "id": "208053900d23a140ee",
+      "title": "대외채무및대외채권 ( 3 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2003033&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -266,9 +306,9 @@
       "decision": "exclude"
     },
     {
-      "id": "0e66292fab6c2ee371",
-      "title": "공동주택실거래가격지수 ( 23 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2009045&boardOrgId=408",
+      "id": "0b45777ad38e02abba",
+      "title": "기업경영분석 ( 14 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1966004&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -284,9 +324,9 @@
       "decision": "exclude"
     },
     {
-      "id": "5244ff94ed84c225c4",
-      "title": "산업폐수발생및처리현황 ( 7 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1981003&boardOrgId=106",
+      "id": "fa9ae394ecf49df795",
+      "title": "기업경기조사 ( 9 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1991004&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -302,9 +342,9 @@
       "decision": "exclude"
     },
     {
-      "id": "b18dfd6a3101adafb4",
-      "title": "부산광역시수영구기본통계 ( 17 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007074&boardOrgId=544",
+      "id": "4a6e8b8fb2aac757a9",
+      "title": "국제투자대조표(IIP) ( 3 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2003008&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -320,9 +360,9 @@
       "decision": "exclude"
     },
     {
-      "id": "21b605521936cf2c4e",
-      "title": "광주광역시서구기본통계 ( 106 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007086&boardOrgId=582",
+      "id": "f0b7767a363906623f",
+      "title": "국제수지통계 ( 18 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1976018&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -338,9 +378,9 @@
       "decision": "exclude"
     },
     {
-      "id": "5fac1797e17d53ed2c",
-      "title": "부산광역시사하구기본통계 ( 2 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007072&boardOrgId=540",
+      "id": "5f3c8b43fd5cbc2754",
+      "title": "산업연관표 ( 34 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1976024&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -356,9 +396,9 @@
       "decision": "exclude"
     },
     {
-      "id": "5e19fcbd5da24bcf13",
-      "title": "충청남도당진시기본통계 ( 85 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007328&boardOrgId=705",
+      "id": "b1faac18d694f85843",
+      "title": "국민계정 ( 60 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1976017&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -374,9 +414,9 @@
       "decision": "exclude"
     },
     {
-      "id": "ed3d0ddabd6e297d9a",
-      "title": "대전광역시유성구기본통계 ( 16 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007050&boardOrgId=594",
+      "id": "65aec815c5ae223acd",
+      "title": "소비자동향조사 ( 3 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1998023&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -392,9 +432,9 @@
       "decision": "exclude"
     },
     {
-      "id": "0f567a756e985462e0",
-      "title": "충청남도논산시기본통계 ( 19 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007217&boardOrgId=696",
+      "id": "6c334860a5a1e83c86",
+      "title": "금융기관대출행태조사 ( 3 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2001022&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -410,9 +450,9 @@
       "decision": "exclude"
     },
     {
-      "id": "b29eebef4b1381b21f",
-      "title": "인천광역시서구기본통계 ( 79 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007064&boardOrgId=568",
+      "id": "f2154b1240a3a339ae",
+      "title": "펀드산업현황 ( 1 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2006090&boardOrgId=325",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -428,45 +468,9 @@
       "decision": "exclude"
     },
     {
-      "id": "b2db48adce3b5ff73a",
-      "title": "철원군기본통계 ( 2 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007109&boardOrgId=663",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "2f1c1c8215046bce8e",
-      "title": "경기도가평군기본통계 ( 40 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007268&boardOrgId=640",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "e7d59e205beb77fe32",
-      "title": "감전재해조사 ( 56 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2015018&boardOrgId=422",
+      "id": "b47a894e398f663fe4",
+      "title": "경제심리지수 ( 1 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2012013&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -561,6 +565,24 @@
       "id": "97d2f555628b381808",
       "title": "소문난 서울 대표 시장 총출동! 청계광장에서 만난 '서울마켓페어'",
       "url": "https://mediahub.seoul.go.kr/archives/2019847",
+      "source_id": "seoul_culture",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "bffb1c5a8727642f6e",
+      "title": "억새부터 코스모스까지! 서울에서 만나는 가을 명소 3곳",
+      "url": "https://mediahub.seoul.go.kr/archives/2019814",
       "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -848,26 +870,6 @@
         "signals": [],
         "impact_targets": [],
         "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "60d3f2babe3845c6c6",
-      "title": "은빛 억새에 라이팅쇼까지 완벽! 놓치면 아쉬운 억새축제",
-      "url": "https://mediahub.seoul.go.kr/archives/2019799",
-      "source_id": "seoul_culture",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [
-          "cross_sentence_unproven"
-        ],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
       },
       "decision": "exclude"
     },

@@ -1,0 +1,13 @@
+Tourism Pulse — GitHub 업로드 안내
+
+1. 이 ZIP을 다운로드합니다.
+2. Windows 탐색기에서 우클릭 > 압축 풀기(모두 압축 풀기)를 선택합니다.
+3. GitHub에서 tourism-pulse 저장소를 생성하고 Add file > Upload files를 선택합니다.
+4. 압축을 푼 폴더 안의 모든 항목(특히 .github 폴더 포함)을 업로드합니다.
+5. Commit changes를 클릭합니다.
+6. GitHub 저장소 맨 위에 src, site, tests, .github, sources.json이 보이면 성공입니다.
+
+주의: 이 파일은 코드 패키지입니다. GitHub에 업로드한 것만으로 뉴스가 자동 수집되지는 않습니다.
+Actions/Pages 설정과 실제 RSS 수집 검증이 필요합니다.
+관리자 화면 시안(로그인 보호 없음)은 보안상 이 업로드 패키지에서 제외했습니다.
+API 키/비밀번호는 GitHub에 올리지 마세요.

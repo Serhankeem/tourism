@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>가상 관광뉴스 테스트 피드</title>
+ <item><title>[테스트] 방한 외래관광객 증가와 인바운드 시장 동향</title><link>https://example.org/demo/arrivals</link><pubDate>Sun, 25 Oct 2026 10:00:00 +0900</pubDate><description>실제 뉴스가 아닌 예제 데이터입니다.</description></item>
+ <item><title>[테스트] 관광수입 통계 및 지역관광 산업 분석</title><link>https://example.org/demo/revenue</link><pubDate>Sun, 25 Oct 2026 08:00:00 +0900</pubDate><description>실제 보도자료가 아닌 가상 시험 자료.</description></item>
+ <item><title>유명 배우의 주말 일상과 드라마</title><link>https://example.org/demo/celebrity</link><pubDate>Sun, 25 Oct 2026 09:00:00 +0900</pubDate></item>
+</channel></rss>

@@ -6,7 +6,6 @@ turning on reusable excerpts or integrating an AI summarizer.
 from __future__ import annotations
 
 import argparse
-import calendar
 import datetime as dt
 import email.utils
 import hashlib
@@ -35,7 +34,7 @@ KEYWORDS = {
     '수요': ['방한', '외래관광객', '입국 관광객', '인바운드', '해외관광객', '출입국 관광', '관광수요', '관광객 수', '관광객 증가', '관광객 감소', 'inbound tourism', 'visitor arrivals'],
     '산업': ['호텔업', '호텔시장', '관광숙박', '여행업', '여행사', '관광기업', '관광스타트업', '항공노선', '국제선', '여객수요', '저비용항공', 'ota 플랫폼', '관광플랫폼', '여행플랫폼', 'hospitality', 'travel agency', 'airline routes'],
     '리서치': ['관광통계', '관광수입', '관광지출', '관광소비', '관광데이터', '관광연구', '관광산업동향', '관광지수', 'tourism statistics', 'tourism research', 'tourism receipts'],
-    '지역': ['지역관광', '관광특구', '관광도시', '관광개발', '관광콘텐츠', '관광축제', '관광지', '관광활성화', 'regional tourism', 'tourist attraction'],
+    '지역': ['지역관광', '관광특구', '관광도시', '관광개발', '관광콘텐츠', '관광축제', '관광지', '관광활성화', '관광재단', '웰니스 관광', '웰니스 트래블', 'regional tourism', 'tourist attraction'],
     'MICE': ['마이스', 'mice 산업', '컨벤션', '국제회의', '전시산업', '국제전시회', 'convention industry', 'conference tourism']
 }
 WEAK = ['관광', 'travel', 'tourism', '여행', 'tourist', 'visitor', '호텔', '항공', '크루즈', '축제', '숙박', '관광객']
@@ -104,14 +103,18 @@ def classify(title, description=''):
     title, description = stripped(title).lower(), stripped(description).lower()
     if any(bad in title for bad in EXCLUDE):
         return None, 0
-    scores = {k: sum((4 if term in title else 0) + (1 if term in description else 0) for term in terms)
+    # Korean compound terms commonly contain optional spaces in official feeds.
+    title, description = re.sub(r'\s+', '', title), re.sub(r'\s+', '', description)
+    title_hits = {k: sum(re.sub(r'\s+', '', term) in title for term in terms) for k, terms in KEYWORDS.items()}
+    desc_hits = {k: sum(re.sub(r'\s+', '', term) in description for term in terms) for k, terms in KEYWORDS.items()}
+    scores = {k: 4 * title_hits[k] + 2 * desc_hits[k]
               for k, terms in KEYWORDS.items()}
     weak_title = sum(1 for term in WEAK if term in title)
     weak_desc = sum(1 for term in WEAK if term in description)
     best = max(CAT_ORDER, key=lambda name: (scores[name], -CAT_ORDER.index(name)))
     score = scores[best] + min(weak_title, 2) + (1 if weak_desc else 0)
     # A generic travel story without an industry signal does not qualify.
-    if scores[best] < 4 and not (scores[best] >= 1 and weak_title >= 1):
+    if not title_hits[best] and desc_hits[best] < 2:
         return None, score
     if score < 4:
         return None, score
@@ -120,6 +123,8 @@ def classify(title, description=''):
 
 def xml_items(xml_bytes):
     root = ET.fromstring(xml_bytes)
+    if root.tag.rsplit('}', 1)[-1] not in ('rss', 'feed', 'RDF'):
+        raise ValueError('Response is not an RSS/Atom feed')
     # Defensive limits: no HTML body retrieval, 1MB maximum payload enforced at fetch.
     for node in root.iter():
         tag = node.tag.rsplit('}', 1)[-1]
@@ -160,8 +165,9 @@ def article_from_item(item, source, at=None):
     date_value = item.get('pubDate') or item.get('published') or item.get('updated')
     if not date_value:
         return None  # Unknown publication date must never be labeled as fresh news.
-    published = timestamp(date_value, at)
-    if published > at + dt.timedelta(days=2) or published < at - dt.timedelta(days=45):
+    # Invalid dates must not silently become fresh news.
+    published = timestamp(date_value, dt.datetime.min.replace(tzinfo=KST))
+    if published > at + dt.timedelta(minutes=5) or published < at - dt.timedelta(days=45):
         return None
     category, relevance = classify(title, description)
     if not category:
@@ -219,6 +225,29 @@ def write_atomic(path, data):
             os.unlink(name)
 
 
+def failure_details(exc):
+    message = str(exc)
+    if 'Tunnel connection failed' in message:
+        kind = 'proxy_connect_denied'
+    elif isinstance(exc, urllib.error.HTTPError):
+        kind = 'redirect_loop' if exc.code in (301, 302, 303, 307, 308) else 'http_error'
+    elif isinstance(exc, (ET.ParseError, ValueError)):
+        kind = 'invalid_feed'
+    else:
+        kind = 'transport_error'
+    details = {'error_kind': kind, 'error': f'{type(exc).__name__}: {exc}'[:250]}
+    if isinstance(exc, urllib.error.HTTPError):
+        details['http_status'] = exc.code
+        try:
+            body = exc.read(512).decode('utf-8', errors='replace')
+        except OSError:
+            body = ''
+        if 'upstream connect error' in body:
+            details['error_kind'] = 'gateway_upstream_error'
+            details['response_detail'] = stripped(body)[:250]
+    return details
+
+
 def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA):
     at = at or now_kst()
     news_file, brief_file, health_file = [data_dir / f for f in ('news.json', 'briefing.json', 'health.json')]
@@ -233,10 +262,10 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA):
             items = list(xml_items(payload))
             news = [article_from_item(item, source, at) for item in items]
             found.extend(a for a in news if a is not None)
-            health.append({'id': source['id'], 'name': source['name'], 'status': 'ok', 'rss_items': len(items), 'matched': sum(a is not None for a in news)})
+            health.append({'id': source['id'], 'name': source['name'], 'url': source['url'], 'status': 'ok', 'rss_items': len(items), 'matched': sum(a is not None for a in news)})
             ok += 1
         except (ET.ParseError, ValueError, urllib.error.URLError, TimeoutError, OSError) as exc:
-            health.append({'id': source['id'], 'name': source['name'], 'status': 'error', 'error': f'{type(exc).__name__}: {exc}'[:250]})
+            health.append({'id': source['id'], 'name': source['name'], 'url': source['url'], 'status': 'error', **failure_details(exc)})
     status = 'ok' if ok == len(health) and ok else ('partial' if ok else 'failed')
     previous_success = old.get('last_successful_fetch')
     last_success = iso(at) if ok else previous_success
@@ -250,8 +279,8 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA):
     combined = [x for x in combined if timestamp(x['published_at']) >= cutoff][:450]
     mode = 'fixture_demo' if demo else 'live_rss'
     write_atomic(news_file, {'generated_at': iso(at), 'last_successful_fetch': last_success, 'count': len(combined), 'mode': mode, 'articles': combined})
-    within_day = [x for x in combined if timestamp(x['published_at']) >= at - dt.timedelta(hours=24)]
-    selected = sorted(within_day, key=lambda x: (-x['relevance'], x['published_at']))[:5]
+    within_day = [x for x in combined if at - dt.timedelta(hours=24) <= timestamp(x['published_at']) <= at]
+    selected = sorted(within_day, key=lambda x: (x['relevance'], timestamp(x['published_at'])), reverse=True)[:5]
     write_atomic(brief_file, {
         'generated_at': iso(at), 'status': 'demo' if demo else ('candidates_ready' if selected else 'no_recent_articles'),
         'mode': mode, 'title': '관광산업 주요 뉴스 브리핑 후보',
@@ -268,7 +297,6 @@ def main():
     args = parser.parse_args()
     sources = json.loads((ROOT / 'sources.json').read_text(encoding='utf-8'))['sources']
     if args.demo:
-        from functools import partial
         demo_file = ROOT / 'fixtures' / 'sample.xml'
         sources = [{'id': 'fixture', 'name': '가상 테스트 피드', 'url': 'https://example.org/rss.xml', 'enabled': True, 'reuse_excerpt': True}]
         fetcher = lambda url: demo_file.read_bytes()

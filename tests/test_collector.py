@@ -1,5 +1,7 @@
 import datetime as dt
 import json
+import io
+import urllib.error
 import tempfile
 import unittest
 from pathlib import Path
@@ -7,7 +9,7 @@ from zoneinfo import ZoneInfo
 
 from src.collector import (
     article_from_item, canonical_url, classify, deduplicate, run,
-    similarity, timestamp, xml_items,
+    similarity, timestamp, xml_items, failure_details,
 )
 
 KST = ZoneInfo('Asia/Seoul')
@@ -120,6 +122,96 @@ class CollectorTests(unittest.TestCase):
             b = json.loads((p / 'briefing.json').read_text())
             self.assertEqual(len(b['items']), 1)
             self.assertEqual(b['status'], 'candidates_ready')
+
+
+    def test_invalid_date_rejected(self):
+        item = {'title': '관광산업 정책 발표', 'link': 'https://example.org/a', 'pubDate': 'not-a-date'}
+        self.assertIsNone(article_from_item(item, SRC, AT))
+
+    def test_tomorrow_is_not_fresh_news(self):
+        item = {'title': '관광산업 정책 발표', 'link': 'https://example.org/a', 'pubDate': '2026-10-26T10:00:00+09:00'}
+        self.assertIsNone(article_from_item(item, SRC, AT))
+
+    def test_html_response_is_not_success(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = run([SRC], fetcher=lambda _: b'<html><body>Access denied</body></html>', at=AT, data_dir=Path(tmp))
+            self.assertEqual(result['status'], 'failed')
+            health = json.loads((Path(tmp) / 'health.json').read_text())
+            self.assertEqual(health['sources'][0]['error_kind'], 'invalid_feed')
+
+    def test_empty_rss_is_valid(self):
+        self.assertEqual(list(xml_items(b'<rss><channel/></rss>')), [])
+
+    def test_korean_compound_spacing(self):
+        self.assertEqual(classify('관광 산업 정책 및 관광 통계 발표')[0], '정책')
+
+    def test_description_requires_multiple_industry_signals(self):
+        self.assertEqual(classify('지역 상생 프로그램 발표', '지역관광 안테나숍을 서울관광재단이 지원한다.')[0], '지역')
+        self.assertIsNone(classify('주말 맛집 소개', '관광객도 즐겨 찾는 곳')[0])
+        self.assertIsNone(classify('산책 후기', '인근 관광지를 다녀왔다')[0])
+
+    def test_wellness_program_is_regional_tourism(self):
+        self.assertEqual(classify('웰니스 트래블 위크 개최')[0], '지역')
+
+    def test_failure_reason_distinguishes_proxy_and_http(self):
+        proxy = urllib.error.URLError('Tunnel connection failed: 403 Forbidden')
+        self.assertEqual(failure_details(proxy)['error_kind'], 'proxy_connect_denied')
+        http = urllib.error.HTTPError(SRC['url'], 403, 'Forbidden', {}, io.BytesIO(b'denied'))
+        details = failure_details(http)
+        self.assertEqual(details['error_kind'], 'http_error')
+        self.assertEqual(details['http_status'], 403)
+        gateway = urllib.error.HTTPError(SRC['url'], 503, 'Unavailable', {}, io.BytesIO(b'upstream connect error: connection timeout'))
+        self.assertEqual(failure_details(gateway)['error_kind'], 'gateway_upstream_error')
+
+    def test_briefing_latest_first_on_equal_relevance(self):
+        payload = (b'<rss><channel>' +
+            feed('관광산업 정책 발표', 'Sun, 25 Oct 2026 09:00:00 +0900', 'https://example.org/older').split(b'<channel>')[1].split(b'</channel>')[0] +
+            feed('관광산업 정책 지원', 'Sun, 25 Oct 2026 11:00:00 +0900', 'https://example.org/newer').split(b'<channel>')[1].split(b'</channel>')[0] + b'</channel></rss>')
+        with tempfile.TemporaryDirectory() as tmp:
+            run([SRC], fetcher=lambda _: payload, at=AT, data_dir=Path(tmp))
+            brief = json.loads((Path(tmp) / 'briefing.json').read_text())
+            self.assertEqual(brief['items'][0]['url'], 'https://example.org/newer')
+
+    def test_failure_preserves_briefing_too(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp)
+            run([SRC], fetcher=lambda _: feed('관광산업 정책 발표'), at=AT, data_dir=path)
+            previous = (path / 'briefing.json').read_bytes()
+            def fail(_):
+                raise urllib.error.URLError('Tunnel connection failed: 403 Forbidden')
+            run([SRC], fetcher=fail, at=AT, data_dir=path)
+            self.assertEqual((path / 'briefing.json').read_bytes(), previous)
+
+    def test_repeated_collection_is_idempotent(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp)
+            for _ in range(2):
+                run([SRC], fetcher=lambda _: feed('관광산업 정책 발표'), at=AT, data_dir=path)
+            self.assertEqual(json.loads((path / 'news.json').read_text())['count'], 1)
+
+    def test_briefing_never_pads_to_five(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            run([SRC], fetcher=lambda _: feed('관광산업 정책 발표', 'Fri, 23 Oct 2026 10:00:00 +0900'), at=AT, data_dir=Path(tmp))
+            self.assertEqual(json.loads((Path(tmp) / 'briefing.json').read_text())['items'], [])
+
+    def test_all_topics(self):
+        for title, expected in [('관광정책 발표', '정책'), ('외래관광객 증가', '수요'),
+                                ('호텔업 지원', '산업'), ('관광통계 발표', '리서치'),
+                                ('지역관광 개발', '지역'), ('국제회의 개최', 'MICE')]:
+            with self.subTest(title=title):
+                self.assertEqual(classify(title)[0], expected)
+
+    def test_briefing_maximum_five(self):
+        # Distinct headlines avoid intentional fuzzy deduplication.
+        titles = ['관광정책 개편', '외래관광객 증가', '호텔업 투자', '관광통계 연구',
+                  '지역관광 지원', '국제회의 개최']
+        items = [feed(title, link=f'https://example.org/{i}').split(b'<channel>')[1].split(b'</channel>')[0]
+                 for i, title in enumerate(titles)]
+        payload = b'<rss><channel>' + b''.join(items) + b'</channel></rss>'
+        with tempfile.TemporaryDirectory() as tmp:
+            result = run([SRC], fetcher=lambda _: payload, at=AT, data_dir=Path(tmp))
+            self.assertEqual(result['articles'], 6)
+            self.assertEqual(result['briefing_candidates'], 5)
 
 
 if __name__ == '__main__':

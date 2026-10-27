@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-27T19:50:30+09:00",
+  "checked_at": "2026-10-27T21:59:23+09:00",
   "scope": "successful_sources_this_run",
   "items": [
     {
@@ -611,6 +611,26 @@
       "decision": "exclude"
     },
     {
+      "id": "e4cd72ed48d6d7cf0e",
+      "title": "장애물 넘고 달리고! 반려견들의 축제 ‘서울 펫림픽’…31일엔 댕냥데이즈!",
+      "url": "https://mediahub.seoul.go.kr/archives/2019838",
+      "source_id": "seoul_culture",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [
+          "cross_sentence_unproven"
+        ],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
+      },
+      "decision": "exclude"
+    },
+    {
       "id": "2e79d8d9bd9ee9cdb1",
       "title": "올가을, 안 가면 후회할지도! 용산공원 산책 명소 '3대장'",
       "url": "https://mediahub.seoul.go.kr/archives/2019843",
@@ -645,6 +665,24 @@
         "signals": [],
         "impact_targets": [],
         "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "b6d6b9b35dcff68f42",
+      "title": "일상의 기록이 도시의 역사로! ‘서울기록페어’에서 만난 기록의 가치",
+      "url": "https://mediahub.seoul.go.kr/archives/2019858",
+      "source_id": "seoul_culture",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
       },
       "decision": "exclude"
     },
@@ -838,42 +876,6 @@
       "id": "2f49043dc882b4c7ff",
       "title": "서울 도심이 발아래 펼쳐진다! 새로 열린 북악산 1.32km",
       "url": "https://mediahub.seoul.go.kr/archives/2019759",
-      "source_id": "seoul_culture",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "a9d100eda0ee982f58",
-      "title": "가을은 짧으니까, 이번 주말도 알차게 즐겨주-시월!",
-      "url": "https://mediahub.seoul.go.kr/archives/2019812",
-      "source_id": "seoul_culture",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "101b767a0b43bc25ef",
-      "title": "맛집 가세요? 할인·무료 혜택 챙기세요! 서울레스토랑위크",
-      "url": "https://mediahub.seoul.go.kr/archives/2019820",
       "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",

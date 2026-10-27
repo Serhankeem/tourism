@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-27T13:46:35+09:00",
+  "checked_at": "2026-10-27T15:58:36+09:00",
   "scope": "successful_sources_this_run",
   "items": [
     {
@@ -196,9 +196,63 @@
       "decision": "exclude"
     },
     {
+      "id": "771b51e62704d7bc1f",
+      "title": "울산광역시동구기본통계 ( 8 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007062&boardOrgId=603",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "d1e681927436523cc9",
+      "title": "인천광역시미추홀구기본통계 ( 40 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007065&boardOrgId=563",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
       "id": "065a4b99bc159252ab",
-      "title": "경상남도함양군기본통계 ( 34 )",
+      "title": "경상남도함양군기본통계 ( 43 )",
       "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007190&boardOrgId=808",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "c55a111299747d3a3f",
+      "title": "경기도양평군기본통계 ( 40 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007083&boardOrgId=641",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -440,10 +494,28 @@
       "decision": "exclude"
     },
     {
-      "id": "a3d31e94ee6f74b683",
-      "title": "생산자물가조사 ( 5 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1966003&boardOrgId=301",
-      "source_id": "kosis_recent",
+      "id": "687368d09f0e7ff750",
+      "title": "가을밤을 채우는 재즈 선율! 세종문화회관 '커튼 콜 가든'",
+      "url": "https://mediahub.seoul.go.kr/archives/2019831",
+      "source_id": "seoul_culture",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "83f2ba83534a2c3974",
+      "title": "뛰고 배우고 기록으로 만나는 스포츠…'국립스포츠박물관' 생겼다",
+      "url": "https://mediahub.seoul.go.kr/archives/2019832",
+      "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",
         "label": "Irrelevant",
@@ -460,28 +532,10 @@
       "decision": "exclude"
     },
     {
-      "id": "772d5815a890ae0687",
-      "title": "축산물등급판정통계 ( 10 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2006023&boardOrgId=323",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "76099015fc43603db7",
-      "title": "자금순환표 ( 10 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1976023&boardOrgId=301",
-      "source_id": "kosis_recent",
+      "id": "2e79d8d9bd9ee9cdb1",
+      "title": "올가을, 안 가면 후회할지도! 용산공원 산책 명소 '3대장'",
+      "url": "https://mediahub.seoul.go.kr/archives/2019843",
+      "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",
         "label": "Irrelevant",
@@ -820,30 +874,10 @@
       "decision": "exclude"
     },
     {
-      "id": "f7eaa33e7bd8e28b96",
-      "title": "1년에 딱 한 번! 억새·댑싸리·코스모스 어우러진 하늘공원 '억새축제'",
-      "url": "https://mediahub.seoul.go.kr/archives/2019816",
-      "source_id": "seoul_culture",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [
-          "cross_sentence_unproven"
-        ],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "89a82de47a55b1f926",
-      "title": "함께 걷고, 배우고, 교감하다! '동물행동페스타'서 반려견과 특별한 하루",
-      "url": "https://mediahub.seoul.go.kr/archives/2019800",
-      "source_id": "seoul_culture",
+      "id": "b64d263ebd9dac118d",
+      "title": "최대 15% 할인! 서울사랑상품권 '코.그.페' 행사",
+      "url": "https://mediahub.seoul.go.kr/archives/2019868",
+      "source_id": "seoul_economy",
       "relevance_evidence": {
         "rule_version": "0.2",
         "label": "Irrelevant",
@@ -856,34 +890,6 @@
         "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
       },
       "decision": "exclude"
-    },
-    {
-      "id": "63f583b9aa80b9fbe8",
-      "title": "봉은사 명상부터 한옥 전시까지 '웰니스 트래블 위크'",
-      "url": "https://mediahub.seoul.go.kr/archives/2019810",
-      "source_id": "seoul_culture",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Direct",
-        "decision": "publish",
-        "category": "문화·트렌드",
-        "score": 6,
-        "rules": [
-          "explicit_industry_subject"
-        ],
-        "signals": [
-          {
-            "field": "title",
-            "terms": [
-              "웰니스트래블"
-            ]
-          }
-        ],
-        "impact_targets": [],
-        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
-        "evidence_status": "industry_subject_in_feed"
-      },
-      "decision": "publish"
     },
     {
       "id": "081d1271c87e4b946a",
@@ -1255,10 +1261,10 @@
       "decision": "hold"
     },
     {
-      "id": "66b3a348b410eefe4d",
-      "title": "디자인 따라 서울 한 바퀴! '서울디자인위크'가 온다",
-      "url": "https://mediahub.seoul.go.kr/archives/2019559",
-      "source_id": "seoul_economy",
+      "id": "34e1ebd1a62fb4e7fc",
+      "title": "지하철 7호선, 의정부·양주를 지나 포천까지! 도봉산-옥정 연장선",
+      "url": "https://mediahub.seoul.go.kr/archives/2019857",
+      "source_id": "seoul_transport",
       "relevance_evidence": {
         "rule_version": "0.2",
         "label": "Irrelevant",
@@ -1604,24 +1610,6 @@
       "id": "537d02a4ed1e47482c",
       "title": "24세도 신청 가능! 더 좋아진 '서울청년문화패스' 알려 드림",
       "url": "https://mediahub.seoul.go.kr/archives/2019115",
-      "source_id": "seoul_transport",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "a757008f289dbc2001",
-      "title": "할머니 스마트폰에 '120 동행콜택시' 번호 저장해 드렸어요! 02-120에 6번",
-      "url": "https://mediahub.seoul.go.kr/archives/2019085",
       "source_id": "seoul_transport",
       "relevance_evidence": {
         "rule_version": "0.2",

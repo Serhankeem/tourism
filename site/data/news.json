@@ -1,14 +1,14 @@
 {
   "schema_version": 2,
   "rule_version": "0.2",
-  "generated_at": "2026-10-27T13:46:35+09:00",
-  "last_successful_fetch": "2026-10-27T13:46:35+09:00",
+  "generated_at": "2026-10-27T15:58:36+09:00",
+  "last_successful_fetch": "2026-10-27T15:58:36+09:00",
   "count": 5,
   "mode": "live_rss",
   "articles": [
     {
       "id": "aaa526a940283e25e0",
-      "published_at": "2026-10-27T13:46:19+09:00",
+      "published_at": "2026-10-27T15:46:36+09:00",
       "date": "2026.10.27",
       "category": "항공·숙박",
       "source": "KOSIS 최근수록자료",

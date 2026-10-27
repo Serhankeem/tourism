@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-28T03:56:21+09:00",
-  "last_successful_fetch": "2026-10-28T03:56:21+09:00",
+  "checked_at": "2026-10-28T05:48:02+09:00",
+  "last_successful_fetch": "2026-10-28T05:48:02+09:00",
   "status": "partial",
   "sources": [
     {
@@ -104,9 +104,23 @@
       "id": "seoul_transport",
       "name": "서울시 내 손안에 서울 교통",
       "url": "https://mediahub.seoul.go.kr/news/rss/01",
-      "status": "error",
-      "error_kind": "transport_error",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      "status": "ok",
+      "rss_items": 20,
+      "matched": 0,
+      "held": 0,
+      "relevance_counts": {
+        "Direct": 0,
+        "Indirect": 0,
+        "Irrelevant": 20
+      },
+      "category_published": {
+        "관광정책": 0,
+        "인바운드": 0,
+        "여행산업": 0,
+        "항공·숙박": 0,
+        "문화·트렌드": 0,
+        "경제·시장": 0
+      }
     },
     {
       "id": "seoul_environment",
@@ -118,7 +132,7 @@
     }
   ],
   "source_count": 7,
-  "successful_sources": 4,
+  "successful_sources": 5,
   "schema_version": 2,
   "rule_version": "0.2",
   "category_counts": {

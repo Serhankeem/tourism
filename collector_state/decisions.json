@@ -1,8 +1,46 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-27T07:47:11+09:00",
+  "checked_at": "2026-10-27T10:01:35+09:00",
   "scope": "successful_sources_this_run",
   "items": [
+    {
+      "id": "d86101a811860946a2",
+      "title": "국악방송과 전통공연예술진흥재단 통합 추진으로 국악·전통예술 진흥의 탄탄한 기반 마련",
+      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22796",
+      "source_id": "mcst_press",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [
+          "cross_sentence_unproven"
+        ],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "af3707262e4fb0de06",
+      "title": "「문화예술진흥법」 개정 논의, 예술 현장 목소리 듣는다",
+      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22795",
+      "source_id": "mcst_press",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
     {
       "id": "947567864dd5d5f27b",
       "title": "고(故) 윤동주·김남조 시인, ‘금관문화훈장’ 추서",
@@ -158,10 +196,10 @@
       "decision": "exclude"
     },
     {
-      "id": "7c6a01bafeede4cb2c",
-      "title": "세계 게임 산업을 선도할 대표작 제작부터 인디게임·청년 인재 육성까지, 2027년 게임 예산안 지원 방향 논의",
-      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22786",
-      "source_id": "mcst_press",
+      "id": "d9343a2b12aa217fc0",
+      "title": "통합재정수지 ( 1 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2002001&boardOrgId=184",
+      "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
         "label": "Irrelevant",
@@ -176,10 +214,48 @@
       "decision": "exclude"
     },
     {
-      "id": "72c20ed0e3be654595",
-      "title": "학교예술강사·생활체육지도자 처우 개선 위한 노정협의체 출범",
-      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22785",
-      "source_id": "mcst_press",
+      "id": "e2f829e6247c969e66",
+      "title": "의성군기본통계 ( 6 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007318&boardOrgId=772",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "a3d31e94ee6f74b683",
+      "title": "생산자물가조사 ( 5 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1966003&boardOrgId=301",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [
+          "cross_sentence_unproven"
+        ],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "772d5815a890ae0687",
+      "title": "축산물등급판정통계 ( 10 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2006023&boardOrgId=323",
+      "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
         "label": "Irrelevant",
@@ -322,26 +398,6 @@
       "decision": "exclude"
     },
     {
-      "id": "a3d31e94ee6f74b683",
-      "title": "생산자물가조사 ( 5 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1966003&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [
-          "cross_sentence_unproven"
-        ],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
-      },
-      "decision": "exclude"
-    },
-    {
       "id": "208053900d23a140ee",
       "title": "대외채무및대외채권 ( 3 )",
       "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2003033&boardOrgId=301",
@@ -417,60 +473,6 @@
       "id": "5f3c8b43fd5cbc2754",
       "title": "산업연관표 ( 34 )",
       "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1976024&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "6c334860a5a1e83c86",
-      "title": "금융기관대출행태조사 ( 3 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2001022&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "f2154b1240a3a339ae",
-      "title": "펀드산업현황 ( 1 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2006090&boardOrgId=325",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "b47a894e398f663fe4",
-      "title": "경제심리지수 ( 1 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2012013&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",

@@ -40,7 +40,7 @@ class WorkflowContractTests(unittest.TestCase):
             git('remote', 'add', 'origin', str(remote), cwd=writer)
             git('push', '-u', 'origin', 'main', cwd=writer)
             (writer / 'collector_state').mkdir()
-            for name in ('review_queue', 'legacy_archive', 'decisions'):
+            for name in ('review_queue', 'legacy_archive', 'decisions', 'discovery', 'source_metrics', 'run_summary', 'v02_snapshot'):
                 (writer / f'collector_state/{name}.json').write_text(json.dumps({'state': name}))
             (writer / 'site/data/health.json').write_text(json.dumps({'status': 'failed'}))
             subprocess.run(['bash', '-e', '-c', script], cwd=writer, check=True, capture_output=True)

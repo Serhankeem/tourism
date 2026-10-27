@@ -1,0 +1,258 @@
+"""v0.3: discovery ledger -> rights/date gate -> existing publication pipeline."""
+import argparse
+import datetime as dt
+import hashlib
+import json
+import urllib.parse
+from pathlib import Path
+
+if __package__:
+    from . import collector as c
+    from .discovery import Loader, AccessBlocked, items_from, feed_bytes
+else:
+    import collector as c
+    from discovery import Loader, AccessBlocked, items_from, feed_bytes
+
+
+def valid_date(item, at, days):
+    # 'updated' and provider 'seen' are intentionally not publication dates.
+    raw = item.get('pubDate') or item.get('published')
+    if not raw:
+        return None
+    parsed = c.timestamp(raw, dt.datetime.min.replace(tzinfo=c.KST))
+    return parsed if at - dt.timedelta(days=days) <= parsed <= at + dt.timedelta(minutes=5) else None
+
+
+def permission(source):
+    policy = source.get('publication', {})
+    return (policy.get('status') == 'approved' and policy.get('scope') == 'metadata_only'
+            and bool(policy.get('terms_url')) and bool(policy.get('basis')))
+
+
+def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, days=90):
+    at = at or c.now_kst()
+    loader = loader or Loader()
+    data_dir, state_dir = Path(data_dir), Path(state_dir)
+    original = c.read_json(data_dir / 'news.json', {})
+    old_articles = original.get('articles', []) if original.get('mode') != 'fixture_demo' else []
+    old_ids = {a['id'] for a in old_articles}
+    ledger = c.read_json(state_dir / 'discovery.json', {}).get('candidates', {})
+    previous_ids = set(ledger)
+    original_by_id = {a['id']: a for a in old_articles}
+    source_metrics = c.read_json(state_dir / 'source_metrics.json', {}).get('sources', {})
+    prepared, errors, health, metadata = {}, {}, [], {}
+    run_ids = set()
+    for source in sources:
+        if not source.get('enabled', True):
+            continue
+        sid = source['id']
+        row = {'id': sid, 'name': source['name'], 'url': source['url'], 'group': source.get('group', 'public'),
+               'received': 0, 'new_discoveries': 0, 'duplicates': 0, 'rights_holds': 0, 'date_holds': 0, 'invalid_metadata': 0, 'outside_window': 0,
+               'classifications': {k: 0 for k in ('Direct', 'Indirect', 'Irrelevant')},
+               'publication_policy': source.get('publication', {'status': 'review'}),
+               'backfill': source.get('backfill', {'mode': 'provided_feed_only', 'max_days': days})}
+        try:
+            if not source.get('discovery_allowed', True):
+                raise AccessBlocked('discovery_not_authorized')
+            payload = loader(source['url'])
+            items = list(items_from(source, payload))
+            row['received'] = len(items)
+            approved_items = []
+            date_lookups = 0
+            for item in items:
+                title, url = c.stripped(item.get('title', ''))[:240], c.canonical_url(item.get('link', ''))
+                if not title or not url:
+                    row['invalid_metadata'] += 1
+                    continue
+                if 'description' not in source.get('analysis_fields', ['title']):
+                    item = {k: v for k, v in item.items() if k not in ('description', 'summary')}
+                aid = hashlib.sha256(url.encode()).hexdigest()[:18]
+                assessment = c.assess(title, c.stripped(item.get('description', item.get('summary', ''))))
+                raw_date = item.get('pubDate') or item.get('published')
+                if raw_date:
+                    parsed_date = c.timestamp(raw_date, dt.datetime.min.replace(tzinfo=c.KST))
+                    if parsed_date != dt.datetime.min.replace(tzinfo=c.KST) and not at - dt.timedelta(days=days) <= parsed_date <= at + dt.timedelta(minutes=5):
+                        row['outside_window'] += 1
+                        continue
+                modified = c.timestamp(item.get('modified_at'), dt.datetime.min.replace(tzinfo=c.KST))
+                if source.get('adapter') == 'govuk_search' and modified != dt.datetime.min.replace(tzinfo=c.KST) and modified < at - dt.timedelta(days=days):
+                    # An old last-modified upper bound cannot hide a newer first publication.
+                    row['outside_window'] += 1
+                    continue
+                if source.get('adapter') == 'govuk_search' and assessment['label'] != 'Irrelevant':
+                    prior_date = ledger.get(aid, {}).get('provider_publication_value')
+                    if prior_date and ledger[aid].get('publication_date_basis') == 'GOVUK_first_published_at':
+                        item = {**item, 'published': prior_date, 'publication_date_basis': 'GOVUK_first_published_at'}
+                    elif date_lookups < source.get('max_date_lookups', 10):
+                        date_lookups += 1
+                        try:
+                            path = urllib.parse.urlsplit(url).path
+                            doc = json.loads(loader('https://www.gov.uk/api/content' + path))
+                            if not isinstance(doc, dict):
+                                raise ValueError('invalid_GOVUK_metadata_object')
+                            item = {**item, 'published': doc.get('first_published_at', ''),
+                                    'publication_date_basis': 'GOVUK_first_published_at'}
+                        except (OSError, ValueError, KeyError) as exc:
+                            row['date_lookup_error'] = str(exc)[:160]
+                sentinel = dt.datetime.min.replace(tzinfo=c.KST)
+                actual_date = c.timestamp(item.get('pubDate') or item.get('published'), sentinel)
+                if actual_date != sentinel and not at - dt.timedelta(days=days) <= actual_date <= at + dt.timedelta(minutes=5):
+                    row['outside_window'] += 1
+                    continue
+                row['classifications'][assessment['label']] += 1
+                first_seen = ledger.get(aid, {}).get('first_discovered_at', c.iso(at))
+                already_seen = aid in previous_ids or aid in run_ids
+                row['duplicates' if already_seen else 'new_discoveries'] += 1
+                run_ids.add(aid)
+                published = valid_date(item, at, days)
+                if assessment['label'] != 'Irrelevant' and not permission(source):
+                    row['rights_holds'] += 1
+                if assessment['label'] != 'Irrelevant' and not published:
+                    row['date_holds'] += 1
+                status = ('exclude' if assessment['decision'] == 'exclude' else
+                          'rights_hold' if not permission(source) else
+                          'date_hold' if not published else assessment['decision'])
+                candidate = {'id': aid, 'title': title, 'url': url, 'source_id': sid,
+                             'source_ids': sorted(set(ledger.get(aid, {}).get('source_ids', [])) | {sid}),
+                             'source': source['name'], 'first_discovered_at': first_seen,
+                             'last_seen_at': c.iso(at), 'published_at': c.iso(actual_date) if actual_date != sentinel else None,
+                             'provider_publication_value': item.get('pubDate') or item.get('published'),
+                             'provider_seen_at': item.get('discovered_by_provider_at'),
+                             'provider_modified_at': item.get('modified_at'),
+                             'publication_date_basis': item.get('publication_date_basis', 'feed_publication_date'),
+                             'date_precision': item.get('date_precision', 'timestamp'),
+                             'record_type': item.get('record_type', 'news'),
+                             'is_backfill': bool(published and published < at - dt.timedelta(days=30)),
+                             'relevance_evidence': assessment, 'publication_status': status,
+                             'publication_policy': source.get('publication', {'status': 'review'}),
+                             'korea_priority': any(t in title.casefold() for t in ('korea', 'seoul', 'incheon', 'busan', '한국', '방한', '인천', '서울'))}
+                # A discovery-only service cannot overwrite a previously licensed
+                # publisher's validated date/permission for the same URL.
+                prior = ledger.get(aid)
+                if prior and prior.get('publication_status') == 'published' and status in ('rights_hold', 'date_hold'):
+                    candidate = {**prior, 'last_seen_at': c.iso(at), 'source_ids': candidate['source_ids']}
+                ledger[aid] = candidate
+                if permission(source) and published:
+                    item = {**item, 'title': title, 'link': url}
+                    approved_items.append(item)
+                    metadata[aid] = candidate
+            prepared[source['url']] = feed_bytes(approved_items)
+            row['status'] = 'ok'
+        except (OSError, ValueError, KeyError, TypeError, c.ET.ParseError) as exc:
+            errors[source['url']] = exc
+            row.update({'status': 'error', 'error_kind': 'access_policy' if isinstance(exc, AccessBlocked) else c.failure_details(exc)['error_kind'],
+                        'error': str(exc)[:250]})
+        metric = source_metrics.setdefault(sid, {'attempts': 0, 'successes': 0, 'errors': {}})
+        metric['attempts'] += 1
+        metric['successes'] += row['status'] == 'ok'
+        if row['status'] != 'ok':
+            kind = row['error_kind']
+            metric['errors'][kind] = metric['errors'].get(kind, 0) + 1
+        row['success_rate'] = metric['successes'] / metric['attempts']
+        metric['last_checked_at'] = c.iso(at)
+        health.append(row)
+
+    def publication_feed(url):
+        if url in errors:
+            raise OSError(str(errors[url]))
+        return prepared[url]
+    if old_articles and original.get('schema_version', 1) <= 2 and not (state_dir / 'v02_snapshot.json').exists():
+        c.write_atomic(state_dir / 'v02_snapshot.json', original)
+    approved_sources = [s for s in sources if s.get('enabled', True) and permission(s)]
+    result = c.run(approved_sources, fetcher=publication_feed, at=at, data_dir=data_dir,
+                   state_dir=state_dir, reviews=reviews, retention_days=days, max_articles=4500)
+    news = c.read_json(data_dir / 'news.json', original)
+    articles = news.get('articles', [])
+    # Never stamp first_seen/published timestamps onto old records on every run.
+    if result['status'] != 'failed':
+        for article in articles:
+            candidate = metadata.get(article['id'])
+            if candidate:
+                for key in ('first_discovered_at', 'publication_date_basis', 'date_precision', 'record_type', 'korea_priority', 'is_backfill'):
+                    article[key] = candidate[key]
+                article['publication_policy'] = candidate['publication_policy']
+                prior_first = original_by_id.get(article['id'], {}).get('first_published_by_engine_at')
+                if prior_first:
+                    article['first_published_by_engine_at'] = prior_first
+                elif article['id'] not in old_ids:
+                    article['first_published_by_engine_at'] = c.iso(at)
+                if candidate['publication_policy'].get('attribution'):
+                    article['desc'] = '원문 링크에서 공식 자료를 확인하세요. ' + candidate['publication_policy']['attribution']
+                ledger[article['id']]['publication_status'] = 'published'
+        news['schema_version'] = 3
+        c.write_atomic(data_dir / 'news.json', news)
+        briefing = c.read_json(data_dir / 'briefing.json', {})
+        # Rebuild from all eligible articles, not a previously truncated top 5.
+        # Unknown intraday times cannot be used to claim 'last 24 hours'.
+        recent = [a for a in articles if a.get('date_precision') != 'date'
+                  and at - dt.timedelta(days=1) <= c.timestamp(a['published_at']) <= at]
+        selected = sorted(recent, key=lambda a: (a.get('korea_priority', False), a['relevance'], a['published_at']), reverse=True)[:5]
+        briefing['items'] = [{k: a[k] for k in ('id', 'title', 'source', 'category', 'url', 'published_at', 'desc', 'summary_type', 'relevance_label', 'relevance_evidence')} for a in selected]
+        briefing['status'] = 'candidates_ready' if selected else 'no_recent_articles'
+        c.write_atomic(data_dir / 'briefing.json', briefing)
+    published_ids = {a['id'] for a in articles}
+    new_published = published_ids - old_ids
+    for row in health:
+        row['new_auto_published'] = sum(a['id'] in new_published and a['source_id'] == row['id'] for a in articles)
+        row['outcome'] = ('fetch_failed' if row['status'] != 'ok' else 'auto_published' if row['new_auto_published'] else
+                          'no_new_candidate' if not row['new_discoveries'] else 'discovered_not_publishable')
+    summary = {'schema_version': 3, 'checked_at': c.iso(at), 'publication_result': result['status'],
+               'discovery_status': 'failed' if not any(h['status'] == 'ok' for h in health) else
+                                   'ok' if all(h['status'] == 'ok' for h in health) else 'partial',
+               'received': sum(h['received'] for h in health),
+               'new_discoveries': sum(h['new_discoveries'] for h in health),
+               'duplicate_observations': sum(h['duplicates'] for h in health),
+               'new_auto_published': len(new_published), 'total_published': len(articles),
+               'new_backfilled': sum(a['id'] in new_published and a.get('is_backfill', False) for a in articles),
+               'record_type_counts': {kind: sum(a.get('record_type', 'news') == kind for a in articles) for kind in ('news', 'regulatory_filing', 'government_notice')},
+               'category_counts': {k: sum(a['category'] == k for a in articles) for k in c.CATEGORIES},
+               'discovered_last24h': sum(c.timestamp(a['first_discovered_at']) >= at - dt.timedelta(days=1) for a in ledger.values()),
+               'discovered_last7d': sum(c.timestamp(a['first_discovered_at']) >= at - dt.timedelta(days=7) for a in ledger.values()),
+               'auto_published_last24h': sum(bool(a.get('first_published_by_engine_at')) and c.timestamp(a['first_published_by_engine_at']) >= at - dt.timedelta(days=1) for a in articles),
+               'auto_published_last7d': sum(bool(a.get('first_published_by_engine_at')) and c.timestamp(a['first_published_by_engine_at']) >= at - dt.timedelta(days=7) for a in articles),
+               'originally_published_last24h': sum(a.get('date_precision') != 'date' and at - dt.timedelta(days=1) <= c.timestamp(a['published_at']) <= at for a in articles),
+               'originally_published_last7d': sum(at - dt.timedelta(days=7) <= c.timestamp(a['published_at']) <= at for a in articles),
+               'sources': health}
+    summary['outcome'] = ('all_fetches_failed' if summary['discovery_status'] == 'failed' else
+                          'publication_blocked_by_rights' if not approved_sources else
+                          'publication_sources_failed' if result['status'] == 'failed' else
+                          'new_articles_published' if new_published else
+                          'no_new_publications_with_source_errors' if summary['discovery_status'] == 'partial' else
+                          'no_new_publications')
+    # Ledger and metrics survive even if all publication sources fail; public
+    # news/briefing are still protected by the existing collector's failure path.
+    for candidate in ledger.values():
+        if not permission({'publication': candidate.get('publication_policy', {})}):
+            # This state is committed to Git, which may be public. Do not turn
+            # a discovery-only RSS headline into unlicensed republication there.
+            if candidate.get('title'):
+                candidate['title_sha256'] = hashlib.sha256(candidate['title'].encode()).hexdigest()
+            candidate['title'] = None
+            candidate['title_storage'] = 'withheld_until_metadata_reuse_approved'
+    c.write_atomic(state_dir / 'discovery.json', {'schema_version': 3, 'candidates': ledger})
+    c.write_atomic(state_dir / 'source_metrics.json', {'schema_version': 3, 'sources': source_metrics})
+    c.write_atomic(state_dir / 'run_summary.json', summary)
+    health_doc = c.read_json(data_dir / 'health.json', {})
+    health_doc['discovery'] = summary
+    c.write_atomic(data_dir / 'health.json', health_doc)
+    return summary
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dir', default=str(c.DATA))
+    parser.add_argument('--backfill-days', type=int, choices=range(30, 91), default=90,
+                        help='Only use provider-returned metadata within 30..90 days; no archive crawling')
+    parser.add_argument('--sources', default=str(c.ROOT / 'sources.json'))
+    args = parser.parse_args()
+    sources = c.read_json(Path(args.sources), {})['sources']
+    data = Path(args.dir)
+    state = c.ROOT / 'collector_state' if data.resolve() == c.DATA.resolve() else data / 'collector_state'
+    reviews = c.read_json(c.ROOT / 'relevance_reviews.json', {}).get('approvals', {})
+    summary = execute(sources, data, state, reviews, days=args.backfill_days)
+    print(json.dumps({k: v for k, v in summary.items() if k != 'sources'}, ensure_ascii=False))
+    return 1 if summary['publication_result'] == 'failed' else 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

@@ -132,7 +132,7 @@ def fetch_feed(url, timeout=15):
         return payload
 
 
-def article_from_item(item, source, at=None, reviews=None, include_held=False):
+def article_from_item(item, source, at=None, reviews=None, include_held=False, max_age_days=45):
     at = at or now_kst()
     title = stripped(item.get('title', ''))[:240]
     description = stripped(item.get('description', item.get('summary', '')))
@@ -144,7 +144,7 @@ def article_from_item(item, source, at=None, reviews=None, include_held=False):
         return None  # Unknown publication date must never be labeled as fresh news.
     # Invalid dates must not silently become fresh news.
     published = timestamp(date_value, dt.datetime.min.replace(tzinfo=KST))
-    if published > at + dt.timedelta(minutes=5) or published < at - dt.timedelta(days=45):
+    if published > at + dt.timedelta(minutes=5) or published < at - dt.timedelta(days=max_age_days):
         return None
     aid = hashlib.sha256(url.encode('utf-8')).hexdigest()[:18]
     assessment = assess(title, description)
@@ -179,6 +179,8 @@ def deduplicate(items):
     for article in sorted(items, key=lambda a: a['published_at'], reverse=True):
         match = next((old for old in out if (old['url'] == article['url']) or
             (similarity(old['title'], article['title']) >= .92 and
+             [n.replace(',', '') for n in re.findall(r'\d+(?:[.,]\d+)*', old['title'])] ==
+             [n.replace(',', '') for n in re.findall(r'\d+(?:[.,]\d+)*', article['title'])] and
              abs((timestamp(old['published_at']) - timestamp(article['published_at'])).total_seconds()) < 72 * 3600)), None)
         if match:
             for src in article.get('related_sources', [article['source']]):
@@ -232,7 +234,7 @@ def failure_details(exc):
     return details
 
 
-def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews=None, state_dir=None):
+def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews=None, state_dir=None, retention_days=45, max_articles=450):
     at = at or now_kst()
     state_dir = Path(state_dir) if state_dir is not None else data_dir / 'collector_state'
     news_file, brief_file, health_file = [data_dir / f for f in ('news.json', 'briefing.json', 'health.json')]
@@ -250,9 +252,9 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews
             for item in items:
                 item_url = canonical_url(item.get('link', ''))
                 item_date = timestamp(item.get('pubDate') or item.get('published') or item.get('updated'), dt.datetime.min.replace(tzinfo=KST))
-                if item_url and at - dt.timedelta(days=45) <= item_date <= at + dt.timedelta(minutes=5):
+                if item_url and at - dt.timedelta(days=retention_days) <= item_date <= at + dt.timedelta(minutes=5):
                     seen_ids.add(hashlib.sha256(item_url.encode()).hexdigest()[:18])
-            evaluated = [article_from_item(item, source, at, reviews, include_held=True) for item in items]
+            evaluated = [article_from_item(item, source, at, reviews, include_held=True, max_age_days=retention_days) for item in items]
             news = [a for a in evaluated if a and a['relevance_evidence']['decision'] == 'publish']
             pending = [a for a in evaluated if a and a['relevance_evidence']['decision'] == 'hold']
             found.extend(news)
@@ -318,7 +320,7 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews
                   'reuse_excerpt': article.get('summary_type') == 'rss_excerpt'}
         migrated = article_from_item({'title': article['title'], 'link': article['url'],
                                      'pubDate': article['published_at'],
-                                     'description': article.get('desc', '')}, source, at, reviews, include_held=True)
+                                     'description': article.get('desc', '')}, source, at, reviews, include_held=True, max_age_days=retention_days)
         if migrated and migrated['relevance_evidence']['decision'] == 'publish':
             migrated['legacy_category'] = article.get('legacy_category', article['category'])
             retained.append(migrated)
@@ -345,8 +347,8 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews
                 retained.append({**pending, 'relevance_evidence': checked})
     candidates = found + retained
     combined = deduplicate(candidates)
-    cutoff = at - dt.timedelta(days=45)
-    combined = [x for x in combined if timestamp(x['published_at']) >= cutoff][:450]
+    cutoff = at - dt.timedelta(days=retention_days)
+    combined = [x for x in combined if timestamp(x['published_at']) >= cutoff][:max_articles]
     mode = 'fixture_demo' if demo else 'live_rss'
     write_atomic(news_file, {'schema_version': 2, 'rule_version': RULE_VERSION, 'generated_at': iso(at), 'last_successful_fetch': last_success, 'count': len(combined), 'mode': mode, 'articles': combined})
     # Queue/state lives outside Pages in the production CLI. Keep candidates

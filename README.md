@@ -15,3 +15,5 @@ python3 -m http.server 8000 --directory site
 기존 main의 자동 실행 성공 기록과 별개로, v0.2 변경은 PR 검증 단계입니다. v0.2 운영 반영은 검토·병합 후 확인해야 합니다.
 
 [v0.2 관련성·카테고리·신규 출처·마이그레이션 검증](docs/v02/README.md)
+
+[v0.3 다중 소스 Discovery·권리 게이트·backfill·운영 검증](docs/v03/README.md)

@@ -1,0 +1,593 @@
+[
+  {
+    "id": "traveltimes",
+    "group": "media",
+    "url": "https://www.traveltimes.co.kr/rssIndex.html",
+    "checked_at": "2026-10-27T03:56:57.925088+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 51878,
+    "final_url": "https://www.traveltimes.co.kr/rssIndex.html"
+  },
+  {
+    "id": "ttgasia",
+    "group": "media",
+    "url": "https://www.ttgasia.com/feed/",
+    "checked_at": "2026-10-27T03:56:57.925659+00:00",
+    "robots_status": "unavailable_http_403",
+    "status": "not_requested",
+    "reason": "robots_unverified"
+  },
+  {
+    "id": "skift",
+    "group": "media",
+    "url": "https://skift.com/feed/",
+    "checked_at": "2026-10-27T03:56:57.926137+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "application/rss+xml; charset=UTF-8",
+    "bytes": 22014,
+    "final_url": "https://skift.com/feed/"
+  },
+  {
+    "id": "yonhap",
+    "group": "media",
+    "url": "https://www.yna.co.kr/rss/economy.xml",
+    "checked_at": "2026-10-27T03:56:57.926587+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "application/xml;charset=UTF-8",
+    "bytes": 93596,
+    "final_url": "https://www.yna.co.kr/rss/economy.xml"
+  },
+  {
+    "id": "koreanair",
+    "group": "company",
+    "url": "https://news.koreanair.com/feed/",
+    "checked_at": "2026-10-27T03:56:57.927043+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "application/rss+xml; charset=UTF-8",
+    "bytes": 14763,
+    "final_url": "https://news.koreanair.com/feed/"
+  },
+  {
+    "id": "koreanair-home",
+    "group": "company",
+    "url": "https://news.koreanair.com/",
+    "checked_at": "2026-10-27T03:56:57.927582+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 96785,
+    "final_url": "https://news.koreanair.com/"
+  },
+  {
+    "id": "asiana",
+    "group": "company",
+    "url": "https://flyasiana.com/C/KR/KO/contents/company-introduction",
+    "checked_at": "2026-10-27T03:56:57.927800+00:00",
+    "robots_status": "ok",
+    "status": "not_requested",
+    "reason": "robots_disallowed"
+  },
+  {
+    "id": "booking",
+    "group": "company",
+    "url": "https://ir.bookingholdings.com/rss/news-releases.xml",
+    "checked_at": "2026-10-27T03:56:57.928896+00:00",
+    "robots_status": "ok",
+    "status": "error",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "tripcom",
+    "group": "company",
+    "url": "https://investors.trip.com/rss/news-releases.xml",
+    "checked_at": "2026-10-27T03:56:58.292449+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "application/rss+xml; charset=utf-8",
+    "bytes": 7911,
+    "final_url": "https://investors.trip.com/rss/news-releases.xml"
+  },
+  {
+    "id": "expedia",
+    "group": "company",
+    "url": "https://www.expediagroup.com/investors/news-and-events/financial-releases/default.aspx",
+    "checked_at": "2026-10-27T03:56:58.348815+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 176725,
+    "final_url": "https://ir.expediagroup.com/news-and-events/media/default.aspx"
+  },
+  {
+    "id": "accor",
+    "group": "company",
+    "url": "https://press.accor.com/",
+    "checked_at": "2026-10-27T03:56:58.460206+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 1599434,
+    "final_url": "https://press.accor.com/fr/?lang=fra"
+  },
+  {
+    "id": "hilton",
+    "group": "company",
+    "url": "https://stories.hilton.com/feed",
+    "checked_at": "2026-10-27T03:56:58.804313+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "application/rss+xml; charset=UTF-8",
+    "bytes": 204753,
+    "final_url": "https://stories.hilton.com/feed"
+  },
+  {
+    "id": "marriott",
+    "group": "company",
+    "url": "https://news.marriott.com/",
+    "checked_at": "2026-10-27T03:56:58.847288+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html;charset=UTF-8",
+    "bytes": 2544,
+    "final_url": "https://news.marriott.com/"
+  },
+  {
+    "id": "yanolja",
+    "group": "company",
+    "url": "https://www.yanoljagroup.com/ko/press-room",
+    "checked_at": "2026-10-27T03:56:58.937644+00:00",
+    "robots_status": "unavailable_http_403",
+    "status": "not_requested",
+    "reason": "robots_unverified"
+  },
+  {
+    "id": "goodchoice",
+    "group": "company",
+    "url": "https://www.gccompany.co.kr/",
+    "checked_at": "2026-10-27T03:56:58.990197+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html",
+    "bytes": 472101,
+    "final_url": "https://gccompany.co.kr/"
+  },
+  {
+    "id": "hanatour",
+    "group": "company",
+    "url": "https://www.hanatourcompany.com/",
+    "checked_at": "2026-10-27T03:56:59.159464+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html;charset=UTF-8",
+    "bytes": 69060,
+    "final_url": "https://www.hanatourcompany.com:443/en/index"
+  },
+  {
+    "id": "modetour",
+    "group": "company",
+    "url": "https://www.modetournetwork.com/",
+    "checked_at": "2026-10-27T03:56:59.620890+00:00",
+    "robots_status": "unavailable_http_503",
+    "status": "not_requested",
+    "reason": "robots_unverified"
+  },
+  {
+    "id": "kto",
+    "group": "public",
+    "url": "https://kto.visitkorea.or.kr/",
+    "checked_at": "2026-10-27T03:56:59.840263+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html;charset=UTF-8",
+    "bytes": 327,
+    "final_url": "https://kto.visitkorea.or.kr/"
+  },
+  {
+    "id": "bok",
+    "group": "public",
+    "url": "https://www.bok.or.kr/portal/main/main.do",
+    "checked_at": "2026-10-27T03:57:00.167707+00:00",
+    "robots_status": "ok",
+    "status": "not_requested",
+    "reason": "robots_disallowed"
+  },
+  {
+    "id": "govuk",
+    "group": "public",
+    "url": "https://www.gov.uk/search/news-and-communications.atom?keywords=tourism&order=updated-newest",
+    "checked_at": "2026-10-27T03:57:00.884033+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "application/atom+xml; charset=utf-8",
+    "bytes": 12979,
+    "final_url": "https://www.gov.uk/search/news-and-communications.atom?keywords=tourism&order=updated-newest"
+  },
+  {
+    "id": "govuk-policy",
+    "group": "public",
+    "url": "https://www.gov.uk/help/terms-conditions",
+    "checked_at": "2026-10-27T03:57:01.113461+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 80624,
+    "final_url": "https://www.gov.uk/help/terms-conditions"
+  },
+  {
+    "id": "ogl",
+    "group": "public",
+    "url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "checked_at": "2026-10-27T03:57:01.258947+00:00",
+    "robots_status": "unavailable_http_403",
+    "status": "not_requested",
+    "reason": "robots_unverified"
+  },
+  {
+    "id": "faa",
+    "group": "public",
+    "url": "https://www.faa.gov/newsroom",
+    "checked_at": "2026-10-27T03:57:01.292686+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 119710,
+    "final_url": "https://www.faa.gov/newsroom"
+  },
+  {
+    "id": "un-tourism",
+    "group": "global",
+    "url": "https://www.unwto.org/rss.xml",
+    "checked_at": "2026-10-27T03:57:01.293654+00:00",
+    "robots_status": "unavailable_http_403",
+    "status": "not_requested",
+    "reason": "robots_unverified"
+  },
+  {
+    "id": "wttc",
+    "group": "global",
+    "url": "https://wttc.org/news",
+    "checked_at": "2026-10-27T03:57:01.466369+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 91995,
+    "final_url": "https://wttc.org/news"
+  },
+  {
+    "id": "iata",
+    "group": "global",
+    "url": "https://www.iata.org/en/pressroom/",
+    "checked_at": "2026-10-27T03:57:01.636166+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 131776,
+    "final_url": "https://www.iata.org/en/pressroom/"
+  },
+  {
+    "id": "gdelt",
+    "group": "global",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28tourism%20OR%20airline%20OR%20hotel%29%20sourcecountry%3AKR&mode=artlist&format=json&maxrecords=100&timespan=3months",
+    "checked_at": "2026-10-27T03:57:01.690481+00:00",
+    "robots_status": "unavailable_http_503",
+    "status": "not_requested",
+    "reason": "robots_unverified"
+  },
+  {
+    "id": "gdelt-policy",
+    "group": "global",
+    "url": "https://www.gdeltproject.org/about.html",
+    "checked_at": "2026-10-27T03:57:01.721897+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html",
+    "bytes": 24355,
+    "final_url": "https://gdeltproject.org:443/about.html"
+  },
+  {
+    "id": "hilton-home",
+    "group": "company",
+    "url": "https://stories.hilton.com/",
+    "checked_at": "2026-10-27T03:59:23.667022+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 421523,
+    "final_url": "https://stories.hilton.com/"
+  },
+  {
+    "id": "koreanair-about",
+    "group": "company",
+    "url": "https://news.koreanair.com/뉴스룸-소개/",
+    "checked_at": "2026-10-27T03:59:23.667848+00:00",
+    "robots_status": "ok",
+    "status": "error",
+    "error": "'ascii' codec can't encode characters in position 5-7: ordinal not in range(128)"
+  },
+  {
+    "id": "iata-rss",
+    "group": "global",
+    "url": "https://www.iata.org/api/rss/pressrelease",
+    "checked_at": "2026-10-27T03:59:23.668437+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "application/xml",
+    "bytes": 23221,
+    "final_url": "https://www.iata.org/api/rss/pressrelease"
+  },
+  {
+    "id": "iata-terms",
+    "group": "global",
+    "url": "https://www.iata.org/en/terms/",
+    "checked_at": "2026-10-27T03:59:23.668965+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 114543,
+    "final_url": "https://www.iata.org/en/terms/"
+  },
+  {
+    "id": "wttc-terms",
+    "group": "global",
+    "url": "https://wttc.org/copyright-statement",
+    "checked_at": "2026-10-27T03:59:23.669367+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 50948,
+    "final_url": "https://wttc.org/copyright-statement"
+  },
+  {
+    "id": "accor-terms",
+    "group": "company",
+    "url": "https://group.accor.com/en/legal-terms",
+    "checked_at": "2026-10-27T03:59:23.670385+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 391404,
+    "final_url": "https://group.accor.com/en/legal-terms"
+  },
+  {
+    "id": "govuk-api",
+    "group": "public",
+    "url": "https://www.gov.uk/api/search.json?q=tourism&count=100&fields=title%2Clink%2Cpublic_timestamp%2Cformat&order=-public_timestamp&filter_format=press_release%2Cnews_story&filter_public_timestamp=from%3A2026-07-29",
+    "checked_at": "2026-10-27T03:59:23.670911+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 118,
+    "final_url": "https://www.gov.uk/api/search.json?q=tourism&count=100&fields=title%2Clink%2Cpublic_timestamp%2Cformat&order=-public_timestamp&filter_format=press_release%2Cnews_story&filter_public_timestamp=from%3A2026-07-29"
+  },
+  {
+    "id": "sec-booking",
+    "group": "company",
+    "url": "https://data.sec.gov/submissions/CIK0001075531.json",
+    "checked_at": "2026-10-27T03:59:23.883267+00:00",
+    "robots_status": "not_found",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 158226,
+    "final_url": "https://data.sec.gov/submissions/CIK0001075531.json"
+  },
+  {
+    "id": "sec-policy",
+    "group": "public",
+    "url": "https://www.sec.gov/about/privacy-information",
+    "checked_at": "2026-10-27T03:59:24.164626+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 90426,
+    "final_url": "https://www.sec.gov/about/privacy-information"
+  },
+  {
+    "id": "sec-api-docs",
+    "group": "public",
+    "url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+    "checked_at": "2026-10-27T03:59:24.212442+00:00",
+    "robots_status": "ok",
+    "status": "not_requested",
+    "reason": "robots_disallowed"
+  },
+  {
+    "id": "federalregister",
+    "group": "public",
+    "url": "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=aviation&conditions%5Bpublication_date%5D%5Bgte%5D=2026-07-29&per_page=100",
+    "checked_at": "2026-10-27T03:59:24.274956+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 235467,
+    "final_url": "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=aviation&conditions%5Bpublication_date%5D%5Bgte%5D=2026-07-29&per_page=100"
+  },
+  {
+    "id": "federalregister-policy",
+    "group": "public",
+    "url": "https://www.federalregister.gov/reader-aids/government-policy-and-ofr-procedures/copyright",
+    "checked_at": "2026-10-27T03:59:24.301706+00:00",
+    "robots_status": "ok",
+    "status": "error",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "sec-use",
+    "group": "public",
+    "url": "https://www.sec.gov/about/website-policies",
+    "checked_at": "2026-10-27T04:00:18.240184+00:00",
+    "robots_status": "ok",
+    "status": "error",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "sec-faq",
+    "group": "public",
+    "url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+    "checked_at": "2026-10-27T04:00:18.240913+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 96783,
+    "final_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions"
+  },
+  {
+    "id": "federalregister-policy2",
+    "group": "public",
+    "url": "https://www.federalregister.gov/reader-aids/using-federalregister-gov",
+    "checked_at": "2026-10-27T04:00:18.241078+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 38820,
+    "final_url": "https://www.federalregister.gov/reader-aids/using-federalregister-gov"
+  },
+  {
+    "id": "govinfo-policy",
+    "group": "public",
+    "url": "https://www.govinfo.gov/about/policies",
+    "checked_at": "2026-10-27T04:00:18.241581+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "text/html",
+    "bytes": 64169,
+    "final_url": "https://www.govinfo.gov/about/policies"
+  },
+  {
+    "id": "govuk-api2",
+    "group": "public",
+    "url": "https://www.gov.uk/api/search.json?q=tourism&count=100&fields=title,link,public_timestamp,format&order=-public_timestamp",
+    "checked_at": "2026-10-27T04:00:18.241960+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 34342,
+    "final_url": "https://www.gov.uk/api/search.json?q=tourism&count=100&fields=title,link,public_timestamp,format&order=-public_timestamp"
+  },
+  {
+    "id": "govuk-api3",
+    "group": "public",
+    "url": "https://www.gov.uk/api/search.json?q=aviation&count=100&fields=title,link,public_timestamp,format&order=-public_timestamp",
+    "checked_at": "2026-10-27T04:00:18.243601+00:00",
+    "robots_status": "ok",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 38719,
+    "final_url": "https://www.gov.uk/api/search.json?q=aviation&count=100&fields=title,link,public_timestamp,format&order=-public_timestamp"
+  },
+  {
+    "id": "sec-expedia",
+    "group": "company",
+    "url": "https://data.sec.gov/submissions/CIK0001324424.json",
+    "checked_at": "2026-10-27T04:00:18.532354+00:00",
+    "robots_status": "not_found",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 147165,
+    "final_url": "https://data.sec.gov/submissions/CIK0001324424.json"
+  },
+  {
+    "id": "sec-hilton",
+    "group": "company",
+    "url": "https://data.sec.gov/submissions/CIK0001585689.json",
+    "checked_at": "2026-10-27T04:00:18.547214+00:00",
+    "robots_status": "not_found",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 163117,
+    "final_url": "https://data.sec.gov/submissions/CIK0001585689.json"
+  },
+  {
+    "id": "sec-marriott",
+    "group": "company",
+    "url": "https://data.sec.gov/submissions/CIK0001048286.json",
+    "checked_at": "2026-10-27T04:00:18.686514+00:00",
+    "robots_status": "not_found",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 148231,
+    "final_url": "https://data.sec.gov/submissions/CIK0001048286.json"
+  },
+  {
+    "id": "sec-delta",
+    "group": "company",
+    "url": "https://data.sec.gov/submissions/CIK0000027904.json",
+    "checked_at": "2026-10-27T04:00:18.788649+00:00",
+    "robots_status": "not_found",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 155119,
+    "final_url": "https://data.sec.gov/submissions/CIK0000027904.json"
+  },
+  {
+    "id": "sec-united",
+    "group": "company",
+    "url": "https://data.sec.gov/submissions/CIK0000100517.json",
+    "checked_at": "2026-10-27T04:00:18.800678+00:00",
+    "robots_status": "not_found",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 163466,
+    "final_url": "https://data.sec.gov/submissions/CIK0000100517.json"
+  },
+  {
+    "id": "sec-tripcom",
+    "group": "company",
+    "url": "https://data.sec.gov/submissions/CIK0001269238.json",
+    "checked_at": "2026-10-27T04:00:18.874338+00:00",
+    "robots_status": "not_found",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 101668,
+    "final_url": "https://data.sec.gov/submissions/CIK0001269238.json"
+  },
+  {
+    "id": "koreakr-home",
+    "group": "public",
+    "url": "https://www.korea.kr/",
+    "checked_at": "2026-10-27T04:08:59.988309+00:00",
+    "robots_status": "unavailable_http_503",
+    "status": "not_requested",
+    "reason": "robots_unverified"
+  },
+  {
+    "id": "koreakr-feed",
+    "group": "public",
+    "url": "https://www.korea.kr/rss/pressrelease.xml",
+    "checked_at": "2026-10-27T04:08:59.988925+00:00",
+    "robots_status": "unavailable_http_503",
+    "status": "not_requested",
+    "reason": "robots_unverified"
+  },
+  {
+    "id": "koreakr-guide",
+    "group": "public",
+    "url": "https://www.korea.kr/rss/rssGuide.do",
+    "checked_at": "2026-10-27T04:08:59.989193+00:00",
+    "robots_status": "unavailable_http_503",
+    "status": "not_requested",
+    "reason": "robots_unverified"
+  },
+  {
+    "id": "koreakr-policy",
+    "group": "public",
+    "url": "https://www.korea.kr/etc/copy.do",
+    "checked_at": "2026-10-27T04:08:59.989520+00:00",
+    "robots_status": "unavailable_http_503",
+    "status": "not_requested",
+    "reason": "robots_unverified"
+  },
+  {
+    "id": "koreakr-news",
+    "group": "public",
+    "url": "https://www.korea.kr/rss/policy.xml",
+    "checked_at": "2026-10-27T04:09:05.362253+00:00",
+    "robots_status": "unavailable_http_503",
+    "status": "not_requested",
+    "reason": "robots_unverified"
+  }
+]

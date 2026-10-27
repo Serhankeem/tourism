@@ -61,6 +61,58 @@ def matches(text, terms):
     return found
 
 
+def english_industry(title):
+    """Require an industry subject plus an operational/financial change."""
+    text = unicodedata.normalize('NFKC', title).casefold()
+    if re.search(r'\b(exchange rates?|oil prices?|interest rates?)\b', text) and re.search(r'\b(travel demand|tourism spending|hotel bookings)\b', text):
+        return {'label': 'Indirect', 'decision': 'hold', 'category': '경제·시장', 'score': 4,
+                'rules': ['english_cross_sector_impact'], 'signals': [{'field': 'title', 'terms': ['macro_change', 'tourism_impact']}],
+                'impact_targets': ['관광수요'], 'evidence_status': 'explicit_feed_claim' if re.search(r'increas|decreas|affect|reduc', text) else 'insufficient',
+                'reason': '인접 산업 변화가 관광수요에 미치는 원문 근거를 편집 검토해야 합니다.'}
+    if re.search(r'aviation careers|student competition|museum exhibit|photography contest|employee party|birthday|discount coupons?|hotel deals|best hotels|travel tips|bucket list', text):
+        return None
+    action = re.search(r'financial filing|financial results|introduc|digital solution|earnings|revenue|profit|capacity|new route|new flight|launch|expand|opens?\b|opening|demand|fares?|refund|passenger rights|strategy|funding|investment|tourism tax|visitor levy|tourist tax|safeguards|extra charges', text)
+    if not action:
+        return None
+    groups = (
+        ('항공·숙박', r'\b(airline|airlines|air travel|flights?|air passengers?|passengers.*flying|runway|aviation|airport hotel|hotel|hotels|hospitality|marriott|hilton|hyatt|accor)\b|delta air lines|united airlines|jetblue|korean air|asiana airlines'),
+        ('여행산업', r'booking holdings|expedia group|trip\.com group|makemytrip|travel agenc|tour operator|travel technolog|amadeus|sabre'),
+        ('관광정책', r'tourism strategy|tourism funding|tourist tax|tourism tax|visitor levy'),
+        ('경제·시장', r'tourism spending|tourism revenue|visitor economy|tourism investment'),
+        ('인바운드', r'inbound tourism|visitor arrivals'),
+    )
+    for category, pattern in groups:
+        match = re.search(pattern, text)
+        if match:
+            return {'label': 'Direct', 'decision': 'publish', 'category': category, 'score': 8,
+                    'rules': ['english_industry_change'], 'signals': [{'field': 'title', 'terms': [match.group(), action.group()]}],
+                    'impact_targets': [], 'evidence_status': 'industry_subject_in_feed',
+                    'reason': '공식 제목에 관광기업·항공·숙박 등 산업 대상과 운영 또는 재무 변화가 함께 명시되어 있습니다.'}
+    return None
+
+
+def korean_company_change(title):
+    text = compact(title)
+    if matches(text, ('생일행사', '봉사활동', '연예인일상', '직원체육대회')):
+        return None
+    companies = {
+        '항공·숙박': ('대한항공', '아시아나항공', '제주항공', '진에어', '티웨이', '에어부산', '호텔신라', '호텔롯데'),
+        '여행산업': ('야놀자', '여기어때', '하나투어', '모두투어', '노랑풍선'),
+    }
+    changes = matches(text, ('매출', '영업이익', '실적', '인수', '합병', '취항', '증편', '감편', '국제선', '객실공급', '플랫폼출시'))
+    if not changes:
+        return None
+    for category, names in companies.items():
+        named = matches(text, names)
+        if named:
+            return {'label': 'Direct', 'decision': 'publish', 'category': category, 'score': 8,
+                    'rules': ['named_company_operating_change'],
+                    'signals': [{'field': 'title', 'terms': named + changes}],
+                    'impact_targets': ['관광기업'], 'evidence_status': 'industry_subject_in_feed',
+                    'reason': '관광기업의 이름과 구체적인 운영·매출·노선 변화가 제목에 함께 명시되어 있습니다.'}
+    return None
+
+
 def assess(title, description=''):
     fields = {'title': compact(title), 'description': compact(description)}
     result = {'rule_version': RULE_VERSION, 'label': 'Irrelevant', 'decision': 'exclude',
@@ -70,6 +122,12 @@ def assess(title, description=''):
         return {**result, 'rules': ['personal_or_generic_travel'], 'reason': '개인 여행·일반 여가 정보는 산업 뉴스에서 제외합니다.'}
     if matches(fields['title'], ('할인쿠폰', '최저가', '추천숙소', '호텔추천')) and not matches(fields['title'], ('시장', '실적', '매출', '정책', '공급', '수요')):
         return {**result, 'rules': ['consumer_promotion'], 'reason': '일반 예약·할인 정보는 산업 뉴스에서 제외합니다.'}
+    company = korean_company_change(title)
+    if company:
+        return {**result, **company}
+    english = english_industry(title)
+    if english:
+        return {**result, **english}
     # Never combine unrelated sentences into a manufactured causal connection.
     for field, raw in (('title', title), ('description', description)):
         for sentence in re.split(r'[.!?。\n]+', raw):

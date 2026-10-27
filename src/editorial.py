@@ -1,0 +1,85 @@
+"""Editorial exposure is separate from relevance, storage and reuse permission.
+
+A foreign industry story is not Korea-related just because it is in English,
+mentions tourism, or was written by a Korean publisher. Filing records are
+preserved for research but never part of the default Newsroom or briefing.
+"""
+import re
+
+TIERS = {'korea_direct': (0, '한국 관광산업 직접 관련'),
+         'global_major': (1, '글로벌 관광산업 주요 변화'),
+         'reference': (2, '참고용 해외 산업 자료')}
+KOREAN_COMPANIES = ('대한항공', '아시아나항공', '제주항공', '진에어', '티웨이', '에어부산',
+                    '호텔신라', '호텔롯데', '하나투어', '모두투어', '야놀자', '여기어때', '노랑풍선')
+
+
+def exposure(article):
+    title = article.get('title', '')
+    text = re.sub(r'\s+', ' ', title.casefold())
+    evidence = []
+    negative = re.search(r'무관|관련\s*없|not related|unrelated|no (?:link|connection)', text)
+    relevant = (article.get('relevance_label') == 'Direct' or
+                (article.get('relevance_label') == 'Indirect' and
+                 article.get('relevance_evidence', {}).get('review_status') == 'approved'))
+    if relevant and not negative:
+        korea_text = re.sub(r'\bnorth korean?\b', 'unverified foreign market', text)
+        match = re.search(r'방한|한국\s*(?:관광|여행|호텔|항공|시장)|국내\s*(?:관광|여행|숙박)|\bsouth korea\b|\brepublic of korea\b|\bkorean (?:tourism|travel|hotel|aviation)\b|\b(?:to|from|in) (?:seoul|incheon|busan|jeju)\b', korea_text)
+        if match:
+            evidence.append({'field': 'title', 'value': match.group(), 'rule': 'explicit_korean_market'})
+        # These records have a known domestic business subject, not merely a
+        # multinational's familiar name. The relevance rule already requires
+        # operating/revenue/route change rather than brand presence alone.
+        if article.get('relevance_evidence', {}).get('rules') == ['named_company_operating_change']:
+            subject_title = re.sub(r'^\[[^]]+\]\s*', '', title)
+            attribution_only = re.search(r'이\s*본|가\s*본|분석한|언급한|전한|보도한', subject_title)
+            company = None if attribution_only else next((name for name in KOREAN_COMPANIES if re.match(re.escape(name)+r'(?:[은는이가의,:\s]|$)', subject_title)), None)
+            if company:
+                evidence.append({'field': 'title', 'value': company, 'rule': 'domestic_company_operating_subject'})
+        if article.get('source_id', '').startswith('seoul_'):
+            place = re.search(r'서울|동대문|남산|봉은사|제주|철원|부산|인천', title)
+            foreign = re.search(r'영국|미국|일본|중국|런던|tokyo|london|united kingdom|united states', text)
+            if place and not foreign:
+                evidence.append({'field': 'title+source_id', 'value': place.group(), 'rule': 'official_local_tourism_report'})
+    if evidence:
+        tier = 'korea_direct'
+        reason = '제목의 한국 시장·국내 관광기업 운영·공식 지역 관광사업 근거를 확인했습니다.'
+    else:
+        # Major means an explicitly industry-wide, quantified global change.
+        # A local UK rule/runway, famous company, or generic English term does
+        # not establish worldwide scope or a link to the Korean market.
+        worldwide = re.search(r'\b(?:global|worldwide) (?:tourism|air passenger|airline (?:industry|sector|market)|hotel industry|hospitality (?:sector|industry))\b|(?:전\s*세계|세계)\s*(?:관광(?:수요|객|산업)|항공\s*여객|호텔\s*산업)', text)
+        industry = re.search(r'tourism|air passenger|airline|hospitality|hotel industry|관광|항공|숙박', text)
+        quantified = re.search(r'\d+(?:\.\d+)?\s*(?:%|percent|million|billion)|\d+\s*(?:억|만)\s*(?:명|달러)', text)
+        change = re.search(r'demand|capacity|revenue|arrivals|growth|increas|decreas|수요|증가|감소|매출', text)
+        if relevant and not negative and worldwide and industry and quantified and change:
+            tier = 'global_major'
+            evidence = [{'field': 'title', 'value': m.group(), 'rule': 'quantified_worldwide_industry_change'} for m in (worldwide, industry, quantified, change)]
+            reason = '세계 산업 전체의 범위와 정량적 변화가 제목에 명시되어 있습니다. 한국 시장 영향은 별도로 입증되지 않았습니다.'
+        else:
+            tier = 'reference'
+            reason = '한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다.'
+    rank, label = TIERS[tier]
+    return {'version': '0.3-editorial-1', 'tier': tier, 'rank': rank, 'label': label,
+            'korea_connection': 'explicit' if tier == 'korea_direct' else 'not_established',
+            'evidence': evidence, 'reason': reason}
+
+
+def project(articles):
+    """Annotate copies; never delete/change the canonical stored record list."""
+    stored = []
+    for article in articles:
+        record = {**article, 'record_type': article.get('record_type', 'news'), 'editorial': exposure(article)}
+        # KOSIS recent-additions RSS announces statistical datasets, not news
+        # article publication. Preserve the provider timestamp but never use it
+        # as evidence of a newly issued Newsroom story.
+        if record.get('source_id') == 'kosis_recent' or record['record_type'] == 'statistical_release':
+            record['record_type'] = 'statistical_release'
+            record['publication_time_verified_for_news'] = False
+            record.setdefault('publication_date_basis', 'statistical_provider_timestamp_not_verified_as_news')
+            record['timestamp_role'] = 'provider_statistical_timestamp_not_news_publication'
+        stored.append(record)
+    newsroom = [a for a in stored if a['record_type'] == 'news' and not a.get('archived_only', False)]
+    filings = [a for a in stored if a['record_type'] == 'regulatory_filing']
+    newsroom.sort(key=lambda a: a['published_at'], reverse=True)
+    newsroom.sort(key=lambda a: a['editorial']['rank'])
+    return stored, newsroom, filings

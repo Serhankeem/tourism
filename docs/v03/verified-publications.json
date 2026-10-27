@@ -1,11 +1,63 @@
 {
   "schema_version": 3,
   "rule_version": "0.2",
-  "generated_at": "2026-10-27T13:21:44+09:00",
-  "last_successful_fetch": "2026-10-27T13:21:44+09:00",
-  "count": 12,
+  "generated_at": "2026-10-27T14:55:24+09:00",
+  "last_successful_fetch": "2026-10-27T14:55:24+09:00",
+  "count": 13,
   "mode": "live_rss",
   "articles": [
+    {
+      "id": "aaa526a940283e25e0",
+      "published_at": "2026-10-27T13:46:19+09:00",
+      "date": "2026.10.27",
+      "category": "항공·숙박",
+      "source": "KOSIS 최근수록자료",
+      "source_id": "kosis_recent",
+      "title": "항공통계 ( 8 )",
+      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
+      "insight": "원문을 확인한 후 산업적 시사점을 판단해 주세요.",
+      "summary_type": "metadata_only",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2005006&boardOrgId=381",
+      "relevance": 4,
+      "relevance_label": "Direct",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "항공·숙박",
+        "score": 4,
+        "rules": [
+          "explicit_industry_subject"
+        ],
+        "signals": [
+          {
+            "field": "description",
+            "terms": [
+              "국제선"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "related_sources": [
+        "KOSIS 최근수록자료"
+      ],
+      "record_type": "statistical_release",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      },
+      "publication_time_verified_for_news": false,
+      "publication_date_basis": "KOSIS_provider_timestamp_not_verified_as_news",
+      "timestamp_role": "provider_statistical_timestamp_not_news_publication"
+    },
     {
       "id": "786bec98e769f9c4f5",
       "published_at": "2026-10-22T15:40:00+09:00",
@@ -56,6 +108,21 @@
         "terms_url": "https://mediahub.seoul.go.kr/staticpage/rss.do",
         "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
         "checked_at": "2026-10-27"
+      },
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "korea_direct",
+        "rank": 0,
+        "label": "한국 관광산업 직접 관련",
+        "korea_connection": "explicit",
+        "evidence": [
+          {
+            "field": "title+source_id",
+            "value": "제주",
+            "rule": "official_local_tourism_report"
+          }
+        ],
+        "reason": "제목의 한국 시장·국내 관광기업 운영·공식 지역 관광사업 근거를 확인했습니다."
       }
     },
     {
@@ -96,7 +163,23 @@
       "related_sources": [
         "문화체육관광부 보도자료"
       ],
-      "legacy_category": "수요"
+      "legacy_category": "수요",
+      "record_type": "news",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "korea_direct",
+        "rank": 0,
+        "label": "한국 관광산업 직접 관련",
+        "korea_connection": "explicit",
+        "evidence": [
+          {
+            "field": "title",
+            "value": "방한",
+            "rule": "explicit_korean_market"
+          }
+        ],
+        "reason": "제목의 한국 시장·국내 관광기업 운영·공식 지역 관광사업 근거를 확인했습니다."
+      }
     },
     {
       "id": "63f583b9aa80b9fbe8",
@@ -141,7 +224,7 @@
       "publication_date_basis": "feed_publication_date",
       "date_precision": "timestamp",
       "record_type": "news",
-      "korea_priority": false,
+      "korea_priority": true,
       "is_backfill": false,
       "publication_policy": {
         "status": "approved",
@@ -149,6 +232,21 @@
         "terms_url": "https://mediahub.seoul.go.kr/staticpage/rss.do",
         "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
         "checked_at": "2026-10-27"
+      },
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "korea_direct",
+        "rank": 0,
+        "label": "한국 관광산업 직접 관련",
+        "korea_connection": "explicit",
+        "evidence": [
+          {
+            "field": "title+source_id",
+            "value": "봉은사",
+            "rule": "official_local_tourism_report"
+          }
+        ],
+        "reason": "제목의 한국 시장·국내 관광기업 운영·공식 지역 관광사업 근거를 확인했습니다."
       }
     },
     {
@@ -203,7 +301,16 @@
         "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
         "checked_at": "2026-10-27"
       },
-      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00"
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
     },
     {
       "id": "d6d5d7ba72fef3c855",
@@ -258,7 +365,16 @@
         "checked_at": "2026-10-27",
         "attribution": "Contains public sector information licensed under the Open Government Licence v3.0. GOV.UK: https://www.gov.uk/help/terms-conditions"
       },
-      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00"
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
     },
     {
       "id": "a358f780e0ea4accbd",
@@ -302,7 +418,7 @@
       "publication_date_basis": "feed_publication_date",
       "date_precision": "timestamp",
       "record_type": "news",
-      "korea_priority": false,
+      "korea_priority": true,
       "is_backfill": false,
       "publication_policy": {
         "status": "approved",
@@ -310,6 +426,21 @@
         "terms_url": "https://www.seoul.go.kr/helper/copyright.do",
         "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
         "checked_at": "2026-10-27"
+      },
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "korea_direct",
+        "rank": 0,
+        "label": "한국 관광산업 직접 관련",
+        "korea_connection": "explicit",
+        "evidence": [
+          {
+            "field": "title+source_id",
+            "value": "동대문",
+            "rule": "official_local_tourism_report"
+          }
+        ],
+        "reason": "제목의 한국 시장·국내 관광기업 운영·공식 지역 관광사업 근거를 확인했습니다."
       }
     },
     {
@@ -364,7 +495,16 @@
         "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
         "checked_at": "2026-10-27"
       },
-      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00"
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
     },
     {
       "id": "d49192124f719d5882",
@@ -419,7 +559,16 @@
         "checked_at": "2026-10-27",
         "attribution": "Contains public sector information licensed under the Open Government Licence v3.0. GOV.UK: https://www.gov.uk/help/terms-conditions"
       },
-      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00"
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
     },
     {
       "id": "640ad9821c752b15a7",
@@ -473,7 +622,16 @@
         "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
         "checked_at": "2026-10-27"
       },
-      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00"
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
     },
     {
       "id": "03cb03a7fbe76e3568",
@@ -528,7 +686,16 @@
         "checked_at": "2026-10-27",
         "attribution": "Contains public sector information licensed under the Open Government Licence v3.0. GOV.UK: https://www.gov.uk/help/terms-conditions"
       },
-      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00"
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
     },
     {
       "id": "98ccbf39401cf95997",
@@ -582,7 +749,16 @@
         "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
         "checked_at": "2026-10-27"
       },
-      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00"
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
     },
     {
       "id": "c5c22f63dc89276037",
@@ -636,7 +812,17 @@
         "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
         "checked_at": "2026-10-27"
       },
-      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00"
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
     }
-  ]
+  ],
+  "records_scope": "all_authorized_records_including_filings"
 }

@@ -4,7 +4,7 @@
 
 ```bash
 python3 -m unittest discover -s tests -v
-python3 src/collector.py
+python3 src/engine.py
 python3 -m http.server 8000 --directory site
 ```
 
@@ -17,3 +17,7 @@ python3 -m http.server 8000 --directory site
 [v0.2 관련성·카테고리·신규 출처·마이그레이션 검증](docs/v02/README.md)
 
 [v0.3 다중 소스 Discovery·권리 게이트·backfill·운영 검증](docs/v03/README.md)
+
+[PR #3 편집 기준 보완·공시 분리·국내 공급원 재조사](docs/v03/EDITORIAL.md)
+
+전체 원장은 `site/data/archive.json`, 뉴스 전용 뷰는 `news.json`/`newsroom.json`, 기업공시는 `filings.json`, 통계 원자료는 `research.json`에 보존합니다. 기본 Newsroom에는 뉴스만 노출합니다.

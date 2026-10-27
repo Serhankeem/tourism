@@ -2,7 +2,7 @@
 
 실측 시각: 2026-10-27T13:19:15+09:00. HTTP 200은 RSS/API 유효성이나 재사용 허락을 의미하지 않습니다. 미요청은 robots/권한 검토로 중단한 경우를 포함합니다.
 
-| 수집원 / 분야 | 접근 방식·실제 결과 | 재사용 범위 | 수신 / 90일 후보 / 새 게시 | 연결 |
+| 수집원 / 분야 | 접근 방식·실제 결과 | 재사용 범위 | 수신 / 90일 후보 / 초기 새 보관 | 연결 |
 | --- | --- | --- | --- | --- |
 | [문화체육관광부 보도자료](https://www.mcst.go.kr/common/rss/press.jsp) / public | rss · error: robots_unverified:http_503 | approved / metadata_only | 0 / 0 / 0 | publication |
 | [Korea.net Food/Travel](https://www.korea.net/koreanet/rss/news/8) / public | rss · error: redirect_loop | review / metadata_only | 0 / 0 / 0 | discovery_only |

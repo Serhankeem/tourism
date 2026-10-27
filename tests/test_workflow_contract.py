@@ -33,7 +33,7 @@ class WorkflowContractTests(unittest.TestCase):
             git('config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com', cwd=writer)
             (writer / 'site/data').mkdir(parents=True)
             (writer / 'site/index.html').write_text('TOURISM PULSE')
-            for name in ('news', 'briefing', 'health'):
+            for name in ('archive', 'news', 'newsroom', 'filings', 'research', 'briefing', 'health'):
                 (writer / f'site/data/{name}.json').write_text(json.dumps({'retained': name}))
             git('add', 'site', cwd=writer)
             git('commit', '-m', 'Seed', cwd=writer)

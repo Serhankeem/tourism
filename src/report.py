@@ -6,19 +6,20 @@ from pathlib import Path
 def render(data):
     rows = ['## Tourism News collection', '', 'Checked: ' + data.get('checked_at', 'unknown'), '',
             '| Metric | Value |', '| --- | ---: |']
-    for key in ('received', 'new_discoveries', 'duplicate_observations', 'new_auto_published',
+    for key in ('total_archived', 'newsroom_count', 'filings_count', 'other_research_count', 'newsroom_korea_direct_count',
+                'newsroom_originally_published_last24h', 'newsroom_originally_published_last7d', 'newsroom_newly_added_last24h', 'new_newsroom_items', 'new_filings', 'received', 'new_discoveries', 'duplicate_observations', 'new_auto_published',
                 'total_published', 'new_backfilled', 'auto_published_last24h', 'auto_published_last7d',
                 'originally_published_last24h', 'originally_published_last7d'):
         rows.append(f'| {key} | {data.get(key, 0)} |')
     rows += ['', 'Outcome: ' + data.get('outcome', 'unknown'), '',
-             '| Source | Status | Received | New | Published | Rights holds | Error |',
-             '| --- | --- | ---: | ---: | ---: | ---: | --- |']
+             '| Source | Status | Received | New | Archive added | Newsroom added | Rights holds | Error |',
+             '| --- | --- | ---: | ---: | ---: | ---: | ---: | --- |']
     for source in data.get('sources', []):
         values = [source.get('id'), source.get('status'), source.get('received', 0),
-                  source.get('new_discoveries', 0), source.get('new_auto_published', 0),
+                  source.get('new_discoveries', 0), source.get('new_auto_published', 0), source.get('new_newsroom_items', 0),
                   source.get('rights_holds', 0), source.get('error', '')]
         rows.append('| ' + ' | '.join(str(v).replace('|', '/').replace('\n', ' ') for v in values) + ' |')
-    rows += ['', 'Newly added items are NOT necessarily newly issued news. See original publication dates and date precision.']
+    rows += ['', 'Archive admissions (legacy new_auto_published) include filings. Newsroom metrics count news only. Newly added items are NOT necessarily newly issued news. See original publication dates and date precision.']
     return '\n'.join(rows) + '\n'
 
 

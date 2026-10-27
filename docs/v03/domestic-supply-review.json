@@ -1,0 +1,73 @@
+{
+  "checked_on": "2026-10-27",
+  "new_auto_publication_sources_activated": 0,
+  "sources": [
+    {
+      "name": "뉴스와이어",
+      "guide": "https://www.newswire.co.kr/?md=A31",
+      "terms": "https://www.newswire.co.kr/?xd=37",
+      "api": "https://www.newswire.co.kr/coalition",
+      "access": "RSS guide, terms and API service guide HTTP 200",
+      "decision": "not_activated",
+      "blockers": [
+        "Limited redistribution conditions do not establish this metadata-only public use.",
+        "API provider approval and key required; not configured.",
+        "Commercial scope and terms require confirmation."
+      ]
+    },
+    {
+      "name": "트래블데일리",
+      "url": "https://www.traveldaily.co.kr/com/copyright.html",
+      "access": "HTTP 200",
+      "decision": "not_activated",
+      "blockers": [
+        "Explicit prior-consent requirement for reproduction/transmission/distribution."
+      ]
+    },
+    {
+      "name": "TTL뉴스",
+      "url": "https://www.ttlnews.com/com/copyright.html",
+      "access": "HTTP 200",
+      "decision": "not_activated",
+      "blockers": [
+        "Explicit prior-consent requirement for reproduction/transmission/distribution."
+      ]
+    },
+    {
+      "name": "여행정보신문",
+      "url": "https://www.travelinfo.co.kr/",
+      "access": "Homepage HTTP 200",
+      "decision": "not_activated",
+      "blockers": [
+        "Usable RSS/API and public metadata reuse permission not established."
+      ]
+    },
+    {
+      "name": "하나투어",
+      "url": "https://www.hanatourcompany.com/",
+      "access": "Loader rejected redirect with https_public_endpoint_required",
+      "decision": "not_activated",
+      "blockers": [
+        "Permitted HTTPS news interface and reuse scope must be confirmed; guard not bypassed."
+      ]
+    },
+    {
+      "name": "여기어때",
+      "url": "https://www.gccompany.co.kr/",
+      "access": "Homepage HTTP 200",
+      "decision": "not_activated",
+      "blockers": [
+        "Public RSS/API and metadata republication scope not established."
+      ]
+    },
+    {
+      "name": "야놀자 뉴스룸 후보",
+      "url": "https://newsroom.yanolja.com/",
+      "access": "robots_unverified:transport_error; no source content requested",
+      "decision": "not_activated",
+      "blockers": [
+        "Permitted source interface and rights not verified."
+      ]
+    }
+  ]
+}

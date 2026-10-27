@@ -382,11 +382,21 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews
 
 
 def main():
+    # Keep the old CLI safe: live collection must pass the rights and editorial
+    # gates even when an old README or job invokes collector.py directly.
+    if '--demo' not in sys.argv[1:]:
+        if __package__:
+            from .engine import main as engine_main
+        else:
+            from engine import main as engine_main
+        return engine_main()
     parser = argparse.ArgumentParser()
     parser.add_argument('--demo', action='store_true', help='Use clearly labeled synthetic test RSS instead of live sources')
     parser.add_argument('--reviews', default=str(ROOT / 'relevance_reviews.json'), help='Title-bound editorial approvals for Indirect candidates')
     parser.add_argument('--dir', default=str(DATA), help='Destination for site JSON')
     args = parser.parse_args()
+    if Path(args.dir).resolve() == DATA.resolve():
+        parser.error('Demo requires a separate --dir; production data must not be overwritten')
     sources = json.loads((ROOT / 'sources.json').read_text(encoding='utf-8'))['sources']
     if args.demo:
         demo_file = ROOT / 'fixtures' / 'sample.xml'

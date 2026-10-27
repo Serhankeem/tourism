@@ -3,15 +3,18 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import tempfile
 import urllib.parse
 from pathlib import Path
 
 if __package__:
     from . import collector as c
     from .discovery import Loader, AccessBlocked, items_from, feed_bytes
+    from .editorial import project, exposure
 else:
     import collector as c
     from discovery import Loader, AccessBlocked, items_from, feed_bytes
+    from editorial import project, exposure
 
 
 def valid_date(item, at, days):
@@ -33,7 +36,10 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
     at = at or c.now_kst()
     loader = loader or Loader()
     data_dir, state_dir = Path(data_dir), Path(state_dir)
-    original = c.read_json(data_dir / 'news.json', {})
+    archive_path = data_dir / 'archive.json'
+    original = c.read_json(archive_path, None) if archive_path.exists() else c.read_json(data_dir / 'news.json', {})
+    if not isinstance(original, dict) or not isinstance(original.get('articles', []), list):
+        raise ValueError('invalid_archive_stop_without_replacing_data')
     old_articles = original.get('articles', []) if original.get('mode') != 'fixture_demo' else []
     old_ids = {a['id'] for a in old_articles}
     ledger = c.read_json(state_dir / 'discovery.json', {}).get('candidates', {})
@@ -56,6 +62,8 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                 raise AccessBlocked('discovery_not_authorized')
             payload = loader(source['url'])
             items = list(items_from(source, payload))
+            if source.get('record_type'):
+                items = [{**item, 'record_type': source['record_type']} for item in items]
             row['received'] = len(items)
             approved_items = []
             date_lookups = 0
@@ -125,7 +133,9 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                              'is_backfill': bool(published and published < at - dt.timedelta(days=30)),
                              'relevance_evidence': assessment, 'publication_status': status,
                              'publication_policy': source.get('publication', {'status': 'review'}),
-                             'korea_priority': any(t in title.casefold() for t in ('korea', 'seoul', 'incheon', 'busan', '한국', '방한', '인천', '서울'))}
+                             'relevance_label': assessment['label']}
+                candidate['editorial'] = exposure(candidate)
+                candidate['korea_priority'] = candidate['editorial']['tier'] == 'korea_direct'
                 # A discovery-only service cannot overwrite a previously licensed
                 # publisher's validated date/permission for the same URL.
                 prior = ledger.get(aid)
@@ -159,12 +169,25 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
     if old_articles and original.get('schema_version', 1) <= 2 and not (state_dir / 'v02_snapshot.json').exists():
         c.write_atomic(state_dir / 'v02_snapshot.json', original)
     approved_sources = [s for s in sources if s.get('enabled', True) and permission(s)]
-    result = c.run(approved_sources, fetcher=publication_feed, at=at, data_dir=data_dir,
-                   state_dir=state_dir, reviews=reviews, retention_days=days, max_articles=4500)
-    news = c.read_json(data_dir / 'news.json', original)
+    # The legacy collector stages all record types privately. A public news.json
+    # must never transiently contain filings, including for old open browser tabs.
+    state_dir.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix='publication-', dir=state_dir) as staging:
+        stage = Path(staging)
+        c.write_atomic(stage / 'news.json', original)
+        result = c.run(approved_sources, fetcher=publication_feed, at=at, data_dir=stage,
+                       state_dir=state_dir, reviews=reviews, retention_days=days, max_articles=4500)
+        news = c.read_json(stage / 'news.json', original)
+        stage_briefing = c.read_json(stage / 'briefing.json', {})
+        stage_health = c.read_json(stage / 'health.json', {})
     articles = news.get('articles', [])
     # Never stamp first_seen/published timestamps onto old records on every run.
     if result['status'] != 'failed':
+        selected_ids = {a['id'] for a in articles}
+        for old_record in old_articles:
+            if old_record['id'] not in selected_ids:
+                articles.append({**old_record, 'archived_only': True,
+                                 'archive_reason': 'not_selected_by_current_publication_window_or_rules'})
         for article in articles:
             candidate = metadata.get(article['id'])
             if candidate:
@@ -179,21 +202,35 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                 if candidate['publication_policy'].get('attribution'):
                     article['desc'] = '원문 링크에서 공식 자료를 확인하세요. ' + candidate['publication_policy']['attribution']
                 ledger[article['id']]['publication_status'] = 'published'
+        articles, newsroom, filings = project(articles)
+        news['articles'] = articles
+        news['count'] = len(articles)
+        news['records_scope'] = 'all_authorized_records_including_filings'
         news['schema_version'] = 3
-        c.write_atomic(data_dir / 'news.json', news)
-        briefing = c.read_json(data_dir / 'briefing.json', {})
+        # Persist the complete archive before replacing a legacy mixed news.json.
+        c.write_atomic(data_dir / 'archive.json', news)
+        for name, items in (('news', newsroom), ('newsroom', newsroom), ('filings', filings),
+                            ('research', [a for a in articles if a['record_type'] not in ('news', 'regulatory_filing')])):
+            c.write_atomic(data_dir / (name + '.json'), {'schema_version': 3, 'mode': news.get('mode', 'live_rss'),
+                           'generated_at': news.get('generated_at'), 'last_successful_fetch': news.get('last_successful_fetch'),
+                           'count': len(items), 'articles': items})
+        briefing = stage_briefing
         # Rebuild from all eligible articles, not a previously truncated top 5.
         # Unknown intraday times cannot be used to claim 'last 24 hours'.
-        recent = [a for a in articles if a.get('date_precision') != 'date'
+        recent = [a for a in newsroom if a['editorial']['tier'] != 'reference' and a.get('date_precision') != 'date'
                   and at - dt.timedelta(days=1) <= c.timestamp(a['published_at']) <= at]
-        selected = sorted(recent, key=lambda a: (a.get('korea_priority', False), a['relevance'], a['published_at']), reverse=True)[:5]
-        briefing['items'] = [{k: a[k] for k in ('id', 'title', 'source', 'category', 'url', 'published_at', 'desc', 'summary_type', 'relevance_label', 'relevance_evidence')} for a in selected]
+        selected = sorted(recent, key=lambda a: (-a['editorial']['rank'], a['relevance'], a['published_at']), reverse=True)[:5]
+        briefing['items'] = [{k: a[k] for k in ('id', 'title', 'source', 'category', 'url', 'published_at', 'desc', 'summary_type', 'relevance_label', 'relevance_evidence', 'record_type', 'editorial')} for a in selected]
         briefing['status'] = 'candidates_ready' if selected else 'no_recent_articles'
         c.write_atomic(data_dir / 'briefing.json', briefing)
+    # Failure keeps public projections byte-for-byte; metrics still use the
+    # same deterministic editorial policy without rewriting failed-run data.
+    metric_articles, newsroom, filings = project(articles)
     published_ids = {a['id'] for a in articles}
     new_published = published_ids - old_ids
     for row in health:
         row['new_auto_published'] = sum(a['id'] in new_published and a['source_id'] == row['id'] for a in articles)
+        row['new_newsroom_items'] = sum(a['id'] in new_published and a['source_id'] == row['id'] for a in newsroom)
         row['outcome'] = ('fetch_failed' if row['status'] != 'ok' else 'auto_published' if row['new_auto_published'] else
                           'no_new_candidate' if not row['new_discoveries'] else 'discovered_not_publishable')
     summary = {'schema_version': 3, 'checked_at': c.iso(at), 'publication_result': result['status'],
@@ -203,20 +240,32 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                'new_discoveries': sum(h['new_discoveries'] for h in health),
                'duplicate_observations': sum(h['duplicates'] for h in health),
                'new_auto_published': len(new_published), 'total_published': len(articles),
+               'total_archived': len(articles), 'newsroom_count': len(newsroom), 'filings_count': len(filings),
+               'other_research_count': sum(a['record_type'] not in ('news', 'regulatory_filing') for a in metric_articles),
+               'new_newsroom_items': sum(a['id'] in new_published for a in newsroom),
+               'new_filings': sum(a['id'] in new_published for a in filings),
+               'newsroom_korea_direct_count': sum(a['editorial']['tier'] == 'korea_direct' for a in newsroom),
+               'newsroom_category_counts': {category: sum(a['category'] == category for a in newsroom) for category in c.CATEGORIES},
+               'newsroom_tier_counts': {tier: sum(a['editorial']['tier'] == tier for a in newsroom) for tier in ('korea_direct', 'global_major', 'reference')},
+               'newsroom_originally_published_last24h': sum(a.get('publication_time_verified_for_news') is not False and a.get('date_precision') != 'date' and at - dt.timedelta(days=1) <= c.timestamp(a['published_at']) <= at for a in newsroom),
+               'newsroom_originally_published_last7d': sum(a.get('date_precision') != 'date' and at - dt.timedelta(days=7) <= c.timestamp(a['published_at']) <= at for a in newsroom),
+               'newsroom_newly_added_last24h': sum(bool(a.get('first_published_by_engine_at')) and c.timestamp(a['first_published_by_engine_at']) >= at - dt.timedelta(days=1) for a in newsroom),
                'new_backfilled': sum(a['id'] in new_published and a.get('is_backfill', False) for a in articles),
-               'record_type_counts': {kind: sum(a.get('record_type', 'news') == kind for a in articles) for kind in ('news', 'regulatory_filing', 'government_notice')},
+               'record_type_counts': {kind: sum(a.get('record_type', 'news') == kind for a in metric_articles) for kind in ('news', 'regulatory_filing', 'statistical_release', 'government_notice')},
                'category_counts': {k: sum(a['category'] == k for a in articles) for k in c.CATEGORIES},
                'discovered_last24h': sum(c.timestamp(a['first_discovered_at']) >= at - dt.timedelta(days=1) for a in ledger.values()),
                'discovered_last7d': sum(c.timestamp(a['first_discovered_at']) >= at - dt.timedelta(days=7) for a in ledger.values()),
                'auto_published_last24h': sum(bool(a.get('first_published_by_engine_at')) and c.timestamp(a['first_published_by_engine_at']) >= at - dt.timedelta(days=1) for a in articles),
                'auto_published_last7d': sum(bool(a.get('first_published_by_engine_at')) and c.timestamp(a['first_published_by_engine_at']) >= at - dt.timedelta(days=7) for a in articles),
-               'originally_published_last24h': sum(a.get('date_precision') != 'date' and at - dt.timedelta(days=1) <= c.timestamp(a['published_at']) <= at for a in articles),
-               'originally_published_last7d': sum(at - dt.timedelta(days=7) <= c.timestamp(a['published_at']) <= at for a in articles),
+               'originally_published_last24h': sum(a.get('publication_time_verified_for_news') is not False and a.get('date_precision') != 'date' and at - dt.timedelta(days=1) <= c.timestamp(a['published_at']) <= at for a in articles),
+               'originally_published_last7d': sum(a.get('publication_time_verified_for_news') is not False and at - dt.timedelta(days=7) <= c.timestamp(a['published_at']) <= at for a in articles),
                'sources': health}
     summary['outcome'] = ('all_fetches_failed' if summary['discovery_status'] == 'failed' else
                           'publication_blocked_by_rights' if not approved_sources else
                           'publication_sources_failed' if result['status'] == 'failed' else
-                          'new_articles_published' if new_published else
+                          'new_newsroom_news' if summary['new_newsroom_items'] else
+                          'new_filings_archived' if summary['new_filings'] else
+                          'new_archive_records' if new_published else
                           'no_new_publications_with_source_errors' if summary['discovery_status'] == 'partial' else
                           'no_new_publications')
     # Ledger and metrics survive even if all publication sources fail; public
@@ -232,7 +281,7 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
     c.write_atomic(state_dir / 'discovery.json', {'schema_version': 3, 'candidates': ledger})
     c.write_atomic(state_dir / 'source_metrics.json', {'schema_version': 3, 'sources': source_metrics})
     c.write_atomic(state_dir / 'run_summary.json', summary)
-    health_doc = c.read_json(data_dir / 'health.json', {})
+    health_doc = stage_health
     health_doc['discovery'] = summary
     c.write_atomic(data_dir / 'health.json', health_doc)
     return summary
@@ -243,12 +292,13 @@ def main():
     parser.add_argument('--dir', default=str(c.DATA))
     parser.add_argument('--backfill-days', type=int, choices=range(30, 91), default=90,
                         help='Only use provider-returned metadata within 30..90 days; no archive crawling')
+    parser.add_argument('--reviews', default=str(c.ROOT / 'relevance_reviews.json'))
     parser.add_argument('--sources', default=str(c.ROOT / 'sources.json'))
     args = parser.parse_args()
     sources = c.read_json(Path(args.sources), {})['sources']
     data = Path(args.dir)
     state = c.ROOT / 'collector_state' if data.resolve() == c.DATA.resolve() else data / 'collector_state'
-    reviews = c.read_json(c.ROOT / 'relevance_reviews.json', {}).get('approvals', {})
+    reviews = c.read_json(Path(args.reviews), {}).get('approvals', {})
     summary = execute(sources, data, state, reviews, days=args.backfill_days)
     print(json.dumps({k: v for k, v in summary.items() if k != 'sources'}, ensure_ascii=False))
     return 1 if summary['publication_result'] == 'failed' else 0

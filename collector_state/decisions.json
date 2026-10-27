@@ -1,8 +1,37 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-27T15:58:36+09:00",
+  "checked_at": "2026-10-27T17:54:51+09:00",
   "scope": "successful_sources_this_run",
   "items": [
+    {
+      "id": "8bc7f2380cc82b8067",
+      "title": "방한 외국인 관광객 수, 역대 최고치 기록 두 달 앞당겨 경신",
+      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22799",
+      "source_id": "mcst_press",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "인바운드",
+        "score": 10,
+        "rules": [
+          "explicit_industry_subject"
+        ],
+        "signals": [
+          {
+            "field": "title",
+            "terms": [
+              "외국인관광객",
+              "관광객수"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "decision": "publish"
+    },
     {
       "id": "8b68e8f12334e9819d",
       "title": "자동차·가전부터 한우·수산물까지... 최대 50% 할인 정부, ‘제2회 코리아 그랜드 페스티벌(10. 29.~11. 15.)’ 시작",
@@ -178,10 +207,110 @@
       "decision": "exclude"
     },
     {
-      "id": "025e37f8a973b41df1",
-      "title": "‘뤼미에르 파트너십’, ‘국중박 분장놀이’ 등 ‘케이-컬처’ 위상 높인 직원 40명에게 5차 특별성과 포상",
-      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22788",
-      "source_id": "mcst_press",
+      "id": "d800ef6e03d1743f38",
+      "title": "김천시기본통계 ( 9 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007323&boardOrgId=763",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "0540613a2454a61c96",
+      "title": "전라남도완도군기본통계 ( 48 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007118&boardOrgId=750",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "인바운드",
+        "score": 4,
+        "rules": [
+          "explicit_industry_subject"
+        ],
+        "signals": [
+          {
+            "field": "description",
+            "terms": [
+              "관광객수"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "decision": "publish"
+    },
+    {
+      "id": "cfde9290d4eb01c7d3",
+      "title": "산지쌀값조사 ( 1 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2013012&boardOrgId=101",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "5fac1797e17d53ed2c",
+      "title": "부산광역시사하구기본통계 ( 2 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007072&boardOrgId=540",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "bfbb0f2cc90ddc605b",
+      "title": "충청남도서천군기본통계 ( 7 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007308&boardOrgId=706",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "a0fd04f533343be8f2",
+      "title": "비급여진료비용및제증명수수료통계 ( 55 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2020002&boardOrgId=354",
+      "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
         "label": "Irrelevant",
@@ -386,10 +515,10 @@
       "decision": "exclude"
     },
     {
-      "id": "240f94073e3782fed4",
-      "title": "소재·부품·장비산업동향조사 ( 4 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2002026&boardOrgId=115",
-      "source_id": "kosis_recent",
+      "id": "ead29d23fe9b182af4",
+      "title": "셰프 요리 맛보고, 미식어워즈 참관까지! 맛있는 '서울미식주간' 현장",
+      "url": "https://mediahub.seoul.go.kr/archives/2019860",
+      "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",
         "label": "Irrelevant",
@@ -404,92 +533,22 @@
       "decision": "exclude"
     },
     {
-      "id": "71e15ae03ad449fc62",
-      "title": "전남광주통합특별시장흥군기본통계 ( 35 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007114&boardOrgId=742",
-      "source_id": "kosis_recent",
+      "id": "e5d51f8f0f0fc858e6",
+      "title": "가을숲이 미술관으로! 서울창포원 산책길에서 만난 '평화의 잔상'",
+      "url": "https://mediahub.seoul.go.kr/archives/2019863",
+      "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",
         "label": "Irrelevant",
         "decision": "exclude",
         "category": null,
         "score": 0,
-        "rules": [],
+        "rules": [
+          "cross_sentence_unproven"
+        ],
         "signals": [],
         "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "6ea6adfcc8d69c1c49",
-      "title": "부산광역시영도구기본통계 ( 5 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007141&boardOrgId=534",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "56e355c5c7cefea204",
-      "title": "충청남도태안군기본통계 ( 55 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007314&boardOrgId=704",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "d9343a2b12aa217fc0",
-      "title": "통합재정수지 ( 1 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2002001&boardOrgId=184",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "e2f829e6247c969e66",
-      "title": "의성군기본통계 ( 6 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007318&boardOrgId=772",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
       },
       "decision": "exclude"
     },
@@ -515,6 +574,26 @@
       "id": "83f2ba83534a2c3974",
       "title": "뛰고 배우고 기록으로 만나는 스포츠…'국립스포츠박물관' 생겼다",
       "url": "https://mediahub.seoul.go.kr/archives/2019832",
+      "source_id": "seoul_culture",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [
+          "cross_sentence_unproven"
+        ],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "37d2ecadce202d55f7",
+      "title": "잠수교 뚜벅뚜벅 축제 피날레는 치킨 파티! 보행전용교로 새 출발",
+      "url": "https://mediahub.seoul.go.kr/archives/2019842",
       "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -795,70 +874,6 @@
       "id": "101b767a0b43bc25ef",
       "title": "맛집 가세요? 할인·무료 혜택 챙기세요! 서울레스토랑위크",
       "url": "https://mediahub.seoul.go.kr/archives/2019820",
-      "source_id": "seoul_culture",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "662707f53bc2b03aec",
-      "title": "밤 9시까지 문 활짝! '별밤서울'로 퇴근 후 문화생활 즐겨요",
-      "url": "https://mediahub.seoul.go.kr/archives/2019723",
-      "source_id": "seoul_culture",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "786bec98e769f9c4f5",
-      "title": "제주·철원의 로컬 메뉴를 서울에서 맛보세요! '로컬트립 가을소풍'",
-      "url": "https://mediahub.seoul.go.kr/archives/2019815",
-      "source_id": "seoul_culture",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Direct",
-        "decision": "publish",
-        "category": "문화·트렌드",
-        "score": 4,
-        "rules": [
-          "explicit_industry_subject"
-        ],
-        "signals": [
-          {
-            "field": "description",
-            "terms": [
-              "지역관광"
-            ]
-          }
-        ],
-        "impact_targets": [],
-        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
-        "evidence_status": "industry_subject_in_feed"
-      },
-      "decision": "publish"
-    },
-    {
-      "id": "5ea8d12ea0182cb8d1",
-      "title": "연희동 골목마다 감성이 가득! '서울디자인로드'에서 취향을 발견하다",
-      "url": "https://mediahub.seoul.go.kr/archives/2019795",
       "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -1261,6 +1276,24 @@
       "decision": "hold"
     },
     {
+      "id": "1ff64270f7e6e1a8d5",
+      "title": "국회대로 지하차도 31일 폐쇄…'우회도로 확인하고 가세요'",
+      "url": "https://mediahub.seoul.go.kr/archives/2019870",
+      "source_id": "seoul_transport",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
       "id": "34e1ebd1a62fb4e7fc",
       "title": "지하철 7호선, 의정부·양주를 지나 포천까지! 도봉산-옥정 연장선",
       "url": "https://mediahub.seoul.go.kr/archives/2019857",
@@ -1592,24 +1625,6 @@
       "id": "f40ff02c91c1837bbe",
       "title": "9월 기후동행패스 본격 출시! 새 카드 무료 교환하세요",
       "url": "https://mediahub.seoul.go.kr/archives/2019207",
-      "source_id": "seoul_transport",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "537d02a4ed1e47482c",
-      "title": "24세도 신청 가능! 더 좋아진 '서울청년문화패스' 알려 드림",
-      "url": "https://mediahub.seoul.go.kr/archives/2019115",
       "source_id": "seoul_transport",
       "relevance_evidence": {
         "rule_version": "0.2",

@@ -1,14 +1,53 @@
 {
   "schema_version": 2,
   "rule_version": "0.2",
-  "generated_at": "2026-10-27T15:58:36+09:00",
-  "last_successful_fetch": "2026-10-27T15:58:36+09:00",
-  "count": 5,
+  "generated_at": "2026-10-27T17:54:51+09:00",
+  "last_successful_fetch": "2026-10-27T17:54:51+09:00",
+  "count": 7,
   "mode": "live_rss",
   "articles": [
     {
+      "id": "0540613a2454a61c96",
+      "published_at": "2026-10-27T17:46:19+09:00",
+      "date": "2026.10.27",
+      "category": "인바운드",
+      "source": "KOSIS 최근수록자료",
+      "source_id": "kosis_recent",
+      "title": "전라남도완도군기본통계 ( 48 )",
+      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
+      "insight": "원문을 확인한 후 산업적 시사점을 판단해 주세요.",
+      "summary_type": "metadata_only",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007118&boardOrgId=750",
+      "relevance": 4,
+      "relevance_label": "Direct",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "인바운드",
+        "score": 4,
+        "rules": [
+          "explicit_industry_subject"
+        ],
+        "signals": [
+          {
+            "field": "description",
+            "terms": [
+              "관광객수"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "related_sources": [
+        "KOSIS 최근수록자료"
+      ]
+    },
+    {
       "id": "aaa526a940283e25e0",
-      "published_at": "2026-10-27T15:46:36+09:00",
+      "published_at": "2026-10-27T17:46:19+09:00",
       "date": "2026.10.27",
       "category": "항공·숙박",
       "source": "KOSIS 최근수록자료",
@@ -43,6 +82,46 @@
       },
       "related_sources": [
         "KOSIS 최근수록자료"
+      ]
+    },
+    {
+      "id": "8bc7f2380cc82b8067",
+      "published_at": "2026-10-27T16:02:15+09:00",
+      "date": "2026.10.27",
+      "category": "인바운드",
+      "source": "문화체육관광부 보도자료",
+      "source_id": "mcst_press",
+      "title": "방한 외국인 관광객 수, 역대 최고치 기록 두 달 앞당겨 경신",
+      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
+      "insight": "원문을 확인한 후 산업적 시사점을 판단해 주세요.",
+      "summary_type": "metadata_only",
+      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22799",
+      "relevance": 10,
+      "relevance_label": "Direct",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "인바운드",
+        "score": 10,
+        "rules": [
+          "explicit_industry_subject"
+        ],
+        "signals": [
+          {
+            "field": "title",
+            "terms": [
+              "외국인관광객",
+              "관광객수"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "related_sources": [
+        "문화체육관광부 보도자료"
       ]
     },
     {

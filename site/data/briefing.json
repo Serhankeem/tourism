@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-10-28T07:46:30+09:00",
+  "generated_at": "2026-10-28T10:12:20+09:00",
   "status": "candidates_ready",
   "mode": "live_rss",
   "title": "관광산업 주요 뉴스 브리핑 후보",
@@ -39,12 +39,45 @@
       }
     },
     {
+      "id": "2eec08948f98cc110d",
+      "title": "경기도양주시기본통계 ( 109 )",
+      "source": "KOSIS 최근수록자료",
+      "category": "항공·숙박",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007082&boardOrgId=634",
+      "published_at": "2026-10-28T09:46:20+09:00",
+      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
+      "summary_type": "metadata_only",
+      "relevance_label": "Direct",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "항공·숙박",
+        "score": 8,
+        "rules": [
+          "explicit_industry_subject"
+        ],
+        "signals": [
+          {
+            "field": "description",
+            "terms": [
+              "관광숙박",
+              "숙박업"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      }
+    },
+    {
       "id": "0540613a2454a61c96",
-      "title": "전라남도완도군기본통계 ( 51 )",
+      "title": "전라남도완도군기본통계 ( 54 )",
       "source": "KOSIS 최근수록자료",
       "category": "인바운드",
       "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007118&boardOrgId=750",
-      "published_at": "2026-10-27T21:46:14+09:00",
+      "published_at": "2026-10-28T09:46:20+09:00",
       "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
       "summary_type": "metadata_only",
       "relevance_label": "Direct",

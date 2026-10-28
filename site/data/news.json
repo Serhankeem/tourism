@@ -1,19 +1,19 @@
 {
   "schema_version": 2,
   "rule_version": "0.2",
-  "generated_at": "2026-10-28T07:46:30+09:00",
-  "last_successful_fetch": "2026-10-28T07:46:30+09:00",
-  "count": 7,
+  "generated_at": "2026-10-28T10:12:20+09:00",
+  "last_successful_fetch": "2026-10-28T10:12:20+09:00",
+  "count": 8,
   "mode": "live_rss",
   "articles": [
     {
       "id": "0540613a2454a61c96",
-      "published_at": "2026-10-27T21:46:14+09:00",
-      "date": "2026.10.27",
+      "published_at": "2026-10-28T09:46:20+09:00",
+      "date": "2026.10.28",
       "category": "인바운드",
       "source": "KOSIS 최근수록자료",
       "source_id": "kosis_recent",
-      "title": "전라남도완도군기본통계 ( 51 )",
+      "title": "전라남도완도군기본통계 ( 54 )",
       "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
       "insight": "원문을 확인한 후 산업적 시사점을 판단해 주세요.",
       "summary_type": "metadata_only",
@@ -34,6 +34,46 @@
             "field": "description",
             "terms": [
               "관광객수"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "related_sources": [
+        "KOSIS 최근수록자료"
+      ]
+    },
+    {
+      "id": "2eec08948f98cc110d",
+      "published_at": "2026-10-28T09:46:20+09:00",
+      "date": "2026.10.28",
+      "category": "항공·숙박",
+      "source": "KOSIS 최근수록자료",
+      "source_id": "kosis_recent",
+      "title": "경기도양주시기본통계 ( 109 )",
+      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
+      "insight": "원문을 확인한 후 산업적 시사점을 판단해 주세요.",
+      "summary_type": "metadata_only",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007082&boardOrgId=634",
+      "relevance": 8,
+      "relevance_label": "Direct",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "항공·숙박",
+        "score": 8,
+        "rules": [
+          "explicit_industry_subject"
+        ],
+        "signals": [
+          {
+            "field": "description",
+            "terms": [
+              "관광숙박",
+              "숙박업"
             ]
           }
         ],

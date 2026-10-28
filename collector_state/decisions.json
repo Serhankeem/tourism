@@ -1,8 +1,28 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-28T07:46:30+09:00",
+  "checked_at": "2026-10-28T10:12:20+09:00",
   "scope": "successful_sources_this_run",
   "items": [
+    {
+      "id": "d023fb42147f705f17",
+      "title": "문체부 장관, 대중음악 전문 공연장 ‘서울아레나’ 건설 현장 방문",
+      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22801",
+      "source_id": "mcst_press",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [
+          "cross_sentence_unproven"
+        ],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
+      },
+      "decision": "exclude"
+    },
     {
       "id": "8bc7f2380cc82b8067",
       "title": "방한 외국인 관광객 수, 역대 최고치 기록 두 달 앞당겨 경신",
@@ -189,10 +209,195 @@
       "decision": "publish"
     },
     {
-      "id": "7d9c54990db90ec308",
-      "title": "‘공공디자인 페스티벌 2026’으로 지역과 일상을 연결하는 공공디자인을 전국에서 만나세요",
-      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22789",
-      "source_id": "mcst_press",
+      "id": "0540613a2454a61c96",
+      "title": "전라남도완도군기본통계 ( 54 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007118&boardOrgId=750",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "인바운드",
+        "score": 4,
+        "rules": [
+          "explicit_industry_subject"
+        ],
+        "signals": [
+          {
+            "field": "description",
+            "terms": [
+              "관광객수"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "decision": "publish"
+    },
+    {
+      "id": "a4ee789a67b0c2b6fa",
+      "title": "안산시다문화•외국인가구통계 ( 12 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2019040&boardOrgId=619",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "6568434af7ff75db6f",
+      "title": "이천시노인등록통계 ( 45 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2019042&boardOrgId=631",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "a3d31e94ee6f74b683",
+      "title": "생산자물가조사 ( 5 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1966003&boardOrgId=301",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [
+          "cross_sentence_unproven"
+        ],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "0d884c4fc483ec8441",
+      "title": "전문건설업통계조사 ( 11 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1988012&boardOrgId=366",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "2eec08948f98cc110d",
+      "title": "경기도양주시기본통계 ( 109 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007082&boardOrgId=634",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "항공·숙박",
+        "score": 8,
+        "rules": [
+          "explicit_industry_subject"
+        ],
+        "signals": [
+          {
+            "field": "description",
+            "terms": [
+              "관광숙박",
+              "숙박업"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "decision": "publish"
+    },
+    {
+      "id": "4023699ebc37d2d51a",
+      "title": "경상남도거제시기본통계 ( 3 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007101&boardOrgId=799",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "d1e681927436523cc9",
+      "title": "인천광역시미추홀구기본통계 ( 46 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007065&boardOrgId=563",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "c84a64fc7b54b63ce7",
+      "title": "인제군기본통계 ( 71 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007097&boardOrgId=666",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "188e48fe90b13d07c0",
+      "title": "부산광역시기장군기본통계 ( 63 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007075&boardOrgId=546",
+      "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",
         "label": "Irrelevant",
@@ -302,188 +507,6 @@
       "id": "65aec815c5ae223acd",
       "title": "소비자동향조사 ( 3 )",
       "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1998023&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "a3d31e94ee6f74b683",
-      "title": "생산자물가조사 ( 5 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1966003&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [
-          "cross_sentence_unproven"
-        ],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "b1faac18d694f85843",
-      "title": "국민계정 ( 60 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1976017&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "208053900d23a140ee",
-      "title": "대외채무및대외채권 ( 3 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2003033&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "fa9ae394ecf49df795",
-      "title": "기업경기조사 ( 9 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1991004&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "f0b7767a363906623f",
-      "title": "국제수지통계 ( 18 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1976018&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "4a6e8b8fb2aac757a9",
-      "title": "국제투자대조표(IIP) ( 3 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2003008&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "5f3c8b43fd5cbc2754",
-      "title": "산업연관표 ( 34 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1976024&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "6c334860a5a1e83c86",
-      "title": "금융기관대출행태조사 ( 3 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2001022&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "f2154b1240a3a339ae",
-      "title": "펀드산업현황 ( 1 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2006090&boardOrgId=325",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "b47a894e398f663fe4",
-      "title": "경제심리지수 ( 1 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2012013&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",

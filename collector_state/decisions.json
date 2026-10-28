@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-28T10:12:20+09:00",
+  "checked_at": "2026-10-28T11:12:36+09:00",
   "scope": "successful_sources_this_run",
   "items": [
     {
@@ -210,7 +210,7 @@
     },
     {
       "id": "0540613a2454a61c96",
-      "title": "전라남도완도군기본통계 ( 54 )",
+      "title": "전라남도완도군기본통계 ( 60 )",
       "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007118&boardOrgId=750",
       "source_id": "kosis_recent",
       "relevance_evidence": {
@@ -237,6 +237,24 @@
       "decision": "publish"
     },
     {
+      "id": "02a96cf085d5f82822",
+      "title": "충청남도주민등록인구통계 ( 3 )",
+      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1992038&boardOrgId=213",
+      "source_id": "kosis_recent",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
       "id": "a4ee789a67b0c2b6fa",
       "title": "안산시다문화•외국인가구통계 ( 12 )",
       "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2019040&boardOrgId=619",
@@ -256,7 +274,7 @@
     },
     {
       "id": "6568434af7ff75db6f",
-      "title": "이천시노인등록통계 ( 45 )",
+      "title": "이천시노인등록통계 ( 44 )",
       "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2019042&boardOrgId=631",
       "source_id": "kosis_recent",
       "relevance_evidence": {
@@ -489,24 +507,6 @@
       "id": "239111095fe975ceaf",
       "title": "지급결제통계 ( 15 )",
       "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2006012&boardOrgId=301",
-      "source_id": "kosis_recent",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "65aec815c5ae223acd",
-      "title": "소비자동향조사 ( 3 )",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=1998023&boardOrgId=301",
       "source_id": "kosis_recent",
       "relevance_evidence": {
         "rule_version": "0.2",

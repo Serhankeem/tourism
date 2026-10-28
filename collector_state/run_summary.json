@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "checked_at": "2026-10-28T17:30:19+09:00",
+  "checked_at": "2026-10-28T18:00:46+09:00",
   "publication_result": "partial",
   "discovery_status": "partial",
   "received": 570,
-  "new_discoveries": 39,
-  "duplicate_observations": 331,
+  "new_discoveries": 1,
+  "duplicate_observations": 369,
   "new_auto_published": 0,
   "total_published": 27,
   "total_archived": 27,
@@ -15,7 +15,7 @@
   "new_newsroom_items": 0,
   "new_filings": 0,
   "newsroom_korea_direct_count": 13,
-  "newsroom_korea_direct_last7d": 13,
+  "newsroom_korea_direct_last7d": 12,
   "newsroom_by_source": {
     "govuk_aviation": {
       "count": 3,
@@ -31,7 +31,7 @@
     },
     "seoul_culture": {
       "count": 2,
-      "originally_published_last7d": 2,
+      "originally_published_last7d": 1,
       "korea_direct": 2,
       "new_this_run": 0
     },
@@ -68,7 +68,7 @@
     "reference": 10
   },
   "newsroom_originally_published_last24h": 8,
-  "newsroom_originally_published_last7d": 20,
+  "newsroom_originally_published_last7d": 19,
   "newsroom_newly_added_last24h": 18,
   "new_backfilled": 0,
   "record_type_counts": {
@@ -85,12 +85,12 @@
     "문화·트렌드": 5,
     "경제·시장": 0
   },
-  "discovered_last24h": 409,
-  "discovered_last7d": 409,
+  "discovered_last24h": 410,
+  "discovered_last7d": 410,
   "auto_published_last24h": 18,
   "auto_published_last7d": 18,
   "originally_published_last24h": 8,
-  "originally_published_last7d": 20,
+  "originally_published_last7d": 19,
   "sources": [
     {
       "id": "mcst_press",
@@ -859,8 +859,8 @@
       "url": "https://www.yna.co.kr/rss/economy.xml",
       "group": "media",
       "received": 120,
-      "new_discoveries": 2,
-      "duplicates": 118,
+      "new_discoveries": 1,
+      "duplicates": 119,
       "rights_holds": 1,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -978,8 +978,8 @@
       "url": "https://www.ttlnews.com/rss/allArticle.xml",
       "group": "media",
       "received": 50,
-      "new_discoveries": 37,
-      "duplicates": 13,
+      "new_discoveries": 0,
+      "duplicates": 50,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -1012,7 +1012,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     }
   ],
   "outcome": "no_new_publications_with_source_errors"

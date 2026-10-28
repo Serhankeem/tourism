@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
   "mode": "live_rss",
-  "generated_at": "2026-10-28T18:00:46+09:00",
-  "last_successful_fetch": "2026-10-28T18:00:46+09:00",
-  "count": 23,
+  "generated_at": "2026-10-28T19:57:13+09:00",
+  "last_successful_fetch": "2026-10-28T19:57:13+09:00",
+  "count": 24,
   "public_fields": [
     "title",
     "source",
@@ -13,6 +13,17 @@
     "keywords"
   ],
   "articles": [
+    {
+      "title": "뉴욕관광청, 2026 뉴욕 세일즈 미션 개최… 국내 여행업계 관계자 모집",
+      "source": "퍼블릭뉴스통신(TTL)",
+      "published_at": "2026-10-28T17:47:52+09:00",
+      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156237",
+      "category": "여행산업",
+      "keywords": [
+        "관광청",
+        "여행업"
+      ]
+    },
     {
       "title": "최휘영 장관, ‘역대 최대 외래관광객 달성’ 성과 및 ‘3천만‧4천만 명 시대 준비’ 역점 과제 공유",
       "source": "문화체육관광부 보도자료",

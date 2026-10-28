@@ -1,21 +1,21 @@
 {
   "schema_version": 3,
-  "checked_at": "2026-10-28T18:00:46+09:00",
+  "checked_at": "2026-10-28T19:57:13+09:00",
   "publication_result": "partial",
   "discovery_status": "partial",
   "received": 570,
-  "new_discoveries": 1,
-  "duplicate_observations": 369,
-  "new_auto_published": 0,
-  "total_published": 27,
-  "total_archived": 27,
-  "newsroom_count": 23,
+  "new_discoveries": 58,
+  "duplicate_observations": 312,
+  "new_auto_published": 1,
+  "total_published": 28,
+  "total_archived": 28,
+  "newsroom_count": 24,
   "filings_count": 0,
   "other_research_count": 3,
-  "new_newsroom_items": 0,
+  "new_newsroom_items": 1,
   "new_filings": 0,
-  "newsroom_korea_direct_count": 13,
-  "newsroom_korea_direct_last7d": 12,
+  "newsroom_korea_direct_count": 14,
+  "newsroom_korea_direct_last7d": 13,
   "newsroom_by_source": {
     "govuk_aviation": {
       "count": 3,
@@ -48,36 +48,13 @@
       "new_this_run": 0
     },
     "ttlnews": {
-      "count": 1,
-      "originally_published_last7d": 1,
-      "korea_direct": 1,
-      "new_this_run": 0
+      "count": 2,
+      "originally_published_last7d": 2,
+      "korea_direct": 2,
+      "new_this_run": 1
     }
   },
   "newsroom_category_counts": {
-    "관광정책": 1,
-    "인바운드": 4,
-    "여행산업": 5,
-    "항공·숙박": 8,
-    "문화·트렌드": 5,
-    "경제·시장": 0
-  },
-  "newsroom_tier_counts": {
-    "korea_direct": 13,
-    "global_major": 0,
-    "reference": 10
-  },
-  "newsroom_originally_published_last24h": 8,
-  "newsroom_originally_published_last7d": 19,
-  "newsroom_newly_added_last24h": 18,
-  "new_backfilled": 0,
-  "record_type_counts": {
-    "news": 24,
-    "regulatory_filing": 0,
-    "statistical_release": 3,
-    "government_notice": 0
-  },
-  "category_counts": {
     "관광정책": 1,
     "인바운드": 4,
     "여행산업": 6,
@@ -85,12 +62,35 @@
     "문화·트렌드": 5,
     "경제·시장": 0
   },
-  "discovered_last24h": 410,
-  "discovered_last7d": 410,
-  "auto_published_last24h": 18,
-  "auto_published_last7d": 18,
+  "newsroom_tier_counts": {
+    "korea_direct": 14,
+    "global_major": 0,
+    "reference": 10
+  },
+  "newsroom_originally_published_last24h": 8,
+  "newsroom_originally_published_last7d": 20,
+  "newsroom_newly_added_last24h": 19,
+  "new_backfilled": 0,
+  "record_type_counts": {
+    "news": 25,
+    "regulatory_filing": 0,
+    "statistical_release": 3,
+    "government_notice": 0
+  },
+  "category_counts": {
+    "관광정책": 1,
+    "인바운드": 4,
+    "여행산업": 7,
+    "항공·숙박": 8,
+    "문화·트렌드": 5,
+    "경제·시장": 0
+  },
+  "discovered_last24h": 468,
+  "discovered_last7d": 468,
+  "auto_published_last24h": 19,
+  "auto_published_last7d": 19,
   "originally_published_last24h": 8,
-  "originally_published_last7d": 19,
+  "originally_published_last7d": 20,
   "sources": [
     {
       "id": "mcst_press",
@@ -824,16 +824,16 @@
       "url": "https://skift.com/feed/",
       "group": "media",
       "received": 10,
-      "new_discoveries": 0,
-      "duplicates": 10,
-      "rights_holds": 3,
+      "new_discoveries": 1,
+      "duplicates": 9,
+      "rights_holds": 2,
       "date_holds": 0,
       "invalid_metadata": 0,
       "outside_window": 0,
       "classifications": {
-        "Direct": 3,
+        "Direct": 2,
         "Indirect": 0,
-        "Irrelevant": 7
+        "Irrelevant": 8
       },
       "publication_policy": {
         "status": "review",
@@ -851,7 +851,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "no_new_candidate"
+      "outcome": "discovered_not_publishable"
     },
     {
       "id": "yonhap",
@@ -859,8 +859,8 @@
       "url": "https://www.yna.co.kr/rss/economy.xml",
       "group": "media",
       "received": 120,
-      "new_discoveries": 1,
-      "duplicates": 119,
+      "new_discoveries": 7,
+      "duplicates": 113,
       "rights_holds": 1,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -978,8 +978,8 @@
       "url": "https://www.ttlnews.com/rss/allArticle.xml",
       "group": "media",
       "received": 50,
-      "new_discoveries": 0,
-      "duplicates": 50,
+      "new_discoveries": 50,
+      "duplicates": 0,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -1010,10 +1010,10 @@
       },
       "status": "ok",
       "success_rate": 1.0,
-      "new_auto_published": 0,
-      "new_newsroom_items": 0,
-      "outcome": "no_new_candidate"
+      "new_auto_published": 1,
+      "new_newsroom_items": 1,
+      "outcome": "auto_published"
     }
   ],
-  "outcome": "no_new_publications_with_source_errors"
+  "outcome": "new_newsroom_news"
 }

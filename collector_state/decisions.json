@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-28T22:09:15+09:00",
+  "checked_at": "2026-10-29T00:04:07+09:00",
   "scope": "successful_sources_this_run",
   "items": [
     {
@@ -845,9 +845,9 @@
       "decision": "exclude"
     },
     {
-      "id": "f0e37c0774165c5fb0",
-      "title": "춤추는 로봇부터 AI 피부 분석까지! AI가 바꿀 우리의 일상은?",
-      "url": "https://mediahub.seoul.go.kr/archives/2019638",
+      "id": "50b649bdf6f5d69d5d",
+      "title": "AI가 스며든 새로운 서울 풍경 미리보기! '스마트라이프위크 2026' 현장",
+      "url": "https://mediahub.seoul.go.kr/archives/2019637",
       "source_id": "seoul_economy",
       "relevance_evidence": {
         "rule_version": "0.2",
@@ -863,9 +863,9 @@
       "decision": "exclude"
     },
     {
-      "id": "50b649bdf6f5d69d5d",
-      "title": "AI가 스며든 새로운 서울 풍경 미리보기! '스마트라이프위크 2026' 현장",
-      "url": "https://mediahub.seoul.go.kr/archives/2019637",
+      "id": "f0e37c0774165c5fb0",
+      "title": "춤추는 로봇부터 AI 피부 분석까지! AI가 바꿀 우리의 일상은?",
+      "url": "https://mediahub.seoul.go.kr/archives/2019638",
       "source_id": "seoul_economy",
       "relevance_evidence": {
         "rule_version": "0.2",

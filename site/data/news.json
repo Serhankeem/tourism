@@ -1,14 +1,14 @@
 {
   "schema_version": 2,
   "rule_version": "0.2",
-  "generated_at": "2026-10-28T13:56:39+09:00",
-  "last_successful_fetch": "2026-10-28T13:56:39+09:00",
+  "generated_at": "2026-10-28T16:09:42+09:00",
+  "last_successful_fetch": "2026-10-28T16:09:42+09:00",
   "count": 9,
   "mode": "live_rss",
   "articles": [
     {
       "id": "0540613a2454a61c96",
-      "published_at": "2026-10-28T13:46:16+09:00",
+      "published_at": "2026-10-28T15:46:16+09:00",
       "date": "2026.10.28",
       "category": "인바운드",
       "source": "KOSIS 최근수록자료",

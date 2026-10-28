@@ -1,0 +1,97 @@
+{
+  "runs": [
+    {
+      "checked_at": "2026-10-28T17:00:53+09:00",
+      "received": 856,
+      "new_newsroom_items": 14,
+      "newsroom_count": 22,
+      "total_archived": 33,
+      "duplicate_observations": 243,
+      "newsroom_by_source": {
+        "govuk_aviation": {
+          "count": 3,
+          "originally_published_last7d": 0,
+          "korea_direct": 0,
+          "new_this_run": 0
+        },
+        "mcst_press": {
+          "count": 3,
+          "originally_published_last7d": 3,
+          "korea_direct": 3,
+          "new_this_run": 0
+        },
+        "seoul_culture": {
+          "count": 2,
+          "originally_published_last7d": 2,
+          "korea_direct": 2,
+          "new_this_run": 0
+        },
+        "traveldaily": {
+          "count": 6,
+          "originally_published_last7d": 6,
+          "korea_direct": 4,
+          "new_this_run": 6
+        },
+        "traveltimes": {
+          "count": 7,
+          "originally_published_last7d": 7,
+          "korea_direct": 3,
+          "new_this_run": 7
+        },
+        "ttlnews": {
+          "count": 1,
+          "originally_published_last7d": 1,
+          "korea_direct": 1,
+          "new_this_run": 1
+        }
+      }
+    },
+    {
+      "checked_at": "2026-10-28T17:05:45+09:00",
+      "received": 856,
+      "new_newsroom_items": 1,
+      "newsroom_count": 23,
+      "total_archived": 34,
+      "duplicate_observations": 386,
+      "newsroom_by_source": {
+        "govuk_aviation": {
+          "count": 3,
+          "originally_published_last7d": 0,
+          "korea_direct": 0,
+          "new_this_run": 0
+        },
+        "mcst_press": {
+          "count": 3,
+          "originally_published_last7d": 3,
+          "korea_direct": 3,
+          "new_this_run": 0
+        },
+        "seoul_culture": {
+          "count": 2,
+          "originally_published_last7d": 2,
+          "korea_direct": 2,
+          "new_this_run": 0
+        },
+        "traveldaily": {
+          "count": 6,
+          "originally_published_last7d": 6,
+          "korea_direct": 4,
+          "new_this_run": 0
+        },
+        "traveltimes": {
+          "count": 8,
+          "originally_published_last7d": 8,
+          "korea_direct": 3,
+          "new_this_run": 1
+        },
+        "ttlnews": {
+          "count": 1,
+          "originally_published_last7d": 1,
+          "korea_direct": 1,
+          "new_this_run": 0
+        }
+      }
+    }
+  ],
+  "notes": "First final-policy integration added 14 links; explicit OTA operating-policy case added 1 further link. Original publication dates retained. These are validation runs, not production deploys."
+}

@@ -30,8 +30,10 @@ DATA = ROOT / 'site' / 'data'
 USER_AGENT = 'TourismPulseRSS/0.2 (+metadata-only; contact repository maintainer)'
 TRACKING = {'fbclid', 'gclid', 'ref', 'spm', 'source', 'igshid'}
 if __package__:
+    from .editorial import is_statistical, statistical_assessment
     from .relevance import CATEGORIES, LEGACY_CATEGORIES, RULE_VERSION, assess, approve
 else:
+    from editorial import is_statistical, statistical_assessment
     from relevance import CATEGORIES, LEGACY_CATEGORIES, RULE_VERSION, assess, approve
 
 
@@ -132,9 +134,9 @@ def fetch_feed(url, timeout=15):
         return payload
 
 
-def article_from_item(item, source, at=None, reviews=None, include_held=False):
+def article_from_item(item, source, at=None, reviews=None, include_held=False, max_age_days=45):
     at = at or now_kst()
-    title = stripped(item.get('title', ''))[:240]
+    title = stripped(item.get('title', ''))
     description = stripped(item.get('description', item.get('summary', '')))
     url = canonical_url(item.get('link', ''))
     if not title or not url:
@@ -144,10 +146,10 @@ def article_from_item(item, source, at=None, reviews=None, include_held=False):
         return None  # Unknown publication date must never be labeled as fresh news.
     # Invalid dates must not silently become fresh news.
     published = timestamp(date_value, dt.datetime.min.replace(tzinfo=KST))
-    if published > at + dt.timedelta(minutes=5) or published < at - dt.timedelta(days=45):
+    if published > at + dt.timedelta(minutes=5) or published < at - dt.timedelta(days=max_age_days):
         return None
     aid = hashlib.sha256(url.encode('utf-8')).hexdigest()[:18]
-    assessment = assess(title, description)
+    assessment = statistical_assessment() if is_statistical(source) else assess(title, description)
     def review_date(value):
         sentinel = dt.datetime.min.replace(tzinfo=KST)
         parsed = timestamp(value, sentinel)
@@ -164,10 +166,13 @@ def article_from_item(item, source, at=None, reviews=None, include_held=False):
     else:
         desc = '원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)'
         summary_type = 'metadata_only'
+    if is_statistical(source):
+        desc = '통계 수록·갱신 자료입니다. 원문에서 조사 범위와 기준 시점을 확인하세요.'
     return {
+        **({'record_type': 'statistical_release'} if is_statistical(source) else {}),
         'id': aid, 'published_at': iso(published), 'date': published.strftime('%Y.%m.%d'),
         'category': category, 'source': source['name'], 'source_id': source['id'],
-        'title': title[:240], 'desc': desc, 'insight': '원문을 확인한 후 산업적 시사점을 판단해 주세요.',
+        'title': title, 'desc': desc, 'insight': '원문을 확인한 후 산업적 시사점을 판단해 주세요.',
         'summary_type': summary_type, 'url': url, 'relevance': relevance,
         'relevance_label': assessment['label'], 'relevance_evidence': assessment,
         'related_sources': [source['name']]
@@ -179,6 +184,8 @@ def deduplicate(items):
     for article in sorted(items, key=lambda a: a['published_at'], reverse=True):
         match = next((old for old in out if (old['url'] == article['url']) or
             (similarity(old['title'], article['title']) >= .92 and
+             [n.replace(',', '') for n in re.findall(r'\d+(?:[.,]\d+)*', old['title'])] ==
+             [n.replace(',', '') for n in re.findall(r'\d+(?:[.,]\d+)*', article['title'])] and
              abs((timestamp(old['published_at']) - timestamp(article['published_at'])).total_seconds()) < 72 * 3600)), None)
         if match:
             for src in article.get('related_sources', [article['source']]):
@@ -232,7 +239,7 @@ def failure_details(exc):
     return details
 
 
-def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews=None, state_dir=None):
+def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews=None, state_dir=None, retention_days=45, max_articles=450):
     at = at or now_kst()
     state_dir = Path(state_dir) if state_dir is not None else data_dir / 'collector_state'
     news_file, brief_file, health_file = [data_dir / f for f in ('news.json', 'briefing.json', 'health.json')]
@@ -250,22 +257,23 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews
             for item in items:
                 item_url = canonical_url(item.get('link', ''))
                 item_date = timestamp(item.get('pubDate') or item.get('published') or item.get('updated'), dt.datetime.min.replace(tzinfo=KST))
-                if item_url and at - dt.timedelta(days=45) <= item_date <= at + dt.timedelta(minutes=5):
+                if item_url and at - dt.timedelta(days=retention_days) <= item_date <= at + dt.timedelta(minutes=5):
                     seen_ids.add(hashlib.sha256(item_url.encode()).hexdigest()[:18])
-            evaluated = [article_from_item(item, source, at, reviews, include_held=True) for item in items]
+            evaluated = [article_from_item(item, source, at, reviews, include_held=True, max_age_days=retention_days) for item in items]
             news = [a for a in evaluated if a and a['relevance_evidence']['decision'] == 'publish']
             pending = [a for a in evaluated if a and a['relevance_evidence']['decision'] == 'hold']
             found.extend(news)
             held.extend(pending)
             labels = {label: 0 for label in ('Direct', 'Indirect', 'Irrelevant')}
             for item, article in zip(items, evaluated):
-                assessment = assess(stripped(item.get('title', '')), stripped(item.get('description', item.get('summary', ''))))
-                labels[assessment['label']] += 1
+                assessment = statistical_assessment() if is_statistical(source) else assess(stripped(item.get('title', '')), stripped(item.get('description', item.get('summary', ''))))
+                if assessment['label'] in labels:
+                    labels[assessment['label']] += 1
                 evidence = article['relevance_evidence'] if article else assessment
                 item_url = canonical_url(item.get('link', ''))
                 rejected_metadata = article is None and assessment['label'] != 'Irrelevant'
                 decisions.append({'id': hashlib.sha256(item_url.encode()).hexdigest()[:18] if item_url else None,
-                                  'title': stripped(item.get('title', ''))[:240], 'url': item_url,
+                                  'title': stripped(item.get('title', '')), 'url': item_url,
                                   'source_id': source['id'], 'relevance_evidence': evidence,
                                   'decision': 'reject_invalid_metadata' if rejected_metadata else evidence['decision']})
             health.append({'id': source['id'], 'name': source['name'], 'url': source['url'], 'status': 'ok',
@@ -318,7 +326,7 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews
                   'reuse_excerpt': article.get('summary_type') == 'rss_excerpt'}
         migrated = article_from_item({'title': article['title'], 'link': article['url'],
                                      'pubDate': article['published_at'],
-                                     'description': article.get('desc', '')}, source, at, reviews, include_held=True)
+                                     'description': article.get('desc', '')}, source, at, reviews, include_held=True, max_age_days=retention_days)
         if migrated and migrated['relevance_evidence']['decision'] == 'publish':
             migrated['legacy_category'] = article.get('legacy_category', article['category'])
             retained.append(migrated)
@@ -345,8 +353,8 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews
                 retained.append({**pending, 'relevance_evidence': checked})
     candidates = found + retained
     combined = deduplicate(candidates)
-    cutoff = at - dt.timedelta(days=45)
-    combined = [x for x in combined if timestamp(x['published_at']) >= cutoff][:450]
+    cutoff = at - dt.timedelta(days=retention_days)
+    combined = [x for x in combined if timestamp(x['published_at']) >= cutoff][:max_articles]
     mode = 'fixture_demo' if demo else 'live_rss'
     write_atomic(news_file, {'schema_version': 2, 'rule_version': RULE_VERSION, 'generated_at': iso(at), 'last_successful_fetch': last_success, 'count': len(combined), 'mode': mode, 'articles': combined})
     # Queue/state lives outside Pages in the production CLI. Keep candidates
@@ -380,11 +388,21 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews
 
 
 def main():
+    # Keep the old CLI safe: live collection must pass the rights and editorial
+    # gates even when an old README or job invokes collector.py directly.
+    if '--demo' not in sys.argv[1:]:
+        if __package__:
+            from .engine import main as engine_main
+        else:
+            from engine import main as engine_main
+        return engine_main()
     parser = argparse.ArgumentParser()
     parser.add_argument('--demo', action='store_true', help='Use clearly labeled synthetic test RSS instead of live sources')
     parser.add_argument('--reviews', default=str(ROOT / 'relevance_reviews.json'), help='Title-bound editorial approvals for Indirect candidates')
     parser.add_argument('--dir', default=str(DATA), help='Destination for site JSON')
     args = parser.parse_args()
+    if Path(args.dir).resolve() == DATA.resolve():
+        parser.error('Demo requires a separate --dir; production data must not be overwritten')
     sources = json.loads((ROOT / 'sources.json').read_text(encoding='utf-8'))['sources']
     if args.demo:
         demo_file = ROOT / 'fixtures' / 'sample.xml'

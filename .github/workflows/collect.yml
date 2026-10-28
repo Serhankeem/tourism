@@ -4,6 +4,12 @@ on:
     - cron: '17 */2 * * *'
     - cron: '30 1 * * *' # 10:30 Asia/Seoul; GitHub may delay scheduled runs.
   workflow_dispatch:
+    inputs:
+      backfill_days:
+        description: Provider-supplied metadata lookback (no article crawling)
+        type: choice
+        default: '90'
+        options: ['30', '60', '90']
   pull_request:
     branches: [main]
   push:
@@ -13,6 +19,7 @@ on:
       - 'tests/**'
       - 'fixtures/**'
       - 'sources.json'
+      - 'operating_policy.json'
       - 'relevance_reviews.json'
       - 'site/index.html'
       - '.github/workflows/collect.yml'
@@ -49,12 +56,14 @@ jobs:
       - name: Collect real RSS (never demo)
         id: collect
         continue-on-error: true
-        run: python src/collector.py
+        env:
+          BACKFILL_DAYS: ${{ inputs.backfill_days || '90' }}
+        run: python src/engine.py --backfill-days "$BACKFILL_DAYS"
       - name: Save data and failure health records
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add site/data/*.json
+          git add -A -- site/data
           if [ -d collector_state ]; then
             git add collector_state/*.json
           fi
@@ -64,10 +73,7 @@ jobs:
           fi
       - name: Record collection report
         if: always()
-        run: |
-          if [ -f site/data/health.json ]; then
-            cat site/data/health.json >> "$GITHUB_STEP_SUMMARY"
-          fi
+        run: python src/report.py >> "$GITHUB_STEP_SUMMARY"
       - name: Keep diagnostics
         if: always()
         uses: actions/upload-artifact@v4

@@ -15,7 +15,7 @@ LEGACY_CATEGORIES = {'정책': '관광정책', '수요': '인바운드', '산업
 # A subject is an industry concept, not the generic word 관광/여행/항공/문화.
 SUBJECTS = {
     '관광정책': ('관광정책', '관광산업', '관광진흥', '관광예산', '관광기금', '관광비자', '관광세', '무비자', 'tourism policy', 'tourism strategy'),
-    '인바운드': ('외래관광객', '외국인관광객', '방한객', '방한수요', '인바운드', '관광객수', '입국관광객', 'inbound tourism', 'visitor arrivals'),
+    '인바운드': ('외래관광객', '외국인관광객', '방한객', '방한관광객', '방한수요', '인바운드', '관광객수', '입국관광객', 'inbound tourism', 'visitor arrivals'),
     '여행산업': ('여행업', '여행사', '관광기업', '관광스타트업', '관광플랫폼', '여행플랫폼', '국제회의', '컨벤션산업', '마이스산업', 'travel agency', 'convention industry'),
     '항공·숙박': ('호텔업', '호텔시장', '관광숙박', '숙박업', '호텔객실', '객실점유율', '객실공급', '숙박요금', '항공노선', '국제선', '항공운임', '항공사', '여객수요', 'airline routes', 'hospitality'),
     '문화·트렌드': ('지역관광', '관광특구', '관광도시', '관광개발', '관광콘텐츠', '관광활성화', '관광재단', '웰니스관광', '웰니스트래블', 'regional tourism'),
@@ -61,6 +61,58 @@ def matches(text, terms):
     return found
 
 
+def english_industry(title):
+    """Require an industry subject plus an operational/financial change."""
+    text = unicodedata.normalize('NFKC', title).casefold()
+    if re.search(r'\b(exchange rates?|oil prices?|interest rates?)\b', text) and re.search(r'\b(travel demand|tourism spending|hotel bookings)\b', text):
+        return {'label': 'Indirect', 'decision': 'hold', 'category': '경제·시장', 'score': 4,
+                'rules': ['english_cross_sector_impact'], 'signals': [{'field': 'title', 'terms': ['macro_change', 'tourism_impact']}],
+                'impact_targets': ['관광수요'], 'evidence_status': 'explicit_feed_claim' if re.search(r'increas|decreas|affect|reduc', text) else 'insufficient',
+                'reason': '인접 산업 변화가 관광수요에 미치는 원문 근거를 편집 검토해야 합니다.'}
+    if re.search(r'aviation careers|student competition|museum exhibit|photography contest|employee party|birthday|discount coupons?|hotel deals|best hotels|travel tips|bucket list', text):
+        return None
+    action = re.search(r'financial filing|financial results|introduc|digital solution|earnings|revenue|profit|capacity|new route|new flight|launch|expand|opens?\b|opening|demand|fares?|refund|passenger rights|strategy|funding|investment|tourism tax|visitor levy|tourist tax|safeguards|extra charges', text)
+    if not action:
+        return None
+    groups = (
+        ('항공·숙박', r'\b(airline|airlines|air travel|flights?|air passengers?|passengers.*flying|runway|aviation|airport hotel|hotel|hotels|hospitality|marriott|hilton|hyatt|accor)\b|delta air lines|united airlines|jetblue|korean air|asiana airlines'),
+        ('여행산업', r'booking holdings|expedia group|trip\.com group|makemytrip|travel agenc|tour operator|travel technolog|amadeus|sabre'),
+        ('관광정책', r'tourism strategy|tourism funding|tourist tax|tourism tax|visitor levy'),
+        ('경제·시장', r'tourism spending|tourism revenue|visitor economy|tourism investment'),
+        ('인바운드', r'inbound tourism|visitor arrivals'),
+    )
+    for category, pattern in groups:
+        match = re.search(pattern, text)
+        if match:
+            return {'label': 'Direct', 'decision': 'publish', 'category': category, 'score': 8,
+                    'rules': ['english_industry_change'], 'signals': [{'field': 'title', 'terms': [match.group(), action.group()]}],
+                    'impact_targets': [], 'evidence_status': 'industry_subject_in_feed',
+                    'reason': '공식 제목에 관광기업·항공·숙박 등 산업 대상과 운영 또는 재무 변화가 함께 명시되어 있습니다.'}
+    return None
+
+
+def korean_company_change(title):
+    text = compact(title)
+    if matches(text, ('생일행사', '봉사활동', '연예인일상', '직원체육대회')):
+        return None
+    companies = {
+        '항공·숙박': ('대한항공', '아시아나항공', '제주항공', '진에어', '티웨이', '에어부산', '호텔신라', '호텔롯데'),
+        '여행산업': ('야놀자', '여기어때', '하나투어', '모두투어', '노랑풍선', '아고다', '부킹닷컴', '익스피디아', '트립닷컴', '에어비앤비', '세이버'),
+    }
+    changes = matches(text, ('매출', '영업이익', '실적', '인수', '합병', '취항', '증편', '감편', '국제선', '객실공급', '플랫폼출시', '발권개시', '발권서비스', '서비스출시'))
+    if not changes:
+        return None
+    for category, names in companies.items():
+        named = matches(text, names)
+        if named:
+            return {'label': 'Direct', 'decision': 'publish', 'category': category, 'score': 8,
+                    'rules': ['named_company_operating_change'],
+                    'signals': [{'field': 'title', 'terms': named + changes}],
+                    'impact_targets': ['관광기업'], 'evidence_status': 'industry_subject_in_feed',
+                    'reason': '관광기업의 이름과 구체적인 운영·매출·노선 변화가 제목에 함께 명시되어 있습니다.'}
+    return None
+
+
 def assess(title, description=''):
     fields = {'title': compact(title), 'description': compact(description)}
     result = {'rule_version': RULE_VERSION, 'label': 'Irrelevant', 'decision': 'exclude',
@@ -70,6 +122,41 @@ def assess(title, description=''):
         return {**result, 'rules': ['personal_or_generic_travel'], 'reason': '개인 여행·일반 여가 정보는 산업 뉴스에서 제외합니다.'}
     if matches(fields['title'], ('할인쿠폰', '최저가', '추천숙소', '호텔추천')) and not matches(fields['title'], ('시장', '실적', '매출', '정책', '공급', '수요')):
         return {**result, 'rules': ['consumer_promotion'], 'reason': '일반 예약·할인 정보는 산업 뉴스에서 제외합니다.'}
+    # A quantified intent/sales survey is industry demand metadata, not a
+    # recommendation for an individual trip. Preserve the original headline.
+    if (re.search(r'\d+(?:\.\d+)?\s*%', fields['title']) and
+            matches(fields['title'], ('한국인', '국내여행객', '방한객')) and
+            matches(fields['title'], ('숙박계획', '숙박수요', '여행수요')) and
+            matches(fields['title'], ('호텔숙박', '국내여행', '해외여행'))):
+        return {**result, 'label': 'Direct', 'decision': 'publish', 'category': '항공·숙박' if matches(fields['title'], ('호텔숙박',)) else '경제·시장',
+                'score': 6, 'rules': ['quantified_tourism_demand_headline'],
+                'signals': [{'field':'title','terms':matches(fields['title'], ('한국인', '국내여행객', '방한객', '호텔숙박', '숙박계획', '숙박수요', '여행수요'))}],
+                'evidence_status': 'industry_subject_in_feed',
+                'reason': '제목에 관광소비 집단과 정량적 숙박·여행 수요 또는 의향이 함께 명시되어 있습니다. 계획을 실제 실적으로 바꾸지 않습니다.'}
+    organization = matches(fields['title'], ('관광재단', '관광공사', '관광청'))
+    market_action = matches(fields['title'], ('캠페인', '설명회', '로드쇼', '홍보대사', '유치사업'))
+    execution = matches(fields['title'], ('추진', '개최', '운영', '확대', '공략', '위촉', '진행', '성료'))
+    if organization and market_action and execution:
+        return {**result, 'label': 'Direct', 'decision': 'publish', 'category': '문화·트렌드',
+                'score': 6, 'rules': ['tourism_organization_market_action'],
+                'signals': [{'field':'title','terms':organization+market_action+execution}],
+                'evidence_status':'industry_subject_in_feed',
+                'reason':'관광 전담기관의 구체적인 시장 유치·홍보 사업과 실행이 제목에 함께 명시되어 있습니다.'}
+    ota = matches(fields['title'], ('아고다', '부킹닷컴', '익스피디아', '트립닷컴', '에어비앤비'))
+    policy = matches(fields['title'], ('수수료', '퇴실규정', '예약정책', '호스트정산'))
+    policy_change = matches(fields['title'], ('변경', '개편', '인상', '인하', '바뀐다'))
+    if ota and policy and policy_change:
+        return {**result, 'label': 'Direct', 'decision': 'publish', 'category': '여행산업',
+                'score': 6, 'rules': ['ota_operating_policy_change'],
+                'signals': [{'field':'title','terms':ota+policy+policy_change}],
+                'evidence_status':'industry_subject_in_feed',
+                'reason':'OTA의 구체적인 운영·정산·예약 조건과 실제 변경이 제목에 함께 명시되어 있습니다. 한국 시장 적용 여부는 별도입니다.'}
+    company = korean_company_change(title)
+    if company:
+        return {**result, **company}
+    english = english_industry(title)
+    if english:
+        return {**result, **english}
     # Never combine unrelated sentences into a manufactured causal connection.
     for field, raw in (('title', title), ('description', description)):
         for sentence in re.split(r'[.!?。\n]+', raw):
@@ -92,7 +179,8 @@ def assess(title, description=''):
                             'reason': '다른 산업 변화와 관광산업 영향의 근거를 원문에서 검토한 뒤 승인해야 합니다.'}
     # A generic macro/culture headline cannot become Direct from incidental
     # tourism keywords in a different paragraph.
-    cross_headline = any(matches(fields['title'], terms) for terms in SECTORS.values())
+    cross_headline = (any(matches(fields['title'], terms) for terms in SECTORS.values()) or
+                      bool(matches(fields['title'], ('오마카세', '족욕', '맛집', '카페탐방', '차마시'))))
     candidates = []
     for category, terms in SUBJECTS.items():
         for field, raw in (('title', title), ('description', description)):

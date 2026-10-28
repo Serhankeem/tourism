@@ -1,0 +1,324 @@
+{
+  "schema_version": 3,
+  "mode": "live_rss",
+  "generated_at": "2026-10-27T14:55:24+09:00",
+  "last_successful_fetch": "2026-10-27T14:55:24+09:00",
+  "count": 5,
+  "articles": [
+    {
+      "id": "3996ef8ef6c72c5618",
+      "published_at": "2026-10-21T00:00:00+09:00",
+      "date": "2026.10.21",
+      "category": "항공·숙박",
+      "source": "SEC EDGAR · United Airlines",
+      "source_id": "sec_united",
+      "title": "United Airlines Holdings, Inc. — 10-Q financial filing (2026-10-21)",
+      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
+      "insight": "원문을 확인한 후 산업적 시사점을 판단해 주세요.",
+      "summary_type": "metadata_only",
+      "url": "https://www.sec.gov/Archives/edgar/data/100517/000010051726000186/ual-20260930.htm",
+      "relevance": 8,
+      "relevance_label": "Direct",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "항공·숙박",
+        "score": 8,
+        "rules": [
+          "english_industry_change"
+        ],
+        "signals": [
+          {
+            "field": "title",
+            "terms": [
+              "united airlines",
+              "financial filing"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "공식 제목에 관광기업·항공·숙박 등 산업 대상과 운영 또는 재무 변화가 함께 명시되어 있습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "related_sources": [
+        "SEC EDGAR · United Airlines"
+      ],
+      "first_discovered_at": "2026-10-27T13:19:15+09:00",
+      "publication_date_basis": "SEC_filingDate",
+      "date_precision": "date",
+      "record_type": "regulatory_filing",
+      "korea_priority": false,
+      "is_backfill": false,
+      "publication_policy": {
+        "status": "approved",
+        "scope": "metadata_only",
+        "terms_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+        "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
+        "checked_at": "2026-10-27"
+      },
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
+    },
+    {
+      "id": "89defd412d186501a5",
+      "published_at": "2026-10-09T00:00:00+09:00",
+      "date": "2026.10.09",
+      "category": "항공·숙박",
+      "source": "SEC EDGAR · Delta Air Lines",
+      "source_id": "sec_delta",
+      "title": "DELTA AIR LINES, INC. — 10-Q financial filing (2026-10-09)",
+      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
+      "insight": "원문을 확인한 후 산업적 시사점을 판단해 주세요.",
+      "summary_type": "metadata_only",
+      "url": "https://www.sec.gov/Archives/edgar/data/27904/000002790426000038/dal-20260930.htm",
+      "relevance": 8,
+      "relevance_label": "Direct",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "항공·숙박",
+        "score": 8,
+        "rules": [
+          "english_industry_change"
+        ],
+        "signals": [
+          {
+            "field": "title",
+            "terms": [
+              "delta air lines",
+              "financial filing"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "공식 제목에 관광기업·항공·숙박 등 산업 대상과 운영 또는 재무 변화가 함께 명시되어 있습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "related_sources": [
+        "SEC EDGAR · Delta Air Lines"
+      ],
+      "first_discovered_at": "2026-10-27T13:19:15+09:00",
+      "publication_date_basis": "SEC_filingDate",
+      "date_precision": "date",
+      "record_type": "regulatory_filing",
+      "korea_priority": false,
+      "is_backfill": false,
+      "publication_policy": {
+        "status": "approved",
+        "scope": "metadata_only",
+        "terms_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+        "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
+        "checked_at": "2026-10-27"
+      },
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
+    },
+    {
+      "id": "640ad9821c752b15a7",
+      "published_at": "2026-08-06T00:00:00+09:00",
+      "date": "2026.08.06",
+      "category": "여행산업",
+      "source": "SEC EDGAR · Expedia Group",
+      "source_id": "sec_expedia",
+      "title": "Expedia Group, Inc. — 10-Q financial filing (2026-08-06)",
+      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
+      "insight": "원문을 확인한 후 산업적 시사점을 판단해 주세요.",
+      "summary_type": "metadata_only",
+      "url": "https://www.sec.gov/Archives/edgar/data/1324424/000132442426000053/expe-20260630.htm",
+      "relevance": 8,
+      "relevance_label": "Direct",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "여행산업",
+        "score": 8,
+        "rules": [
+          "english_industry_change"
+        ],
+        "signals": [
+          {
+            "field": "title",
+            "terms": [
+              "expedia group",
+              "financial filing"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "공식 제목에 관광기업·항공·숙박 등 산업 대상과 운영 또는 재무 변화가 함께 명시되어 있습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "related_sources": [
+        "SEC EDGAR · Expedia Group"
+      ],
+      "first_discovered_at": "2026-10-27T13:19:15+09:00",
+      "publication_date_basis": "SEC_filingDate",
+      "date_precision": "date",
+      "record_type": "regulatory_filing",
+      "korea_priority": false,
+      "is_backfill": true,
+      "publication_policy": {
+        "status": "approved",
+        "scope": "metadata_only",
+        "terms_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+        "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
+        "checked_at": "2026-10-27"
+      },
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
+    },
+    {
+      "id": "98ccbf39401cf95997",
+      "published_at": "2026-08-04T00:00:00+09:00",
+      "date": "2026.08.04",
+      "category": "여행산업",
+      "source": "SEC EDGAR · Booking Holdings",
+      "source_id": "sec_booking",
+      "title": "Booking Holdings Inc. — 10-Q financial filing (2026-08-04)",
+      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
+      "insight": "원문을 확인한 후 산업적 시사점을 판단해 주세요.",
+      "summary_type": "metadata_only",
+      "url": "https://www.sec.gov/Archives/edgar/data/1075531/000107553126000037/bkng-20260630.htm",
+      "relevance": 8,
+      "relevance_label": "Direct",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "여행산업",
+        "score": 8,
+        "rules": [
+          "english_industry_change"
+        ],
+        "signals": [
+          {
+            "field": "title",
+            "terms": [
+              "booking holdings",
+              "financial filing"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "공식 제목에 관광기업·항공·숙박 등 산업 대상과 운영 또는 재무 변화가 함께 명시되어 있습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "related_sources": [
+        "SEC EDGAR · Booking Holdings"
+      ],
+      "first_discovered_at": "2026-10-27T13:19:15+09:00",
+      "publication_date_basis": "SEC_filingDate",
+      "date_precision": "date",
+      "record_type": "regulatory_filing",
+      "korea_priority": false,
+      "is_backfill": true,
+      "publication_policy": {
+        "status": "approved",
+        "scope": "metadata_only",
+        "terms_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+        "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
+        "checked_at": "2026-10-27"
+      },
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
+    },
+    {
+      "id": "c5c22f63dc89276037",
+      "published_at": "2026-08-03T00:00:00+09:00",
+      "date": "2026.08.03",
+      "category": "항공·숙박",
+      "source": "SEC EDGAR · Marriott International",
+      "source_id": "sec_marriott",
+      "title": "MARRIOTT INTERNATIONAL INC /MD/ — 10-Q financial filing (2026-08-03)",
+      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
+      "insight": "원문을 확인한 후 산업적 시사점을 판단해 주세요.",
+      "summary_type": "metadata_only",
+      "url": "https://www.sec.gov/Archives/edgar/data/1048286/000104828626000035/mar-20260630.htm",
+      "relevance": 8,
+      "relevance_label": "Direct",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "항공·숙박",
+        "score": 8,
+        "rules": [
+          "english_industry_change"
+        ],
+        "signals": [
+          {
+            "field": "title",
+            "terms": [
+              "marriott",
+              "financial filing"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "공식 제목에 관광기업·항공·숙박 등 산업 대상과 운영 또는 재무 변화가 함께 명시되어 있습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      },
+      "related_sources": [
+        "SEC EDGAR · Marriott International"
+      ],
+      "first_discovered_at": "2026-10-27T13:19:15+09:00",
+      "publication_date_basis": "SEC_filingDate",
+      "date_precision": "date",
+      "record_type": "regulatory_filing",
+      "korea_priority": false,
+      "is_backfill": true,
+      "publication_policy": {
+        "status": "approved",
+        "scope": "metadata_only",
+        "terms_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+        "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
+        "checked_at": "2026-10-27"
+      },
+      "first_published_by_engine_at": "2026-10-27T13:19:15+09:00",
+      "editorial": {
+        "version": "0.3-editorial-1",
+        "tier": "reference",
+        "rank": 2,
+        "label": "참고용 해외 산업 자료",
+        "korea_connection": "not_established",
+        "evidence": [],
+        "reason": "한국 관광시장과의 직접 연계 또는 세계 산업 전체의 주요 변화라는 근거가 없어 참고 자료로 관리합니다."
+      }
+    }
+  ]
+}

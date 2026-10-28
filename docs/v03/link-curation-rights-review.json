@@ -1,0 +1,54 @@
+{
+  "checked_on": "2026-10-28",
+  "operating_model": "owner_confirmed_free_ad_free_noncommercial",
+  "scope": "six_field_metadata_link_curation_only",
+  "not_a_written_syndication_contract": true,
+  "committee": {
+    "search_lists": "HTTP 200; relevant title/link/DB questions identified",
+    "detail_pages": "application_error_HTTP_200; answer text NOT verified",
+    "search": "https://www.copyright.or.kr/business/counsel/auto-advice-service/practice/list.do?searchTarget=ALL&searchText=%EB%A7%81%ED%81%AC",
+    "detail_ids": [
+      "3585",
+      "3554",
+      "3512"
+    ],
+    "no_blanket_copyright_exception_claimed": true
+  },
+  "sources": [
+    {
+      "id": "traveltimes",
+      "rss_guide": "https://www.traveltimes.co.kr/rssIndex.html",
+      "service_terms": "https://www.traveltimes.co.kr/com/service.html",
+      "copyright": "https://www.traveltimes.co.kr/com/copyright.html",
+      "review": "Publisher RSS guide describes external-site display of feed titles/links; general works-reuse and commercial-use terms separately reviewed. Current declared noncommercial six-field scope only.",
+      "body_and_images": "not_authorized",
+      "commercial_use": "prior_permission_required",
+      "database_limits": "provider-returned RSS only; recent 7 days; incremental relevant metadata; no article/archive crawling or combined mirrors"
+    },
+    {
+      "id": "traveldaily",
+      "rss_guide": "https://www.traveldaily.co.kr/rssIndex.html",
+      "service_terms": "https://www.traveldaily.co.kr/com/service.html",
+      "copyright": "https://www.traveldaily.co.kr/com/copyright.html",
+      "review": "Publisher RSS guide describes external-site display of feed titles/links; general works-reuse and commercial-use terms separately reviewed. Current declared noncommercial six-field scope only.",
+      "body_and_images": "not_authorized",
+      "commercial_use": "prior_permission_required",
+      "database_limits": "provider-returned RSS only; recent 7 days; incremental relevant metadata; no article/archive crawling or combined mirrors"
+    },
+    {
+      "id": "ttlnews",
+      "rss_guide": "https://www.ttlnews.com/rssIndex.html",
+      "service_terms": "https://www.ttlnews.com/com/service.html",
+      "copyright": "https://www.ttlnews.com/com/copyright.html",
+      "review": "Publisher RSS guide describes external-site display of feed titles/links; general works-reuse and commercial-use terms separately reviewed. Current declared noncommercial six-field scope only.",
+      "body_and_images": "not_authorized",
+      "commercial_use": "prior_permission_required",
+      "database_limits": "provider-returned RSS only; recent 7 days; incremental relevant metadata; no article/archive crawling or combined mirrors"
+    }
+  ],
+  "held_sources": {
+    "newswire": "API approval/authentication absent; title/link model does not override commercial/competing-service restrictions; costs/scope unconfirmed",
+    "koreanair": "RSS personal-sharing permission does not establish public-platform use",
+    "other_company_newsrooms": "official feed/public reuse conditions unverified or access errors; no bypass"
+  }
+}

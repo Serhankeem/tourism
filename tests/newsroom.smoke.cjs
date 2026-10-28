@@ -9,10 +9,15 @@ const assert = require('node:assert/strict');
   const errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   const base=process.env.TOURISM_TEST_URL || 'http://127.0.0.1:8001';
-  const snapshot=await (await page.request.get(base+'/data/news.json')).json();
+  const archiveResponse=await page.request.get(base+'/data/archive.json');
+  assert.equal(archiveResponse.status(),404,'Internal canonical archive must not be deployed');
+  const snapshot=await (await page.request.get(base+'/data/newsroom.json')).json();
   const expectedCount=snapshot.articles.length;
   assert.ok(expectedCount>0,'Browser smoke requires a nonempty real or fixture snapshot');
   const selected=snapshot.articles[0];
+  const fields=['category','keywords','published_at','source','title','url'];
+  for(const a of snapshot.articles)assert.deepEqual(Object.keys(a).sort(),fields);
+  const archiveSnapshot={...snapshot,articles:[...snapshot.articles,{...selected,title:'EXCLUDED SEC FILING',record_type:'regulatory_filing'},{...selected,title:'EXCLUDED KOSIS',source_id:'kosis_recent',record_type:'statistical_release'}]};
   await page.goto(base);
   await page.waitForFunction(()=>!newsLoading);
   assert.equal(await page.locator('#rss-health-chip').textContent(),'PARTIAL FETCH');
@@ -24,11 +29,13 @@ const assert = require('node:assert/strict');
   assert.equal(await page.locator('#modal-title').textContent(),selected.title);
   const selectedCategory=await page.evaluate(c=>normalizeCategory(c),selected.category);
   assert.equal(await page.locator('#modal-category').textContent(),selectedCategory);
-  if(selected.relevance_evidence)assert.match(await page.locator('#modal-impact').textContent(),/Direct|Indirect/);
+  assert.equal(await page.locator('#modal-keywords').textContent(),selected.keywords.join(' · '));
+  assert.equal(await page.locator('#modal-impact,#modal-content,#news-items .news-desc,#overview-news .news-desc').count(),0);
+  assert.equal(await page.locator('#modal-url').getAttribute('href'),selected.url);
   await page.locator('#modal-close').click();
   await page.locator('#news-items [data-bookmark]').click();
   // IDs remain stable when a collection refresh changes ordering.
-  await page.route('**/data/news.json?*',async route=>{
+  await page.route('**/data/newsroom.json?*',async route=>{
    const response=await route.fetch();const data=await response.json();
    data.articles.reverse();await route.fulfill({json:data});
   });
@@ -51,14 +58,23 @@ const assert = require('node:assert/strict');
   const briefing=await (await page.request.get(base+'/data/briefing.json')).json();
   assert.equal(await page.locator('#briefing-state').textContent(),briefing.items.length?'브리핑 후보 생성':'새 기사 없음');
   // Compatibility: old categories still work with new filter buttons.
-  await page.unroute('**/data/news.json?*');
+  await page.unroute('**/data/newsroom.json?*');
   const inverse={'관광정책':'정책','인바운드':'수요','여행산업':'산업','문화·트렌드':'지역','경제·시장':'리서치'};
-  await page.route('**/data/news.json?*',route=>route.fulfill({json:{...snapshot,articles:snapshot.articles.map(a=>({...a,category:inverse[a.category]||a.category}))}}));
+  await page.route('**/data/newsroom.json?*',route=>route.fulfill({status:404,body:'not found'}));
+  await page.route('**/data/news.json?*',route=>route.fulfill({json:{...archiveSnapshot,articles:archiveSnapshot.articles.map(a=>({...a,category:inverse[a.category]||a.category,record_type:a.source_id==='kosis_recent'?undefined:a.record_type}))}}));
   await page.evaluate(()=>loadLiveNews());
   await page.locator('[data-nav="news"]').click();
   await page.locator('[data-filter="'+selectedCategory+'"]').click();
   assert.ok(await page.locator('#news-items .news-item').count()>0);
+  await page.locator('[data-filter="전체"]').click();
+  assert.equal(await page.locator('#news-items .news-item').count(),expectedCount);
+  for(const filing of archiveSnapshot.articles.filter(a=>(a.record_type||'news')!=='news'||a.archived_only)){
+   assert.equal(await page.locator('#news-items').getByText(filing.title,{exact:true}).count(),0);
+  }
+  assert.equal(await page.locator('#news-items .news-title').first().textContent(),snapshot.articles[0].title);
+  for(const a of snapshot.articles){assert.equal(await page.locator('#news-items').getByText(a.title,{exact:true}).getAttribute('href'),a.url);}
+  assert.equal(await page.locator('#news-items img').count(),0);
   assert.deepEqual(errors,[]);
-  console.log('PASS: live articles, search, detail, stable bookmark, partial/all-failure status, preservation, briefing and legacy category filters; no JS errors');
+  console.log('PASS: live articles, search, detail, stable bookmark, partial/all-failure status, preservation, briefing and legacy fallback, six-field link curation, filing/statistics exclusion and internal archive isolation; no JS errors');
  } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

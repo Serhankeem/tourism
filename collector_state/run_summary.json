@@ -1,18 +1,18 @@
 {
   "schema_version": 3,
-  "checked_at": "2026-10-28T17:22:18+09:00",
+  "checked_at": "2026-10-28T17:30:19+09:00",
   "publication_result": "partial",
   "discovery_status": "partial",
   "received": 570,
-  "new_discoveries": 370,
-  "duplicate_observations": 0,
-  "new_auto_published": 18,
+  "new_discoveries": 39,
+  "duplicate_observations": 331,
+  "new_auto_published": 0,
   "total_published": 27,
   "total_archived": 27,
   "newsroom_count": 23,
   "filings_count": 0,
   "other_research_count": 3,
-  "new_newsroom_items": 18,
+  "new_newsroom_items": 0,
   "new_filings": 0,
   "newsroom_korea_direct_count": 13,
   "newsroom_korea_direct_last7d": 13,
@@ -21,7 +21,7 @@
       "count": 3,
       "originally_published_last7d": 0,
       "korea_direct": 0,
-      "new_this_run": 3
+      "new_this_run": 0
     },
     "mcst_press": {
       "count": 3,
@@ -39,19 +39,19 @@
       "count": 6,
       "originally_published_last7d": 6,
       "korea_direct": 4,
-      "new_this_run": 6
+      "new_this_run": 0
     },
     "traveltimes": {
       "count": 8,
       "originally_published_last7d": 8,
       "korea_direct": 3,
-      "new_this_run": 8
+      "new_this_run": 0
     },
     "ttlnews": {
       "count": 1,
       "originally_published_last7d": 1,
       "korea_direct": 1,
-      "new_this_run": 1
+      "new_this_run": 0
     }
   },
   "newsroom_category_counts": {
@@ -70,7 +70,7 @@
   "newsroom_originally_published_last24h": 8,
   "newsroom_originally_published_last7d": 20,
   "newsroom_newly_added_last24h": 18,
-  "new_backfilled": 1,
+  "new_backfilled": 0,
   "record_type_counts": {
     "news": 24,
     "regulatory_filing": 0,
@@ -85,8 +85,8 @@
     "문화·트렌드": 5,
     "경제·시장": 0
   },
-  "discovered_last24h": 370,
-  "discovered_last7d": 370,
+  "discovered_last24h": 409,
+  "discovered_last7d": 409,
   "auto_published_last24h": 18,
   "auto_published_last7d": 18,
   "originally_published_last24h": 8,
@@ -98,8 +98,8 @@
       "url": "https://www.mcst.go.kr/common/rss/press.jsp",
       "group": "public",
       "received": 10,
-      "new_discoveries": 10,
-      "duplicates": 0,
+      "new_discoveries": 0,
+      "duplicates": 10,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -125,7 +125,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "korea_net_travel",
@@ -207,8 +207,8 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/06",
       "group": "public",
       "received": 20,
-      "new_discoveries": 20,
-      "duplicates": 0,
+      "new_discoveries": 0,
+      "duplicates": 20,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -234,7 +234,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "seoul_economy",
@@ -242,8 +242,8 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/04",
       "group": "public",
       "received": 20,
-      "new_discoveries": 20,
-      "duplicates": 0,
+      "new_discoveries": 0,
+      "duplicates": 20,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -269,7 +269,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "seoul_transport",
@@ -277,8 +277,8 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/01",
       "group": "public",
       "received": 20,
-      "new_discoveries": 20,
-      "duplicates": 0,
+      "new_discoveries": 0,
+      "duplicates": 20,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -304,7 +304,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "seoul_environment",
@@ -643,8 +643,8 @@
       "url": "https://www.gov.uk/api/search.json?q=tourism&filter_format=press_release&count=100&fields=title%2Clink%2Cpublic_timestamp%2Cformat&order=-public_timestamp",
       "group": "global",
       "received": 100,
-      "new_discoveries": 11,
-      "duplicates": 0,
+      "new_discoveries": 0,
+      "duplicates": 11,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -672,7 +672,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "govuk_aviation",
@@ -680,8 +680,8 @@
       "url": "https://www.gov.uk/api/search.json?q=aviation&filter_format=press_release&count=100&fields=title%2Clink%2Cpublic_timestamp%2Cformat&order=-public_timestamp",
       "group": "global",
       "received": 100,
-      "new_discoveries": 9,
-      "duplicates": 0,
+      "new_discoveries": 0,
+      "duplicates": 9,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -707,9 +707,9 @@
       },
       "status": "ok",
       "success_rate": 1.0,
-      "new_auto_published": 3,
-      "new_newsroom_items": 3,
-      "outcome": "auto_published"
+      "new_auto_published": 0,
+      "new_newsroom_items": 0,
+      "outcome": "no_new_candidate"
     },
     {
       "id": "koreanair",
@@ -717,8 +717,8 @@
       "url": "https://news.koreanair.com/feed/",
       "group": "company",
       "received": 10,
-      "new_discoveries": 10,
-      "duplicates": 0,
+      "new_discoveries": 0,
+      "duplicates": 10,
       "rights_holds": 2,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -744,7 +744,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "tripcom_news",
@@ -789,8 +789,8 @@
       "url": "https://stories.hilton.com/feed",
       "group": "company",
       "received": 10,
-      "new_discoveries": 10,
-      "duplicates": 0,
+      "new_discoveries": 0,
+      "duplicates": 10,
       "rights_holds": 2,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -816,7 +816,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "skift",
@@ -824,8 +824,8 @@
       "url": "https://skift.com/feed/",
       "group": "media",
       "received": 10,
-      "new_discoveries": 10,
-      "duplicates": 0,
+      "new_discoveries": 0,
+      "duplicates": 10,
       "rights_holds": 3,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -851,7 +851,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "yonhap",
@@ -859,8 +859,8 @@
       "url": "https://www.yna.co.kr/rss/economy.xml",
       "group": "media",
       "received": 120,
-      "new_discoveries": 120,
-      "duplicates": 0,
+      "new_discoveries": 2,
+      "duplicates": 118,
       "rights_holds": 1,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -894,8 +894,8 @@
       "url": "https://www.traveltimes.co.kr/rss/allArticle.xml",
       "group": "media",
       "received": 50,
-      "new_discoveries": 30,
-      "duplicates": 0,
+      "new_discoveries": 0,
+      "duplicates": 30,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -926,9 +926,9 @@
       },
       "status": "ok",
       "success_rate": 1.0,
-      "new_auto_published": 8,
-      "new_newsroom_items": 8,
-      "outcome": "auto_published"
+      "new_auto_published": 0,
+      "new_newsroom_items": 0,
+      "outcome": "no_new_candidate"
     },
     {
       "id": "traveldaily",
@@ -936,8 +936,8 @@
       "url": "https://www.traveldaily.co.kr/rss/allArticle.xml",
       "group": "media",
       "received": 50,
-      "new_discoveries": 50,
-      "duplicates": 0,
+      "new_discoveries": 0,
+      "duplicates": 50,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -968,9 +968,9 @@
       },
       "status": "ok",
       "success_rate": 1.0,
-      "new_auto_published": 6,
-      "new_newsroom_items": 6,
-      "outcome": "auto_published"
+      "new_auto_published": 0,
+      "new_newsroom_items": 0,
+      "outcome": "no_new_candidate"
     },
     {
       "id": "ttlnews",
@@ -978,8 +978,8 @@
       "url": "https://www.ttlnews.com/rss/allArticle.xml",
       "group": "media",
       "received": 50,
-      "new_discoveries": 50,
-      "duplicates": 0,
+      "new_discoveries": 37,
+      "duplicates": 13,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -1010,10 +1010,10 @@
       },
       "status": "ok",
       "success_rate": 1.0,
-      "new_auto_published": 1,
-      "new_newsroom_items": 1,
-      "outcome": "auto_published"
+      "new_auto_published": 0,
+      "new_newsroom_items": 0,
+      "outcome": "discovered_not_publishable"
     }
   ],
-  "outcome": "new_newsroom_news"
+  "outcome": "no_new_publications_with_source_errors"
 }

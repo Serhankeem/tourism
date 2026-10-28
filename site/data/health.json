@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-28T19:57:13+09:00",
-  "last_successful_fetch": "2026-10-28T19:57:13+09:00",
+  "checked_at": "2026-10-28T22:09:15+09:00",
+  "last_successful_fetch": "2026-10-28T22:09:15+09:00",
   "status": "partial",
   "sources": [
     {
@@ -235,17 +235,17 @@
       "url": "https://www.traveldaily.co.kr/rss/allArticle.xml",
       "status": "ok",
       "rss_items": 50,
-      "matched": 6,
+      "matched": 5,
       "held": 0,
       "relevance_counts": {
-        "Direct": 6,
+        "Direct": 5,
         "Indirect": 0,
-        "Irrelevant": 44
+        "Irrelevant": 45
       },
       "category_published": {
         "관광정책": 0,
         "인바운드": 0,
-        "여행산업": 2,
+        "여행산업": 1,
         "항공·숙박": 2,
         "문화·트렌드": 2,
         "경제·시장": 0
@@ -289,19 +289,19 @@
   "review_queue_count": 1,
   "discovery": {
     "schema_version": 3,
-    "checked_at": "2026-10-28T19:57:13+09:00",
+    "checked_at": "2026-10-28T22:09:15+09:00",
     "publication_result": "partial",
     "discovery_status": "partial",
     "received": 570,
-    "new_discoveries": 58,
-    "duplicate_observations": 312,
-    "new_auto_published": 1,
+    "new_discoveries": 21,
+    "duplicate_observations": 349,
+    "new_auto_published": 0,
     "total_published": 28,
     "total_archived": 28,
     "newsroom_count": 24,
     "filings_count": 0,
     "other_research_count": 3,
-    "new_newsroom_items": 1,
+    "new_newsroom_items": 0,
     "new_filings": 0,
     "newsroom_korea_direct_count": 14,
     "newsroom_korea_direct_last7d": 13,
@@ -340,7 +340,7 @@
         "count": 2,
         "originally_published_last7d": 2,
         "korea_direct": 2,
-        "new_this_run": 1
+        "new_this_run": 0
       }
     },
     "newsroom_category_counts": {
@@ -356,7 +356,7 @@
       "global_major": 0,
       "reference": 10
     },
-    "newsroom_originally_published_last24h": 8,
+    "newsroom_originally_published_last24h": 4,
     "newsroom_originally_published_last7d": 20,
     "newsroom_newly_added_last24h": 19,
     "new_backfilled": 0,
@@ -374,11 +374,11 @@
       "문화·트렌드": 5,
       "경제·시장": 0
     },
-    "discovered_last24h": 468,
-    "discovered_last7d": 468,
+    "discovered_last24h": 489,
+    "discovered_last7d": 489,
     "auto_published_last24h": 19,
     "auto_published_last7d": 19,
-    "originally_published_last24h": 8,
+    "originally_published_last24h": 4,
     "originally_published_last7d": 20,
     "sources": [
       {
@@ -1078,8 +1078,8 @@
         "url": "https://stories.hilton.com/feed",
         "group": "company",
         "received": 10,
-        "new_discoveries": 0,
-        "duplicates": 10,
+        "new_discoveries": 1,
+        "duplicates": 9,
         "rights_holds": 2,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1105,7 +1105,7 @@
         "success_rate": 1.0,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
-        "outcome": "no_new_candidate"
+        "outcome": "discovered_not_publishable"
       },
       {
         "id": "skift",
@@ -1113,8 +1113,8 @@
         "url": "https://skift.com/feed/",
         "group": "media",
         "received": 10,
-        "new_discoveries": 1,
-        "duplicates": 9,
+        "new_discoveries": 3,
+        "duplicates": 7,
         "rights_holds": 2,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1148,8 +1148,8 @@
         "url": "https://www.yna.co.kr/rss/economy.xml",
         "group": "media",
         "received": 120,
-        "new_discoveries": 7,
-        "duplicates": 113,
+        "new_discoveries": 2,
+        "duplicates": 118,
         "rights_holds": 1,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1225,16 +1225,16 @@
         "url": "https://www.traveldaily.co.kr/rss/allArticle.xml",
         "group": "media",
         "received": 50,
-        "new_discoveries": 0,
-        "duplicates": 50,
+        "new_discoveries": 15,
+        "duplicates": 35,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,
         "outside_window": 0,
         "classifications": {
-          "Direct": 6,
+          "Direct": 5,
           "Indirect": 0,
-          "Irrelevant": 44
+          "Irrelevant": 45
         },
         "publication_policy": {
           "status": "approved",
@@ -1259,7 +1259,7 @@
         "success_rate": 1.0,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
-        "outcome": "no_new_candidate"
+        "outcome": "discovered_not_publishable"
       },
       {
         "id": "ttlnews",
@@ -1267,8 +1267,8 @@
         "url": "https://www.ttlnews.com/rss/allArticle.xml",
         "group": "media",
         "received": 50,
-        "new_discoveries": 50,
-        "duplicates": 0,
+        "new_discoveries": 0,
+        "duplicates": 50,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1299,11 +1299,11 @@
         },
         "status": "ok",
         "success_rate": 1.0,
-        "new_auto_published": 1,
-        "new_newsroom_items": 1,
-        "outcome": "auto_published"
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "no_new_candidate"
       }
     ],
-    "outcome": "new_newsroom_news"
+    "outcome": "no_new_publications_with_source_errors"
   }
 }

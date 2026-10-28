@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-28T19:57:13+09:00",
+  "checked_at": "2026-10-28T22:09:15+09:00",
   "scope": "successful_sources_this_run",
   "items": [
     {
@@ -2033,6 +2033,276 @@
       "decision": "exclude"
     },
     {
+      "id": "d6fb95952150805cbd",
+      "title": "'체코' 직항 주 10회 시대 오나",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72491",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "0633091002326e02b3",
+      "title": "K-MICE의 가치 국회서 재조명",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72490",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "f5fa1d1432d664e8d7",
+      "title": "뉴욕관광청, 세일즈 미션 업계 참가자 모집",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72489",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "5e53831a1e97a233ab",
+      "title": "모로코…관광 발전지수 개선율 세계 8위",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72488",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "c20776ec3f8beba03c",
+      "title": "‘지구상 최고의 눈’이 돌아온다",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72487",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "0b802c4a63e1149d86",
+      "title": "이스타항공, 인천~샤먼 노선 취항",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72486",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "0119639b613dfeae07",
+      "title": "에어서울, 인천~요나고 데일리 운항 재개",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72485",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "c1435f5f6c2e6fb78f",
+      "title": "아고다, 대한민국 스타트업과 여행 테크 혁신 논의",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72484",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "4f611622116d5b4a82",
+      "title": "모두투어, 유럽 ‘크리스마스 마켓’ 기획전 출시",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72483",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "bfb9adfba6fc0cc802",
+      "title": "크루지아, 기륭 출발 크루즈 일정 소개",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72482",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "14024adcd3380a567d",
+      "title": "할로윈 감성 가득한 코타키나발루의 밤",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72481",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "60c877ab9654f2aaa5",
+      "title": "‘하와이 프린스 와이키키’ 새 선장 맞고 2막 연다",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72480",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "0ac1edafcafaf2ed9a",
+      "title": "만다린 오리엔탈 그룹, 지속가능성 플랫폼 공개",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72479",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "6aa003616f9250ef8d",
+      "title": "부산관공, ‘2026 MEET IN BUSAN’ 개최",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72478",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "b9620c6fc0e2d7a4aa",
+      "title": "교원투어, ‘아이와 함께 떠나는 겨울여행’ 기획전",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72477",
+      "source_id": "traveldaily",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
       "id": "ac2a82ef5fc7318487",
       "title": "세이버 ‘KE’ 발권 개시, 여행사 GDS 선택권 확대",
       "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72475",
@@ -2711,286 +2981,6 @@
       "id": "a6fa08a32392418ea8",
       "title": "대만 관광 홍보대사 ‘김혜윤’ 위촉",
       "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72443",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "505c413f80fcce02f9",
-      "title": "여행가는 달, 춘식이와 가을여행 톡! 떠나자",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72442",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "14ea7f563b3a39a702",
-      "title": "‘체코 크리스마스’ 미리 보기",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72441",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "958bd255f860c26569",
-      "title": "부산관광 스타트업 성장 날개",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72440",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Direct",
-        "decision": "publish",
-        "category": "여행산업",
-        "score": 6,
-        "rules": [
-          "explicit_industry_subject"
-        ],
-        "signals": [
-          {
-            "field": "title",
-            "terms": [
-              "관광스타트업"
-            ]
-          }
-        ],
-        "impact_targets": [],
-        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
-        "evidence_status": "industry_subject_in_feed"
-      },
-      "decision": "publish"
-    },
-    {
-      "id": "6d0c798e64ef8f797a",
-      "title": "한진트래블, ‘크로아티아·슬로베니아 9일’ 출시",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72439",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "478ef8da1ae5590c9b",
-      "title": "노랑풍선, ‘오사카 풀패키지’ 선봬",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72438",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "4609a5ebb3292e93a8",
-      "title": "관광 해설도 진화…제주의 숨은 이야기",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72437",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "fb5eb339c0335bca08",
-      "title": "에어프랑스, 미쉐린 셰프 협업 확대",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72436",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "3828081ea003b2bf72",
-      "title": "[주말판] 또 다른 캐나다 여행 법",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72434",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "372794546fd3d55f60",
-      "title": "항공사 ‘위약금’ 도마 위",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72433",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "85c9ec1a1e5b4242dd",
-      "title": "하나투어, 동계 시즌 한정 시엠립 직항 전세기 운영",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72432",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "d7fd0ad45807d2ec37",
-      "title": "‘한국방문의 해’ 성공 위해 민‧관‧학 ‘원팀’ 가동",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72431",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "16164e701dc4ad939a",
-      "title": "아울렛시티 메칭엔, TK 마일스앤스마일스와 제휴",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72429",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "6630d2941e23c6535f",
-      "title": "‘대한민국의 10년을 찍다’",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72428",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "d444a4af61fdcefa27",
-      "title": "대자연이 숨 쉬는 섬, ‘보홀’로 떠나는 가을 여정",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72427",
-      "source_id": "traveldaily",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "311680e2c5c2da4eae",
-      "title": "‘비짓부산패스’ 신규 무료 가맹점 모집",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72426",
       "source_id": "traveldaily",
       "relevance_evidence": {
         "rule_version": "0.2",

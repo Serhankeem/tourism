@@ -1,21 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-28T19:57:13+09:00",
+  "generated_at": "2026-10-28T22:09:15+09:00",
   "status": "candidates_ready",
   "mode": "live_rss",
   "title": "관광산업 주요 뉴스 브리핑 후보",
   "items": [
-    {
-      "title": "진에어, 12월 24일 인천~호찌민 취항",
-      "source": "트래블데일리",
-      "published_at": "2026-10-27T20:59:01+09:00",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72472",
-      "category": "항공·숙박",
-      "keywords": [
-        "진에어",
-        "취항"
-      ]
-    },
     {
       "title": "뉴욕관광청, 2026 뉴욕 세일즈 미션 개최… 국내 여행업계 관계자 모집",
       "source": "퍼블릭뉴스통신(TTL)",
@@ -42,16 +31,6 @@
       "source": "퍼블릭뉴스통신(TTL)",
       "published_at": "2026-10-28T10:07:20+09:00",
       "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156140",
-      "category": "문화·트렌드",
-      "keywords": [
-        "관광재단"
-      ]
-    },
-    {
-      "title": "서울관광재단, ‘사계절 매력적인 서울’ 설명회 성료",
-      "source": "트래블데일리",
-      "published_at": "2026-10-27T20:58:50+09:00",
-      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72465",
       "category": "문화·트렌드",
       "keywords": [
         "관광재단"

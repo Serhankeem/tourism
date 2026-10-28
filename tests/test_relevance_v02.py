@@ -152,7 +152,11 @@ class RelevanceV02Tests(unittest.TestCase):
         sources = json.loads((root / 'sources.json').read_text())['sources']
         self.assertTrue({'mcst_press', 'korea_net_travel', 'kosis_recent', 'seoul_culture'}.issubset({s['id'] for s in sources}))
         self.assertTrue(all(not s['reuse_excerpt'] for s in sources))
-        self.assertFalse(any('traveltimes' in s['url'] for s in sources))
+        travel=next(s for s in sources if s['id']=='traveltimes')
+        self.assertTrue(travel['publication']['noncommercial_only'])
+        self.assertEqual(travel['analysis_fields'],['title'])
+        self.assertEqual(travel['publication']['scope'],'metadata_only')
+        self.assertEqual(travel['publication']['body_reuse'],'not_authorized')
 
     def test_health_counts_differ_from_published_and_held(self):
         with tempfile.TemporaryDirectory() as tmp:

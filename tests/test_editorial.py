@@ -95,11 +95,11 @@ class EditorialTests(unittest.TestCase):
             self.assertEqual(summary['newsroom_originally_published_last24h'],1)
             self.assertEqual(summary['new_newsroom_items'],1)
             self.assertEqual(summary['new_filings'],1)
-            self.assertEqual(json.loads((root/'site/archive.json').read_text())['count'],2)
+            self.assertEqual(json.loads((root/'state/archive.json').read_text())['count'],2)
             self.assertEqual(json.loads((root/'site/news.json').read_text())['count'],1)
             self.assertEqual(json.loads((root/'site/newsroom.json').read_text())['count'],1)
             self.assertEqual(json.loads((root/'site/filings.json').read_text())['count'],1)
-            self.assertTrue(all(a['record_type']=='news' for a in json.loads((root/'site/briefing.json').read_text())['items']))
+            self.assertTrue(all(set(a)=={'title','source','published_at','url','category','keywords'} for a in json.loads((root/'site/briefing.json').read_text())['items']))
 
     def test_reference_news_does_not_fill_daily_briefing(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -112,11 +112,11 @@ class EditorialTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
             execute([source()],root/'site',root/'state',at=AT,loader=lambda _:feed('대한항공 매출 증가'))
-            files=('archive.json','news.json','newsroom.json','filings.json','research.json','briefing.json')
-            before={n:(root/'site'/n).read_bytes() for n in files}
+            files=[root/'state/archive.json']+[root/'site'/n for n in ('news.json','newsroom.json','filings.json','research.json','briefing.json')]
+            before={p:p.read_bytes() for p in files}
             def fail(_):raise OSError('outage')
             execute([source()],root/'site',root/'state',at=AT,loader=fail)
-            for name,expected in before.items():self.assertEqual((root/'site'/name).read_bytes(),expected)
+            for path,expected in before.items():self.assertEqual(path.read_bytes(),expected)
 
     def test_korean_company_as_commentator_is_not_market_evidence(self):
         data=article('대한항공이 본 미국 항공사 매출 증가')
@@ -129,7 +129,7 @@ class EditorialTests(unittest.TestCase):
             old=c.article_from_item({'title':'관광정책 발표','link':'https://example.org/old','pubDate':past.isoformat()},SRC,past)
             c.write_atomic(root/'site/news.json',{'mode':'live_rss','count':1,'articles':[old]})
             summary=execute([source()],root/'site',root/'state',at=AT,loader=lambda _:b'<rss><channel/></rss>')
-            kept=json.loads((root/'site/archive.json').read_text())['articles'][0]
+            kept=json.loads((root/'state/archive.json').read_text())['articles'][0]
             self.assertEqual(kept['id'],old['id'])
             self.assertEqual(kept['published_at'],old['published_at'])
             self.assertTrue(kept['archived_only'])

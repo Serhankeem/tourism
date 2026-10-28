@@ -136,7 +136,7 @@ def fetch_feed(url, timeout=15):
 
 def article_from_item(item, source, at=None, reviews=None, include_held=False, max_age_days=45):
     at = at or now_kst()
-    title = stripped(item.get('title', ''))[:240]
+    title = stripped(item.get('title', ''))
     description = stripped(item.get('description', item.get('summary', '')))
     url = canonical_url(item.get('link', ''))
     if not title or not url:
@@ -172,7 +172,7 @@ def article_from_item(item, source, at=None, reviews=None, include_held=False, m
         **({'record_type': 'statistical_release'} if is_statistical(source) else {}),
         'id': aid, 'published_at': iso(published), 'date': published.strftime('%Y.%m.%d'),
         'category': category, 'source': source['name'], 'source_id': source['id'],
-        'title': title[:240], 'desc': desc, 'insight': '원문을 확인한 후 산업적 시사점을 판단해 주세요.',
+        'title': title, 'desc': desc, 'insight': '원문을 확인한 후 산업적 시사점을 판단해 주세요.',
         'summary_type': summary_type, 'url': url, 'relevance': relevance,
         'relevance_label': assessment['label'], 'relevance_evidence': assessment,
         'related_sources': [source['name']]
@@ -273,7 +273,7 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews
                 item_url = canonical_url(item.get('link', ''))
                 rejected_metadata = article is None and assessment['label'] != 'Irrelevant'
                 decisions.append({'id': hashlib.sha256(item_url.encode()).hexdigest()[:18] if item_url else None,
-                                  'title': stripped(item.get('title', ''))[:240], 'url': item_url,
+                                  'title': stripped(item.get('title', '')), 'url': item_url,
                                   'source_id': source['id'], 'relevance_evidence': evidence,
                                   'decision': 'reject_invalid_metadata' if rejected_metadata else evidence['decision']})
             health.append({'id': source['id'], 'name': source['name'], 'url': source['url'], 'status': 'ok',

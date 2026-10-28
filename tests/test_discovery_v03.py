@@ -50,10 +50,10 @@ class DiscoveryV03Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             first = execute([source()], root/'site', root/'state', at=AT, loader=lambda _: feed('국제선 항공노선 확대'))
-            old = json.loads((root/'site/news.json').read_text())['articles'][0]
+            old = json.loads((root/'state/archive.json').read_text())['articles'][0]
             later = AT + dt.timedelta(hours=2)
             second = execute([source()], root/'site', root/'state', at=later, loader=lambda _: feed('국제선 항공노선 확대'))
-            article = json.loads((root/'site/news.json').read_text())['articles'][0]
+            article = json.loads((root/'state/archive.json').read_text())['articles'][0]
             self.assertEqual(first['new_auto_published'], 1)
             self.assertEqual(second['new_auto_published'], 0)
             self.assertEqual(second['new_discoveries'], 0)
@@ -82,7 +82,7 @@ class DiscoveryV03Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             summary = execute([source()], root/'site', root/'state', at=AT, loader=lambda _: feed('관광정책 발표', pub=pub))
-            article = json.loads((root/'site/news.json').read_text())['articles'][0]
+            article = json.loads((root/'state/archive.json').read_text())['articles'][0]
             self.assertEqual(article['published_at'], pub)
             self.assertTrue(article['is_backfill'])
             self.assertEqual(summary['new_backfilled'], 1)
@@ -186,7 +186,7 @@ class DiscoveryV03Tests(unittest.TestCase):
             root=Path(tmp)
             src=source(adapter='govuk_search',url='https://www.gov.uk/api/search.json?q=aviation')
             execute([src],root/'site',root/'state',at=AT,loader=load)
-            article=json.loads((root/'site/news.json').read_text())['articles'][0]
+            article=json.loads((root/'state/archive.json').read_text())['articles'][0]
             self.assertEqual(article['published_at'],(AT-dt.timedelta(days=30)).isoformat())
             self.assertNotIn('PROTECTED FULL BODY', (root/'state/discovery.json').read_text())
             self.assertNotIn('PROTECTED FULL BODY', (root/'site/news.json').read_text())
@@ -201,7 +201,7 @@ class DiscoveryV03Tests(unittest.TestCase):
             c.write_atomic(root/'site/news.json',original)
             execute([source()],root/'site',root/'state',at=AT,loader=lambda _:feed('국제선 운항 확대',link='https://example.org/new'))
             self.assertEqual(json.loads((root/'state/v02_snapshot.json').read_text()),original)
-            articles=json.loads((root/'site/news.json').read_text())['articles']
+            articles=json.loads((root/'state/archive.json').read_text())['articles']
             self.assertTrue({old['id']}.issubset({a['id'] for a in articles}))
 
     def test_indirect_cannot_bypass_existing_approval(self):
@@ -267,7 +267,7 @@ class DiscoveryV03Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
             execute([source()],root/'site',root/'state',at=AT,loader=lambda _:feed('국제선 운항 확대',pub='2026-10-24T22:30:00Z'))
-            article=json.loads((root/'site/news.json').read_text())['articles'][0]
+            article=json.loads((root/'state/archive.json').read_text())['articles'][0]
             self.assertEqual(article['published_at'],'2026-10-25T07:30:00+09:00')
             self.assertEqual(article['date'],'2026.10.25')
 

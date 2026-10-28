@@ -40,7 +40,7 @@ def exposure(article):
                  article.get('relevance_evidence', {}).get('review_status') == 'approved'))
     if relevant and not negative:
         korea_text = re.sub(r'\bnorth korean?\b', 'unverified foreign market', text)
-        match = re.search(r'방한|한국\s*(?:관광|여행|호텔|항공|시장)|국내\s*(?:관광|여행|숙박)|\bsouth korea\b|\brepublic of korea\b|\bkorean (?:tourism|travel|hotel|aviation)\b|\b(?:to|from|in) (?:seoul|incheon|busan|jeju)\b', korea_text)
+        match = re.search(r'(?:서울|부산|제주|경북|경남|전남|전북|강원|인천)\s*(?:관광|여행업|호텔시장|항공노선)|방한|한국\s*(?:관광|여행|호텔|항공|시장)|국내\s*(?:관광|여행|숙박)|\bsouth korea\b|\brepublic of korea\b|\bkorean (?:tourism|travel|hotel|aviation)\b|\b(?:to|from|in) (?:seoul|incheon|busan|jeju)\b', korea_text)
         if match:
             evidence.append({'field': 'title', 'value': match.group(), 'rule': 'explicit_korean_market'})
         # These records have a known domestic business subject, not merely a
@@ -57,6 +57,12 @@ def exposure(article):
                 not re.search(r'영국|미국|일본|중국|북한|런던|세계|글로벌', title)):
             evidence.append({'field': 'title+source_id', 'value': 'mcst_press:외래관광객 성과',
                              'rule': 'official_korean_inbound_performance'})
+        if re.search(r'대한항공(?:\s*\(KE\))?\s*발권', title):
+            evidence.append({'field': 'title', 'value': '대한항공 발권 서비스',
+                             'rule': 'explicit_domestic_airline_ticketing_service'})
+        if ('quantified_tourism_demand_headline' in article.get('relevance_evidence', {}).get('rules', []) and '한국인' in title):
+            evidence.append({'field': 'title', 'value': '한국인 관광소비 의향',
+                             'rule': 'explicit_korean_consumer_demand'})
         if article.get('source_id', '').startswith('seoul_'):
             place = re.search(r'서울|동대문|남산|봉은사|제주|철원|부산|인천', title)
             foreign = re.search(r'영국|미국|일본|중국|런던|tokyo|london|united kingdom|united states', text)

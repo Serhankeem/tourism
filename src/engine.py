@@ -10,10 +10,12 @@ from pathlib import Path
 if __package__:
     from . import collector as c
     from .discovery import Loader, AccessBlocked, items_from, feed_bytes
+    from .publication import public_record
     from .editorial import project, exposure, is_statistical, statistical_assessment
 else:
     import collector as c
     from discovery import Loader, AccessBlocked, items_from, feed_bytes
+    from publication import public_record
     from editorial import project, exposure, is_statistical, statistical_assessment
 
 
@@ -26,8 +28,15 @@ def valid_date(item, at, days):
     return parsed if at - dt.timedelta(days=days) <= parsed <= at + dt.timedelta(minutes=5) else None
 
 
+OPERATING_POLICY = c.ROOT / 'operating_policy.json'
+
+
 def permission(source):
     policy = source.get('publication', {})
+    if policy.get('noncommercial_only'):
+        model = c.read_json(OPERATING_POLICY, {})
+        if model.get('mode') != 'noncommercial' or model.get('ads_enabled') is not False or model.get('paid_access') is not False:
+            return False
     return (policy.get('status') == 'approved' and policy.get('scope') == 'metadata_only'
             and bool(policy.get('terms_url')) and bool(policy.get('basis')))
 
@@ -36,11 +45,15 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
     at = at or c.now_kst()
     loader = loader or Loader()
     data_dir, state_dir = Path(data_dir), Path(state_dir)
-    archive_path = data_dir / 'archive.json'
-    original = c.read_json(archive_path, None) if archive_path.exists() else c.read_json(data_dir / 'news.json', {})
+    archive_path = state_dir / 'archive.json'
+    legacy_archive = data_dir / 'archive.json'
+    fallback = legacy_archive if legacy_archive.exists() else data_dir / 'news.json'
+    original = c.read_json(archive_path, None) if archive_path.exists() else c.read_json(fallback, None if legacy_archive.exists() else {})
     if not isinstance(original, dict) or not isinstance(original.get('articles', []), list):
         raise ValueError('invalid_archive_stop_without_replacing_data')
     old_articles = original.get('articles', []) if original.get('mode') != 'fixture_demo' else []
+    if any('id' not in a for a in old_articles):
+        raise ValueError('public_projection_requires_internal_archive')
     old_ids = {a['id'] for a in old_articles}
     ledger = c.read_json(state_dir / 'discovery.json', {}).get('candidates', {})
     previous_ids = set(ledger)
@@ -62,13 +75,14 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                 raise AccessBlocked('discovery_not_authorized')
             payload = loader(source['url'])
             items = list(items_from(source, payload))
+            source_days = min(days, source.get('backfill', {}).get('max_days', days))
             if source.get('record_type'):
                 items = [{**item, 'record_type': source['record_type']} for item in items]
             row['received'] = len(items)
             approved_items = []
             date_lookups = 0
             for item in items:
-                title, url = c.stripped(item.get('title', ''))[:240], c.canonical_url(item.get('link', ''))
+                title, url = c.stripped(item.get('title', '')), c.canonical_url(item.get('link', ''))
                 if not title or not url:
                     row['invalid_metadata'] += 1
                     continue
@@ -79,11 +93,11 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                 raw_date = item.get('pubDate') or item.get('published')
                 if raw_date:
                     parsed_date = c.timestamp(raw_date, dt.datetime.min.replace(tzinfo=c.KST))
-                    if parsed_date != dt.datetime.min.replace(tzinfo=c.KST) and not at - dt.timedelta(days=days) <= parsed_date <= at + dt.timedelta(minutes=5):
+                    if parsed_date != dt.datetime.min.replace(tzinfo=c.KST) and not at - dt.timedelta(days=source_days) <= parsed_date <= at + dt.timedelta(minutes=5):
                         row['outside_window'] += 1
                         continue
                 modified = c.timestamp(item.get('modified_at'), dt.datetime.min.replace(tzinfo=c.KST))
-                if source.get('adapter') == 'govuk_search' and modified != dt.datetime.min.replace(tzinfo=c.KST) and modified < at - dt.timedelta(days=days):
+                if source.get('adapter') == 'govuk_search' and modified != dt.datetime.min.replace(tzinfo=c.KST) and modified < at - dt.timedelta(days=source_days):
                     # An old last-modified upper bound cannot hide a newer first publication.
                     row['outside_window'] += 1
                     continue
@@ -104,7 +118,7 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                             row['date_lookup_error'] = str(exc)[:160]
                 sentinel = dt.datetime.min.replace(tzinfo=c.KST)
                 actual_date = c.timestamp(item.get('pubDate') or item.get('published'), sentinel)
-                if actual_date != sentinel and not at - dt.timedelta(days=days) <= actual_date <= at + dt.timedelta(minutes=5):
+                if actual_date != sentinel and not at - dt.timedelta(days=source_days) <= actual_date <= at + dt.timedelta(minutes=5):
                     row['outside_window'] += 1
                     continue
                 if assessment['label'] in row['classifications']:
@@ -115,7 +129,7 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                 already_seen = aid in previous_ids or aid in run_ids
                 row['duplicates' if already_seen else 'new_discoveries'] += 1
                 run_ids.add(aid)
-                published = valid_date(item, at, days)
+                published = valid_date(item, at, source_days)
                 if assessment['label'] != 'Irrelevant' and not permission(source):
                     row['rights_holds'] += 1
                 if assessment['label'] != 'Irrelevant' and not published:
@@ -211,21 +225,24 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
         news['records_scope'] = 'all_authorized_records_including_filings'
         news['schema_version'] = 3
         # Persist the complete archive before replacing a legacy mixed news.json.
-        c.write_atomic(data_dir / 'archive.json', news)
+        c.write_atomic(archive_path, news)
         for name, items in (('news', newsroom), ('newsroom', newsroom), ('filings', filings),
                             ('research', [a for a in articles if a['record_type'] not in ('news', 'regulatory_filing')])):
-            c.write_atomic(data_dir / (name + '.json'), {'schema_version': 3, 'mode': news.get('mode', 'live_rss'),
+            c.write_atomic(data_dir / (name + '.json'), {'schema_version': 4, 'mode': news.get('mode', 'live_rss'),
                            'generated_at': news.get('generated_at'), 'last_successful_fetch': news.get('last_successful_fetch'),
-                           'count': len(items), 'articles': items})
-        briefing = stage_briefing
+                           'count': len(items), 'public_fields': list(public_record(items[0])) if items else ['title', 'source', 'published_at', 'url', 'category', 'keywords'],
+                           'articles': [public_record(a) for a in items]})
+        briefing = {**stage_briefing, 'schema_version': 4}
         # Rebuild from all eligible articles, not a previously truncated top 5.
         # Unknown intraday times cannot be used to claim 'last 24 hours'.
         recent = [a for a in newsroom if a['editorial']['tier'] != 'reference' and a.get('date_precision') != 'date'
                   and at - dt.timedelta(days=1) <= c.timestamp(a['published_at']) <= at]
         selected = sorted(recent, key=lambda a: (-a['editorial']['rank'], a['relevance'], a['published_at']), reverse=True)[:5]
-        briefing['items'] = [{k: a[k] for k in ('id', 'title', 'source', 'category', 'url', 'published_at', 'desc', 'summary_type', 'relevance_label', 'relevance_evidence', 'record_type', 'editorial')} for a in selected]
+        briefing['items'] = [public_record(a) for a in selected]
         briefing['status'] = 'candidates_ready' if selected else 'no_recent_articles'
         c.write_atomic(data_dir / 'briefing.json', briefing)
+        if legacy_archive.exists():
+            legacy_archive.unlink()  # full original is preserved outside the Pages directory
     # Failure keeps public projections byte-for-byte; metrics still use the
     # same deterministic editorial policy without rewriting failed-run data.
     metric_articles, newsroom, filings = project(articles)
@@ -248,6 +265,11 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                'new_newsroom_items': sum(a['id'] in new_published for a in newsroom),
                'new_filings': sum(a['id'] in new_published for a in filings),
                'newsroom_korea_direct_count': sum(a['editorial']['tier'] == 'korea_direct' for a in newsroom),
+               'newsroom_korea_direct_last7d': sum(a['editorial']['tier'] == 'korea_direct' and a.get('date_precision') != 'date' and at - dt.timedelta(days=7) <= c.timestamp(a['published_at']) <= at for a in newsroom),
+               'newsroom_by_source': {sid: {'count': sum(a['source_id'] == sid for a in newsroom),
+                    'originally_published_last7d': sum(a['source_id'] == sid and a.get('date_precision') != 'date' and at - dt.timedelta(days=7) <= c.timestamp(a['published_at']) <= at for a in newsroom),
+                    'korea_direct': sum(a['source_id'] == sid and a['editorial']['tier'] == 'korea_direct' for a in newsroom),
+                    'new_this_run': sum(a['source_id'] == sid and a['id'] in new_published for a in newsroom)} for sid in sorted({a['source_id'] for a in newsroom})},
                'newsroom_category_counts': {category: sum(a['category'] == category for a in newsroom) for category in c.CATEGORIES},
                'newsroom_tier_counts': {tier: sum(a['editorial']['tier'] == tier for a in newsroom) for tier in ('korea_direct', 'global_major', 'reference')},
                'newsroom_originally_published_last24h': sum(a.get('publication_time_verified_for_news') is not False and a.get('date_precision') != 'date' and at - dt.timedelta(days=1) <= c.timestamp(a['published_at']) <= at for a in newsroom),

@@ -19,6 +19,7 @@ on:
       - 'tests/**'
       - 'fixtures/**'
       - 'sources.json'
+      - 'operating_policy.json'
       - 'relevance_reviews.json'
       - 'site/index.html'
       - '.github/workflows/collect.yml'
@@ -62,7 +63,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add site/data/*.json
+          git add -A -- site/data
           if [ -d collector_state ]; then
             git add collector_state/*.json
           fi

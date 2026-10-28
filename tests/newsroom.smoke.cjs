@@ -9,11 +9,15 @@ const assert = require('node:assert/strict');
   const errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   const base=process.env.TOURISM_TEST_URL || 'http://127.0.0.1:8001';
-  const archiveSnapshot=await (await page.request.get(base+'/data/archive.json')).json();
+  const archiveResponse=await page.request.get(base+'/data/archive.json');
+  assert.equal(archiveResponse.status(),404,'Internal canonical archive must not be deployed');
   const snapshot=await (await page.request.get(base+'/data/newsroom.json')).json();
   const expectedCount=snapshot.articles.length;
   assert.ok(expectedCount>0,'Browser smoke requires a nonempty real or fixture snapshot');
   const selected=snapshot.articles[0];
+  const fields=['category','keywords','published_at','source','title','url'];
+  for(const a of snapshot.articles)assert.deepEqual(Object.keys(a).sort(),fields);
+  const archiveSnapshot={...snapshot,articles:[...snapshot.articles,{...selected,title:'EXCLUDED SEC FILING',record_type:'regulatory_filing'},{...selected,title:'EXCLUDED KOSIS',source_id:'kosis_recent',record_type:'statistical_release'}]};
   await page.goto(base);
   await page.waitForFunction(()=>!newsLoading);
   assert.equal(await page.locator('#rss-health-chip').textContent(),'PARTIAL FETCH');
@@ -25,7 +29,9 @@ const assert = require('node:assert/strict');
   assert.equal(await page.locator('#modal-title').textContent(),selected.title);
   const selectedCategory=await page.evaluate(c=>normalizeCategory(c),selected.category);
   assert.equal(await page.locator('#modal-category').textContent(),selectedCategory);
-  if(selected.relevance_evidence)assert.match(await page.locator('#modal-impact').textContent(),/Direct|Indirect/);
+  assert.equal(await page.locator('#modal-keywords').textContent(),selected.keywords.join(' · '));
+  assert.equal(await page.locator('#modal-impact,#modal-content,#news-items .news-desc,#overview-news .news-desc').count(),0);
+  assert.equal(await page.locator('#modal-url').getAttribute('href'),selected.url);
   await page.locator('#modal-close').click();
   await page.locator('#news-items [data-bookmark]').click();
   // IDs remain stable when a collection refresh changes ordering.
@@ -65,9 +71,10 @@ const assert = require('node:assert/strict');
   for(const filing of archiveSnapshot.articles.filter(a=>(a.record_type||'news')!=='news'||a.archived_only)){
    assert.equal(await page.locator('#news-items').getByText(filing.title,{exact:true}).count(),0);
   }
-  const labels=await page.locator('#news-items .news-meta').allTextContents();
-  assert.ok(labels[0].includes('한국 관광산업 직접 관련'));
+  assert.equal(await page.locator('#news-items .news-title').first().textContent(),snapshot.articles[0].title);
+  for(const a of snapshot.articles){assert.equal(await page.locator('#news-items').getByText(a.title,{exact:true}).getAttribute('href'),a.url);}
+  assert.equal(await page.locator('#news-items img').count(),0);
   assert.deepEqual(errors,[]);
-  console.log('PASS: live articles, search, detail, stable bookmark, partial/all-failure status, preservation, briefing and legacy fallback, filing exclusion and editorial labels; no JS errors');
+  console.log('PASS: live articles, search, detail, stable bookmark, partial/all-failure status, preservation, briefing and legacy fallback, six-field link curation, filing/statistics exclusion and internal archive isolation; no JS errors');
  } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

@@ -33,14 +33,16 @@ class WorkflowContractTests(unittest.TestCase):
             git('config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com', cwd=writer)
             (writer / 'site/data').mkdir(parents=True)
             (writer / 'site/index.html').write_text('TOURISM PULSE')
-            for name in ('archive', 'news', 'newsroom', 'filings', 'research', 'briefing', 'health'):
+            for name in ('news', 'newsroom', 'filings', 'research', 'briefing', 'health'):
                 (writer / f'site/data/{name}.json').write_text(json.dumps({'retained': name}))
+            (writer / 'site/data/archive.json').write_text(json.dumps({'legacy': 'full original'}))
             git('add', 'site', cwd=writer)
             git('commit', '-m', 'Seed', cwd=writer)
             git('remote', 'add', 'origin', str(remote), cwd=writer)
             git('push', '-u', 'origin', 'main', cwd=writer)
             (writer / 'collector_state').mkdir()
-            for name in ('review_queue', 'legacy_archive', 'decisions', 'discovery', 'source_metrics', 'run_summary', 'v02_snapshot'):
+            (writer / 'site/data/archive.json').unlink()
+            for name in ('archive', 'review_queue', 'legacy_archive', 'decisions', 'discovery', 'source_metrics', 'run_summary', 'v02_snapshot'):
                 (writer / f'collector_state/{name}.json').write_text(json.dumps({'state': name}))
             (writer / 'site/data/health.json').write_text(json.dumps({'status': 'failed'}))
             subprocess.run(['bash', '-e', '-c', script], cwd=writer, check=True, capture_output=True)
@@ -49,3 +51,5 @@ class WorkflowContractTests(unittest.TestCase):
                 if path.is_file():
                     self.assertEqual(path.read_bytes(), (reader / path.relative_to(writer)).read_bytes())
             self.assertFalse((reader / 'site/collector_state').exists())
+            self.assertFalse((reader / 'site/data/archive.json').exists())
+            self.assertTrue((reader / 'collector_state/archive.json').exists())

@@ -1,138 +1,60 @@
 {
-  "schema_version": 2,
-  "generated_at": "2026-10-28T16:09:42+09:00",
+  "schema_version": 4,
+  "generated_at": "2026-10-28T17:22:18+09:00",
   "status": "candidates_ready",
   "mode": "live_rss",
   "title": "관광산업 주요 뉴스 브리핑 후보",
   "items": [
     {
-      "id": "2eec08948f98cc110d",
-      "title": "경기도양주시기본통계 ( 109 )",
-      "source": "KOSIS 최근수록자료",
+      "title": "진에어, 12월 24일 인천~호찌민 취항",
+      "source": "트래블데일리",
+      "published_at": "2026-10-27T20:59:01+09:00",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72472",
       "category": "항공·숙박",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007082&boardOrgId=634",
-      "published_at": "2026-10-28T13:46:16+09:00",
-      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
-      "summary_type": "metadata_only",
-      "relevance_label": "Direct",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Direct",
-        "decision": "publish",
-        "category": "항공·숙박",
-        "score": 8,
-        "rules": [
-          "explicit_industry_subject"
-        ],
-        "signals": [
-          {
-            "field": "description",
-            "terms": [
-              "관광숙박",
-              "숙박업"
-            ]
-          }
-        ],
-        "impact_targets": [],
-        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
-        "evidence_status": "industry_subject_in_feed"
-      }
+      "keywords": [
+        "진에어",
+        "취항"
+      ]
     },
     {
-      "id": "2651367a7c066f1259",
       "title": "최휘영 장관, ‘역대 최대 외래관광객 달성’ 성과 및 ‘3천만‧4천만 명 시대 준비’ 역점 과제 공유",
       "source": "문화체육관광부 보도자료",
-      "category": "인바운드",
-      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22802",
       "published_at": "2026-10-28T13:07:15+09:00",
-      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
-      "summary_type": "metadata_only",
-      "relevance_label": "Direct",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Direct",
-        "decision": "publish",
-        "category": "인바운드",
-        "score": 6,
-        "rules": [
-          "explicit_industry_subject"
-        ],
-        "signals": [
-          {
-            "field": "title",
-            "terms": [
-              "외래관광객"
-            ]
-          }
-        ],
-        "impact_targets": [],
-        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
-        "evidence_status": "industry_subject_in_feed"
-      }
-    },
-    {
-      "id": "0540613a2454a61c96",
-      "title": "전라남도완도군기본통계 ( 62 )",
-      "source": "KOSIS 최근수록자료",
+      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22802",
       "category": "인바운드",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007118&boardOrgId=750",
-      "published_at": "2026-10-28T15:46:16+09:00",
-      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
-      "summary_type": "metadata_only",
-      "relevance_label": "Direct",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Direct",
-        "decision": "publish",
-        "category": "인바운드",
-        "score": 4,
-        "rules": [
-          "explicit_industry_subject"
-        ],
-        "signals": [
-          {
-            "field": "description",
-            "terms": [
-              "관광객수"
-            ]
-          }
-        ],
-        "impact_targets": [],
-        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
-        "evidence_status": "industry_subject_in_feed"
-      }
+      "keywords": [
+        "외래관광객"
+      ]
     },
     {
-      "id": "aaa526a940283e25e0",
-      "title": "항공통계 ( 8 )",
-      "source": "KOSIS 최근수록자료",
-      "category": "항공·숙박",
-      "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2005006&boardOrgId=381",
-      "published_at": "2026-10-27T21:46:14+09:00",
-      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
-      "summary_type": "metadata_only",
-      "relevance_label": "Direct",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Direct",
-        "decision": "publish",
-        "category": "항공·숙박",
-        "score": 4,
-        "rules": [
-          "explicit_industry_subject"
-        ],
-        "signals": [
-          {
-            "field": "description",
-            "terms": [
-              "국제선"
-            ]
-          }
-        ],
-        "impact_targets": [],
-        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
-        "evidence_status": "industry_subject_in_feed"
-      }
+      "title": "서울관광재단, 일본 2050 세대 남성 겨냥 체험·도전형 글로벌 캠페인 ‘서울 퀘스트’ 전격 추진",
+      "source": "퍼블릭뉴스통신(TTL)",
+      "published_at": "2026-10-28T10:07:20+09:00",
+      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156140",
+      "category": "문화·트렌드",
+      "keywords": [
+        "관광재단"
+      ]
+    },
+    {
+      "title": "서울관광재단, ‘사계절 매력적인 서울’ 설명회 성료",
+      "source": "트래블데일리",
+      "published_at": "2026-10-27T20:58:50+09:00",
+      "url": "https://www.traveldaily.co.kr/news/articleView.html?idxno=72465",
+      "category": "문화·트렌드",
+      "keywords": [
+        "관광재단"
+      ]
+    },
+    {
+      "title": "2,000만 명 돌파 눈앞…방한 관광객 역대 최다 기록 갈아치웠다",
+      "source": "여행신문",
+      "published_at": "2026-10-27T19:00:00+09:00",
+      "url": "https://www.traveltimes.co.kr/news/articleView.html?idxno=500616",
+      "category": "인바운드",
+      "keywords": [
+        "방한관광객"
+      ]
     }
   ],
   "notice": "브리핑 후보만 자동 생성. 카카오톡 발송 및 본문 기반 AI 요약은 미구현."

@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-28T16:09:42+09:00",
-  "last_successful_fetch": "2026-10-28T16:09:42+09:00",
+  "checked_at": "2026-10-28T17:22:18+09:00",
+  "last_successful_fetch": "2026-10-28T17:22:18+09:00",
   "status": "partial",
   "sources": [
     {
@@ -26,35 +26,12 @@
       }
     },
     {
-      "id": "korea_net_travel",
-      "name": "Korea.net Food/Travel",
-      "url": "https://www.korea.net/koreanet/rss/news/8",
-      "status": "error",
-      "error_kind": "redirect_loop",
-      "error": "HTTPError: HTTP Error 302: The HTTP server returned a redirect error that would lead to an infinite loop.\nThe last 30x error message was:\nMoved Temporarily",
-      "http_status": 302
-    },
-    {
       "id": "kosis_recent",
       "name": "KOSIS 최근수록자료",
       "url": "https://kosis.kr/rss/themes_rss.jsp",
-      "status": "ok",
-      "rss_items": 16,
-      "matched": 1,
-      "held": 0,
-      "relevance_counts": {
-        "Direct": 1,
-        "Indirect": 0,
-        "Irrelevant": 15
-      },
-      "category_published": {
-        "관광정책": 0,
-        "인바운드": 1,
-        "여행산업": 0,
-        "항공·숙박": 0,
-        "문화·트렌드": 0,
-        "경제·시장": 0
-      }
+      "status": "error",
+      "error_kind": "transport_error",
+      "error": "OSError: https_public_endpoint_required"
     },
     {
       "id": "seoul_culture",
@@ -84,17 +61,17 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/04",
       "status": "ok",
       "rss_items": 20,
-      "matched": 1,
+      "matched": 0,
       "held": 0,
       "relevance_counts": {
-        "Direct": 1,
+        "Direct": 0,
         "Indirect": 0,
-        "Irrelevant": 19
+        "Irrelevant": 20
       },
       "category_published": {
         "관광정책": 0,
         "인바운드": 0,
-        "여행산업": 1,
+        "여행산업": 0,
         "항공·숙박": 0,
         "문화·트렌드": 0,
         "경제·시장": 0
@@ -128,20 +105,1205 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/05",
       "status": "error",
       "error_kind": "transport_error",
-      "error": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+      "error": "OSError: <urlopen error _ssl.c:993: The handshake operation timed out>"
+    },
+    {
+      "id": "sec_booking",
+      "name": "SEC EDGAR · Booking Holdings",
+      "url": "https://data.sec.gov/submissions/CIK0001075531.json",
+      "status": "error",
+      "error_kind": "transport_error",
+      "error": "OSError: robots_unverified:http_403"
+    },
+    {
+      "id": "sec_expedia",
+      "name": "SEC EDGAR · Expedia Group",
+      "url": "https://data.sec.gov/submissions/CIK0001324424.json",
+      "status": "error",
+      "error_kind": "transport_error",
+      "error": "OSError: robots_unverified:http_403"
+    },
+    {
+      "id": "sec_marriott",
+      "name": "SEC EDGAR · Marriott International",
+      "url": "https://data.sec.gov/submissions/CIK0001048286.json",
+      "status": "error",
+      "error_kind": "transport_error",
+      "error": "OSError: robots_unverified:http_403"
+    },
+    {
+      "id": "sec_hilton",
+      "name": "SEC EDGAR · Hilton Worldwide",
+      "url": "https://data.sec.gov/submissions/CIK0001585689.json",
+      "status": "error",
+      "error_kind": "transport_error",
+      "error": "OSError: robots_unverified:http_403"
+    },
+    {
+      "id": "sec_delta",
+      "name": "SEC EDGAR · Delta Air Lines",
+      "url": "https://data.sec.gov/submissions/CIK0000027904.json",
+      "status": "error",
+      "error_kind": "transport_error",
+      "error": "OSError: robots_unverified:http_403"
+    },
+    {
+      "id": "sec_united",
+      "name": "SEC EDGAR · United Airlines",
+      "url": "https://data.sec.gov/submissions/CIK0000100517.json",
+      "status": "error",
+      "error_kind": "transport_error",
+      "error": "OSError: robots_unverified:http_403"
+    },
+    {
+      "id": "sec_tripcom",
+      "name": "SEC EDGAR · Trip.com Group",
+      "url": "https://data.sec.gov/submissions/CIK0001269238.json",
+      "status": "error",
+      "error_kind": "transport_error",
+      "error": "OSError: robots_unverified:http_403"
+    },
+    {
+      "id": "govuk_tourism",
+      "name": "GOV.UK · tourism",
+      "url": "https://www.gov.uk/api/search.json?q=tourism&filter_format=press_release&count=100&fields=title%2Clink%2Cpublic_timestamp%2Cformat&order=-public_timestamp",
+      "status": "ok",
+      "rss_items": 0,
+      "matched": 0,
+      "held": 0,
+      "relevance_counts": {
+        "Direct": 0,
+        "Indirect": 0,
+        "Irrelevant": 0
+      },
+      "category_published": {
+        "관광정책": 0,
+        "인바운드": 0,
+        "여행산업": 0,
+        "항공·숙박": 0,
+        "문화·트렌드": 0,
+        "경제·시장": 0
+      }
+    },
+    {
+      "id": "govuk_aviation",
+      "name": "GOV.UK · aviation",
+      "url": "https://www.gov.uk/api/search.json?q=aviation&filter_format=press_release&count=100&fields=title%2Clink%2Cpublic_timestamp%2Cformat&order=-public_timestamp",
+      "status": "ok",
+      "rss_items": 3,
+      "matched": 3,
+      "held": 0,
+      "relevance_counts": {
+        "Direct": 3,
+        "Indirect": 0,
+        "Irrelevant": 0
+      },
+      "category_published": {
+        "관광정책": 0,
+        "인바운드": 0,
+        "여행산업": 0,
+        "항공·숙박": 3,
+        "문화·트렌드": 0,
+        "경제·시장": 0
+      }
+    },
+    {
+      "id": "traveltimes",
+      "name": "여행신문",
+      "url": "https://www.traveltimes.co.kr/rss/allArticle.xml",
+      "status": "ok",
+      "rss_items": 30,
+      "matched": 8,
+      "held": 0,
+      "relevance_counts": {
+        "Direct": 8,
+        "Indirect": 0,
+        "Irrelevant": 22
+      },
+      "category_published": {
+        "관광정책": 1,
+        "인바운드": 1,
+        "여행산업": 3,
+        "항공·숙박": 3,
+        "문화·트렌드": 0,
+        "경제·시장": 0
+      }
+    },
+    {
+      "id": "traveldaily",
+      "name": "트래블데일리",
+      "url": "https://www.traveldaily.co.kr/rss/allArticle.xml",
+      "status": "ok",
+      "rss_items": 50,
+      "matched": 6,
+      "held": 0,
+      "relevance_counts": {
+        "Direct": 6,
+        "Indirect": 0,
+        "Irrelevant": 44
+      },
+      "category_published": {
+        "관광정책": 0,
+        "인바운드": 0,
+        "여행산업": 2,
+        "항공·숙박": 2,
+        "문화·트렌드": 2,
+        "경제·시장": 0
+      }
+    },
+    {
+      "id": "ttlnews",
+      "name": "퍼블릭뉴스통신(TTL)",
+      "url": "https://www.ttlnews.com/rss/allArticle.xml",
+      "status": "ok",
+      "rss_items": 50,
+      "matched": 1,
+      "held": 0,
+      "relevance_counts": {
+        "Direct": 1,
+        "Indirect": 0,
+        "Irrelevant": 49
+      },
+      "category_published": {
+        "관광정책": 0,
+        "인바운드": 0,
+        "여행산업": 0,
+        "항공·숙박": 0,
+        "문화·트렌드": 1,
+        "경제·시장": 0
+      }
     }
   ],
-  "source_count": 7,
-  "successful_sources": 5,
+  "source_count": 18,
+  "successful_sources": 9,
   "schema_version": 2,
   "rule_version": "0.2",
   "category_counts": {
-    "관광정책": 0,
-    "인바운드": 4,
-    "여행산업": 1,
-    "항공·숙박": 2,
-    "문화·트렌드": 2,
+    "관광정책": 1,
+    "인바운드": 5,
+    "여행산업": 5,
+    "항공·숙박": 10,
+    "문화·트렌드": 5,
     "경제·시장": 0
   },
-  "review_queue_count": 1
+  "review_queue_count": 1,
+  "discovery": {
+    "schema_version": 3,
+    "checked_at": "2026-10-28T17:22:18+09:00",
+    "publication_result": "partial",
+    "discovery_status": "partial",
+    "received": 570,
+    "new_discoveries": 370,
+    "duplicate_observations": 0,
+    "new_auto_published": 18,
+    "total_published": 27,
+    "total_archived": 27,
+    "newsroom_count": 23,
+    "filings_count": 0,
+    "other_research_count": 3,
+    "new_newsroom_items": 18,
+    "new_filings": 0,
+    "newsroom_korea_direct_count": 13,
+    "newsroom_korea_direct_last7d": 13,
+    "newsroom_by_source": {
+      "govuk_aviation": {
+        "count": 3,
+        "originally_published_last7d": 0,
+        "korea_direct": 0,
+        "new_this_run": 3
+      },
+      "mcst_press": {
+        "count": 3,
+        "originally_published_last7d": 3,
+        "korea_direct": 3,
+        "new_this_run": 0
+      },
+      "seoul_culture": {
+        "count": 2,
+        "originally_published_last7d": 2,
+        "korea_direct": 2,
+        "new_this_run": 0
+      },
+      "traveldaily": {
+        "count": 6,
+        "originally_published_last7d": 6,
+        "korea_direct": 4,
+        "new_this_run": 6
+      },
+      "traveltimes": {
+        "count": 8,
+        "originally_published_last7d": 8,
+        "korea_direct": 3,
+        "new_this_run": 8
+      },
+      "ttlnews": {
+        "count": 1,
+        "originally_published_last7d": 1,
+        "korea_direct": 1,
+        "new_this_run": 1
+      }
+    },
+    "newsroom_category_counts": {
+      "관광정책": 1,
+      "인바운드": 4,
+      "여행산업": 5,
+      "항공·숙박": 8,
+      "문화·트렌드": 5,
+      "경제·시장": 0
+    },
+    "newsroom_tier_counts": {
+      "korea_direct": 13,
+      "global_major": 0,
+      "reference": 10
+    },
+    "newsroom_originally_published_last24h": 8,
+    "newsroom_originally_published_last7d": 20,
+    "newsroom_newly_added_last24h": 18,
+    "new_backfilled": 1,
+    "record_type_counts": {
+      "news": 24,
+      "regulatory_filing": 0,
+      "statistical_release": 3,
+      "government_notice": 0
+    },
+    "category_counts": {
+      "관광정책": 1,
+      "인바운드": 4,
+      "여행산업": 6,
+      "항공·숙박": 8,
+      "문화·트렌드": 5,
+      "경제·시장": 0
+    },
+    "discovered_last24h": 370,
+    "discovered_last7d": 370,
+    "auto_published_last24h": 18,
+    "auto_published_last7d": 18,
+    "originally_published_last24h": 8,
+    "originally_published_last7d": 20,
+    "sources": [
+      {
+        "id": "mcst_press",
+        "name": "문화체육관광부 보도자료",
+        "url": "https://www.mcst.go.kr/common/rss/press.jsp",
+        "group": "public",
+        "received": 10,
+        "new_discoveries": 10,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 2,
+          "Indirect": 0,
+          "Irrelevant": 8
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.mcst.go.kr/site/s_etc/rss/rssService.jsp",
+          "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 90,
+          "limitation": "Only items currently returned by the official feed. No article or archive crawling."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "discovered_not_publishable"
+      },
+      {
+        "id": "korea_net_travel",
+        "name": "Korea.net Food/Travel",
+        "url": "https://www.korea.net/koreanet/rss/news/8",
+        "group": "public",
+        "received": 0,
+        "new_discoveries": 0,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 0
+        },
+        "publication_policy": {
+          "status": "review",
+          "scope": "metadata_only",
+          "terms_url": "https://www.korea.net/Others/Subscribe-to-Koreanet/RSS-Service",
+          "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 90,
+          "limitation": "Only items currently returned by the official feed. No article or archive crawling."
+        },
+        "status": "error",
+        "error_kind": "access_policy",
+        "error": "redirect_loop",
+        "success_rate": 0.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "fetch_failed"
+      },
+      {
+        "id": "kosis_recent",
+        "name": "KOSIS 최근수록자료",
+        "url": "https://kosis.kr/rss/themes_rss.jsp",
+        "group": "public",
+        "received": 0,
+        "new_discoveries": 0,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 0
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://kosis.kr/serviceInfo/rssGuide.do",
+          "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 90,
+          "limitation": "Only items currently returned by the official feed. No article or archive crawling."
+        },
+        "status": "error",
+        "error_kind": "access_policy",
+        "error": "https_public_endpoint_required",
+        "success_rate": 0.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "fetch_failed"
+      },
+      {
+        "id": "seoul_culture",
+        "name": "서울시 내 손안에 서울 문화",
+        "url": "https://mediahub.seoul.go.kr/news/rss/06",
+        "group": "public",
+        "received": 20,
+        "new_discoveries": 20,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 20
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://mediahub.seoul.go.kr/staticpage/rss.do",
+          "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 90,
+          "limitation": "Only items currently returned by the official feed. No article or archive crawling."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "discovered_not_publishable"
+      },
+      {
+        "id": "seoul_economy",
+        "name": "서울시 내 손안에 서울 경제",
+        "url": "https://mediahub.seoul.go.kr/news/rss/04",
+        "group": "public",
+        "received": 20,
+        "new_discoveries": 20,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 20
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.seoul.go.kr/helper/copyright.do",
+          "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 90,
+          "limitation": "Only items currently returned by the official feed. No article or archive crawling."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "discovered_not_publishable"
+      },
+      {
+        "id": "seoul_transport",
+        "name": "서울시 내 손안에 서울 교통",
+        "url": "https://mediahub.seoul.go.kr/news/rss/01",
+        "group": "public",
+        "received": 20,
+        "new_discoveries": 20,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 20
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.seoul.go.kr/helper/copyright.do",
+          "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 90,
+          "limitation": "Only items currently returned by the official feed. No article or archive crawling."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "discovered_not_publishable"
+      },
+      {
+        "id": "seoul_environment",
+        "name": "서울시 내 손안에 서울 환경",
+        "url": "https://mediahub.seoul.go.kr/news/rss/05",
+        "group": "public",
+        "received": 0,
+        "new_discoveries": 0,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 0
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.seoul.go.kr/helper/copyright.do",
+          "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 90,
+          "limitation": "Only items currently returned by the official feed. No article or archive crawling."
+        },
+        "status": "error",
+        "error_kind": "transport_error",
+        "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
+        "success_rate": 0.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "fetch_failed"
+      },
+      {
+        "id": "sec_booking",
+        "name": "SEC EDGAR · Booking Holdings",
+        "url": "https://data.sec.gov/submissions/CIK0001075531.json",
+        "group": "company",
+        "received": 0,
+        "new_discoveries": 0,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 0
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+          "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "official_recent_submissions",
+          "max_days": 90,
+          "forms": [
+            "10-Q",
+            "10-K",
+            "20-F"
+          ],
+          "limitation": "Only entries supplied in filings.recent; no article or filing body requests, no unsupported archival traversal."
+        },
+        "status": "error",
+        "error_kind": "access_policy",
+        "error": "robots_unverified:http_403",
+        "success_rate": 0.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "fetch_failed"
+      },
+      {
+        "id": "sec_expedia",
+        "name": "SEC EDGAR · Expedia Group",
+        "url": "https://data.sec.gov/submissions/CIK0001324424.json",
+        "group": "company",
+        "received": 0,
+        "new_discoveries": 0,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 0
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+          "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "official_recent_submissions",
+          "max_days": 90,
+          "forms": [
+            "10-Q",
+            "10-K",
+            "20-F"
+          ],
+          "limitation": "Only entries supplied in filings.recent; no article or filing body requests, no unsupported archival traversal."
+        },
+        "status": "error",
+        "error_kind": "access_policy",
+        "error": "robots_unverified:http_403",
+        "success_rate": 0.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "fetch_failed"
+      },
+      {
+        "id": "sec_marriott",
+        "name": "SEC EDGAR · Marriott International",
+        "url": "https://data.sec.gov/submissions/CIK0001048286.json",
+        "group": "company",
+        "received": 0,
+        "new_discoveries": 0,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 0
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+          "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "official_recent_submissions",
+          "max_days": 90,
+          "forms": [
+            "10-Q",
+            "10-K",
+            "20-F"
+          ],
+          "limitation": "Only entries supplied in filings.recent; no article or filing body requests, no unsupported archival traversal."
+        },
+        "status": "error",
+        "error_kind": "access_policy",
+        "error": "robots_unverified:http_403",
+        "success_rate": 0.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "fetch_failed"
+      },
+      {
+        "id": "sec_hilton",
+        "name": "SEC EDGAR · Hilton Worldwide",
+        "url": "https://data.sec.gov/submissions/CIK0001585689.json",
+        "group": "company",
+        "received": 0,
+        "new_discoveries": 0,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 0
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+          "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "official_recent_submissions",
+          "max_days": 90,
+          "forms": [
+            "10-Q",
+            "10-K",
+            "20-F"
+          ],
+          "limitation": "Only entries supplied in filings.recent; no article or filing body requests, no unsupported archival traversal."
+        },
+        "status": "error",
+        "error_kind": "access_policy",
+        "error": "robots_unverified:http_403",
+        "success_rate": 0.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "fetch_failed"
+      },
+      {
+        "id": "sec_delta",
+        "name": "SEC EDGAR · Delta Air Lines",
+        "url": "https://data.sec.gov/submissions/CIK0000027904.json",
+        "group": "company",
+        "received": 0,
+        "new_discoveries": 0,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 0
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+          "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "official_recent_submissions",
+          "max_days": 90,
+          "forms": [
+            "10-Q",
+            "10-K",
+            "20-F"
+          ],
+          "limitation": "Only entries supplied in filings.recent; no article or filing body requests, no unsupported archival traversal."
+        },
+        "status": "error",
+        "error_kind": "access_policy",
+        "error": "robots_unverified:http_403",
+        "success_rate": 0.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "fetch_failed"
+      },
+      {
+        "id": "sec_united",
+        "name": "SEC EDGAR · United Airlines",
+        "url": "https://data.sec.gov/submissions/CIK0000100517.json",
+        "group": "company",
+        "received": 0,
+        "new_discoveries": 0,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 0
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+          "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "official_recent_submissions",
+          "max_days": 90,
+          "forms": [
+            "10-Q",
+            "10-K",
+            "20-F"
+          ],
+          "limitation": "Only entries supplied in filings.recent; no article or filing body requests, no unsupported archival traversal."
+        },
+        "status": "error",
+        "error_kind": "access_policy",
+        "error": "robots_unverified:http_403",
+        "success_rate": 0.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "fetch_failed"
+      },
+      {
+        "id": "sec_tripcom",
+        "name": "SEC EDGAR · Trip.com Group",
+        "url": "https://data.sec.gov/submissions/CIK0001269238.json",
+        "group": "company",
+        "received": 0,
+        "new_discoveries": 0,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 0
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.sec.gov/about/webmaster-frequently-asked-questions",
+          "basis": "All Government-created content on sec.gov and EDGAR public filing content are free to access and reuse. Only corporate filing index facts are used; no filing body/photos/personnel records.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "official_recent_submissions",
+          "max_days": 90,
+          "forms": [
+            "10-Q",
+            "10-K",
+            "20-F"
+          ],
+          "limitation": "Only entries supplied in filings.recent; no article or filing body requests, no unsupported archival traversal."
+        },
+        "status": "error",
+        "error_kind": "access_policy",
+        "error": "robots_unverified:http_403",
+        "success_rate": 0.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "fetch_failed"
+      },
+      {
+        "id": "govuk_tourism",
+        "name": "GOV.UK · tourism",
+        "url": "https://www.gov.uk/api/search.json?q=tourism&filter_format=press_release&count=100&fields=title%2Clink%2Cpublic_timestamp%2Cformat&order=-public_timestamp",
+        "group": "global",
+        "received": 100,
+        "new_discoveries": 11,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 89,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 11
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.gov.uk/help/terms-conditions",
+          "basis": "GOV.UK explicitly provides feeds for other websites/apps and permits reproduction under OGL; only government news metadata, no credited third-party photos/content.",
+          "checked_at": "2026-10-27",
+          "attribution": "Contains public sector information licensed under the Open Government Licence v3.0. GOV.UK: https://www.gov.uk/help/terms-conditions"
+        },
+        "backfill": {
+          "mode": "official_search_results",
+          "max_days": 90,
+          "max_records": 100,
+          "limitation": "Last 100 official press releases per query only; local 90-day gate and verified first_published_at. No article-body crawling or unsupported pagination."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "discovered_not_publishable"
+      },
+      {
+        "id": "govuk_aviation",
+        "name": "GOV.UK · aviation",
+        "url": "https://www.gov.uk/api/search.json?q=aviation&filter_format=press_release&count=100&fields=title%2Clink%2Cpublic_timestamp%2Cformat&order=-public_timestamp",
+        "group": "global",
+        "received": 100,
+        "new_discoveries": 9,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 91,
+        "classifications": {
+          "Direct": 3,
+          "Indirect": 0,
+          "Irrelevant": 6
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "terms_url": "https://www.gov.uk/help/terms-conditions",
+          "basis": "GOV.UK explicitly provides feeds for other websites/apps and permits reproduction under OGL; only government news metadata, no credited third-party photos/content.",
+          "checked_at": "2026-10-27",
+          "attribution": "Contains public sector information licensed under the Open Government Licence v3.0. GOV.UK: https://www.gov.uk/help/terms-conditions"
+        },
+        "backfill": {
+          "mode": "official_search_results",
+          "max_days": 90,
+          "max_records": 100,
+          "limitation": "Last 100 official press releases per query only; local 90-day gate and verified first_published_at. No article-body crawling or unsupported pagination."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 3,
+        "new_newsroom_items": 3,
+        "outcome": "auto_published"
+      },
+      {
+        "id": "koreanair",
+        "name": "대한항공 뉴스룸",
+        "url": "https://news.koreanair.com/feed/",
+        "group": "company",
+        "received": 10,
+        "new_discoveries": 10,
+        "duplicates": 0,
+        "rights_holds": 2,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 2,
+          "Indirect": 0,
+          "Irrelevant": 8
+        },
+        "publication_policy": {
+          "status": "review",
+          "scope": "none",
+          "terms_url": "https://news.koreanair.com/대한항공-뉴스룸-운영정책/",
+          "basis": "Newsroom policy permits personal attribution/link sharing, forbids arbitrary modification and commercial content reuse. Public platform metadata syndication permission not established; discovery only, no publication approval.",
+          "checked_at": "2026-10-28"
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 90,
+          "limitation": "No pagination or article fetching without explicit archive/reuse permission."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "discovered_not_publishable"
+      },
+      {
+        "id": "tripcom_news",
+        "name": "Trip.com Group IR",
+        "url": "https://investors.trip.com/rss/news-releases.xml",
+        "group": "company",
+        "received": 0,
+        "new_discoveries": 0,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 0,
+          "Indirect": 0,
+          "Irrelevant": 0
+        },
+        "publication_policy": {
+          "status": "review",
+          "scope": "none",
+          "terms_url": "https://investors.trip.com/rss/news-releases.xml",
+          "basis": "Official RSS verified. Republishing rights are not established; title/link/date discovery only, no description analysis or public posting.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 90,
+          "limitation": "No pagination or article fetching without explicit archive/reuse permission."
+        },
+        "status": "error",
+        "error_kind": "access_policy",
+        "error": "robots_unverified:http_403",
+        "success_rate": 0.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "fetch_failed"
+      },
+      {
+        "id": "hilton_news",
+        "name": "Hilton Stories",
+        "url": "https://stories.hilton.com/feed",
+        "group": "company",
+        "received": 10,
+        "new_discoveries": 10,
+        "duplicates": 0,
+        "rights_holds": 2,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 2,
+          "Indirect": 0,
+          "Irrelevant": 8
+        },
+        "publication_policy": {
+          "status": "review",
+          "scope": "none",
+          "terms_url": "https://stories.hilton.com/feed",
+          "basis": "Official RSS verified. Republishing rights are not established; title/link/date discovery only, no description analysis or public posting.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 90,
+          "limitation": "No pagination or article fetching without explicit archive/reuse permission."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "discovered_not_publishable"
+      },
+      {
+        "id": "skift",
+        "name": "Skift",
+        "url": "https://skift.com/feed/",
+        "group": "media",
+        "received": 10,
+        "new_discoveries": 10,
+        "duplicates": 0,
+        "rights_holds": 3,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 3,
+          "Indirect": 0,
+          "Irrelevant": 7
+        },
+        "publication_policy": {
+          "status": "review",
+          "scope": "none",
+          "terms_url": "https://skift.com/feed/",
+          "basis": "Official RSS verified. Republishing rights are not established; title/link/date discovery only, no description analysis or public posting.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 90,
+          "limitation": "No pagination or article fetching without explicit archive/reuse permission."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "discovered_not_publishable"
+      },
+      {
+        "id": "yonhap",
+        "name": "연합뉴스 경제",
+        "url": "https://www.yna.co.kr/rss/economy.xml",
+        "group": "media",
+        "received": 120,
+        "new_discoveries": 120,
+        "duplicates": 0,
+        "rights_holds": 1,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 1,
+          "Indirect": 0,
+          "Irrelevant": 119
+        },
+        "publication_policy": {
+          "status": "review",
+          "scope": "none",
+          "terms_url": "https://www.yna.co.kr/rss/economy.xml",
+          "basis": "Official RSS verified. Republishing rights are not established; title/link/date discovery only, no description analysis or public posting.",
+          "checked_at": "2026-10-27"
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 90,
+          "limitation": "No pagination or article fetching without explicit archive/reuse permission."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "discovered_not_publishable"
+      },
+      {
+        "id": "traveltimes",
+        "name": "여행신문",
+        "url": "https://www.traveltimes.co.kr/rss/allArticle.xml",
+        "group": "media",
+        "received": 50,
+        "new_discoveries": 30,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 20,
+        "classifications": {
+          "Direct": 8,
+          "Indirect": 0,
+          "Irrelevant": 22
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "noncommercial_only": true,
+          "terms_url": "https://www.traveltimes.co.kr/rssIndex.html",
+          "additional_terms": [
+            "https://www.traveltimes.co.kr/com/service.html",
+            "https://www.traveltimes.co.kr/com/copyright.html"
+          ],
+          "basis": "Publisher RSS guide explicitly describes external websites collecting and displaying feed titles/links. Limited to owner-confirmed free, ad-free noncommercial link curation of supplied metadata; not article reuse. General copyright/terms reviewed separately; no full text, images, excerpts, framing or AI summaries. No article-list/archive crawling or RSS mirrors combined. Disable before commercial use.",
+          "checked_at": "2026-10-28",
+          "body_reuse": "not_authorized",
+          "database_scope": "Only provider-returned current feed; relevant incremental links; no full database/archive reproduction."
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 7,
+          "limitation": "Only currently returned RSS metadata; no archive pagination, body retrieval or complete 7-day volume claim."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 8,
+        "new_newsroom_items": 8,
+        "outcome": "auto_published"
+      },
+      {
+        "id": "traveldaily",
+        "name": "트래블데일리",
+        "url": "https://www.traveldaily.co.kr/rss/allArticle.xml",
+        "group": "media",
+        "received": 50,
+        "new_discoveries": 50,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 6,
+          "Indirect": 0,
+          "Irrelevant": 44
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "noncommercial_only": true,
+          "terms_url": "https://www.traveldaily.co.kr/rssIndex.html",
+          "additional_terms": [
+            "https://www.traveldaily.co.kr/com/service.html",
+            "https://www.traveldaily.co.kr/com/copyright.html"
+          ],
+          "basis": "Publisher RSS guide explicitly describes external websites collecting and displaying feed titles/links. Limited to owner-confirmed free, ad-free noncommercial link curation of supplied metadata; not article reuse. General copyright/terms reviewed separately; no full text, images, excerpts, framing or AI summaries. No article-list/archive crawling or RSS mirrors combined. Disable before commercial use.",
+          "checked_at": "2026-10-28",
+          "body_reuse": "not_authorized",
+          "database_scope": "Only provider-returned current feed; relevant incremental links; no full database/archive reproduction."
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 7,
+          "limitation": "Only currently returned RSS metadata; no archive pagination, body retrieval or complete 7-day volume claim."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 6,
+        "new_newsroom_items": 6,
+        "outcome": "auto_published"
+      },
+      {
+        "id": "ttlnews",
+        "name": "퍼블릭뉴스통신(TTL)",
+        "url": "https://www.ttlnews.com/rss/allArticle.xml",
+        "group": "media",
+        "received": 50,
+        "new_discoveries": 50,
+        "duplicates": 0,
+        "rights_holds": 0,
+        "date_holds": 0,
+        "invalid_metadata": 0,
+        "outside_window": 0,
+        "classifications": {
+          "Direct": 1,
+          "Indirect": 0,
+          "Irrelevant": 49
+        },
+        "publication_policy": {
+          "status": "approved",
+          "scope": "metadata_only",
+          "noncommercial_only": true,
+          "terms_url": "https://www.ttlnews.com/rssIndex.html",
+          "additional_terms": [
+            "https://www.ttlnews.com/com/service.html",
+            "https://www.ttlnews.com/com/copyright.html"
+          ],
+          "basis": "Publisher RSS guide explicitly describes external websites collecting and displaying feed titles/links. Limited to owner-confirmed free, ad-free noncommercial link curation of supplied metadata; not article reuse. General copyright/terms reviewed separately; no full text, images, excerpts, framing or AI summaries. No article-list/archive crawling or RSS mirrors combined. Disable before commercial use.",
+          "checked_at": "2026-10-28",
+          "body_reuse": "not_authorized",
+          "database_scope": "Only provider-returned current feed; relevant incremental links; no full database/archive reproduction."
+        },
+        "backfill": {
+          "mode": "provided_feed_only",
+          "max_days": 7,
+          "limitation": "Only currently returned RSS metadata; no archive pagination, body retrieval or complete 7-day volume claim."
+        },
+        "status": "ok",
+        "success_rate": 1.0,
+        "new_auto_published": 1,
+        "new_newsroom_items": 1,
+        "outcome": "auto_published"
+      }
+    ],
+    "outcome": "new_newsroom_news"
+  }
 }

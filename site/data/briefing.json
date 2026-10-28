@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-10-28T11:57:06+09:00",
+  "generated_at": "2026-10-28T13:56:39+09:00",
   "status": "candidates_ready",
   "mode": "live_rss",
   "title": "관광산업 주요 뉴스 브리핑 후보",
@@ -44,7 +44,7 @@
       "source": "KOSIS 최근수록자료",
       "category": "항공·숙박",
       "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007082&boardOrgId=634",
-      "published_at": "2026-10-28T11:46:21+09:00",
+      "published_at": "2026-10-28T13:46:16+09:00",
       "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
       "summary_type": "metadata_only",
       "relevance_label": "Direct",
@@ -72,12 +72,44 @@
       }
     },
     {
+      "id": "2651367a7c066f1259",
+      "title": "최휘영 장관, ‘역대 최대 외래관광객 달성’ 성과 및 ‘3천만‧4천만 명 시대 준비’ 역점 과제 공유",
+      "source": "문화체육관광부 보도자료",
+      "category": "인바운드",
+      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22802",
+      "published_at": "2026-10-28T13:07:15+09:00",
+      "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
+      "summary_type": "metadata_only",
+      "relevance_label": "Direct",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Direct",
+        "decision": "publish",
+        "category": "인바운드",
+        "score": 6,
+        "rules": [
+          "explicit_industry_subject"
+        ],
+        "signals": [
+          {
+            "field": "title",
+            "terms": [
+              "외래관광객"
+            ]
+          }
+        ],
+        "impact_targets": [],
+        "reason": "RSS 제목 또는 설명에서 구체적인 관광산업 대상·사업 신호를 확인했습니다.",
+        "evidence_status": "industry_subject_in_feed"
+      }
+    },
+    {
       "id": "0540613a2454a61c96",
       "title": "전라남도완도군기본통계 ( 62 )",
       "source": "KOSIS 최근수록자료",
       "category": "인바운드",
       "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007118&boardOrgId=750",
-      "published_at": "2026-10-28T11:46:21+09:00",
+      "published_at": "2026-10-28T13:46:16+09:00",
       "desc": "원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)",
       "summary_type": "metadata_only",
       "relevance_label": "Direct",

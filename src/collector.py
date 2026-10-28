@@ -30,8 +30,10 @@ DATA = ROOT / 'site' / 'data'
 USER_AGENT = 'TourismPulseRSS/0.2 (+metadata-only; contact repository maintainer)'
 TRACKING = {'fbclid', 'gclid', 'ref', 'spm', 'source', 'igshid'}
 if __package__:
+    from .editorial import is_statistical, statistical_assessment
     from .relevance import CATEGORIES, LEGACY_CATEGORIES, RULE_VERSION, assess, approve
 else:
+    from editorial import is_statistical, statistical_assessment
     from relevance import CATEGORIES, LEGACY_CATEGORIES, RULE_VERSION, assess, approve
 
 
@@ -147,7 +149,7 @@ def article_from_item(item, source, at=None, reviews=None, include_held=False, m
     if published > at + dt.timedelta(minutes=5) or published < at - dt.timedelta(days=max_age_days):
         return None
     aid = hashlib.sha256(url.encode('utf-8')).hexdigest()[:18]
-    assessment = assess(title, description)
+    assessment = statistical_assessment() if is_statistical(source) else assess(title, description)
     def review_date(value):
         sentinel = dt.datetime.min.replace(tzinfo=KST)
         parsed = timestamp(value, sentinel)
@@ -164,7 +166,10 @@ def article_from_item(item, source, at=None, reviews=None, include_held=False, m
     else:
         desc = '원문 링크에서 보도자료 또는 기사 내용을 확인하세요. (본문 자동 분석 전)'
         summary_type = 'metadata_only'
+    if is_statistical(source):
+        desc = '통계 수록·갱신 자료입니다. 원문에서 조사 범위와 기준 시점을 확인하세요.'
     return {
+        **({'record_type': 'statistical_release'} if is_statistical(source) else {}),
         'id': aid, 'published_at': iso(published), 'date': published.strftime('%Y.%m.%d'),
         'category': category, 'source': source['name'], 'source_id': source['id'],
         'title': title[:240], 'desc': desc, 'insight': '원문을 확인한 후 산업적 시사점을 판단해 주세요.',
@@ -261,8 +266,9 @@ def run(sources, fetcher=fetch_feed, at=None, demo=False, data_dir=DATA, reviews
             held.extend(pending)
             labels = {label: 0 for label in ('Direct', 'Indirect', 'Irrelevant')}
             for item, article in zip(items, evaluated):
-                assessment = assess(stripped(item.get('title', '')), stripped(item.get('description', item.get('summary', ''))))
-                labels[assessment['label']] += 1
+                assessment = statistical_assessment() if is_statistical(source) else assess(stripped(item.get('title', '')), stripped(item.get('description', item.get('summary', ''))))
+                if assessment['label'] in labels:
+                    labels[assessment['label']] += 1
                 evidence = article['relevance_evidence'] if article else assessment
                 item_url = canonical_url(item.get('link', ''))
                 rejected_metadata = article is None and assessment['label'] != 'Irrelevant'

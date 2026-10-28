@@ -13,7 +13,24 @@ KOREAN_COMPANIES = ('대한항공', '아시아나항공', '제주항공', '진�
                     '호텔신라', '호텔롯데', '하나투어', '모두투어', '야놀자', '여기어때', '노랑풍선')
 
 
+def is_statistical(record):
+    return record.get('source_id', record.get('id')) == 'kosis_recent' or record.get('record_type') == 'statistical_release'
+
+
+def statistical_assessment():
+    # Dataset table-of-contents terms do not establish a news topic or relevance.
+    return {'rule_version': '0.3-statistics-1', 'label': 'NotApplicable',
+            'decision': 'publish', 'category': '통계자료', 'score': 0,
+            'rules': ['statistical_dataset_not_news'], 'signals': [], 'impact_targets': [],
+            'evidence_status': 'not_assessed_as_news',
+            'reason': '통계 수록·갱신 자료입니다. 표 설명의 관광·숙박 용어를 뉴스 관련성 근거로 사용하지 않습니다.'}
+
+
 def exposure(article):
+    if is_statistical(article):
+        return {'version': '0.3-editorial-1', 'tier': 'not_news', 'rank': 3,
+                'label': '통계자료', 'korea_connection': 'not_assessed', 'evidence': [],
+                'reason': '통계 원자료는 뉴스 편집 순위와 분리합니다.'}
     title = article.get('title', '')
     text = re.sub(r'\s+', ' ', title.casefold())
     evidence = []
@@ -35,6 +52,11 @@ def exposure(article):
             company = None if attribution_only else next((name for name in KOREAN_COMPANIES if re.match(re.escape(name)+r'(?:[은는이가의,:\s]|$)', subject_title)), None)
             if company:
                 evidence.append({'field': 'title', 'value': company, 'rule': 'domestic_company_operating_subject'})
+        if (article.get('source_id') == 'mcst_press' and
+                re.search(r'외래관광객.*(?:달성|역대|성과)', title) and
+                not re.search(r'영국|미국|일본|중국|북한|런던|세계|글로벌', title)):
+            evidence.append({'field': 'title+source_id', 'value': 'mcst_press:외래관광객 성과',
+                             'rule': 'official_korean_inbound_performance'})
         if article.get('source_id', '').startswith('seoul_'):
             place = re.search(r'서울|동대문|남산|봉은사|제주|철원|부산|인천', title)
             foreign = re.search(r'영국|미국|일본|중국|런던|tokyo|london|united kingdom|united states', text)
@@ -73,7 +95,12 @@ def project(articles):
         # article publication. Preserve the provider timestamp but never use it
         # as evidence of a newly issued Newsroom story.
         if record.get('source_id') == 'kosis_recent' or record['record_type'] == 'statistical_release':
-            record['record_type'] = 'statistical_release'
+            if record.get('relevance_label') != 'NotApplicable':
+                record.setdefault('legacy_news_classification', {key: record.get(key) for key in
+                                  ('category', 'relevance', 'relevance_label', 'relevance_evidence')})
+            record.update(record_type='statistical_release', category='통계자료', relevance=0,
+                          relevance_label='NotApplicable', relevance_evidence=statistical_assessment())
+            record['editorial'] = exposure(record)
             record['publication_time_verified_for_news'] = False
             record.setdefault('publication_date_basis', 'statistical_provider_timestamp_not_verified_as_news')
             record['timestamp_role'] = 'provider_statistical_timestamp_not_news_publication'

@@ -180,3 +180,12 @@ class RelevanceV02Tests(unittest.TestCase):
             self.assertEqual(audit['relevance_evidence']['label'], 'Irrelevant')
             self.assertTrue(audit['relevance_evidence']['reason'])
             self.assertNotIn('description', audit)
+
+
+class ConsumerLeisureRegressionTests(unittest.TestCase):
+    def test_live_oct28_tea_story_is_not_news_from_wellness_description_alone(self):
+        result=assess("족욕하며 차 마시고, '티 오마카세'까지…차에 빠진 MZ세대", '웰니스관광과 웰니스트래블 체험을 소개한다.')
+        self.assertEqual(result['decision'], 'exclude')
+        self.assertEqual(result['label'], 'Irrelevant')
+        industry=assess('웰니스관광 족욕 프로그램 매출 증가', '웰니스관광 체험 소개')
+        self.assertEqual(industry['label'], 'Direct')

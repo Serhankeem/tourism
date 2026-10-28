@@ -178,3 +178,85 @@ class EditorialTests(unittest.TestCase):
         self.assertFalse(stored[0]['publication_time_verified_for_news'])
         self.assertEqual(news,[])
         self.assertEqual(filings,[])
+
+
+class StatisticsRegressionTests(unittest.TestCase):
+    def setUp(self):
+        self.snapshot = json.loads((c.ROOT/'fixtures/kosis-main-20261028.json').read_text())
+        self.records = self.snapshot['articles']
+        self.at = c.timestamp(self.snapshot['generated_at'])
+
+    def test_latest_main_oct28_general_statistics_lose_news_labels(self):
+        self.assertEqual({a['title'] for a in self.records if a['date']=='2026.10.28'},
+                         {'전라남도완도군기본통계 ( 62 )','경기도양주시기본통계 ( 109 )'})
+        before = copy.deepcopy(self.records)
+        stored, news, filings = project(self.records)
+        self.assertEqual(self.records, before)
+        self.assertEqual(news, [])
+        self.assertEqual(filings, [])
+        self.assertEqual({a['id'] for a in stored}, {a['id'] for a in before})
+        for record, original in zip(stored, before):
+            self.assertEqual(record['record_type'], 'statistical_release')
+            self.assertEqual(record['category'], '통계자료')
+            self.assertEqual(record['relevance_label'], 'NotApplicable')
+            self.assertEqual(record['relevance'], 0)
+            self.assertEqual(record['editorial']['tier'], 'not_news')
+            self.assertEqual(record['legacy_news_classification']['category'], original['category'])
+            self.assertEqual(record['published_at'], original['published_at'])
+            self.assertEqual(record['url'], original['url'])
+        self.assertEqual(project(stored)[0], stored)  # migration is idempotent
+
+    def test_new_general_dataset_does_not_use_description_as_news_evidence(self):
+        src = source(id='kosis_recent', record_type='statistical_release')
+        item = {'title':'경기도양주시기본통계 ( 109 )', 'link':'https://kosis.kr/data/yangju',
+                'pubDate': self.at.isoformat(), 'description':'관광숙박 숙박업 관광객수 국제선'}
+        article = c.article_from_item(item, src, at=self.at)
+        self.assertEqual(article['record_type'], 'statistical_release')
+        self.assertEqual(article['category'], '통계자료')
+        self.assertEqual(article['relevance_label'], 'NotApplicable')
+        self.assertEqual(article['relevance_evidence']['signals'], [])
+
+    def test_live_pipeline_statistics_are_preserved_without_news_or_freshness(self):
+        src = source(id='kosis_recent', record_type='statistical_release')
+        payload = b'<?xml version="1.0"?><rss><channel></channel></rss>'
+        from src.discovery import feed_bytes
+        payload = feed_bytes([{'title':'일반지역기본통계', 'link':'https://kosis.kr/data/new',
+                               'published':self.at.isoformat(), 'description':'관광숙박 숙박업 관광객수'}])
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            c.write_atomic(root/'data/news.json', {'mode':'live_rss','articles':self.records,'count':len(self.records)})
+            result=execute([src],root/'data',root/'state',at=self.at,loader=lambda _:payload)
+            self.assertEqual(result['total_archived'],4)
+            self.assertEqual(result['newsroom_count'],0)
+            self.assertEqual(result['newsroom_korea_direct_count'],0)
+            self.assertEqual(result['newsroom_originally_published_last24h'],0)
+            self.assertEqual(result['originally_published_last24h'],0)
+            self.assertEqual(result['other_research_count'],4)
+            self.assertEqual(result['sources'][0]['classifications'],{'Direct':0,'Indirect':0,'Irrelevant':0})
+            self.assertEqual(result['sources'][0]['statistical_records'],1)
+            self.assertEqual(sum(result['category_counts'].values()),0)
+            self.assertEqual(json.loads((root/'data/research.json').read_text())['count'],4)
+            self.assertEqual(json.loads((root/'data/briefing.json').read_text())['items'],[])
+            again=execute([src],root/'data',root/'state',at=self.at,loader=lambda _:payload)
+            self.assertEqual(again['total_archived'],4)
+            self.assertEqual(again['new_auto_published'],0)
+            self.assertEqual(again['duplicate_observations'],1)
+
+    def test_official_oct28_inbound_performance_is_not_foreign_reference(self):
+        title='최휘영 장관, ‘역대 최대 외래관광객 달성’ 성과 및 ‘3천만‧4천만 명 시대 준비’ 역점 과제 공유'
+        self.assertEqual(exposure(article(title, source_id='mcst_press'))['tier'], 'korea_direct')
+        self.assertEqual(exposure(article('일본 외래관광객 역대 최대 달성', source_id='mcst_press'))['tier'], 'reference')
+
+    def test_failed_legacy_statistics_run_preserves_bytes_but_not_false_news_metrics(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            original={'mode':'live_rss','articles':self.records,'count':len(self.records)}
+            c.write_atomic(root/'data/news.json',original)
+            before=(root/'data/news.json').read_bytes()
+            def fail(_):raise OSError('test outage')
+            result=execute([source()],root/'data',root/'state',at=self.at,loader=fail)
+            self.assertEqual(result['publication_result'],'failed')
+            self.assertEqual(result['newsroom_count'],0)
+            self.assertEqual(sum(result['category_counts'].values()),0)
+            self.assertEqual((root/'data/news.json').read_bytes(),before)
+            self.assertFalse((root/'data/archive.json').exists())

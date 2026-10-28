@@ -10,11 +10,11 @@ from pathlib import Path
 if __package__:
     from . import collector as c
     from .discovery import Loader, AccessBlocked, items_from, feed_bytes
-    from .editorial import project, exposure
+    from .editorial import project, exposure, is_statistical, statistical_assessment
 else:
     import collector as c
     from discovery import Loader, AccessBlocked, items_from, feed_bytes
-    from editorial import project, exposure
+    from editorial import project, exposure, is_statistical, statistical_assessment
 
 
 def valid_date(item, at, days):
@@ -75,7 +75,7 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                 if 'description' not in source.get('analysis_fields', ['title']):
                     item = {k: v for k, v in item.items() if k not in ('description', 'summary')}
                 aid = hashlib.sha256(url.encode()).hexdigest()[:18]
-                assessment = c.assess(title, c.stripped(item.get('description', item.get('summary', ''))))
+                assessment = statistical_assessment() if is_statistical(source) else c.assess(title, c.stripped(item.get('description', item.get('summary', ''))))
                 raw_date = item.get('pubDate') or item.get('published')
                 if raw_date:
                     parsed_date = c.timestamp(raw_date, dt.datetime.min.replace(tzinfo=c.KST))
@@ -107,7 +107,10 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                 if actual_date != sentinel and not at - dt.timedelta(days=days) <= actual_date <= at + dt.timedelta(minutes=5):
                     row['outside_window'] += 1
                     continue
-                row['classifications'][assessment['label']] += 1
+                if assessment['label'] in row['classifications']:
+                    row['classifications'][assessment['label']] += 1
+                else:
+                    row['statistical_records'] = row.get('statistical_records', 0) + 1
                 first_seen = ledger.get(aid, {}).get('first_discovered_at', c.iso(at))
                 already_seen = aid in previous_ids or aid in run_ids
                 row['duplicates' if already_seen else 'new_discoveries'] += 1
@@ -252,7 +255,7 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                'newsroom_newly_added_last24h': sum(bool(a.get('first_published_by_engine_at')) and c.timestamp(a['first_published_by_engine_at']) >= at - dt.timedelta(days=1) for a in newsroom),
                'new_backfilled': sum(a['id'] in new_published and a.get('is_backfill', False) for a in articles),
                'record_type_counts': {kind: sum(a.get('record_type', 'news') == kind for a in metric_articles) for kind in ('news', 'regulatory_filing', 'statistical_release', 'government_notice')},
-               'category_counts': {k: sum(a['category'] == k for a in articles) for k in c.CATEGORIES},
+               'category_counts': {k: sum(a['category'] == k for a in metric_articles) for k in c.CATEGORIES},
                'discovered_last24h': sum(c.timestamp(a['first_discovered_at']) >= at - dt.timedelta(days=1) for a in ledger.values()),
                'discovered_last7d': sum(c.timestamp(a['first_discovered_at']) >= at - dt.timedelta(days=7) for a in ledger.values()),
                'auto_published_last24h': sum(bool(a.get('first_published_by_engine_at')) and c.timestamp(a['first_published_by_engine_at']) >= at - dt.timedelta(days=1) for a in articles),

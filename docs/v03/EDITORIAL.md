@@ -1,5 +1,7 @@
 # PR #3 편집 기준 보완
 
+> 아래 수치는 10월 27일 검증의 역사적 결과입니다. 10월 28일 최신 main 통계 오분류 수정·국내 공급원 재조사·최신 검증은 [국내 공급 재검토](DOMESTIC-SUPPLY-20261028.md)를 참조하세요.
+
 이 문서와 `editorial-validation.json`이 편집 기준 보완 후의 최신 검증 결과입니다. 이전 `first-run.json`의 “total_published 12 / new_auto_published 8”은 기업공시까지 포함한 초기 보관 지표이며 Newsroom 뉴스 수를 의미하지 않습니다.
 
 ## 보관과 기본 노출

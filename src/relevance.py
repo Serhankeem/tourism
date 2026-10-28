@@ -150,7 +150,8 @@ def assess(title, description=''):
                             'reason': '다른 산업 변화와 관광산업 영향의 근거를 원문에서 검토한 뒤 승인해야 합니다.'}
     # A generic macro/culture headline cannot become Direct from incidental
     # tourism keywords in a different paragraph.
-    cross_headline = any(matches(fields['title'], terms) for terms in SECTORS.values())
+    cross_headline = (any(matches(fields['title'], terms) for terms in SECTORS.values()) or
+                      bool(matches(fields['title'], ('오마카세', '족욕', '맛집', '카페탐방', '차마시'))))
     candidates = []
     for category, terms in SUBJECTS.items():
         for field, raw in (('title', title), ('description', description)):

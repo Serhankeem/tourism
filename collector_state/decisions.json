@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-28T11:12:36+09:00",
+  "checked_at": "2026-10-28T11:57:06+09:00",
   "scope": "successful_sources_this_run",
   "items": [
     {
@@ -210,7 +210,7 @@
     },
     {
       "id": "0540613a2454a61c96",
-      "title": "전라남도완도군기본통계 ( 60 )",
+      "title": "전라남도완도군기본통계 ( 62 )",
       "url": "http://kosis.kr/serviceInfo/newContrainDataDetail.do?boardIdx=2007118&boardOrgId=750",
       "source_id": "kosis_recent",
       "relevance_evidence": {

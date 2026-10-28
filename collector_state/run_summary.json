@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "checked_at": "2026-10-29T04:00:43+09:00",
+  "checked_at": "2026-10-29T05:54:41+09:00",
   "publication_result": "partial",
   "discovery_status": "partial",
-  "received": 570,
-  "new_discoveries": 3,
-  "duplicate_observations": 367,
+  "received": 590,
+  "new_discoveries": 4,
+  "duplicate_observations": 386,
   "new_auto_published": 0,
   "total_published": 30,
   "total_archived": 30,
@@ -85,8 +85,8 @@
     "문화·트렌드": 5,
     "경제·시장": 0
   },
-  "discovered_last24h": 520,
-  "discovered_last7d": 520,
+  "discovered_last24h": 524,
+  "discovered_last7d": 524,
   "auto_published_last24h": 21,
   "auto_published_last7d": 21,
   "originally_published_last24h": 5,
@@ -276,9 +276,9 @@
       "name": "서울시 내 손안에 서울 교통",
       "url": "https://mediahub.seoul.go.kr/news/rss/01",
       "group": "public",
-      "received": 0,
+      "received": 20,
       "new_discoveries": 0,
-      "duplicates": 0,
+      "duplicates": 20,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -286,7 +286,7 @@
       "classifications": {
         "Direct": 0,
         "Indirect": 0,
-        "Irrelevant": 0
+        "Irrelevant": 20
       },
       "publication_policy": {
         "status": "approved",
@@ -300,13 +300,11 @@
         "max_days": 90,
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
-      "status": "error",
-      "error_kind": "transport_error",
-      "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
-      "success_rate": 0.75,
+      "status": "ok",
+      "success_rate": 0.7777777777777778,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "fetch_failed"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "seoul_environment",
@@ -338,7 +336,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.25,
+      "success_rate": 0.3333333333333333,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -824,16 +822,16 @@
       "url": "https://skift.com/feed/",
       "group": "media",
       "received": 10,
-      "new_discoveries": 0,
-      "duplicates": 10,
-      "rights_holds": 1,
+      "new_discoveries": 2,
+      "duplicates": 8,
+      "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
       "outside_window": 0,
       "classifications": {
-        "Direct": 1,
+        "Direct": 0,
         "Indirect": 0,
-        "Irrelevant": 9
+        "Irrelevant": 10
       },
       "publication_policy": {
         "status": "review",
@@ -851,7 +849,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "no_new_candidate"
+      "outcome": "discovered_not_publishable"
     },
     {
       "id": "yonhap",
@@ -859,8 +857,8 @@
       "url": "https://www.yna.co.kr/rss/economy.xml",
       "group": "media",
       "received": 120,
-      "new_discoveries": 3,
-      "duplicates": 117,
+      "new_discoveries": 2,
+      "duplicates": 118,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,

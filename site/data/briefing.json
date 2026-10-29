@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-29T16:11:00+09:00",
+  "generated_at": "2026-10-29T18:03:53+09:00",
   "status": "candidates_ready",
   "mode": "live_rss",
   "title": "관광산업 주요 뉴스 브리핑 후보",
@@ -45,17 +45,6 @@
       "keywords": [
         "지역관광",
         "방한객"
-      ]
-    },
-    {
-      "title": "뉴욕관광청, 2026 뉴욕 세일즈 미션 개최… 국내 여행업계 관계자 모집",
-      "source": "퍼블릭뉴스통신(TTL)",
-      "published_at": "2026-10-28T17:47:52+09:00",
-      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156237",
-      "category": "여행산업",
-      "keywords": [
-        "관광청",
-        "여행업"
       ]
     }
   ],

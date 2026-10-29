@@ -1,18 +1,18 @@
 {
   "schema_version": 3,
-  "checked_at": "2026-10-30T02:04:08+09:00",
+  "checked_at": "2026-10-30T04:03:26+09:00",
   "publication_result": "partial",
   "discovery_status": "partial",
   "received": 570,
-  "new_discoveries": 6,
-  "duplicate_observations": 365,
-  "new_auto_published": 2,
+  "new_discoveries": 2,
+  "duplicate_observations": 369,
+  "new_auto_published": 0,
   "total_published": 40,
   "total_archived": 40,
   "newsroom_count": 36,
   "filings_count": 0,
   "other_research_count": 3,
-  "new_newsroom_items": 2,
+  "new_newsroom_items": 0,
   "new_filings": 0,
   "newsroom_korea_direct_count": 18,
   "newsroom_korea_direct_last7d": 15,
@@ -45,7 +45,7 @@
       "count": 12,
       "originally_published_last7d": 11,
       "korea_direct": 5,
-      "new_this_run": 2
+      "new_this_run": 0
     },
     "ttlnews": {
       "count": 7,
@@ -85,8 +85,8 @@
     "문화·트렌드": 9,
     "경제·시장": 0
   },
-  "discovered_last24h": 454,
-  "discovered_last7d": 971,
+  "discovered_last24h": 453,
+  "discovered_last7d": 973,
   "auto_published_last24h": 10,
   "auto_published_last7d": 31,
   "originally_published_last24h": 10,
@@ -231,7 +231,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9565217391304348,
+      "success_rate": 0.9583333333333334,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -266,7 +266,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9565217391304348,
+      "success_rate": 0.9583333333333334,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -301,7 +301,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.782608695652174,
+      "success_rate": 0.7916666666666666,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -338,7 +338,7 @@
       "status": "error",
       "error_kind": "transport_error",
       "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
-      "success_rate": 0.34782608695652173,
+      "success_rate": 0.3333333333333333,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "fetch_failed"
@@ -824,16 +824,16 @@
       "url": "https://skift.com/feed/",
       "group": "media",
       "received": 10,
-      "new_discoveries": 1,
-      "duplicates": 9,
-      "rights_holds": 0,
+      "new_discoveries": 2,
+      "duplicates": 8,
+      "rights_holds": 1,
       "date_holds": 0,
       "invalid_metadata": 0,
       "outside_window": 0,
       "classifications": {
-        "Direct": 0,
+        "Direct": 1,
         "Indirect": 0,
-        "Irrelevant": 10
+        "Irrelevant": 9
       },
       "publication_policy": {
         "status": "review",
@@ -859,8 +859,8 @@
       "url": "https://www.yna.co.kr/rss/economy.xml",
       "group": "media",
       "received": 120,
-      "new_discoveries": 1,
-      "duplicates": 119,
+      "new_discoveries": 0,
+      "duplicates": 120,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -886,7 +886,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "traveltimes",
@@ -894,8 +894,8 @@
       "url": "https://www.traveltimes.co.kr/rss/allArticle.xml",
       "group": "media",
       "received": 50,
-      "new_discoveries": 4,
-      "duplicates": 26,
+      "new_discoveries": 0,
+      "duplicates": 30,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -926,9 +926,9 @@
       },
       "status": "ok",
       "success_rate": 1.0,
-      "new_auto_published": 2,
-      "new_newsroom_items": 2,
-      "outcome": "auto_published"
+      "new_auto_published": 0,
+      "new_newsroom_items": 0,
+      "outcome": "no_new_candidate"
     },
     {
       "id": "traveldaily",
@@ -1015,5 +1015,5 @@
       "outcome": "no_new_candidate"
     }
   ],
-  "outcome": "new_newsroom_news"
+  "outcome": "no_new_publications_with_source_errors"
 }

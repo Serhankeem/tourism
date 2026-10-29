@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-30T00:07:20+09:00",
+  "generated_at": "2026-10-30T02:04:08+09:00",
   "status": "candidates_ready",
   "mode": "live_rss",
   "title": "관광산업 주요 뉴스 브리핑 후보",
@@ -23,28 +23,6 @@
       "category": "인바운드",
       "keywords": [
         "방한관광객"
-      ]
-    },
-    {
-      "title": "최휘영 장관 “방한객 3,000만 시대, 지역관광이 첫 조건”",
-      "source": "여행신문",
-      "published_at": "2026-10-29T00:15:00+09:00",
-      "url": "https://www.traveltimes.co.kr/news/articleView.html?idxno=500631",
-      "category": "인바운드",
-      "keywords": [
-        "지역관광",
-        "방한객"
-      ]
-    },
-    {
-      "title": "방한객 소비를 지역관광으로 잇는다…코리아 그랜드 페스티벌 주목!",
-      "source": "여행신문",
-      "published_at": "2026-10-29T00:10:00+09:00",
-      "url": "https://www.traveltimes.co.kr/news/articleView.html?idxno=500625",
-      "category": "인바운드",
-      "keywords": [
-        "지역관광",
-        "방한객"
       ]
     }
   ],

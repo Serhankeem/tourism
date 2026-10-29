@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
   "mode": "live_rss",
-  "generated_at": "2026-10-30T00:07:20+09:00",
-  "last_successful_fetch": "2026-10-30T00:07:20+09:00",
-  "count": 34,
+  "generated_at": "2026-10-30T02:04:08+09:00",
+  "last_successful_fetch": "2026-10-30T02:04:08+09:00",
+  "count": 36,
   "public_fields": [
     "title",
     "source",
@@ -197,6 +197,26 @@
       "category": "문화·트렌드",
       "keywords": [
         "웰니스트래블"
+      ]
+    },
+    {
+      "title": "여행 예약했을 뿐인데…항공사·OTA 줄줄이 개인정보 유출",
+      "source": "여행신문",
+      "published_at": "2026-10-30T00:15:00+09:00",
+      "url": "https://www.traveltimes.co.kr/news/articleView.html?idxno=500633",
+      "category": "항공·숙박",
+      "keywords": [
+        "항공사"
+      ]
+    },
+    {
+      "title": "숙박업 회복세 중저가까지 확산…핵심 동력은 이것",
+      "source": "여행신문",
+      "published_at": "2026-10-30T00:10:00+09:00",
+      "url": "https://www.traveltimes.co.kr/news/articleView.html?idxno=500637",
+      "category": "항공·숙박",
+      "keywords": [
+        "숙박업"
       ]
     },
     {

@@ -29,18 +29,20 @@ Research PR #5가 병합된 최신 main에서 `feat/currentourism-home-redesign`
 - 수집 예약/토큰/Pages 배포 방법은 그대로 유지하며, CSS/JS 및 향후 로고
   파일만 수정해도 기존 main 배포 경로가 실행되도록 경로 조건만 추가합니다.
 
-## 남은 필수 자산 — 공식 PNG
+## 공식 PNG 적용
 
-대화에서 투명 로고의 모습은 확인했으나, 실행 작업공간에는 지시서 텍스트만
-전달되었고 **원본 PNG 바이너리/다운로드 URL이 없습니다**. 새로 그린 로고로
-대체하지 않았습니다. 따라서 `site/assets/currentourism-logo.png`는 아직
-존재하지 않으며 **공식 로고 적용 완료로 보지 않습니다**.
+사용자가 main에 업로드한 `site/assets/currentourism_logo_transparent_3x.png`를
+요청한 `site/assets/currentourism-logo.png`에 **바이트 그대로 복사**했습니다.
+업로드 원본도 보존합니다. 이미지 생성·수정·리샘플링·색상/배경 변경은 없습니다.
 
-현재 헤더는 파일이 제공되면 원본을 비율 유지하여 표시하는 로딩/실패 처리와
-홈 링크를 갖췄고, 미수신 상태에서는 텍스트 브랜드명만 표시합니다.
-스크린샷의 텍스트는 공식 로고가 아닙니다. 원본 PNG를 받으면 지정 경로에
-보관하고 실제 치수/투명도/원본 해시를 확인한 뒤 이미지 표시·모바일 테스트와
-스크린샷을 갱신해야 합니다. 이 때문에 PR을 **Draft**로 남깁니다.
+- 원본 867 × 498px, RGBA PNG, 알파 범위 0–255(투명 배경).
+- 두 파일의 SHA-256 동일:
+  `1a344104f9c0038dc7b910c61ae9b43d90de57d66ca7e6bd8516a6012c7ae705`.
+- HTML 치수도 원본에 맞췄으며 CSS는 비율을 유지한 표시 크기만 조정합니다.
+- 실제 PNG 표시, 텍스트 대체 표시 숨김, PC/모바일 비율, 이미지 키보드/클릭
+  홈 이동을 브라우저에서 확인했습니다. 스크린샷을 공식 이미지로 갱신했습니다.
+- 로고 미수신에 따른 Draft 사유를 해소했습니다. PR은 검토용이며 main 병합과
+  운영 Pages 배포는 수행하지 않았습니다.
 
 ## 검증
 
@@ -63,13 +65,13 @@ Research PR #5가 병합된 최신 main에서 `feat/currentourism-home-redesign`
 
 ## 화면
 
-아래는 **공식 PNG 미수신 / 텍스트 브랜드 표시 상태**입니다.
+아래는 **사용자가 제공한 공식 투명 PNG 적용 상태**입니다.
 
 - [홈 전체 · PC](screenshots/home-desktop.png)
 - [홈 전체 · 모바일](screenshots/home-mobile.png)
 - [About · PC](screenshots/about-desktop.png)
 - [About · 모바일](screenshots/about-mobile.png)
-- [헤더 브랜드 영역](screenshots/brand-header.png) — 공식 로고 이미지 아님
+- [헤더 브랜드 영역](screenshots/brand-header.png) — 공식 원본 PNG
 
 ```bash
 python -m unittest discover -s tests -q

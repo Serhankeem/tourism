@@ -2,6 +2,7 @@
 const {chromium}=require('playwright');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
+const crypto=require('node:crypto');
 (async()=>{
  const browser=await chromium.launch({headless:true});
  const base=process.env.TOURISM_TEST_URL||'http://127.0.0.1:8010';
@@ -12,6 +13,18 @@ const fs=require('node:fs');
   const news=await(await page.request.get(base+'/data/newsroom.json')).json();
   const reports=await(await page.request.get(base+'/data/reports.json')).json();
   await page.goto(base);await page.waitForFunction(()=>!newsLoading&&NEWS.length>0);
+  const originalLogo=await page.request.get(base+'/assets/currentourism_logo_transparent_3x.png');
+  const publicLogo=await page.request.get(base+'/assets/currentourism-logo.png');
+  assert.equal(originalLogo.status(),200);assert.equal(publicLogo.status(),200);
+  assert.equal(crypto.createHash('sha256').update(await originalLogo.body()).digest('hex'),crypto.createHash('sha256').update(await publicLogo.body()).digest('hex'),'Logo must match uploaded original bytes');
+  await page.locator('#brand-logo').waitFor({state:'visible'});
+  assert.equal(await page.locator('#brand-fallback').isVisible(),false);
+  async function checkLogoRatio(target){
+   const size=await target.locator('#brand-logo').evaluate(img=>({w:img.naturalWidth,h:img.naturalHeight,rect:img.getBoundingClientRect().toJSON()}));
+   assert.equal(size.w,867);assert.equal(size.h,498);
+   assert.ok(Math.abs(size.rect.width/size.rect.height-size.w/size.h)<0.01,'Preserve original logo ratio');
+  }
+  await checkLogoRatio(page);
   assert.equal(await page.locator('.sidebar').count(),0);
   assert.equal(await page.locator('.primary-navigation a').count(),5);
   assert.deepEqual(await page.locator('.primary-navigation a').evaluateAll(a=>a.map(x=>x.dataset.nav)),['news','briefing','macro','weather','about']);
@@ -56,15 +69,19 @@ const fs=require('node:fs');
   await page.evaluate(()=>{NEWS.forEach(n=>n.published_at='2020-01-01T00:00:00+09:00');renderHomeNews();});
   assert.match(await page.locator('#home-news-freshness').textContent(),/최근 24시간 발행 뉴스가 없습니다/);
   await page.evaluate(()=>{NEWS.splice(0);renderHomeNews();});assert.equal(await page.locator('#overview-news h3').count(),0);assert.match(await page.locator('#home-news-freshness').textContent(),/게시 가능한 뉴스 데이터가 없습니다/);
+  await page.locator('.primary-navigation [data-nav="about"]').click();
+  await page.locator('.brand-home').focus();await page.keyboard.press('Enter');
+  assert.equal(await page.locator('#page-overview').isVisible(),true,'Keyboard logo link returns home');
   const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});mobile.on('pageerror',e=>errors.push(e.message));
   await mobile.goto(base);await mobile.waitForFunction(()=>!newsLoading&&NEWS.length>0);
+  await mobile.locator('#brand-logo').waitFor({state:'visible'});await checkLogoRatio(mobile);
   assert.equal(await mobile.locator('.primary-navigation').isVisible(),false);
   const toggle=mobile.locator('#menu-toggle');await toggle.click();assert.equal(await toggle.getAttribute('aria-expanded'),'true');
   await mobile.keyboard.press('Escape');assert.equal(await toggle.getAttribute('aria-expanded'),'false');assert.equal(await toggle.evaluate(el=>document.activeElement===el),true);
   for(const route of ['news','briefing','macro','weather','about']){
    await toggle.click();await mobile.locator(`.primary-navigation [data-nav="${route}"]`).click();assert.equal(await mobile.locator('#page-'+route).isVisible(),true);assert.equal(await toggle.getAttribute('aria-expanded'),'false');
    assert.equal(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,route+' must fit mobile');
-   await mobile.locator('.brand-home').click();assert.equal(await mobile.locator('#page-overview').isVisible(),true);
+   await mobile.locator('#brand-logo').click();assert.equal(await mobile.locator('#page-overview').isVisible(),true);
   }
   const mrect=await mobile.locator('.overview-hero').evaluate(el=>[...el.children].map(n=>n.getBoundingClientRect().top));assert.ok(mrect[0]<mrect[1]);
   await mobile.screenshot({path:dir+'/home-mobile.png',fullPage:true});

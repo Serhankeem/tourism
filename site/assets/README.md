@@ -1,14 +1,11 @@
 # currentourism official logo
 
-Place the **user-supplied original transparent PNG**, without redrawing, recoloring,
-background changes or distortion, at `currentourism-logo.png`.
+The user uploaded `currentourism_logo_transparent_3x.png` on main. The required
+website path `currentourism-logo.png` is a byte-for-byte copy of that original.
+Both files are retained. No image generation, editing, resizing, recoloring or
+background removal was performed.
 
-The inline chat preview was visible but the binary was not delivered to the
-execution workspace. No substitute image has been generated. The header currently
-falls back to the brand name until the original file is supplied. This is a
-pending asset, not a completed logo integration.
-
-The header expects the supplied preview's 859:484 aspect ratio, renders with
-`height:auto` / `object-fit:contain`, and links the entire logo area to `#overview`.
-The original file's intrinsic dimensions should be checked when received and the
-HTML width/height updated if different. No PNG has been fabricated for this path.
+- Original dimensions: 867 × 498 pixels; PNG RGBA, alpha range 0–255.
+- SHA-256 (both files): `1a344104f9c0038dc7b910c61ae9b43d90de57d66ca7e6bd8516a6012c7ae705`.
+- Header preserves the aspect ratio with CSS `height:auto` / `object-fit:contain`.
+- The full brand area is an accessible `#overview` home link on desktop/mobile.

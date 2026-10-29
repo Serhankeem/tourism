@@ -42,5 +42,13 @@
   },
   "newsroom_articles": 32,
   "research_reports": 110,
-  "logo_asset_status": "original PNG not delivered; integration pending; no substitute generated"
+  "logo_asset_status": "user-supplied original PNG applied without modification",
+  "logo_sha256": "1a344104f9c0038dc7b910c61ae9b43d90de57d66ca7e6bd8516a6012c7ae705",
+  "logo_original_path": "site/assets/currentourism_logo_transparent_3x.png",
+  "logo_public_path": "site/assets/currentourism-logo.png",
+  "logo_dimensions": [
+    867,
+    498
+  ],
+  "logo_mode": "RGBA"
 }

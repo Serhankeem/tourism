@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
   "mode": "live_rss",
-  "generated_at": "2026-10-29T10:10:14+09:00",
-  "last_successful_fetch": "2026-10-29T10:10:14+09:00",
-  "count": 27,
+  "generated_at": "2026-10-29T11:15:04+09:00",
+  "last_successful_fetch": "2026-10-29T11:15:04+09:00",
+  "count": 30,
   "public_fields": [
     "title",
     "source",
@@ -13,6 +13,26 @@
     "keywords"
   ],
   "articles": [
+    {
+      "title": "문화체육관광부·한국관광공사, 티맵과 ‘로컬 드라이브 캠페인’ 진행",
+      "source": "퍼블릭뉴스통신(TTL)",
+      "published_at": "2026-10-29T10:41:59+09:00",
+      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156555",
+      "category": "문화·트렌드",
+      "keywords": [
+        "관광공사"
+      ]
+    },
+    {
+      "title": "하나카드, 라인페이 대만과 업무협약…방한 관광객 결제 편의 높인다",
+      "source": "퍼블릭뉴스통신(TTL)",
+      "published_at": "2026-10-29T10:24:53+09:00",
+      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156602",
+      "category": "인바운드",
+      "keywords": [
+        "방한관광객"
+      ]
+    },
     {
       "title": "최휘영 장관 “방한객 3,000만 시대, 지역관광이 첫 조건”",
       "source": "여행신문",
@@ -177,6 +197,16 @@
       "category": "문화·트렌드",
       "keywords": [
         "웰니스트래블"
+      ]
+    },
+    {
+      "title": "문화체육관광부, 29일부터 ‘관광진흥법’ 개정안 전격 시행 ... “성과관리 제도 본격 도입”",
+      "source": "퍼블릭뉴스통신(TTL)",
+      "published_at": "2026-10-29T10:41:30+09:00",
+      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156639",
+      "category": "관광정책",
+      "keywords": [
+        "관광진흥"
       ]
     },
     {

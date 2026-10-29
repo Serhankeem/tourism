@@ -1,10 +1,30 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-29T10:10:14+09:00",
+  "generated_at": "2026-10-29T11:15:04+09:00",
   "status": "candidates_ready",
   "mode": "live_rss",
   "title": "관광산업 주요 뉴스 브리핑 후보",
   "items": [
+    {
+      "title": "문화체육관광부·한국관광공사, 티맵과 ‘로컬 드라이브 캠페인’ 진행",
+      "source": "퍼블릭뉴스통신(TTL)",
+      "published_at": "2026-10-29T10:41:59+09:00",
+      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156555",
+      "category": "문화·트렌드",
+      "keywords": [
+        "관광공사"
+      ]
+    },
+    {
+      "title": "하나카드, 라인페이 대만과 업무협약…방한 관광객 결제 편의 높인다",
+      "source": "퍼블릭뉴스통신(TTL)",
+      "published_at": "2026-10-29T10:24:53+09:00",
+      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156602",
+      "category": "인바운드",
+      "keywords": [
+        "방한관광객"
+      ]
+    },
     {
       "title": "최휘영 장관 “방한객 3,000만 시대, 지역관광이 첫 조건”",
       "source": "여행신문",
@@ -36,16 +56,6 @@
       "keywords": [
         "관광청",
         "여행업"
-      ]
-    },
-    {
-      "title": "최휘영 장관, ‘역대 최대 외래관광객 달성’ 성과 및 ‘3천만‧4천만 명 시대 준비’ 역점 과제 공유",
-      "source": "문화체육관광부 보도자료",
-      "published_at": "2026-10-28T13:07:15+09:00",
-      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22802",
-      "category": "인바운드",
-      "keywords": [
-        "외래관광객"
       ]
     }
   ],

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-29T18:03:53+09:00",
+  "checked_at": "2026-10-29T19:57:59+09:00",
   "scope": "successful_sources_this_run",
   "items": [
     {
@@ -1416,6 +1416,24 @@
         "evidence_status": "industry_subject_in_feed"
       },
       "decision": "publish"
+    },
+    {
+      "id": "44c330fcfd17f5e351",
+      "title": "가업상속공제 축소 우려에 관광업계 12개 단체 공동 대응",
+      "url": "https://www.traveltimes.co.kr/news/articleView.html?idxno=500639",
+      "source_id": "traveltimes",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
     },
     {
       "id": "5e6de6af480e465a1d",
@@ -3002,6 +3020,60 @@
       "decision": "exclude"
     },
     {
+      "id": "f22c6e7a25d91f8466",
+      "title": "[칼럼] \"충분한 상담과 신중한 선택이 중요\"... 수능 후 첫 성형, 서두르기 전 확인할 것들",
+      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156940",
+      "source_id": "ttlnews",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "2090eee1e262b613e2",
+      "title": "한탄강 협곡 따라 즐기는 식도락… ‘달다곰이 철원 먹거리타운’ 30일 그랜드 오픈",
+      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156870",
+      "source_id": "ttlnews",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "0e0c62fac8d2231b00",
+      "title": "조업일수 감소 타격 딛고 선방한 현대차, 3분기 영업익 2조6772억원 달성",
+      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156831",
+      "source_id": "ttlnews",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
       "id": "ab6e2e0b438bc72ae9",
       "title": "새마을금고, 2억1000만원 규모 맞춤형 위생용품·속옷 지원금 지원",
       "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156868",
@@ -3849,60 +3921,6 @@
       "id": "b11f3ae99fcb412138",
       "title": "연세사랑병원, 공조시스템 도입해 수술실 감염 예방… 감염률 0.16% 기록",
       "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156731",
-      "source_id": "ttlnews",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "8bda3c9c176a081acc",
-      "title": "고흥군, 고용노동부와 외국인 근로자 노무관리 업무협약 체결",
-      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156748",
-      "source_id": "ttlnews",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "2db6b15aab6aa6fe0e",
-      "title": "신용보증기금, 김남수·정현호·최종천 신임 상임이사 선임",
-      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156708",
-      "source_id": "ttlnews",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "3efc4bfe86eddb2d72",
-      "title": "[인사] 현대백화점그룹, 2027년 정기 임원 인사 발표…총 50명 승진·전보",
-      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156743",
       "source_id": "ttlnews",
       "relevance_evidence": {
         "rule_version": "0.2",

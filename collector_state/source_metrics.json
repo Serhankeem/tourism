@@ -2,179 +2,179 @@
   "schema_version": 3,
   "sources": {
     "mcst_press": {
-      "attempts": 21,
-      "successes": 21,
+      "attempts": 22,
+      "successes": 22,
       "errors": {},
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "korea_net_travel": {
-      "attempts": 21,
+      "attempts": 22,
       "successes": 0,
       "errors": {
-        "access_policy": 21
+        "access_policy": 22
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "kosis_recent": {
-      "attempts": 21,
+      "attempts": 22,
       "successes": 0,
       "errors": {
-        "access_policy": 20,
+        "access_policy": 21,
         "transport_error": 1
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "seoul_culture": {
-      "attempts": 21,
-      "successes": 20,
+      "attempts": 22,
+      "successes": 21,
       "errors": {
         "access_policy": 1
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "seoul_economy": {
-      "attempts": 21,
-      "successes": 20,
+      "attempts": 22,
+      "successes": 21,
       "errors": {
         "access_policy": 1
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "seoul_transport": {
-      "attempts": 21,
+      "attempts": 22,
       "successes": 17,
       "errors": {
-        "transport_error": 3,
+        "transport_error": 4,
         "access_policy": 1
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "seoul_environment": {
-      "attempts": 21,
-      "successes": 7,
+      "attempts": 22,
+      "successes": 8,
       "errors": {
         "transport_error": 13,
         "access_policy": 1
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "sec_booking": {
-      "attempts": 21,
+      "attempts": 22,
       "successes": 0,
       "errors": {
-        "access_policy": 21
+        "access_policy": 22
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "sec_expedia": {
-      "attempts": 21,
+      "attempts": 22,
       "successes": 0,
       "errors": {
-        "access_policy": 21
+        "access_policy": 22
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "sec_marriott": {
-      "attempts": 21,
+      "attempts": 22,
       "successes": 0,
       "errors": {
-        "access_policy": 21
+        "access_policy": 22
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "sec_hilton": {
-      "attempts": 21,
+      "attempts": 22,
       "successes": 0,
       "errors": {
-        "access_policy": 21
+        "access_policy": 22
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "sec_delta": {
-      "attempts": 21,
+      "attempts": 22,
       "successes": 0,
       "errors": {
-        "access_policy": 21
+        "access_policy": 22
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "sec_united": {
-      "attempts": 21,
+      "attempts": 22,
       "successes": 0,
       "errors": {
-        "access_policy": 21
+        "access_policy": 22
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "sec_tripcom": {
-      "attempts": 21,
+      "attempts": 22,
       "successes": 0,
       "errors": {
-        "access_policy": 21
+        "access_policy": 22
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "govuk_tourism": {
-      "attempts": 21,
-      "successes": 21,
+      "attempts": 22,
+      "successes": 22,
       "errors": {},
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "govuk_aviation": {
-      "attempts": 21,
-      "successes": 21,
+      "attempts": 22,
+      "successes": 22,
       "errors": {},
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "koreanair": {
-      "attempts": 21,
-      "successes": 21,
+      "attempts": 22,
+      "successes": 22,
       "errors": {},
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "tripcom_news": {
-      "attempts": 21,
+      "attempts": 22,
       "successes": 0,
       "errors": {
-        "access_policy": 21
+        "access_policy": 22
       },
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "hilton_news": {
-      "attempts": 21,
-      "successes": 21,
+      "attempts": 22,
+      "successes": 22,
       "errors": {},
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "skift": {
-      "attempts": 21,
-      "successes": 21,
+      "attempts": 22,
+      "successes": 22,
       "errors": {},
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "yonhap": {
-      "attempts": 21,
-      "successes": 21,
+      "attempts": 22,
+      "successes": 22,
       "errors": {},
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "traveltimes": {
-      "attempts": 21,
-      "successes": 21,
+      "attempts": 22,
+      "successes": 22,
       "errors": {},
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "traveldaily": {
-      "attempts": 21,
-      "successes": 21,
+      "attempts": 22,
+      "successes": 22,
       "errors": {},
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     },
     "ttlnews": {
-      "attempts": 21,
-      "successes": 21,
+      "attempts": 22,
+      "successes": 22,
       "errors": {},
-      "last_checked_at": "2026-10-29T22:10:41+09:00"
+      "last_checked_at": "2026-10-30T00:07:20+09:00"
     }
   }
 }

@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "checked_at": "2026-10-29T19:57:59+09:00",
+  "checked_at": "2026-10-29T22:10:41+09:00",
   "publication_result": "partial",
   "discovery_status": "partial",
-  "received": 570,
-  "new_discoveries": 17,
-  "duplicate_observations": 354,
+  "received": 590,
+  "new_discoveries": 2,
+  "duplicate_observations": 389,
   "new_auto_published": 0,
   "total_published": 36,
   "total_archived": 36,
@@ -85,8 +85,8 @@
     "문화·트렌드": 7,
     "경제·시장": 0
   },
-  "discovered_last24h": 438,
-  "discovered_last7d": 906,
+  "discovered_last24h": 419,
+  "discovered_last7d": 908,
   "auto_published_last24h": 8,
   "auto_published_last7d": 27,
   "originally_published_last24h": 8,
@@ -231,7 +231,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.95,
+      "success_rate": 0.9523809523809523,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -266,7 +266,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.95,
+      "success_rate": 0.9523809523809523,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -301,7 +301,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.8,
+      "success_rate": 0.8095238095238095,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -311,9 +311,9 @@
       "name": "서울시 내 손안에 서울 환경",
       "url": "https://mediahub.seoul.go.kr/news/rss/05",
       "group": "public",
-      "received": 0,
+      "received": 20,
       "new_discoveries": 0,
-      "duplicates": 0,
+      "duplicates": 20,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -321,7 +321,7 @@
       "classifications": {
         "Direct": 0,
         "Indirect": 0,
-        "Irrelevant": 0
+        "Irrelevant": 20
       },
       "publication_policy": {
         "status": "approved",
@@ -335,13 +335,11 @@
         "max_days": 90,
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
-      "status": "error",
-      "error_kind": "transport_error",
-      "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
-      "success_rate": 0.3,
+      "status": "ok",
+      "success_rate": 0.3333333333333333,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "fetch_failed"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "sec_booking",
@@ -859,8 +857,8 @@
       "url": "https://www.yna.co.kr/rss/economy.xml",
       "group": "media",
       "received": 120,
-      "new_discoveries": 12,
-      "duplicates": 108,
+      "new_discoveries": 1,
+      "duplicates": 119,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -894,8 +892,8 @@
       "url": "https://www.traveltimes.co.kr/rss/allArticle.xml",
       "group": "media",
       "received": 50,
-      "new_discoveries": 1,
-      "duplicates": 29,
+      "new_discoveries": 0,
+      "duplicates": 30,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -928,7 +926,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "traveldaily",
@@ -978,8 +976,8 @@
       "url": "https://www.ttlnews.com/rss/allArticle.xml",
       "group": "media",
       "received": 50,
-      "new_discoveries": 3,
-      "duplicates": 47,
+      "new_discoveries": 0,
+      "duplicates": 50,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -1012,7 +1010,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     }
   ],
   "outcome": "no_new_publications_with_source_errors"

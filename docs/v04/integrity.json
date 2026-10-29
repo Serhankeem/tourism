@@ -1,0 +1,25 @@
+{
+  "protected_files": {
+    "site/data/news.json": "6202cbd8a84ec86bef65bbf443d62374144a1ff4dc39a455c3f400b1f6b2f530",
+    "site/data/newsroom.json": "6202cbd8a84ec86bef65bbf443d62374144a1ff4dc39a455c3f400b1f6b2f530",
+    "site/data/briefing.json": "db39d7a368c038472bb8791a7935d4b81f47c77bcce9c1c28b1e3643c0b50f9b",
+    "site/data/research.json": "3d08ab0314ec3e377aef02305605f97070af2b46d66db5abb4afc41320d1e961",
+    "site/data/filings.json": "ebbbee67331cd01818d112e7bcd6e772e79286a50dacd62edf76fc006241d283",
+    "collector_state/archive.json": "025ae723419bacb49fbf856bca6a195cbb1884bfaafb5d5f24bc99f92379c01a"
+  },
+  "research_records": 110,
+  "automatic_records": 110,
+  "manual_records": 0,
+  "pdf_or_body_files_downloaded_by_collector": 0,
+  "public_report_fields": [
+    "title",
+    "publisher",
+    "published_at",
+    "report_type",
+    "category",
+    "keywords",
+    "url",
+    "access_type"
+  ],
+  "public_reports_sha256": "c634552efb18db0c83639f4cff1344fef67a3af45b497667666e6aa3c66b5f5c"
+}

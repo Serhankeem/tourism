@@ -25,9 +25,6 @@ on:
       - '.github/workflows/collect.yml'
 permissions:
   contents: read
-concurrency:
-  group: tourism-pulse-publish
-  cancel-in-progress: false
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -39,6 +36,9 @@ jobs:
       - name: Run regression tests
         run: python -m unittest discover -s tests -v
   collect-and-publish:
+    concurrency:
+      group: tourism-pulse-publish
+      cancel-in-progress: false
     needs: test
     if: github.ref == 'refs/heads/main'
     permissions:
@@ -50,6 +50,9 @@ jobs:
       name: github-pages
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main # Latest main after the shared Newsroom/Research lock.
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -69,6 +72,7 @@ jobs:
           fi
           if ! git diff --cached --quiet; then
             git commit -m 'Update RSS news and collection health'
+            git pull --rebase origin main
             git push
           fi
       - name: Record collection report

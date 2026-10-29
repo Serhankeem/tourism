@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-29T07:51:13+09:00",
+  "generated_at": "2026-10-29T10:10:14+09:00",
   "status": "candidates_ready",
   "mode": "live_rss",
   "title": "관광산업 주요 뉴스 브리핑 후보",
@@ -46,16 +46,6 @@
       "category": "인바운드",
       "keywords": [
         "외래관광객"
-      ]
-    },
-    {
-      "title": "서울관광재단, 일본 2050 세대 남성 겨냥 체험·도전형 글로벌 캠페인 ‘서울 퀘스트’ 전격 추진",
-      "source": "퍼블릭뉴스통신(TTL)",
-      "published_at": "2026-10-28T10:07:20+09:00",
-      "url": "http://www.ttlnews.com/news/articleView.html?idxno=3156140",
-      "category": "문화·트렌드",
-      "keywords": [
-        "관광재단"
       ]
     }
   ],

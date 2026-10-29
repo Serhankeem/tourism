@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
   "mode": "live_rss",
-  "generated_at": "2026-10-29T07:51:13+09:00",
-  "last_successful_fetch": "2026-10-29T07:51:13+09:00",
-  "count": 26,
+  "generated_at": "2026-10-29T10:10:14+09:00",
+  "last_successful_fetch": "2026-10-29T10:10:14+09:00",
+  "count": 27,
   "public_fields": [
     "title",
     "source",
@@ -177,6 +177,16 @@
       "category": "문화·트렌드",
       "keywords": [
         "웰니스트래블"
+      ]
+    },
+    {
+      "title": "관광개발 사업 성과관리 제도로 재정투자 효율성 높인다",
+      "source": "문화체육관광부 보도자료",
+      "published_at": "2026-10-29T08:06:53+09:00",
+      "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22804",
+      "category": "문화·트렌드",
+      "keywords": [
+        "관광개발"
       ]
     },
     {

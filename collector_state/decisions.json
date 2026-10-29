@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-29T14:41:28+09:00",
+  "checked_at": "2026-10-29T15:19:32+09:00",
   "scope": "successful_sources_this_run",
   "items": [
     {
@@ -207,6 +207,24 @@
       "title": "「문화예술진흥법」 개정 논의, 예술 현장 목소리 듣는다",
       "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22795",
       "source_id": "mcst_press",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "3db892b107cd5702c6",
+      "title": "빛조각 감상하고 고구마라떼 한 잔! '노원달빛산책'과 함께한 특별한 가을밤",
+      "url": "https://mediahub.seoul.go.kr/archives/2019861",
+      "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",
         "label": "Irrelevant",
@@ -433,24 +451,6 @@
       "decision": "exclude"
     },
     {
-      "id": "2e79d8d9bd9ee9cdb1",
-      "title": "올가을, 안 가면 후회할지도! 용산공원 산책 명소 '3대장'",
-      "url": "https://mediahub.seoul.go.kr/archives/2019843",
-      "source_id": "seoul_culture",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
       "id": "bf772bf460897198ff",
       "title": "몽골부터 러시아까지! DDP 옆 이색 미식명소 '광희로드' 축제",
       "url": "https://mediahub.seoul.go.kr/archives/2019845",
@@ -467,6 +467,24 @@
         "signals": [],
         "impact_targets": [],
         "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "2e79d8d9bd9ee9cdb1",
+      "title": "올가을, 안 가면 후회할지도! 용산공원 산책 명소 '3대장'",
+      "url": "https://mediahub.seoul.go.kr/archives/2019843",
+      "source_id": "seoul_culture",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
       },
       "decision": "exclude"
     },
@@ -568,24 +586,6 @@
       "id": "97d2f555628b381808",
       "title": "소문난 서울 대표 시장 총출동! 청계광장에서 만난 '서울마켓페어'",
       "url": "https://mediahub.seoul.go.kr/archives/2019847",
-      "source_id": "seoul_culture",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "bffb1c5a8727642f6e",
-      "title": "억새부터 코스모스까지! 서울에서 만나는 가을 명소 3곳",
-      "url": "https://mediahub.seoul.go.kr/archives/2019814",
       "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",

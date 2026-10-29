@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-29T14:41:28+09:00",
-  "last_successful_fetch": "2026-10-29T14:41:28+09:00",
+  "checked_at": "2026-10-29T15:19:32+09:00",
+  "last_successful_fetch": "2026-10-29T15:19:32+09:00",
   "status": "partial",
   "sources": [
     {
@@ -289,19 +289,19 @@
   "review_queue_count": 1,
   "discovery": {
     "schema_version": 3,
-    "checked_at": "2026-10-29T14:41:28+09:00",
+    "checked_at": "2026-10-29T15:19:32+09:00",
     "publication_result": "partial",
     "discovery_status": "partial",
     "received": 570,
-    "new_discoveries": 72,
-    "duplicate_observations": 298,
-    "new_auto_published": 1,
+    "new_discoveries": 21,
+    "duplicate_observations": 349,
+    "new_auto_published": 0,
     "total_published": 36,
     "total_archived": 36,
     "newsroom_count": 32,
     "filings_count": 0,
     "other_research_count": 3,
-    "new_newsroom_items": 1,
+    "new_newsroom_items": 0,
     "new_filings": 0,
     "newsroom_korea_direct_count": 18,
     "newsroom_korea_direct_last7d": 16,
@@ -340,7 +340,7 @@
         "count": 7,
         "originally_published_last7d": 7,
         "korea_direct": 4,
-        "new_this_run": 1
+        "new_this_run": 0
       }
     },
     "newsroom_category_counts": {
@@ -374,8 +374,8 @@
       "문화·트렌드": 7,
       "경제·시장": 0
     },
-    "discovered_last24h": 797,
-    "discovered_last7d": 797,
+    "discovered_last24h": 818,
+    "discovered_last7d": 818,
     "auto_published_last24h": 27,
     "auto_published_last7d": 27,
     "originally_published_last24h": 9,
@@ -496,8 +496,8 @@
         "url": "https://mediahub.seoul.go.kr/news/rss/06",
         "group": "public",
         "received": 20,
-        "new_discoveries": 0,
-        "duplicates": 20,
+        "new_discoveries": 1,
+        "duplicates": 19,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -520,10 +520,10 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9333333333333333,
+        "success_rate": 0.9375,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
-        "outcome": "no_new_candidate"
+        "outcome": "discovered_not_publishable"
       },
       {
         "id": "seoul_economy",
@@ -555,7 +555,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9333333333333333,
+        "success_rate": 0.9375,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -590,7 +590,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.7333333333333333,
+        "success_rate": 0.75,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -627,7 +627,7 @@
         "status": "error",
         "error_kind": "transport_error",
         "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
-        "success_rate": 0.3333333333333333,
+        "success_rate": 0.3125,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "fetch_failed"
@@ -1113,8 +1113,8 @@
         "url": "https://skift.com/feed/",
         "group": "media",
         "received": 10,
-        "new_discoveries": 0,
-        "duplicates": 10,
+        "new_discoveries": 1,
+        "duplicates": 9,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1140,7 +1140,7 @@
         "success_rate": 1.0,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
-        "outcome": "no_new_candidate"
+        "outcome": "discovered_not_publishable"
       },
       {
         "id": "yonhap",
@@ -1148,8 +1148,8 @@
         "url": "https://www.yna.co.kr/rss/economy.xml",
         "group": "media",
         "received": 120,
-        "new_discoveries": 22,
-        "duplicates": 98,
+        "new_discoveries": 19,
+        "duplicates": 101,
         "rights_holds": 2,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1267,8 +1267,8 @@
         "url": "https://www.ttlnews.com/rss/allArticle.xml",
         "group": "media",
         "received": 50,
-        "new_discoveries": 50,
-        "duplicates": 0,
+        "new_discoveries": 0,
+        "duplicates": 50,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1299,11 +1299,11 @@
         },
         "status": "ok",
         "success_rate": 1.0,
-        "new_auto_published": 1,
-        "new_newsroom_items": 1,
-        "outcome": "auto_published"
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "no_new_candidate"
       }
     ],
-    "outcome": "new_newsroom_news"
+    "outcome": "no_new_publications_with_source_errors"
   }
 }

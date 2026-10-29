@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-29T11:58:06+09:00",
-  "last_successful_fetch": "2026-10-29T11:58:06+09:00",
+  "checked_at": "2026-10-29T13:57:49+09:00",
+  "last_successful_fetch": "2026-10-29T13:57:49+09:00",
   "status": "partial",
   "sources": [
     {
@@ -81,23 +81,9 @@
       "id": "seoul_transport",
       "name": "서울시 내 손안에 서울 교통",
       "url": "https://mediahub.seoul.go.kr/news/rss/01",
-      "status": "ok",
-      "rss_items": 20,
-      "matched": 0,
-      "held": 0,
-      "relevance_counts": {
-        "Direct": 0,
-        "Indirect": 0,
-        "Irrelevant": 20
-      },
-      "category_published": {
-        "관광정책": 0,
-        "인바운드": 0,
-        "여행산업": 0,
-        "항공·숙박": 0,
-        "문화·트렌드": 0,
-        "경제·시장": 0
-      }
+      "status": "error",
+      "error_kind": "transport_error",
+      "error": "OSError: <urlopen error _ssl.c:993: The handshake operation timed out>"
     },
     {
       "id": "seoul_environment",
@@ -289,7 +275,7 @@
     }
   ],
   "source_count": 18,
-  "successful_sources": 10,
+  "successful_sources": 9,
   "schema_version": 2,
   "rule_version": "0.2",
   "category_counts": {
@@ -303,19 +289,19 @@
   "review_queue_count": 1,
   "discovery": {
     "schema_version": 3,
-    "checked_at": "2026-10-29T11:58:06+09:00",
+    "checked_at": "2026-10-29T13:57:49+09:00",
     "publication_result": "partial",
     "discovery_status": "partial",
-    "received": 590,
-    "new_discoveries": 19,
-    "duplicate_observations": 371,
-    "new_auto_published": 1,
+    "received": 570,
+    "new_discoveries": 24,
+    "duplicate_observations": 346,
+    "new_auto_published": 0,
     "total_published": 35,
     "total_archived": 35,
     "newsroom_count": 31,
     "filings_count": 0,
     "other_research_count": 3,
-    "new_newsroom_items": 1,
+    "new_newsroom_items": 0,
     "new_filings": 0,
     "newsroom_korea_direct_count": 18,
     "newsroom_korea_direct_last7d": 16,
@@ -354,7 +340,7 @@
         "count": 6,
         "originally_published_last7d": 6,
         "korea_direct": 4,
-        "new_this_run": 1
+        "new_this_run": 0
       }
     },
     "newsroom_category_counts": {
@@ -370,7 +356,7 @@
       "global_major": 0,
       "reference": 13
     },
-    "newsroom_originally_published_last24h": 9,
+    "newsroom_originally_published_last24h": 8,
     "newsroom_originally_published_last7d": 25,
     "newsroom_newly_added_last24h": 26,
     "new_backfilled": 0,
@@ -388,11 +374,11 @@
       "문화·트렌드": 7,
       "경제·시장": 0
     },
-    "discovered_last24h": 701,
-    "discovered_last7d": 701,
+    "discovered_last24h": 725,
+    "discovered_last7d": 725,
     "auto_published_last24h": 26,
     "auto_published_last7d": 26,
-    "originally_published_last24h": 9,
+    "originally_published_last24h": 8,
     "originally_published_last7d": 25,
     "sources": [
       {
@@ -534,7 +520,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9230769230769231,
+        "success_rate": 0.9285714285714286,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -569,7 +555,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9230769230769231,
+        "success_rate": 0.9285714285714286,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -579,9 +565,9 @@
         "name": "서울시 내 손안에 서울 교통",
         "url": "https://mediahub.seoul.go.kr/news/rss/01",
         "group": "public",
-        "received": 20,
+        "received": 0,
         "new_discoveries": 0,
-        "duplicates": 20,
+        "duplicates": 0,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -589,7 +575,7 @@
         "classifications": {
           "Direct": 0,
           "Indirect": 0,
-          "Irrelevant": 20
+          "Irrelevant": 0
         },
         "publication_policy": {
           "status": "approved",
@@ -603,11 +589,13 @@
           "max_days": 90,
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
-        "status": "ok",
-        "success_rate": 0.7692307692307693,
+        "status": "error",
+        "error_kind": "transport_error",
+        "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
+        "success_rate": 0.7142857142857143,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
-        "outcome": "no_new_candidate"
+        "outcome": "fetch_failed"
       },
       {
         "id": "seoul_environment",
@@ -639,7 +627,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.3076923076923077,
+        "success_rate": 0.35714285714285715,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -1125,8 +1113,8 @@
         "url": "https://skift.com/feed/",
         "group": "media",
         "received": 10,
-        "new_discoveries": 0,
-        "duplicates": 10,
+        "new_discoveries": 1,
+        "duplicates": 9,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1152,7 +1140,7 @@
         "success_rate": 1.0,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
-        "outcome": "no_new_candidate"
+        "outcome": "discovered_not_publishable"
       },
       {
         "id": "yonhap",
@@ -1160,8 +1148,8 @@
         "url": "https://www.yna.co.kr/rss/economy.xml",
         "group": "media",
         "received": 120,
-        "new_discoveries": 9,
-        "duplicates": 111,
+        "new_discoveries": 23,
+        "duplicates": 97,
         "rights_holds": 2,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1279,8 +1267,8 @@
         "url": "https://www.ttlnews.com/rss/allArticle.xml",
         "group": "media",
         "received": 50,
-        "new_discoveries": 10,
-        "duplicates": 40,
+        "new_discoveries": 0,
+        "duplicates": 50,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1311,11 +1299,11 @@
         },
         "status": "ok",
         "success_rate": 1.0,
-        "new_auto_published": 1,
-        "new_newsroom_items": 1,
-        "outcome": "auto_published"
+        "new_auto_published": 0,
+        "new_newsroom_items": 0,
+        "outcome": "no_new_candidate"
       }
     ],
-    "outcome": "new_newsroom_news"
+    "outcome": "no_new_publications_with_source_errors"
   }
 }

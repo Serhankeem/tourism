@@ -22,6 +22,8 @@ on:
       - 'operating_policy.json'
       - 'relevance_reviews.json'
       - 'site/index.html'
+      - 'site/currentourism.*'
+      - 'site/assets/**'
       - '.github/workflows/collect.yml'
 permissions:
   contents: read

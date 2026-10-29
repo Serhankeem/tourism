@@ -4,6 +4,13 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 (async()=>{
  const browser=await chromium.launch({headless:true});
+ async function openResearch(page){
+  if(await page.locator('#page-research').isVisible())return;
+  if(await page.locator('#page-overview').isVisible()){await page.locator('.home-research-link a').click();return;}
+  if(await page.locator('#menu-toggle').isVisible())await page.locator('#menu-toggle').click();
+  await page.locator('.primary-navigation [data-nav="news"]').click();
+  await page.locator('#page-news .news-subnav [data-goto="research"]').click();
+ }
  const base=process.env.TOURISM_TEST_URL||'http://127.0.0.1:8010';
  const screenshots=process.env.REPORTS_SCREENSHOTS||'/tmp/research-screenshots';fs.mkdirSync(screenshots,{recursive:true});
  try{
@@ -14,7 +21,7 @@ const fs=require('node:fs');
   const fields=['access_type','category','keywords','published_at','publisher','report_type','title','url'];
   for(const r of snapshot.reports)assert.deepEqual(Object.keys(r).sort(),fields);
   await page.goto(base);await page.waitForFunction(()=>window.ResearchLibrary?.database.reports.length>0);
-  await page.locator('[data-nav="research"]').click();
+  await openResearch(page);
   assert.equal(await page.locator('#rss-health-chip').isVisible(),false);
   assert.equal(await page.locator('.kakao-float').isVisible(),false);
   assert.equal(await page.locator('#research-count').textContent(),String(count));
@@ -56,19 +63,19 @@ const fs=require('node:fs');
   assert.equal(await page.request.get(base+'/data/reports_archive.json').then(r=>r.status()),404);
   await page.evaluate(()=>{document.activeElement?.blur();scrollTo(0,0);});
   await page.screenshot({path:screenshots+'/research-desktop.png',fullPage:true});
-  await page.locator('#page-research [data-goto="sources"]').click();await page.locator('#page-sources').waitFor({state:'visible'});
+  await page.locator('#page-research [data-goto="sources"]').click();await page.locator('#page-about').waitFor({state:'visible'});
   // Existing Newsroom and its pagination remain independent from Research.
   await page.locator('[data-nav="news"]').click();await page.waitForFunction(()=>!newsLoading);
   const newsCount=await page.evaluate(()=>NEWS.length);assert.ok(newsCount>0);
   assert.equal(await page.locator('#news-items .news-item').count(),Math.min(10,newsCount));
   await page.locator('#news-page-size').selectOption('20');assert.equal(await page.locator('#news-items .news-item').count(),Math.min(20,newsCount));
-  await page.locator('[data-nav="research"]').click();assert.equal(await page.locator('#research-page-size').inputValue(),'10');
+  await openResearch(page);assert.equal(await page.locator('#research-page-size').inputValue(),'10');
   // Failed Research refresh preserves the current valid report list.
   await page.route('**/data/reports.json?*',r=>r.fulfill({status:503,body:'test outage'}));
   await page.evaluate(()=>ResearchLibrary.load());assert.equal(await page.locator('#research-count').textContent(),String(count));
   assert.match(await page.locator('#research-status').textContent(),/기존 목록을 유지/);await page.unroute('**/data/reports.json?*');await page.evaluate(()=>ResearchLibrary.load());
   const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true});mobile.on('pageerror',e=>errors.push(e.message));
-  await mobile.goto(base);await mobile.waitForFunction(()=>window.ResearchLibrary?.database.reports.length>0);await mobile.locator('[data-nav="research"]').click();
+  await mobile.goto(base);await mobile.waitForFunction(()=>window.ResearchLibrary?.database.reports.length>0);await openResearch(mobile);
   assert.equal(await mobile.locator('#research-results .research-card').count(),10);
   assert.ok(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Mobile must not horizontally overflow');
   await mobile.locator('#research-page-size').selectOption('20');assert.equal(await mobile.locator('#research-results .research-card').count(),20);

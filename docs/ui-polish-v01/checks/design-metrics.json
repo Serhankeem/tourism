@@ -1,0 +1,42 @@
+[
+  {
+    "width": 1440,
+    "stage": "after",
+    "firstReportTop": 1199,
+    "reportTitleSize": "20px",
+    "sourceColumns": 3,
+    "sourceButtonHeight": 54,
+    "pageButtonHeight": 44,
+    "filterColumns": 3
+  },
+  {
+    "width": 1440,
+    "stage": "before",
+    "firstReportTop": 930,
+    "reportTitleSize": "18px",
+    "sourceColumns": 3,
+    "sourceButtonHeight": 40,
+    "pageButtonHeight": 34,
+    "filterColumns": 3
+  },
+  {
+    "width": 390,
+    "stage": "after",
+    "firstReportTop": 1449,
+    "reportTitleSize": "18px",
+    "sourceColumns": 2,
+    "sourceButtonHeight": 52,
+    "pageButtonHeight": 44,
+    "filterColumns": 2
+  },
+  {
+    "width": 390,
+    "stage": "before",
+    "firstReportTop": 1538,
+    "reportTitleSize": "16px",
+    "sourceColumns": 1,
+    "sourceButtonHeight": 40,
+    "pageButtonHeight": 34,
+    "filterColumns": 1
+  }
+]

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-29T15:19:32+09:00",
+  "checked_at": "2026-10-29T15:44:44+09:00",
   "scope": "successful_sources_this_run",
   "items": [
     {
@@ -207,6 +207,24 @@
       "title": "「문화예술진흥법」 개정 논의, 예술 현장 목소리 듣는다",
       "url": "http://www.mcst.go.kr/web/s_notice/press/pressView.jsp?pMenuCD=0302000000&pSeq=22795",
       "source_id": "mcst_press",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "0c8281525ab9f7000f",
+      "title": "산길이 이렇게 편하다고? 유아차도 가기 좋은 '용왕산 스카이워크'",
+      "url": "https://mediahub.seoul.go.kr/archives/2019854",
+      "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",
         "label": "Irrelevant",
@@ -568,24 +586,6 @@
       "id": "0f53cbf4756b13065a",
       "title": "걸어서 떠나볼까, 미식 실크로드 여행! '광희로드 페스타' 현장",
       "url": "https://mediahub.seoul.go.kr/archives/2019840",
-      "source_id": "seoul_culture",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "97d2f555628b381808",
-      "title": "소문난 서울 대표 시장 총출동! 청계광장에서 만난 '서울마켓페어'",
-      "url": "https://mediahub.seoul.go.kr/archives/2019847",
       "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",

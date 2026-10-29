@@ -1,0 +1,297 @@
+{
+  "checked_on": "2026-10-29",
+  "scope": "official bibliographic metadata and links only; no PDF/body/image collection",
+  "formal_content_redistribution_contracts_obtained": false,
+  "sources": [
+    {
+      "id": "yanolja",
+      "name": "야놀자리서치",
+      "homepage": "https://www.yanolja-research.com/",
+      "catalog_urls": [
+        "https://www.yanolja-research.com/report/list?lang=kr",
+        "https://www.yanolja-research.com/trend/list?lang=kr",
+        "https://www.yanolja-research.com/brief/list?lang=kr",
+        "https://www.yanolja-research.com/insight/list?lang=kr"
+      ],
+      "adapter": "yanolja",
+      "enabled": true,
+      "publication": {
+        "status": "approved",
+        "scope": "bibliographic_metadata_only",
+        "terms_url": "https://www.yanolja-research.com/",
+        "checked_on": "2026-10-29",
+        "noncommercial_only": true,
+        "body_pdf_images": "not_authorized",
+        "basis": "Public official research catalog bibliographic headings/links only, ordinary provided pagination, no automated-access prohibition observed; copyright reservation does not grant report/PDF/image reuse. Registration dates are NOT publication dates; held unless explicitly accepted with a visible registration-date label."
+      },
+      "investigation": {
+        "checked_on": "2026-10-29",
+        "homepage_access": "ok",
+        "detail": "Official homepage/catalog links examined",
+        "method": "robots-aware HTTPS; no binary downloads or access bypass"
+      },
+      "listing_page": null,
+      "blocking_reason": null,
+      "allow_registered_date": false,
+      "automatic_route": null
+    },
+    {
+      "id": "kcti",
+      "name": "한국문화관광연구원",
+      "homepage": "https://www.kcti.re.kr/",
+      "catalog_urls": [],
+      "adapter": "kcti",
+      "enabled": true,
+      "publication": {
+        "status": "approved",
+        "scope": "bibliographic_metadata_only",
+        "terms_url": "https://www.kcti.re.kr/web/intropage/intropageShow.do?page_id=4c5529fca34a42939ffef7c67de46a40",
+        "checked_on": "2026-10-29",
+        "noncommercial_only": true,
+        "body_pdf_images": "not_authorized",
+        "basis": "Official public tourism research catalog; require a per-record KOGL marker, attribution and noncommercial unchanged-title scope. No PDF/content copy. Use official publication year as year precision; never replace it with the separate 작성일."
+      },
+      "investigation": {
+        "checked_on": "2026-10-29",
+        "homepage_access": "ok",
+        "detail": "Official homepage/catalog links examined",
+        "method": "robots-aware HTTPS; no binary downloads or access bypass"
+      },
+      "listing_page": "https://www.kcti.re.kr/web/board/boardContentsListPage.do?board_id=2",
+      "blocking_reason": null,
+      "allow_registered_date": false,
+      "automatic_route": [
+        {
+          "url": "https://www.kcti.re.kr/web/board/boardContentsList.do",
+          "form": {
+            "board_id": "2",
+            "cate_id": "160bcb16c21d471a9509cf3a41cb70e0",
+            "miv_pageNo": "1",
+            "miv_pageSize": "10",
+            "report_start_year": "{current_year}"
+          }
+        },
+        {
+          "url": "https://www.kcti.re.kr/web/board/boardContentsList.do",
+          "form": {
+            "board_id": "2",
+            "cate_id": "160bcb16c21d471a9509cf3a41cb70e0",
+            "miv_pageNo": "1",
+            "miv_pageSize": "10",
+            "report_start_year": "{previous_year}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kto",
+      "name": "한국관광공사 / 관광데이터랩",
+      "homepage": "https://datalab.visitkorea.or.kr/",
+      "catalog_urls": [],
+      "adapter": null,
+      "enabled": false,
+      "publication": {
+        "status": "review",
+        "scope": "bibliographic_metadata_only",
+        "terms_url": "https://datalab.visitkorea.or.kr/",
+        "checked_on": "2026-10-29",
+        "noncommercial_only": true,
+        "body_pdf_images": "not_authorized"
+      },
+      "investigation": {
+        "checked_on": "2026-10-29",
+        "homepage_access": "error",
+        "detail": "https_public_endpoint_required",
+        "method": "robots-aware HTTPS; no binary downloads or access bypass"
+      },
+      "listing_page": null,
+      "blocking_reason": "Official root redirects through a non-HTTPS route; corporate root robots unavailable. No bypass; permitted catalog/API and metadata scope unverified.",
+      "allow_registered_date": false,
+      "automatic_route": null
+    },
+    {
+      "id": "mckinsey",
+      "name": "McKinsey & Company",
+      "homepage": "https://www.mckinsey.com/",
+      "catalog_urls": [
+        "https://www.mckinsey.com/industries/travel/our-insights"
+      ],
+      "adapter": null,
+      "enabled": false,
+      "publication": {
+        "status": "review",
+        "scope": "bibliographic_metadata_only",
+        "terms_url": "https://www.mckinsey.com/",
+        "checked_on": "2026-10-29",
+        "noncommercial_only": true,
+        "body_pdf_images": "not_authorized"
+      },
+      "investigation": {
+        "checked_on": "2026-10-29",
+        "homepage_access": "ok",
+        "detail": "Official homepage/catalog links examined",
+        "method": "robots-aware HTTPS; no binary downloads or access bypass"
+      },
+      "listing_page": null,
+      "blocking_reason": "Travel insights collection verified; tested terms candidate 404, applicable automatic metadata use terms unconfirmed. No guessed API integration.",
+      "allow_registered_date": false,
+      "automatic_route": null
+    },
+    {
+      "id": "phocuswright",
+      "name": "Phocuswright",
+      "homepage": "https://www.phocuswright.com/",
+      "catalog_urls": [
+        "https://www.phocuswright.com/Travel-Research",
+        "https://www.phocuswright.com/Analyst-Insights"
+      ],
+      "adapter": "phocuswright",
+      "enabled": true,
+      "publication": {
+        "status": "approved",
+        "scope": "bibliographic_metadata_only",
+        "terms_url": "https://www.phocuswright.com/About-Us/Copyright/",
+        "checked_on": "2026-10-29",
+        "noncommercial_only": true,
+        "body_pdf_images": "not_authorized",
+        "basis": "Public bibliographic catalog/head metadata only, including paid-report landing citations; no report, excerpt, figures or purchased content copied. Copyright policy restrictions on distribution of research report contents are not treated as a blanket metadata licence. Separate factual title/date/link indexing review: bounded official public catalog, no access/bot restriction bypass, noncommercial use, original attribution/link, no complete database mirror. Public availability does not imply the paid report is free."
+      },
+      "investigation": {
+        "checked_on": "2026-10-29",
+        "homepage_access": "ok",
+        "detail": "Official homepage/catalog links examined",
+        "method": "robots-aware HTTPS; no binary downloads or access bypass"
+      },
+      "listing_page": null,
+      "blocking_reason": null,
+      "allow_registered_date": false,
+      "automatic_route": null
+    },
+    {
+      "id": "untourism",
+      "name": "UN Tourism",
+      "homepage": "https://www.untourism.int/",
+      "catalog_urls": [],
+      "adapter": null,
+      "enabled": false,
+      "publication": {
+        "status": "review",
+        "scope": "bibliographic_metadata_only",
+        "terms_url": "https://www.untourism.int/",
+        "checked_on": "2026-10-29",
+        "noncommercial_only": true,
+        "body_pdf_images": "not_authorized"
+      },
+      "investigation": {
+        "checked_on": "2026-10-29",
+        "homepage_access": "error",
+        "detail": "robots_unverified:http_403",
+        "method": "robots-aware HTTPS; no binary downloads or access bypass"
+      },
+      "listing_page": null,
+      "blocking_reason": "robots request HTTP 403; source content not requested. Official publication/archive route and rights not verified.",
+      "allow_registered_date": false,
+      "automatic_route": null
+    },
+    {
+      "id": "iata",
+      "name": "IATA",
+      "homepage": "https://www.iata.org/",
+      "catalog_urls": [
+        "https://www.iata.org/en/publications/economics/"
+      ],
+      "adapter": null,
+      "enabled": false,
+      "publication": {
+        "status": "review",
+        "scope": "bibliographic_metadata_only",
+        "terms_url": "https://www.iata.org/en/publications/economics/terms-conditions/",
+        "checked_on": "2026-10-29",
+        "noncommercial_only": true,
+        "body_pdf_images": "not_authorized"
+      },
+      "investigation": {
+        "checked_on": "2026-10-29",
+        "homepage_access": "ok",
+        "detail": "Official homepage/catalog links examined",
+        "method": "robots-aware HTTPS; no binary downloads or access bypass"
+      },
+      "listing_page": null,
+      "blocking_reason": "Economics terms explicitly say no data scraping; no automatic catalog harvesting. Manual bibliographic use requires scope/attribution clarification, not counted as automatic supply.",
+      "allow_registered_date": false,
+      "automatic_route": null
+    },
+    {
+      "id": "etc",
+      "name": "European Travel Commission (ETC)",
+      "homepage": "https://etc-corporate.org/",
+      "catalog_urls": [
+        "https://etc-corporate.org/publications/"
+      ],
+      "adapter": "etc",
+      "enabled": true,
+      "publication": {
+        "status": "approved",
+        "scope": "bibliographic_metadata_only",
+        "terms_url": "https://etc-corporate.org/privacy-policy/",
+        "checked_on": "2026-10-29",
+        "noncommercial_only": true,
+        "body_pdf_images": "not_authorized",
+        "basis": "Official publicly offered research publication catalog with ordinary archive pagination, linked report headings and first-publication metadata. Bibliographic references only; no report text/PDF/images/figures or catalog descriptions reused. Public catalog/robots and privacy/copyright notice reviewed; no automated bibliographic-access prohibition found. This is a limited metadata indexing assessment, not a content redistribution licence."
+      },
+      "investigation": {
+        "checked_on": "2026-10-29",
+        "homepage_access": "ok",
+        "detail": "Official homepage/catalog links examined",
+        "method": "robots-aware HTTPS; no binary downloads or access bypass"
+      },
+      "listing_page": null,
+      "blocking_reason": null,
+      "allow_registered_date": false,
+      "automatic_route": null
+    },
+    {
+      "id": "wttc",
+      "name": "WTTC",
+      "homepage": "https://wttc.org/",
+      "catalog_urls": [
+        "https://wttc.org/reports-insights",
+        "https://researchhub.wttc.org/"
+      ],
+      "adapter": null,
+      "enabled": false,
+      "publication": {
+        "status": "review",
+        "scope": "bibliographic_metadata_only",
+        "terms_url": "https://wttc.org/terms-and-conditions",
+        "checked_on": "2026-10-29",
+        "noncommercial_only": true,
+        "body_pdf_images": "not_authorized"
+      },
+      "investigation": {
+        "checked_on": "2026-10-29",
+        "homepage_access": "ok",
+        "detail": "Official homepage/catalog links examined",
+        "method": "robots-aware HTTPS; no binary downloads or access bypass"
+      },
+      "listing_page": null,
+      "blocking_reason": "Site terms limit content/database use to personal noncommercial scope unless permission granted. A public professional library is not assumed to be personal use; platform metadata scope needs clarification.",
+      "allow_registered_date": false,
+      "automatic_route": null
+    }
+  ],
+  "secondary_sources_not_counted": [
+    {
+      "id": "oecd",
+      "name": "OECD — Tourism Trends and Policies"
+    },
+    {
+      "id": "icca",
+      "name": "ICCA — MICE statistics"
+    },
+    {
+      "id": "korea_mice",
+      "name": "한국MICE협회"
+    }
+  ]
+}

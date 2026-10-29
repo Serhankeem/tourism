@@ -22,7 +22,8 @@ const assert = require('node:assert/strict');
   await page.waitForFunction(()=>!newsLoading);
   assert.equal(await page.locator('#rss-health-chip').textContent(),'PARTIAL FETCH');
   await page.locator('[data-nav="news"]').click();
-  assert.equal(await page.locator('#news-items .news-item').count(),expectedCount);
+  assert.equal(await page.locator('#news-items .news-item').count(),Math.min(10,expectedCount));
+  assert.match(await page.locator('#news-page-total').textContent(),new RegExp('총 '+expectedCount+'건'));
   await page.locator('#news-search').fill(selected.title);
   assert.equal(await page.locator('#news-items .news-item').count(),1);
   await page.locator('#news-items [data-detail]').click();
@@ -53,7 +54,8 @@ const assert = require('node:assert/strict');
   await page.evaluate(()=>loadLiveNews());
   assert.equal(await page.locator('#rss-health-chip').textContent(),'FETCH FAILED');
   await page.locator('[data-filter="전체"]').click();
-  assert.equal(await page.locator('#news-items .news-item').count(),expectedCount);
+  assert.equal(await page.locator('#news-items .news-item').count(),Math.min(10,expectedCount));
+  assert.match(await page.locator('#news-page-total').textContent(),new RegExp('총 '+expectedCount+'건'));
   await page.locator('[data-nav="briefing"]').click();
   const briefing=await (await page.request.get(base+'/data/briefing.json')).json();
   assert.equal(await page.locator('#briefing-state').textContent(),briefing.items.length?'브리핑 후보 생성':'새 기사 없음');
@@ -67,14 +69,26 @@ const assert = require('node:assert/strict');
   await page.locator('[data-filter="'+selectedCategory+'"]').click();
   assert.ok(await page.locator('#news-items .news-item').count()>0);
   await page.locator('[data-filter="전체"]').click();
-  assert.equal(await page.locator('#news-items .news-item').count(),expectedCount);
+  assert.equal(await page.locator('#news-items .news-item').count(),Math.min(10,expectedCount));
+  assert.match(await page.locator('#news-page-total').textContent(),new RegExp('총 '+expectedCount+'건'));
   for(const filing of archiveSnapshot.articles.filter(a=>(a.record_type||'news')!=='news'||a.archived_only)){
    assert.equal(await page.locator('#news-items').getByText(filing.title,{exact:true}).count(),0);
   }
   assert.equal(await page.locator('#news-items .news-title').first().textContent(),snapshot.articles[0].title);
-  for(const a of snapshot.articles){assert.equal(await page.locator('#news-items').getByText(a.title,{exact:true}).getAttribute('href'),a.url);}
+  // Main already paginates 10/20. Verify all original links across all pages,
+  // rather than incorrectly expecting every row to be visible at once.
+  const seenLinks=new Map();
+  for(let n=1;n<=Math.ceil(expectedCount/10);n++){
+   if(n>1)await page.locator('[data-news-page="'+n+'"][aria-label]').click();
+   const links=await page.locator('#news-items .news-title').evaluateAll(nodes=>nodes.map(a=>[a.getAttribute('href'),a.textContent]));
+   for(const [url,title] of links){assert.ok(snapshot.articles.some(a=>a.url===url&&a.title===title));seenLinks.set(url,title);}
+   for(const filing of archiveSnapshot.articles.filter(a=>(a.record_type||'news')!=='news'||a.archived_only)){
+    assert.equal(await page.locator('#news-items').getByText(filing.title,{exact:true}).count(),0);
+   }
+  }
+  assert.equal(seenLinks.size,expectedCount);
   assert.equal(await page.locator('#news-items img').count(),0);
   assert.deepEqual(errors,[]);
-  console.log('PASS: live articles, search, detail, stable bookmark, partial/all-failure status, preservation, briefing and legacy fallback, six-field link curation, filing/statistics exclusion and internal archive isolation; no JS errors');
+  console.log('PASS: live articles, search, detail, stable bookmark, partial/all-failure status, preservation, briefing and legacy fallback, six-field link curation, all-page pagination/link coverage, filing/statistics exclusion and internal archive isolation; no JS errors');
  } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

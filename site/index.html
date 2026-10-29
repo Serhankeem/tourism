@@ -68,6 +68,7 @@
 .news-page-ellipsis{padding:0 3px;color:#7D8CA0}
 @media(max-width:650px){.news-pagination{align-items:flex-start;flex-direction:column}.news-page-controls{width:100%;justify-content:space-between}}
 </style>
+<link rel="stylesheet" href="./research.css">
 </head>
 <body>
 <div class="app">
@@ -81,7 +82,7 @@
   <button class="nav" data-nav="briefing"><span class="nav-icon">≡</span> Daily Briefing</button>
   
  </div>
- <div class="nav-group"><div class="nav-label">REFERENCE</div><button class="nav" data-nav="sources"><span class="nav-icon">◈</span> Data Sources</button></div>
+ <div class="nav-group"><div class="nav-label">REFERENCE</div><button class="nav" data-nav="research"><span class="nav-icon">▧</span> Research Library</button><button class="nav" data-nav="sources"><span class="nav-icon">◈</span> Data Sources</button></div>
  <div class="side-bottom"><span class="online-dot"></span><strong>News Engine v0.1</strong><br/><span id="rss-health-sidebar">뉴스 피드 연결 확인 중</span><br/>거시지표·날씨는 연구용 정적 화면</div>
 </aside>
 <div class="main">
@@ -118,6 +119,19 @@
   <div id="briefing-news-list" style="margin-top:18px"><p>뉴스 수집 결과를 기다리고 있습니다.</p></div>
  </div>
  </section>
+<section id="page-research" class="page hide-section">
+ <div class="eyebrow">RESEARCH / LIBRARY</div><h1 class="page-title">Research Library</h1>
+ <p class="lead">관광산업 연구보고서와 시장동향을 찾고, 발행기관의 공식 원문으로 연결합니다. 본문·PDF·이미지·AI 요약은 제공하지 않습니다.</p>
+ <div class="research-summary"><div class="card"><span>전체 연구자료</span><b id="research-count">확인 중</b></div><div class="card"><span>최근 30일 발행</span><b id="research-recent-count">확인 중</b></div><div class="card"><span>자동 수집</span><b id="research-auto-count">확인 중</b></div><div class="card"><span>수동 등록</span><b id="research-manual-count">확인 중</b></div></div>
+ <p class="research-status" id="research-status" role="status">검증된 연구자료를 불러오고 있습니다.</p><p class="tiny">최근 수집 확인: <span id="research-updated">확인 전</span></p>
+ <div class="research-source-counts" id="research-source-counts" aria-label="기관별 발간물 현황"></div>
+ <div class="research-controls"><label class="research-query">연구자료 검색<input id="research-search" type="search" placeholder="제목·기관·분야·키워드 검색"></label>
+ <label>발행기관<select id="research-publisher"><option value="">전체 발행기관</option></select></label><label>기관 구분<select id="research-region"><option value="">국내·해외 전체</option><option>국내</option><option>해외</option></select></label>
+ <label>보고서 유형<select id="research-type"><option value="">전체 보고서 유형</option></select></label><label>연구 분야<select id="research-category"><option value="">전체 연구 분야</option></select></label><label>정렬<select id="research-sort"><option value="newest">최신순</option><option value="oldest">오래된순</option></select></label></div>
+ <div class="card" style="padding:0"><div id="research-results"></div><div class="news-pagination"><span class="news-page-total" id="research-result-count">확인 중</span><div class="news-page-controls"><label>페이지당<select id="research-page-size"><option value="10">10개</option><option value="20">20개</option></select></label><nav class="research-page-buttons" id="research-page-buttons" aria-label="연구자료 페이지"></nav></div></div></div>
+ <p class="research-date-note">연도·월만 확인되는 자료는 해당 정밀도로 표시합니다. 작성일·수정일을 발행일로 바꾸지 않습니다. 접근 구분이 미확인이면 원문에서 이용조건을 확인하세요.</p>
+ <footer class="research-footer"><button class="text-link" data-goto="sources">Data Sources · 자료 출처 안내 →</button></footer>
+</section>
  <section id="page-sources" class="page hide-section"><div class="eyebrow">RESEARCH / DATA LINEAGE</div><h1 class="page-title">Data Sources</h1><p class="lead">정보의 투명성이 대시보드의 신뢰도를 만듭니다. 공표 통계와 보고서, 보도자료의 출처를 확인하세요.</p><div class="two-col"><div class="card"><div class="section-top"><h3>확인한 공식 출처</h3><span class="pill">소스 레지스트리</span></div><div class="source-list"><div class="source-row"><div><b>문화체육관광부</b><small>2026.10.22 · 9월 누적 방한객</small></div><a class="external" target="_blank" rel="noopener noreferrer" href="https://www.mcst.go.kr/site/s_notice/press/pressView.jsp?pSeq=22790">원문 ↗</a></div><div class="source-row"><div><b>한국문화관광연구원 / 투어라즈</b><small>2026.10.22 · 국제관광시장 전망</small></div><a class="external" target="_blank" rel="noopener noreferrer" href="https://touraz.kr/report?bbsSeq=664986&amp;boardMode=V">원문 ↗</a></div><div class="source-row"><div><b>관광지식정보시스템 (TOURGO)</b><small>2026.09.28 · 8월 방한객 통계</small></div><a class="external" target="_blank" rel="noopener noreferrer" href="https://know.tour.go.kr/main/main.do">원문 ↗</a></div><div class="source-row"><div><b>한국관광산업포털 · 투어라즈</b><small>업계 동향·산업보고서</small></div><a class="external" target="_blank" rel="noopener noreferrer" href="https://touraz.kr/index">원문 ↗</a></div><div class="source-row"><div><b>한국관광 데이터랩</b><small>지역 관광소비·관광 빅데이터 분석</small></div><a class="external" target="_blank" rel="noopener noreferrer" href="https://datalab.visitkorea.or.kr">원문 ↗</a></div></div></div><div><div class="card"><h3 style="margin-top:0">자동 수집 연동 후보</h3><div class="source-list"><div class="source-row"><div><b>문체부 RSS</b><small>보도자료 자동 수집에 활용 가능</small></div><a class="external" href="https://www.mcst.go.kr/site/s_etc/rss/rssService.jsp" target="_blank" rel="noopener noreferrer">안내 ↗</a></div><div class="source-row"><div><b>KOSIS RSS / 통계 API</b><small>공표 알림 및 고용·사업체 통계</small></div><a class="external" href="https://kosis.kr/serviceInfo/rssGuide.do" target="_blank" rel="noopener noreferrer">안내 ↗</a></div><div class="source-row"><div><b>한국은행 ECOS</b><small>여행수지·거시지표 후보</small></div><a class="external" href="https://ecos.bok.or.kr" target="_blank" rel="noopener noreferrer">안내 ↗</a></div></div></div><div class="spacing"></div><div class="memo"><strong>프로토타입 범위</strong><br/>뉴스 필터·검색·저장, 차트 모드, 기사 상세, 시장 날씨, 브리핑 복사 및 11시 뉴스 알림 화면 설정이 작동합니다. 실제 뉴스 자동 수집·카카오톡·텔레그램 발송 및 사용자 계정·API 연동은 이 HTML에 포함되지 않았습니다.</div></div></div></section>
  </main>
 </div></div>
@@ -127,7 +141,7 @@ const NEWS=[]; // Loaded from the collector output; never show static 2026 artic
 const metrics={count:[{month:'5월',value:1945809,label:'194.6만',note:'한국관광공사'},{month:'8월',value:2245293,label:'224.5만',note:'TOURGO'},{month:'9월',value:2060000,label:'약 206만',note:'문체부 발표 보도'}],growth:[{month:'5월',value:19.4,label:'+19.4%',note:'한국관광공사'},{month:'8월',value:23.3,label:'+23.3%',note:'TOURGO'},{month:'9월',value:21.1,label:'+21.1%',note:'문체부 발표 보도'}]};
 const state={page:'overview',filter:'전체',query:'',saved:new Set(),chart:'count',newsPage:1,newsPageSize:10};
 function escapeHtml(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;')}
-function navigate(page){state.page=page;document.querySelectorAll('.page').forEach(el=>el.classList.toggle('hide-section',el.id!=='page-'+page));document.querySelectorAll('[data-nav]').forEach(btn=>btn.classList.toggle('active',btn.dataset.nav===page));document.getElementById('crumb').textContent=({overview:'Overview',news:'Newsroom',macro:'Macro Monitor',weather:'Market Weather',briefing:'Daily Briefing',sources:'Data Sources'})[page];window.scrollTo({top:0,behavior:'smooth'});if(page==='news')renderNews();if(page==='macro'||page==='overview')drawCharts()}
+function navigate(page){state.page=page;document.querySelectorAll('.page').forEach(el=>el.classList.toggle('hide-section',el.id!=='page-'+page));document.querySelectorAll('[data-nav]').forEach(btn=>btn.classList.toggle('active',btn.dataset.nav===page));document.getElementById('crumb').textContent=({overview:'Overview',news:'Newsroom',macro:'Macro Monitor',weather:'Market Weather',briefing:'Daily Briefing',sources:'Data Sources',research:'Research Library'})[page];window.scrollTo({top:0,behavior:'smooth'});document.body.classList.toggle('research-active',page==='research');if(page==='news')renderNews();if(page==='research')window.renderResearch?.();if(page==='macro'||page==='overview')drawCharts()}
 function newsItem(n){let saved=state.saved.has(n.id);return `<article class="news-item"><div class="news-meta"><span class="category">${escapeHtml(n.category)}</span><span>${escapeHtml(n.source)}</span><span>·</span><span>${escapeHtml(n.date)}</span></div><a class="news-title" href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(n.title)}</a><p class="news-keywords">${n.keywords.map(k=>escapeHtml(k)).join(' · ')}</p><div class="news-actions"><button class="inline-btn" data-detail="${n.id}">기사 정보 · 원문 링크 ↗</button><button class="inline-btn bookmark-btn ${saved?'saved':''}" data-bookmark="${n.id}">${saved?'★ 저장됨':'☆ 저장하기'}</button></div></article>`}
 function renderNews(){
  const q=state.query.trim().toLowerCase();
@@ -279,5 +293,6 @@ const KAKAO_CHANNEL_URL = '';
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&layer.classList.contains('open'))dismiss()});
 })();
 </script>
+<script src="./research.js" defer></script>
 </body>
 </html>

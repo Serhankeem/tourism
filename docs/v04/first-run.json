@@ -1,0 +1,102 @@
+{
+  "version": "0.4",
+  "checked_at": "2026-10-29T13:51:10+09:00",
+  "status": "ok",
+  "target_sources": 9,
+  "source_coverage": 9,
+  "connected_sources": 4,
+  "publishing_sources": 3,
+  "candidate_reports": 170,
+  "candidates_this_run": 170,
+  "verified_candidates_this_run": 114,
+  "verified_this_run": 113,
+  "verified_reports": 113,
+  "verified_automatic_reports": 113,
+  "verified_manual_reports": 0,
+  "excluded_this_run": 59,
+  "duplicate_reports": 1,
+  "duplicate_observations": 58,
+  "published_reports": 110,
+  "archived_reports": 110,
+  "new_reports_this_run": 110,
+  "new_automatic_reports_this_run": 110,
+  "new_manual_reports_this_run": 0,
+  "new_reports_last30d": 8,
+  "automatic_reports": 110,
+  "manual_reports": 0,
+  "by_publisher": {
+    "야놀자리서치": {
+      "published": 0,
+      "new_last30d": 0,
+      "latest_publication": null,
+      "last_collection": "2026-10-29T13:51:10+09:00",
+      "success_rate": 1.0
+    },
+    "한국문화관광연구원": {
+      "published": 18,
+      "new_last30d": 0,
+      "latest_publication": "2025",
+      "last_collection": "2026-10-29T13:51:10+09:00",
+      "success_rate": 1.0
+    },
+    "한국관광공사 / 관광데이터랩": {
+      "published": 0,
+      "new_last30d": 0,
+      "latest_publication": null,
+      "last_collection": null,
+      "success_rate": null
+    },
+    "McKinsey & Company": {
+      "published": 0,
+      "new_last30d": 0,
+      "latest_publication": null,
+      "last_collection": null,
+      "success_rate": null
+    },
+    "Phocuswright": {
+      "published": 65,
+      "new_last30d": 7,
+      "latest_publication": "2026-10-28",
+      "last_collection": "2026-10-29T13:51:10+09:00",
+      "success_rate": 1.0
+    },
+    "UN Tourism": {
+      "published": 0,
+      "new_last30d": 0,
+      "latest_publication": null,
+      "last_collection": null,
+      "success_rate": null
+    },
+    "IATA": {
+      "published": 0,
+      "new_last30d": 0,
+      "latest_publication": null,
+      "last_collection": null,
+      "success_rate": null
+    },
+    "European Travel Commission (ETC)": {
+      "published": 27,
+      "new_last30d": 1,
+      "latest_publication": "2026-10-14",
+      "last_collection": "2026-10-29T13:51:10+09:00",
+      "success_rate": 1.0
+    },
+    "WTTC": {
+      "published": 0,
+      "new_last30d": 0,
+      "latest_publication": null,
+      "last_collection": null,
+      "success_rate": null
+    }
+  },
+  "category_counts": {
+    "국제관광·인바운드": 11,
+    "국내관광·관광소비": 5,
+    "숙박·호텔산업": 4,
+    "항공·교통산업": 0,
+    "OTA·여행기술": 16,
+    "관광정책·산업경제": 3,
+    "MICE·비즈니스 이벤트": 0,
+    "관광시장 전망·트렌드": 71
+  }
+}

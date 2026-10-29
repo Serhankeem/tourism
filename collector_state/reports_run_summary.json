@@ -1,21 +1,21 @@
 {
   "version": "0.4",
-  "checked_at": "2026-10-29T14:01:39+09:00",
-  "status": "ok",
+  "checked_at": "2026-10-29T14:42:39+09:00",
+  "status": "no_due_sources",
   "target_sources": 9,
   "source_coverage": 9,
   "connected_sources": 4,
   "publishing_sources": 3,
   "candidate_reports": 170,
-  "candidates_this_run": 170,
-  "verified_candidates_this_run": 114,
-  "verified_this_run": 113,
+  "candidates_this_run": 0,
+  "verified_candidates_this_run": 0,
+  "verified_this_run": 0,
   "verified_reports": 113,
   "verified_automatic_reports": 113,
   "verified_manual_reports": 0,
-  "excluded_this_run": 59,
-  "duplicate_reports": 1,
-  "duplicate_observations": 228,
+  "excluded_this_run": 0,
+  "duplicate_reports": 0,
+  "duplicate_observations": 0,
   "published_reports": 110,
   "archived_reports": 110,
   "new_reports_this_run": 0,
@@ -29,6 +29,7 @@
       "published": 0,
       "new_last30d": 0,
       "latest_publication": null,
+      "latest_registration": null,
       "last_collection": "2026-10-29T14:01:39+09:00",
       "success_rate": 1.0
     },
@@ -36,6 +37,7 @@
       "published": 18,
       "new_last30d": 0,
       "latest_publication": "2025",
+      "latest_registration": null,
       "last_collection": "2026-10-29T14:01:39+09:00",
       "success_rate": 1.0
     },
@@ -43,6 +45,7 @@
       "published": 0,
       "new_last30d": 0,
       "latest_publication": null,
+      "latest_registration": null,
       "last_collection": null,
       "success_rate": null
     },
@@ -50,6 +53,7 @@
       "published": 0,
       "new_last30d": 0,
       "latest_publication": null,
+      "latest_registration": null,
       "last_collection": null,
       "success_rate": null
     },
@@ -57,6 +61,7 @@
       "published": 65,
       "new_last30d": 7,
       "latest_publication": "2026-10-28",
+      "latest_registration": null,
       "last_collection": "2026-10-29T14:01:39+09:00",
       "success_rate": 1.0
     },
@@ -64,6 +69,7 @@
       "published": 0,
       "new_last30d": 0,
       "latest_publication": null,
+      "latest_registration": null,
       "last_collection": null,
       "success_rate": null
     },
@@ -71,6 +77,7 @@
       "published": 0,
       "new_last30d": 0,
       "latest_publication": null,
+      "latest_registration": null,
       "last_collection": null,
       "success_rate": null
     },
@@ -78,6 +85,7 @@
       "published": 27,
       "new_last30d": 1,
       "latest_publication": "2026-10-14",
+      "latest_registration": null,
       "last_collection": "2026-10-29T14:01:39+09:00",
       "success_rate": 1.0
     },
@@ -85,6 +93,7 @@
       "published": 0,
       "new_last30d": 0,
       "latest_publication": null,
+      "latest_registration": null,
       "last_collection": null,
       "success_rate": null
     }
@@ -103,36 +112,36 @@
     {
       "id": "yanolja",
       "publisher": "야놀자리서치",
-      "status": "ok",
-      "candidate_reports": 55,
+      "status": "not_due",
+      "candidate_reports": 0,
       "verified_reports": 0,
       "verified_candidates": 0,
-      "catalog_entries": 93,
-      "excluded_reports": 55,
-      "duplicate_observations": 93,
-      "duplicate_editions_merged": 0,
-      "new_reports": 0,
-      "detail_errors": 0,
-      "date_holds": 55,
-      "rights_holds": 0,
-      "success_rate": 1.0
-    },
-    {
-      "id": "kcti",
-      "publisher": "한국문화관광연구원",
-      "status": "ok",
-      "candidate_reports": 18,
-      "verified_reports": 18,
-      "verified_candidates": 18,
-      "catalog_entries": 18,
+      "catalog_entries": 0,
       "excluded_reports": 0,
-      "duplicate_observations": 18,
+      "duplicate_observations": 0,
       "duplicate_editions_merged": 0,
       "new_reports": 0,
       "detail_errors": 0,
       "date_holds": 0,
       "rights_holds": 0,
-      "success_rate": 1.0
+      "last_attempt_at": "2026-10-29T14:01:39+09:00"
+    },
+    {
+      "id": "kcti",
+      "publisher": "한국문화관광연구원",
+      "status": "not_due",
+      "candidate_reports": 0,
+      "verified_reports": 0,
+      "verified_candidates": 0,
+      "catalog_entries": 0,
+      "excluded_reports": 0,
+      "duplicate_observations": 0,
+      "duplicate_editions_merged": 0,
+      "new_reports": 0,
+      "detail_errors": 0,
+      "date_holds": 0,
+      "rights_holds": 0,
+      "last_attempt_at": "2026-10-29T14:01:39+09:00"
     },
     {
       "id": "kto",
@@ -171,19 +180,19 @@
     {
       "id": "phocuswright",
       "publisher": "Phocuswright",
-      "status": "ok",
-      "candidate_reports": 67,
-      "verified_reports": 65,
-      "verified_candidates": 66,
-      "catalog_entries": 77,
-      "excluded_reports": 1,
-      "duplicate_observations": 77,
-      "duplicate_editions_merged": 1,
+      "status": "not_due",
+      "candidate_reports": 0,
+      "verified_reports": 0,
+      "verified_candidates": 0,
+      "catalog_entries": 0,
+      "excluded_reports": 0,
+      "duplicate_observations": 0,
+      "duplicate_editions_merged": 0,
       "new_reports": 0,
       "detail_errors": 0,
       "date_holds": 0,
       "rights_holds": 0,
-      "success_rate": 1.0
+      "last_attempt_at": "2026-10-29T14:01:39+09:00"
     },
     {
       "id": "untourism",
@@ -222,19 +231,19 @@
     {
       "id": "etc",
       "publisher": "European Travel Commission (ETC)",
-      "status": "ok",
-      "candidate_reports": 30,
-      "verified_reports": 30,
-      "verified_candidates": 30,
-      "catalog_entries": 40,
-      "excluded_reports": 3,
-      "duplicate_observations": 40,
+      "status": "not_due",
+      "candidate_reports": 0,
+      "verified_reports": 0,
+      "verified_candidates": 0,
+      "catalog_entries": 0,
+      "excluded_reports": 0,
+      "duplicate_observations": 0,
       "duplicate_editions_merged": 0,
       "new_reports": 0,
       "detail_errors": 0,
       "date_holds": 0,
       "rights_holds": 0,
-      "success_rate": 1.0
+      "last_attempt_at": "2026-10-29T14:01:39+09:00"
     },
     {
       "id": "wttc",
@@ -254,301 +263,5 @@
       "reason": "Site terms limit content/database use to personal noncommercial scope unless permission granted. A public professional library is not assumed to be personal use; platform metadata scope needs clarification."
     }
   ],
-  "errors": [
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/report/view/736?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/report/view/162?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/report/view/153?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/report/view/42?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/report/view/40?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/report/view/36?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/report/view/9?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/report/view/8?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/998?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/858?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/758?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/680?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/588?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/513?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/171?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/160?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/138?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/121?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/44?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/37?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/32?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/21?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/trend/view/16?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/963?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/945?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/894?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/867?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/772?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/705?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/695?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/624?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/558?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/174?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/173?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/169?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/166?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/161?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/145?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/973?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/972?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/943?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/857?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/843?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/815?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/782?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/752?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/740?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/738?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/724?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/718?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/684?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/674?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/insight/view/640?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/132?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "yanolja",
-      "url": "https://www.yanolja-research.com/brief/view/49?lang=kr",
-      "error": "registration_date_not_verified_as_publication_date"
-    },
-    {
-      "source_id": "phocuswright",
-      "url": "https://www.phocuswright.com/Travel-Research/Research-Updates/2026/ten-structural-shifts-redefining-asia-pacific-travel",
-      "error": "missing_report_title"
-    },
-    {
-      "source_id": "etc",
-      "url": "https://etc-corporate.org/reports/monitoring-sentiment-for-intra-european-travel-autumn-winter24/",
-      "error": "outside_or_uncertain_initial_date_window"
-    },
-    {
-      "source_id": "etc",
-      "url": "https://etc-corporate.org/reports/long-haul-travel-barometer-3-2024/",
-      "error": "outside_or_uncertain_initial_date_window"
-    },
-    {
-      "source_id": "etc",
-      "url": "https://etc-corporate.org/reports/crises-in-tourism-impacts-and-lessons-from-european-destinations/",
-      "error": "outside_or_uncertain_initial_date_window"
-    }
-  ]
+  "errors": []
 }

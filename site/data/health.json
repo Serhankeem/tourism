@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-30T19:56:26+09:00",
-  "last_successful_fetch": "2026-10-30T19:56:26+09:00",
+  "checked_at": "2026-10-30T22:07:58+09:00",
+  "last_successful_fetch": "2026-10-30T22:07:58+09:00",
   "status": "partial",
   "sources": [
     {
@@ -89,23 +89,9 @@
       "id": "seoul_environment",
       "name": "서울시 내 손안에 서울 환경",
       "url": "https://mediahub.seoul.go.kr/news/rss/05",
-      "status": "ok",
-      "rss_items": 20,
-      "matched": 0,
-      "held": 0,
-      "relevance_counts": {
-        "Direct": 0,
-        "Indirect": 0,
-        "Irrelevant": 20
-      },
-      "category_published": {
-        "관광정책": 0,
-        "인바운드": 0,
-        "여행산업": 0,
-        "항공·숙박": 0,
-        "문화·트렌드": 0,
-        "경제·시장": 0
-      }
+      "status": "error",
+      "error_kind": "transport_error",
+      "error": "OSError: <urlopen error _ssl.c:993: The handshake operation timed out>"
     },
     {
       "id": "sec_booking",
@@ -275,7 +261,7 @@
     }
   ],
   "source_count": 18,
-  "successful_sources": 9,
+  "successful_sources": 8,
   "schema_version": 2,
   "rule_version": "0.2",
   "category_counts": {
@@ -289,12 +275,12 @@
   "review_queue_count": 1,
   "discovery": {
     "schema_version": 3,
-    "checked_at": "2026-10-30T19:56:26+09:00",
+    "checked_at": "2026-10-30T22:07:58+09:00",
     "publication_result": "partial",
     "discovery_status": "partial",
-    "received": 570,
-    "new_discoveries": 22,
-    "duplicate_observations": 349,
+    "received": 550,
+    "new_discoveries": 34,
+    "duplicate_observations": 317,
     "new_auto_published": 0,
     "total_published": 40,
     "total_archived": 40,
@@ -374,8 +360,8 @@
       "문화·트렌드": 9,
       "경제·시장": 0
     },
-    "discovered_last24h": 344,
-    "discovered_last7d": 1233,
+    "discovered_last24h": 361,
+    "discovered_last7d": 1267,
     "auto_published_last24h": 4,
     "auto_published_last7d": 31,
     "originally_published_last24h": 4,
@@ -411,7 +397,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9743589743589743,
+        "success_rate": 0.975,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -520,7 +506,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9487179487179487,
+        "success_rate": 0.95,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -555,7 +541,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9487179487179487,
+        "success_rate": 0.95,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -592,7 +578,7 @@
         "status": "error",
         "error_kind": "transport_error",
         "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
-        "success_rate": 0.7435897435897436,
+        "success_rate": 0.725,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "fetch_failed"
@@ -602,9 +588,9 @@
         "name": "서울시 내 손안에 서울 환경",
         "url": "https://mediahub.seoul.go.kr/news/rss/05",
         "group": "public",
-        "received": 20,
+        "received": 0,
         "new_discoveries": 0,
-        "duplicates": 20,
+        "duplicates": 0,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -612,7 +598,7 @@
         "classifications": {
           "Direct": 0,
           "Indirect": 0,
-          "Irrelevant": 20
+          "Irrelevant": 0
         },
         "publication_policy": {
           "status": "approved",
@@ -626,11 +612,13 @@
           "max_days": 90,
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
-        "status": "ok",
-        "success_rate": 0.38461538461538464,
+        "status": "error",
+        "error_kind": "transport_error",
+        "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
+        "success_rate": 0.375,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
-        "outcome": "no_new_candidate"
+        "outcome": "fetch_failed"
       },
       {
         "id": "sec_booking",
@@ -1078,8 +1066,8 @@
         "url": "https://stories.hilton.com/feed",
         "group": "company",
         "received": 10,
-        "new_discoveries": 0,
-        "duplicates": 10,
+        "new_discoveries": 1,
+        "duplicates": 9,
         "rights_holds": 4,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1105,7 +1093,7 @@
         "success_rate": 1.0,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
-        "outcome": "no_new_candidate"
+        "outcome": "discovered_not_publishable"
       },
       {
         "id": "skift",
@@ -1113,16 +1101,16 @@
         "url": "https://skift.com/feed/",
         "group": "media",
         "received": 10,
-        "new_discoveries": 0,
-        "duplicates": 10,
-        "rights_holds": 1,
+        "new_discoveries": 1,
+        "duplicates": 9,
+        "rights_holds": 2,
         "date_holds": 0,
         "invalid_metadata": 0,
         "outside_window": 0,
         "classifications": {
-          "Direct": 1,
+          "Direct": 2,
           "Indirect": 0,
-          "Irrelevant": 9
+          "Irrelevant": 8
         },
         "publication_policy": {
           "status": "review",
@@ -1140,7 +1128,7 @@
         "success_rate": 1.0,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
-        "outcome": "no_new_candidate"
+        "outcome": "discovered_not_publishable"
       },
       {
         "id": "yonhap",
@@ -1148,8 +1136,8 @@
         "url": "https://www.yna.co.kr/rss/economy.xml",
         "group": "media",
         "received": 120,
-        "new_discoveries": 4,
-        "duplicates": 116,
+        "new_discoveries": 1,
+        "duplicates": 119,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1267,8 +1255,8 @@
         "url": "https://www.ttlnews.com/rss/allArticle.xml",
         "group": "media",
         "received": 50,
-        "new_discoveries": 18,
-        "duplicates": 32,
+        "new_discoveries": 31,
+        "duplicates": 19,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,

@@ -7,6 +7,10 @@ function renderHomeNews(){
  document.getElementById('overview-news').innerHTML=NEWS.length?NEWS.slice(0,3).map(n=>`<article class="home-news-item"><div class="news-meta"><span class="category">${escapeHtml(n.category)}</span><span>${escapeHtml(n.source)}</span><time datetime="${escapeHtml(n.published_at)}">${escapeHtml(n.date)}</time></div><h3><a href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(n.title)}</a></h3><p class="news-keywords">${n.keywords.map(escapeHtml).join(' · ')}</p></article>`).join(''):'<div class="empty">실제 수집 결과가 아직 없습니다.</div>';
 }
 function syncHomeWeather(){
+ const title=document.getElementById('weather-title').textContent;
+ const tone=({'비':'rain','흐림':'cloudy','구름 조금':'partly','맑음':'sunny'})[title]||'cloudy';
+ document.querySelectorAll('.weather-panel,.weather-result').forEach(card=>card.dataset.weather=tone);
+
  for(const key of ['title','icon','score'])document.getElementById('home-weather-'+key).textContent=document.getElementById('weather-'+key).textContent;
 }
 document.addEventListener('DOMContentLoaded',()=>{
@@ -30,3 +34,14 @@ async function loadAboutSources(){
   (async()=>{try{const [r,h]=await Promise.all([fetch('./data/reports.json'),fetch('./data/reports_health.json')]);if(!r.ok||!h.ok)throw Error();const db=await r.json(),health=await h.json();const rows=health.sources||[];const holds={kto:'허용된 발간물 경로·접근 확인 필요',mckinsey:'자동 접근 및 활용 조건 확인 필요',untourism:'접근 제한 · 공식 수신 경로 확인 필요',iata:'자동 수집 제한 · 별도 허락 필요',wttc:'공개 플랫폼 활용 범위 확인 필요'};document.getElementById('about-research-sources').innerHTML=rows.map(s=>{const publisher=s.publisher||s.name||s.id;const info=db.publishers?.[publisher]||{};const count=db.reports.filter(r=>r.publisher===publisher).length;return row(publisher,info.homepage||s.url||'',`${!['blocked','disabled'].includes(s.status)?'목록 발견 연결':'조사 대상 · 미연결'} · 공개 등록 ${count}건${s.reason?' · '+(holds[s.id]||'접근 또는 이용조건 확인 필요'):''}`);}).join('')||'기관별 연결 상태 확인이 필요합니다.';}catch(_){document.getElementById('about-research-sources').textContent='Research 연결 상태를 불러오지 못했습니다. 리서치 탭에서 발행기관과 원문을 확인해 주세요.';}})()
  ]);
 }
+
+// Dismiss only the banner, without changing channel setup or message delivery.
+document.addEventListener('DOMContentLoaded',()=>{
+ const banner=document.getElementById('kakao-banner');
+ try{banner.hidden=localStorage.getItem('currentourism.kakao.dismissed')==='true';}catch(_){}
+ document.getElementById('kakao-banner-close').addEventListener('click',()=>{
+  banner.hidden=true;
+  try{localStorage.setItem('currentourism.kakao.dismissed','true');}catch(_){}
+  document.querySelector('.brand-home')?.focus();
+ });
+});

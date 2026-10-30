@@ -1,0 +1,42 @@
+/* UI 2.0: presentation only. Official logo bytes and data engines are untouched. */
+.header-inner{grid-template-columns:150px 1fr;gap:28px}.header-caption{display:none}
+.primary-navigation{gap:clamp(18px,2.5vw,36px)}
+.primary-navigation a{font-size:16px;font-weight:700;padding:22px 0}
+.primary-navigation a.active{color:#173B73}.primary-navigation a.active:after{height:3px;border-radius:3px;background:#F47735}
+.footer-logo{display:block;width:120px;height:auto;object-fit:contain}
+.site-footer>a{display:block;flex-shrink:0}.site-footer{align-items:center}
+.kakao-banner{position:fixed;right:18px;bottom:18px;z-index:48}
+.kakao-banner[hidden]{display:none}.kakao-banner .kakao-float{position:relative;right:auto;bottom:auto;padding-right:38px}
+.kakao-banner-close{position:absolute;right:5px;top:5px;z-index:49;width:32px;height:32px;border:0;border-radius:50%;background:#fff7a6;color:#372F24;font-size:22px;display:grid;place-items:center}
+.sources-table-wrap{overflow:auto;background:white;border:1px solid #DFE8F3;border-radius:12px;margin:20px 0}
+.sources-table{border-collapse:collapse;width:100%;min-width:680px;text-align:left;font-size:13px;line-height:1.7}
+.sources-table caption{text-align:left;padding:18px 20px;font-weight:750;color:#173B73}
+.sources-table th,.sources-table td{padding:16px 18px;border-top:1px solid #E4EBF4;vertical-align:top}
+.sources-table thead{background:#EDF3FC;color:#173B73}.sources-table tbody th{white-space:nowrap;font-weight:650}
+.sources-table tbody tr:hover{background:#FAFCFF}.sources-table td:last-child{color:#52657D}
+.weather-panel,.weather-result{--weather-bg:#EDF3FC;--weather-ink:#294F80;--weather-line:#CBDCEE;background:var(--weather-bg);color:var(--weather-ink);border:1px solid var(--weather-line);transition:background .2s}
+[data-weather="rain"]{--weather-bg:#E9EFFB;--weather-ink:#304F89;--weather-line:#BACBE8}
+[data-weather="cloudy"]{--weather-bg:#EEF1F5;--weather-ink:#46566C;--weather-line:#C9D2DE}
+[data-weather="partly"]{--weather-bg:#EBF5F4;--weather-ink:#24645E;--weather-line:#BBDDD6}
+[data-weather="sunny"]{--weather-bg:#FFF3DE;--weather-ink:#835014;--weather-line:#EBD0A3}
+.weather-result h2,.weather-panel h2{color:var(--weather-ink);font-size:30px}
+.weather-panel .home-weather-score b,.weather-result .score{color:var(--weather-ink)}
+.weather-result p,.weather-panel p{color:var(--weather-ink)}
+.weather-result .label-row>span:last-child,.weather-result>div:last-child{color:var(--weather-ink)!important;border-color:var(--weather-line)!important}
+.weather-footer{border-color:var(--weather-line)}
+.weather-icon,.icon-big{filter:drop-shadow(0 4px 8px #173B7315)}
+.weather-result .pill{background:white;color:var(--weather-ink);border:1px solid var(--weather-line)}
+.news-page-button{min-width:36px;min-height:36px}.news-page-button[aria-label]{font-size:18px;padding:4px 10px}
+@media(max-width:1080px){.header-inner{display:flex}.primary-navigation{gap:4px}.primary-navigation a{font-size:16px;padding:15px 12px}.primary-navigation a.active{border-left:3px solid #F47735}}
+@media(max-width:650px){.site-footer{align-items:flex-start;flex-wrap:wrap;gap:22px}.site-footer p{width:100%;margin:0;text-align:left}.footer-logo{width:104px}.sources-table th,.sources-table td{padding:12px}.sources-table{font-size:12px}.kakao-banner{right:12px;bottom:12px}}
+@media(prefers-reduced-motion:reduce){.weather-panel,.weather-result{transition:none}}
+.weather-result .score small{color:var(--weather-ink);opacity:.85}
+.weather-result .weather-icon,.weather-panel .icon-big{width:fit-content;background:#FFFFFF99;border:1px solid var(--weather-line);border-radius:18px;padding:8px 12px;color:var(--weather-ink)}
+@media(max-width:650px){.kakao-banner .kakao-float{width:auto;height:auto;min-height:60px;border-radius:32px;padding:10px 48px 10px 10px}.kakao-banner .kakao-float .kakao-copy{display:grid}.kakao-banner-close{top:6px;right:6px}}
+
+/* Native details preserve keyboard disclosure behavior and source status DOM. */
+.source-details{margin:16px 0;border:1px solid #DFE8F3;background:#fff;border-radius:12px;overflow:hidden}
+.source-details>summary{cursor:pointer;min-height:48px;padding:16px 20px;color:#173B73;font-size:14px;font-weight:750;line-height:1.6}
+.source-details[open]>summary{border-bottom:1px solid #DFE8F3;background:#F5F8FD}
+.source-details>.tiny{padding:0 20px}.source-details>.source-status-grid{border:0;border-radius:0}
+.source-details>summary:focus-visible{outline:3px solid #8AB7EB;outline-offset:-3px}

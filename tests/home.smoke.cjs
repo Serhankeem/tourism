@@ -13,21 +13,20 @@ const crypto=require('node:crypto');
   const news=await(await page.request.get(base+'/data/newsroom.json')).json();
   const reports=await(await page.request.get(base+'/data/reports.json')).json();
   await page.goto(base);await page.waitForFunction(()=>!newsLoading&&NEWS.length>0&&window.MacroMonitor?.database?.indicators.length>0);
-  const originalLogo=await page.request.get(base+'/assets/currentourism_logo_transparent_3x.png');
-  const publicLogo=await page.request.get(base+'/assets/currentourism-logo.png');
-  assert.equal(originalLogo.status(),200);assert.equal(publicLogo.status(),200);
-  assert.equal(crypto.createHash('sha256').update(await originalLogo.body()).digest('hex'),crypto.createHash('sha256').update(await publicLogo.body()).digest('hex'),'Logo must match uploaded original bytes');
+  const originalLogo=await page.request.get(base+'/assets/currentourism-new-airplane-logo.png?v=7f92affea61c5719');
+  assert.equal(originalLogo.status(),200);
+  assert.equal(crypto.createHash('sha256').update(await originalLogo.body()).digest('hex'),'7f92affea61c57197f2b015576cb7bcaf604defb0ac270894157d8e94d070b7f','Browser-served logo must match new airplane original bytes');
   await page.locator('#brand-logo').waitFor({state:'visible'});
   assert.equal(await page.locator('#brand-fallback').isVisible(),false);
   async function checkLogoRatio(target){
    const size=await target.locator('#brand-logo').evaluate(img=>({w:img.naturalWidth,h:img.naturalHeight,rect:img.getBoundingClientRect().toJSON()}));
-   assert.equal(size.w,867);assert.equal(size.h,498);
+   assert.equal(size.w,1774);assert.equal(size.h,887);
    assert.ok(Math.abs(size.rect.width/size.rect.height-size.w/size.h)<0.01,'Preserve original logo ratio');
   }
   await checkLogoRatio(page);
   assert.equal(await page.locator('.sidebar').count(),0);
-  assert.equal(await page.locator('.primary-navigation a').count(),5);
-  assert.deepEqual(await page.locator('.primary-navigation a').evaluateAll(a=>a.map(x=>x.dataset.nav)),['news','briefing','macro','weather','about']);
+  assert.equal(await page.locator('.primary-navigation a').count(),6);
+  assert.deepEqual(await page.locator('.primary-navigation a').evaluateAll(a=>a.map(x=>x.dataset.nav)),['weather','news','briefing','research','macro','about']);
   assert.equal(await page.title(),'여행기류 currentourism — 관광산업 인텔리전스');
   const rect=await page.locator('.overview-hero').evaluate(el=>[...el.children].map(n=>({x:n.getBoundingClientRect().x,y:n.getBoundingClientRect().y,w:n.getBoundingClientRect().width})));
   assert.equal(rect[0].y,rect[1].y);assert.ok(rect[0].w>rect[1].w);
@@ -38,7 +37,7 @@ const crypto=require('node:crypto');
   assert.match(await page.locator('.weather-panel').textContent(),/시뮬레이션/);
   await page.screenshot({path:dir+'/home-desktop.png',fullPage:true});
   await page.locator('.brand-home').screenshot({path:dir+'/brand-header.png'});
-  for(const route of ['news','briefing','macro','weather','about']){
+  for(const route of ['weather','news','briefing','research','macro','about']){
    await page.locator(`.primary-navigation [data-nav="${route}"]`).click();
    assert.equal(await page.locator('#page-'+route).isVisible(),true);
    assert.equal(await page.locator(`.primary-navigation [data-nav="${route}"]`).getAttribute('aria-current'),'page');
@@ -55,7 +54,7 @@ const crypto=require('node:crypto');
   await page.locator('#chart-toggle-macro [data-chart="count"]').click();const macro=await page.evaluate(()=>MacroMonitor.database.indicators.find(i=>i.id==='kto_inbound'));const [my,mm]=macro.latest_period.split('-').map(Number);const cutoff=new Date(Date.UTC(my,mm-36,1)).toISOString().slice(0,7);assert.equal(await page.locator('#chart-macro svg rect').count(),macro.observations.filter(o=>o.period>=cutoff).length);
   await page.goto(base+'/#research');await page.waitForFunction(()=>window.ResearchLibrary?.database.reports.length>0);
   assert.equal(await page.locator('#page-research').isVisible(),true);assert.equal(await page.locator('#research-count').textContent(),String(reports.count));
-  assert.equal(await page.locator('.primary-navigation [data-nav="news"]').getAttribute('aria-current'),'page');
+  assert.equal(await page.locator('.primary-navigation [data-nav="research"]').getAttribute('aria-current'),'page');
   await page.locator('#page-research .news-subnav [data-goto="news"]').click();assert.equal(await page.locator('#page-news').isVisible(),true);
   await page.goBack();assert.equal(await page.locator('#page-research').isVisible(),true);
   await page.goto(base+'/#sources');await page.waitForFunction(()=>document.querySelectorAll('#about-research-sources .source-status-row').length===9);
@@ -63,7 +62,7 @@ const crypto=require('node:crypto');
   assert.match(await page.locator('#about-research-sources').textContent(),/공개 등록 65건/);
   assert.match(await page.locator('#about-research-sources').textContent(),/미연결/);
   assert.equal(await page.locator('#data-sources a[href="https://know.tour.go.kr/main/main.do"]').count(),1);
-  for(const heading of ['About currentourism','References','Data Sources','Non-commercial Policy'])assert.ok(await page.getByRole('heading',{name:heading,exact:true}).count());
+  for(const heading of ['About Us','프로젝트 목적','운영 원칙','Data Sources','Non-commercial Policy'])assert.ok(await page.getByRole('heading',{name:heading,exact:true}).count());
   await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:dir+'/about-desktop.png',fullPage:true});
   // Old issue dates must remain old; empty/error states cannot fabricate news.
   await page.evaluate(()=>{NEWS.forEach(n=>n.published_at='2020-01-01T00:00:00+09:00');renderHomeNews();});
@@ -78,7 +77,7 @@ const crypto=require('node:crypto');
   assert.equal(await mobile.locator('.primary-navigation').isVisible(),false);
   const toggle=mobile.locator('#menu-toggle');await toggle.click();assert.equal(await toggle.getAttribute('aria-expanded'),'true');
   await mobile.keyboard.press('Escape');assert.equal(await toggle.getAttribute('aria-expanded'),'false');assert.equal(await toggle.evaluate(el=>document.activeElement===el),true);
-  for(const route of ['news','briefing','macro','weather','about']){
+  for(const route of ['weather','news','briefing','research','macro','about']){
    await toggle.click();await mobile.locator(`.primary-navigation [data-nav="${route}"]`).click();assert.equal(await mobile.locator('#page-'+route).isVisible(),true);assert.equal(await toggle.getAttribute('aria-expanded'),'false');
    assert.equal(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,route+' must fit mobile');
    await mobile.locator('#brand-logo').click();assert.equal(await mobile.locator('#page-overview').isVisible(),true);
@@ -90,6 +89,6 @@ const crypto=require('node:crypto');
   await mobile.goto(base+'/#about');await mobile.waitForFunction(()=>document.querySelectorAll('#about-research-sources .source-status-row').length===9);
   await mobile.screenshot({path:dir+'/about-mobile.png',fullPage:true});
   assert.deepEqual(errors,[]);
-  console.log('PASS: real home metadata/order/freshness, desktop/mobile five-menu navigation, home logo link, keyboard menu, deep links/history, About 9-source status, chart, weather/reset, Research preservation; no JS errors');
+  console.log('PASS: real home metadata/order/freshness, desktop/mobile six-menu navigation, home logo link, keyboard menu, deep links/history, About 9-source status, chart, weather/reset, Research preservation; no JS errors');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

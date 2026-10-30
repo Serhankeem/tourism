@@ -28,13 +28,13 @@
   return `<article class="card kpi macro-kpi" data-macro-id="${id}"><span class="label">${esc(name)}</span><div class="value" data-value="${o.value}">${fmt(o.value)}<span>${esc(i.unit)}</span></div><div class="macro-period">기준 ${esc(o.period)} · 월간 실적</div>${o.comparisons.yoy_pct==null?'':`<span class="delta">전년 동월비 ${pct(o.comparisons.yoy_pct)}</span>`}<div class="note">${esc(finality(o))}${o.revision_status==='revised'?' · 정정 감지':''}<br>${esc(s)}</div>${link(i.source_url,esc(i.publisher))}</article>`;
  }
  function monthly(start,end){const out=[];let [y,m]=start.split('-').map(Number);while(`${y}-${String(m).padStart(2,'0')}`<=end){out.push(`${y}-${String(m).padStart(2,'0')}`);if(++m>12){m=1;y++;}}return out;}
- function chart(container,i,limit){
+ function chart(container,i,limit,growthMode=state.chart==='growth'){
   if(!i?.observations.length){container.innerHTML='<div class="empty">검증된 월별 통계가 없습니다.</div>';return;}
   const periods=monthly(i.first_period,i.latest_period),chosen=periods.slice(-Math.min(limit,periods.length)),lookup=new Map(i.observations.map(o=>[o.period,o]));
-  const growth=state.chart==='growth';
+  const growth=growthMode;
   const rows=chosen.map(period=>{const o=lookup.get(period),prior=lookup.get(`${Number(period.slice(0,4))-1}${period.slice(4)}`);return {period,value:growth?(o&&prior&&prior.value!==0?(o.value/prior.value-1)*100:null):o?.value??null};});
   const vals=rows.filter(o=>o.value!==null).map(o=>o.value);
-  if(!vals.length){container.innerHTML='<div class="empty">전년 동월 자료가 없어 증감률을 계산하지 않습니다.</div>';return;}
+  if(!vals.length){container.innerHTML='<div class="empty">전년 동월 자료가 없어 증감률을 계산하지 않습니다.</div>';return rows.length;}
   const w=Math.max(280,Math.min(900,container.clientWidth||640)),h=250,left=52,right=14,top=28,bottom=42,pw=w-left-right,ph=h-top-bottom;
   const low=Math.min(0,...vals),hi=Math.max(1,...vals),span=(hi-low)*1.12,max=low+span;
   const y=v=>top+ph*(1-(v-low)/(max-low)),baseline=y(0),bar=Math.max(2,Math.min(36,pw/rows.length*.58));
@@ -77,6 +77,7 @@
   }
   renderCharts();
   window.DataObservation?.render(db,health,failed||healthUnknown);
+  window.MarketObservation?.render(db, sourceState);
  }
  async function load(){
   if(loading)return;loading=true;
@@ -89,6 +90,6 @@
   finally{loading=false;render();}
  }
  el('macro-metric').addEventListener('change',e=>{metric=e.target.value;render();});el('macro-range').addEventListener('change',e=>{range=Number(e.target.value);renderCharts();});
- window.MacroMonitor={load,renderCharts,render,get database(){return db;},get health(){return health;}};
+ window.MacroMonitor={load,renderCharts,render,renderReadOnlyChart:(container,indicator,mode)=>chart(container,indicator,12,mode==='growth'),get database(){return db;},get health(){return health;}};
  load();setInterval(load,300000);
 })();

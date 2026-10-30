@@ -1,6 +1,6 @@
 {
   "version": "0.4",
-  "checked_at": "2026-10-29T14:42:39+09:00",
+  "checked_at": "2026-10-30T14:24:25+09:00",
   "status": "no_due_sources",
   "target_sources": 9,
   "source_coverage": 9,
@@ -21,7 +21,7 @@
   "new_reports_this_run": 0,
   "new_automatic_reports_this_run": 0,
   "new_manual_reports_this_run": 0,
-  "new_reports_last30d": 8,
+  "new_reports_last30d": 7,
   "automatic_reports": 110,
   "manual_reports": 0,
   "by_publisher": {
@@ -59,7 +59,7 @@
     },
     "Phocuswright": {
       "published": 65,
-      "new_last30d": 7,
+      "new_last30d": 6,
       "latest_publication": "2026-10-28",
       "latest_registration": null,
       "last_collection": "2026-10-29T14:01:39+09:00",

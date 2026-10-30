@@ -1,3 +1,4 @@
+const clickNav=require('./navigation-helper.cjs');
 // Real report DB only: search/filter the entire DB, paginate 10/20, PC/mobile.
 const {chromium}=require('playwright');
 const assert=require('node:assert/strict');
@@ -7,8 +8,7 @@ const fs=require('node:fs');
  async function openResearch(page){
   if(await page.locator('#page-research').isVisible())return;
   if(await page.locator('#page-overview').isVisible()){await page.locator('.home-research-link a').click();return;}
-  if(await page.locator('#menu-toggle').isVisible())await page.locator('#menu-toggle').click();
-  await page.locator('.primary-navigation [data-nav="news"]').click();
+  await clickNav(page,'news');
   await page.locator('#page-news .news-subnav [data-goto="research"]').click();
  }
  const base=process.env.TOURISM_TEST_URL||'http://127.0.0.1:8010';
@@ -65,7 +65,7 @@ const fs=require('node:fs');
   await page.screenshot({path:screenshots+'/research-desktop.png',fullPage:true});
   await page.locator('#page-research [data-goto="sources"]').click();await page.locator('#page-about').waitFor({state:'visible'});
   // Existing Newsroom and its pagination remain independent from Research.
-  await page.locator('[data-nav="news"]').click();await page.waitForFunction(()=>!newsLoading);
+  await clickNav(page,'news');await page.waitForFunction(()=>!newsLoading);
   const newsCount=await page.evaluate(()=>NEWS.length);assert.ok(newsCount>0);
   assert.equal(await page.locator('#news-items .news-item').count(),Math.min(10,newsCount));
   await page.locator('#news-page-size').selectOption('20');assert.equal(await page.locator('#news-items .news-item').count(),Math.min(20,newsCount));

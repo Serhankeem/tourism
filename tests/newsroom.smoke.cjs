@@ -1,3 +1,4 @@
+const clickNav=require('./navigation-helper.cjs');
 // Optional browser regression: requires Playwright + Chromium and a local server.
 // TOURISM_TEST_URL=http://127.0.0.1:8001 node tests/newsroom.smoke.cjs
 const {chromium} = require('playwright');
@@ -21,7 +22,7 @@ const assert = require('node:assert/strict');
   await page.goto(base);
   await page.waitForFunction(()=>!newsLoading);
   assert.equal(await page.locator('#rss-health-chip').textContent(),'PARTIAL FETCH');
-  await page.locator('[data-nav="news"]').click();
+  await clickNav(page,'news');
   assert.equal(await page.locator('#news-items .news-item').count(),Math.min(10,expectedCount));
   assert.match(await page.locator('#news-page-total').textContent(),new RegExp('총 '+expectedCount+'건'));
   await page.locator('#news-search').fill(selected.title);
@@ -56,7 +57,7 @@ const assert = require('node:assert/strict');
   await page.locator('[data-filter="전체"]').click();
   assert.equal(await page.locator('#news-items .news-item').count(),Math.min(10,expectedCount));
   assert.match(await page.locator('#news-page-total').textContent(),new RegExp('총 '+expectedCount+'건'));
-  await page.locator('[data-nav="briefing"]').click();
+  await clickNav(page,'briefing');
   const briefing=await (await page.request.get(base+'/data/briefing.json')).json();
   assert.match(await page.locator('#briefing-state').textContent(),briefing.items.length?/주요 뉴스 후보|이전 생성 후보/:/신규 뉴스 없음|이전 생성 후보/);
   // Compatibility: old categories still work with new filter buttons.
@@ -65,7 +66,7 @@ const assert = require('node:assert/strict');
   await page.route('**/data/newsroom.json?*',route=>route.fulfill({status:404,body:'not found'}));
   await page.route('**/data/news.json?*',route=>route.fulfill({json:{...archiveSnapshot,articles:archiveSnapshot.articles.map(a=>({...a,category:inverse[a.category]||a.category,record_type:a.source_id==='kosis_recent'?undefined:a.record_type}))}}));
   await page.evaluate(()=>loadLiveNews());
-  await page.locator('[data-nav="news"]').click();
+  await clickNav(page,'news');
   await page.locator('[data-filter="'+selectedCategory+'"]').click();
   assert.ok(await page.locator('#news-items .news-item').count()>0);
   await page.locator('[data-filter="전체"]').click();

@@ -16,12 +16,17 @@ redesign. It does not replace Research Library's collection and rights policies.
 
 ## Navigation and home
 
-- UI 2.0 header: logo / 오늘의 관광 날씨는? / 뉴스 / 브리프 / 리서치 / 관광지표 / 소개.
-  Six primary menus; no English sublabels; visible active state.
-- Mobile toggle with expanded state, Escape dismissal and focus return;
-  page selection closes the menu. No left sidebar.
+- Navigation v2.1 header: 오늘의 관광 날씨는? / 뉴스 disclosure / 관광지표 / 소개.
+  News disclosure routes to 뉴스, 데일리 브리핑, 리서치. Always show four top-level
+  items, including mobile (logo first, 2×2 items on narrow screens). No hamburger.
+- Disclosure has aria-expanded/controls, keyboard focus, outside-click/Escape close;
+  selected subpage activates the News group, hash/history stays intact.
 - Newsroom secondary navigation: 뉴스 / 리서치. Keep `#research` direct access,
   home discovery link, filters and full-DB search/pagination intact.
+- Research keyword search is first in a Blue Gray panel. Desktop filters use 2–3
+  columns; mobile details collapse without clearing conditions. Show applied count
+  and reset; reset preserves selected 10/20 page size. Institution stats remain
+  available in a separate disclosure (collapsed by default on mobile).
 - Overview: Industry News + Market Weather; Key Indicators; Inbound Tourism +
   Analyst's Note. Desktop columns stack on mobile.
 - Use existing news editorial order and original issue dates. Display empty/stale

@@ -11,7 +11,7 @@ const fs=require('node:fs');
   for(const width of [1440,768,390,320]){
    const page=await browser.newPage({viewport:{width,height:1000},reducedMotion:"reduce"});page.on('pageerror',e=>errors.push(e.message));
    await page.goto(base);await page.waitForFunction(()=>!newsLoading&&window.ResearchLibrary?.database&&window.MacroMonitor?.database);
-   assert.deepEqual(await page.locator('.primary-navigation a').allTextContents(),['오늘의 관광 날씨는?','뉴스','브리프','리서치','관광지표','소개']);
+   assert.deepEqual(await page.locator('.primary-navigation a').allTextContents(),['오늘의 관광 날씨는?','뉴스','데일리 브리핑','리서치','관광지표','소개']);
    assert.equal(await page.locator('.primary-navigation small').count(),0);
    for(const selector of ['#brand-logo','.footer-logo']){
     const r=await page.locator(selector).evaluate(e=>({loaded:e.complete&&e.naturalWidth>0,ratio:e.width/e.height,native:e.naturalWidth/e.naturalHeight,src:e.getAttribute('src')}));

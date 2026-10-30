@@ -27,6 +27,8 @@
   return `<article class="research-card"><div class="research-meta"><span>${escape(r.publisher)}</span><span>${escape(dateText(r))}</span><span class="research-access">${escape(r.access_type)}</span></div><h3><a href="${escape(r.url)}" target="_blank" rel="noopener noreferrer">${escape(r.title)}</a></h3><div class="research-meta"><span class="category">${escape(r.category)}</span><span>${escape(r.report_type)}</span></div><p class="research-keywords">${r.keywords.map(escape).join(' · ')}</p><a class="text-link" href="${escape(r.url)}" target="_blank" rel="noopener noreferrer">발행기관 원문 보기 ↗</a>${attribution}</article>`;
  }
  function render(){
+  const count=['query','publisher','region','type','category'].filter(k=>state[k].trim()).length+(state.sort!=='newest'?1:0);
+  el('research-filter-count').textContent=`적용 조건 ${count}개`;el('research-filter-summary').textContent=`${count}개 적용`;
   const reports=filtered(),pages=Math.max(1,Math.ceil(reports.length/state.size));
   state.page=Math.max(1,Math.min(state.page,pages));
   const start=(state.page-1)*state.size;
@@ -47,6 +49,7 @@
  }
  function summaries(){
   el('research-count').textContent=String(database.reports.length);
+  el('research-total-inline').textContent=`전체 ${database.reports.length}건`;
   el('research-recent-count').textContent=health?.new_reports_last30d??'미확인';
   el('research-auto-count').textContent=health?.automatic_reports??'미확인';
   el('research-manual-count').textContent=health?.manual_reports??'미확인';
@@ -76,6 +79,14 @@
   }catch(_){el('research-status').textContent=database.reports.length?'연구자료 갱신을 확인하지 못해 기존 목록을 유지합니다.':'연구자료 수집 결과가 아직 연결되지 않았습니다. 검증되지 않은 자료는 표시하지 않습니다.';render();}
   finally{loading=false;}
  }
+ const filterDetails=el('research-filter-details'),wideFilters=matchMedia('(min-width: 769px)');
+ function layoutFilters(){filterDetails.open=wideFilters.matches;el('research-source-overview').open=wideFilters.matches;}
+ wideFilters.addEventListener('change',layoutFilters);layoutFilters();
+ el('research-reset').addEventListener('click',()=>{
+  Object.assign(state,{query:'',publisher:'',region:'',type:'',category:'',sort:'newest',page:1});
+  for(const id of ['research-search','research-publisher','research-region','research-type','research-category'])el(id).value='';
+  el('research-sort').value='newest';render();
+ });
  el('research-search').addEventListener('input',e=>{state.query=e.target.value;state.page=1;render();});
  for(const [id,key] of [['research-publisher','publisher'],['research-region','region'],['research-type','type'],['research-category','category'],['research-sort','sort']])
   el(id).addEventListener('change',e=>{state[key]=e.target.value;state.page=1;render();});

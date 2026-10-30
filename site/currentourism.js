@@ -14,12 +14,18 @@ function syncHomeWeather(){
  for(const key of ['title','icon','score'])document.getElementById('home-weather-'+key).textContent=document.getElementById('weather-'+key).textContent;
 }
 document.addEventListener('DOMContentLoaded',()=>{
- const button=document.getElementById('menu-toggle'),menu=document.getElementById('primary-navigation');
- function close(){button.setAttribute('aria-expanded','false');menu.classList.remove('is-open');}
- button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')!=='true';button.setAttribute('aria-expanded',String(open));menu.classList.toggle('is-open',open);});
- document.addEventListener('keydown',event=>{if(event.key==='Escape'&&button.getAttribute('aria-expanded')==='true'){close();button.focus();}});
- document.addEventListener('click',event=>{if(!event.target.closest('.site-header'))close();});
- const wide=matchMedia('(min-width: 1081px)');wide.addEventListener('change',()=>close());
+ const button=document.getElementById('news-menu-toggle'),panel=document.getElementById('news-submenu'),group=button.closest('.news-nav');
+ function close(returnFocus=false){const inside=panel.contains(document.activeElement);panel.hidden=true;button.setAttribute('aria-expanded','false');if(returnFocus||inside)button.focus();}
+ function open(){panel.hidden=false;button.setAttribute('aria-expanded','true');}
+ window.closeNewsMenu=close;
+ button.addEventListener('click',()=>panel.hidden?open():close());
+ button.addEventListener('keydown',event=>{if(event.key==='ArrowDown'){event.preventDefault();open();panel.querySelector('a').focus();}});
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!panel.hidden){event.preventDefault();close(true);}});
+ document.addEventListener('click',event=>{if(!group.contains(event.target))close();});
+ group.addEventListener('focusout',event=>{if(event.relatedTarget&&!group.contains(event.relatedTarget))close();});
+ const header=document.querySelector('.site-header');
+ const sizeHeader=()=>document.documentElement.style.setProperty('--site-header-height',header.getBoundingClientRect().height+'px');
+ new ResizeObserver(sizeHeader).observe(header);sizeHeader();
  const logo=document.getElementById('brand-logo'),fallback=document.getElementById('brand-fallback');
  function showLogo(){if(logo.naturalWidth){logo.hidden=false;fallback.hidden=true;}}
  logo.addEventListener('load',showLogo);logo.addEventListener('error',()=>{logo.hidden=true;fallback.hidden=false;});showLogo();

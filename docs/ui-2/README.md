@@ -1,14 +1,10 @@
 # UI 2.0 review
 
-**Merge blocker — replacement airplane logo is not yet available to this workspace.**
-Required original: 1774 × 887 PNG, SHA256
-`7f92affea61c57197f2b015576cb7bcaf604defb0ac270894157d8e94d070b7f`.
-The current 867 × 498 pin logo is **not** this replacement. The conversation
-preview appears solid orange and no downloadable original or matching workspace/
-latest-main asset was available. Do not regenerate, recolor, reconstruct or claim
-that the existing file is the requested new asset. Await a download URL/repo path.
-Current screenshots still show the old pin logo and are not final logo acceptance.
-
+**Airplane logo verified and applied.** Original file is 1774 × 887 RGBA PNG,
+SHA256 `7f92affea61c57197f2b015576cb7bcaf604defb0ac270894157d8e94d070b7f`.
+The exact uploaded bytes are unchanged. Both header and footer use the new file
+with `?v=7f92affea61c5719`, not an old logo URL. Browser-served SHA and natural
+size/ratio checks passed, and screenshots show the top-right airplane icon.
 
 Base: main b0a55ff. Branch: feat/ui-2-0-refresh. UI-only change; no merge or deployment.
 
@@ -17,10 +13,10 @@ Base: main b0a55ff. Branch: feat/ui-2-0-refresh. UI-only change; no merge or dep
 - Header: 오늘의 관광 날씨는? / 뉴스 / 브리프 / 리서치 / 관광지표 / 소개.
   Larger labels without English subtitles, direct Research access, a single active
   menu, existing mobile keyboard/Escape navigation retained.
-- Header/footer use the supplied `site/assets/currentourism_logo_transparent_3x.png`
-  original. This is the existing pin logo, not the newly requested airplane logo.
-  No logo regeneration, pixel changes, cropping or recoloring. Original ratio and
-  home links verified. The existing alias `currentourism-logo.png` is also retained.
+- Header/footer use `site/assets/currentourism-new-airplane-logo.png`, uploaded
+  by the user in PR branch commit 290620e. No generation, pixel changes,
+  cropping or recoloring. HTML dimensions are 1774 × 887, CSS preserves 2:1.
+  Both links return home; legacy pin files remain unused.
 - Kakao banner has an independent accessible close button and localStorage
   persistence (storage exceptions are caught). The channel dialog/setup remains;
   no channel delivery is activated. To show it again, clear the site storage key
@@ -73,11 +69,14 @@ source data. Smaller 320px and tablet layouts were also checked by browser tests
 
 ## PR #10 follow-up verification
 
-- Python 210 passed; all six browser suites passed again.
-- Added explicit default-collapsed, keyboard Enter expansion, click collapse and
-  retained-source-link assertions at all four widths.
-- 390/1440 home/About screenshots refreshed for the disclosure change. These
-  retain the old logo until the original replacement file is supplied.
+- Python 210 passed; all six browser suites passed after the new logo change.
+- Default-collapsed, keyboard Enter expansion, click collapse and preserved source
+  links verified at 320/390/768/1440px. Core source table stays visible.
+- 390/1440 home/About screenshots and all four Weather screenshots refreshed.
+  [Header close-up](screenshots/airplane-logo-header.png) shows the airplane icon.
+- Source SHA, browser-served SHA, natural dimensions and aspect ratio verified.
+  The new filename and hash query avoid the old pin URL's cache identity.
+- `site/assets/currentourism-new-airplane-logo.png` has no byte changes relative
+  to the user's upload commit 290620e; alpha range is 0–255.
 - src/, data, workflows and tourism-balance permission gates remain unchanged.
-- New-logo SHA/1774×887/browser-cache/airplane screenshot verification is pending
-  the exact original PNG; existing-logo checks are not a substitute.
+- main is not merged and Pages production deployment is not triggered here.

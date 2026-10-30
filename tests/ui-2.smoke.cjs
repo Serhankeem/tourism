@@ -15,7 +15,7 @@ const fs=require('node:fs');
    assert.equal(await page.locator('.primary-navigation small').count(),0);
    for(const selector of ['#brand-logo','.footer-logo']){
     const r=await page.locator(selector).evaluate(e=>({loaded:e.complete&&e.naturalWidth>0,ratio:e.width/e.height,native:e.naturalWidth/e.naturalHeight,src:e.getAttribute('src')}));
-    assert.ok(r.loaded);assert.ok(Math.abs(r.ratio-r.native)<.02);assert.match(r.src,/currentourism_logo_transparent_3x.png/);
+    assert.ok(r.loaded);assert.equal(r.native,2);assert.ok(Math.abs(r.ratio-r.native)<.02);assert.match(r.src,/currentourism-new-airplane-logo\.png\?v=7f92affea61c5719/);
    }
    await page.screenshot({path:`${dir}/overview-${width}.png`,fullPage:true});
    await page.locator('#kakao-channel-cta').click();assert.ok(await page.locator('#kakao-layer').evaluate(e=>e.classList.contains('open')));await page.locator('#kakao-dialog-close').click();

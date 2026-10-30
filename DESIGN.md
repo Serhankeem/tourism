@@ -7,8 +7,8 @@ redesign. It does not replace Research Library's collection and rights policies.
 
 - Primary / Deep Blue: `#173B73`; Accent / Orange: `#F47735`.
 - White and light neutral surfaces, navy/charcoal text, readable spacing.
-- Official user-supplied transparent logo: `site/assets/currentourism_logo_transparent_3x.png`.
-  Preserve original Korean lettering, map pin, curve, color and aspect ratio.
+- Official user-supplied transparent logo: `site/assets/currentourism-new-airplane-logo.png`.
+  Preserve original Korean lettering, airplane icon, curve, color and aspect ratio.
   Do not recreate or extract a different mark from the inline preview.
 - Entire logo is an accessible Overview home link on desktop and mobile.
 - No old Tourism Pulse logo, working-title label or old slogan in the public UI.

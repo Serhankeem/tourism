@@ -13,15 +13,14 @@ const crypto=require('node:crypto');
   const news=await(await page.request.get(base+'/data/newsroom.json')).json();
   const reports=await(await page.request.get(base+'/data/reports.json')).json();
   await page.goto(base);await page.waitForFunction(()=>!newsLoading&&NEWS.length>0&&window.MacroMonitor?.database?.indicators.length>0);
-  const originalLogo=await page.request.get(base+'/assets/currentourism_logo_transparent_3x.png');
-  const publicLogo=await page.request.get(base+'/assets/currentourism-logo.png');
-  assert.equal(originalLogo.status(),200);assert.equal(publicLogo.status(),200);
-  assert.equal(crypto.createHash('sha256').update(await originalLogo.body()).digest('hex'),crypto.createHash('sha256').update(await publicLogo.body()).digest('hex'),'Logo must match uploaded original bytes');
+  const originalLogo=await page.request.get(base+'/assets/currentourism-new-airplane-logo.png?v=7f92affea61c5719');
+  assert.equal(originalLogo.status(),200);
+  assert.equal(crypto.createHash('sha256').update(await originalLogo.body()).digest('hex'),'7f92affea61c57197f2b015576cb7bcaf604defb0ac270894157d8e94d070b7f','Browser-served logo must match new airplane original bytes');
   await page.locator('#brand-logo').waitFor({state:'visible'});
   assert.equal(await page.locator('#brand-fallback').isVisible(),false);
   async function checkLogoRatio(target){
    const size=await target.locator('#brand-logo').evaluate(img=>({w:img.naturalWidth,h:img.naturalHeight,rect:img.getBoundingClientRect().toJSON()}));
-   assert.equal(size.w,867);assert.equal(size.h,498);
+   assert.equal(size.w,1774);assert.equal(size.h,887);
    assert.ok(Math.abs(size.rect.width/size.rect.height-size.w/size.h)<0.01,'Preserve original logo ratio');
   }
   await checkLogoRatio(page);

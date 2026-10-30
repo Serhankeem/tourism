@@ -1,11 +1,12 @@
-# currentourism official logo
+# Official airplane logo
 
-The user uploaded `currentourism_logo_transparent_3x.png` on main. The required
-website path `currentourism-logo.png` is a byte-for-byte copy of that original.
-Both files are retained. No image generation, editing, resizing, recoloring or
-background removal was performed.
+Active original: `currentourism-new-airplane-logo.png`, uploaded to the PR #10
+branch by the user (commit 290620e). The header and footer reference this file
+with a content-hash query suffix to avoid using the old logo URL from cache.
 
-- Original dimensions: 867 × 498 pixels; PNG RGBA, alpha range 0–255.
-- SHA-256 (both files): `1a344104f9c0038dc7b910c61ae9b43d90de57d66ca7e6bd8516a6012c7ae705`.
-- Header preserves the aspect ratio with CSS `height:auto` / `object-fit:contain`.
-- The full brand area is an accessible `#overview` home link on desktop/mobile.
+- Dimensions: 1774 × 887 px, PNG RGBA; alpha range 0–255.
+- SHA-256: `7f92affea61c57197f2b015576cb7bcaf604defb0ac270894157d8e94d070b7f`
+- Original pixel bytes, colors and transparency are unchanged.
+- HTML dimensions match the original; CSS uses height:auto and object-fit:contain.
+- Both logos link to Overview.
+- The older 867 × 498 pin files remain for history but are not referenced by the UI.

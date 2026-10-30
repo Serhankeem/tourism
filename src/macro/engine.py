@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 from . import kto
+from .balance import permitted
 from .model import comparisons, months, valid_period
 from .transport import Loader
 from ..collector import write_atomic
@@ -20,7 +21,11 @@ def read(path,default=None):
 def public_view(config,archive,now):
     series=[]
     for item in config['indicators']:
-        saved=archive['indicators'].get(item['id'],{})
+        source=next((s for s in config['sources'] if s['id']==item['source_id']), {})
+        if source.get('requires_approval') and not permitted(source, 'publication', now.date()):
+            saved={}
+        else:
+            saved=archive['indicators'].get(item['id'],{})
         obs=saved.get('observations',{});ordered=[dict(period=p,**o) for p,o in sorted(obs.items())]
         row={k:v for k,v in item.items() if k not in ('sheet','row_label')}
         row.update(observations=ordered,connected=bool(ordered),latest=None,missing_periods=[],retained_missing_periods=saved.get('latest_snapshot_missing_periods',[]),correction_count=len(saved.get('revisions',[])))
@@ -54,6 +59,9 @@ def collect(config,data_dir,state_dir,loader=None,now=None,force=False):
     for source in config['sources']:
         sid=source['id'];previous=archive['sources'].get(sid,{})
         result=dict(id=sid,name=source['name'],status='not_connected',reason=source.get('reason'),last_successful_check=previous.get('last_successful_check'))
+        if source.get('requires_approval') and not permitted(source, 'collection', now.date()):
+            result.update(status='not_connected', reason='collection_approval_required')
+            health['sources'].append(result);continue
         if not source.get('enabled'):
             if source.get('auth_env'):
                 result['credential_status']='configured_pending_mapping' if bool(os.environ.get(source['auth_env'])) else 'not_configured'
@@ -63,6 +71,8 @@ def collect(config,data_dir,state_dir,loader=None,now=None,force=False):
         attempts+=1
         active=[i for i in config['indicators'] if i.get('enabled') and i['source_id']==sid]
         try:
+            if source.get('requires_approval'):
+                raise ValueError('approved_source_transport_not_activated')
             snapshot=kto.fetch(source,active,loader,now)
             if snapshot['reference_period']<previous.get('reference_period','') or snapshot['release_published_at']<previous.get('release_published_at',''):
                 raise ValueError('older_official_snapshot_rejected')

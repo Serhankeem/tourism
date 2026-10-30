@@ -1,0 +1,30 @@
+/* Public six-field metadata only. Selected edition drives both display and copy. */
+(()=>{
+ const el=id=>document.getElementById(id),esc=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+ let current=null,history=[],edition=null,lastError=false,collectionFailed=false,collectionHealth=null;
+ const safe=s=>{try{return ['https:','http:'].includes(new URL(s).protocol);}catch(_){return false;}};
+ function checked(b){if(!b||!Array.isArray(b.items)||b.mode!=='live_rss')throw Error();return {...b,items:b.items.filter(n=>['title','source','published_at','category','url'].every(k=>typeof n[k]==='string')&&Array.isArray(n.keywords)&&n.keywords.every(k=>typeof k==='string')&&safe(n.url)).slice(0,5)};}
+ function render(){
+  const key=el('briefing-edition').value;
+  edition=key==='current'?current:history.find(b=>b.briefing_date===key);
+  CURRENT_BRIEFING=edition;
+  if(!edition){el('briefing-state').textContent='데이터 확인 불가';el('briefing-news-list').textContent='검증된 브리핑을 불러오지 못했습니다.';return;}
+  const age=Date.now()-Date.parse(edition.generated_at),past=key!=='current';
+  el('briefing-state').textContent=(lastError||collectionFailed?'수집/갱신 실패 · 이전 기록 유지 · ':'')+(past?'과거 브리프':age>86400000?'이전 생성 후보 · 최신 수집 확인 필요':edition.items.length?'주요 뉴스 후보':'최근 24시간 신규 뉴스 없음');
+  el('briefing-dates').textContent=`생성 ${edition.generated_at} · 마지막 수집 성공 ${edition.last_successful_fetch||'기존 기록에 미기재'} · 뉴스 DB 최근 수집 성공 ${collectionHealth?.last_successful_fetch||'미확인'} · 실제 발송 안 함`;
+  el('briefing-news-list').innerHTML=edition.items.length?edition.items.map((n,i)=>`<article class="news-item"><div class="news-meta"><span class="category">${esc(n.category)}</span><span>${esc(n.source)}</span><time datetime="${esc(n.published_at)}">발행 ${esc(n.published_at)}</time></div><h2 class="news-title"><span class="briefing-number">${i+1}.</span> <a href="${esc(n.url)}" target="_blank" rel="noopener noreferrer">${esc(n.title)} ↗</a></h2><p class="tiny">${(n.keywords||[]).map(esc).join(' · ')}</p></article>`).join(''):`<p class="briefing-empty">생성 시점의 최근 24시간 내 적합한 신규 뉴스가 없습니다. ${history.length?'지난 브리프는 날짜 메뉴에서 확인할 수 있습니다.':'아직 보관된 지난 브리프가 없습니다. 보관 시작 이후의 기록만 표시합니다.'}</p>`;
+ }
+ async function load(){
+  try{const r=await fetch('./data/briefing.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error();current=checked(await r.json());lastError=false;}catch(_){lastError=true;}
+  try{const r=await fetch('./data/briefing_archive.json?v='+Date.now(),{cache:'no-store'});if(r.ok){const a=await r.json();if(a.mode==='live_rss'&&Array.isArray(a.briefings))history=a.briefings.map(checked).sort((a,b)=>b.briefing_date.localeCompare(a.briefing_date));}}catch(_){}
+  try{const h=await fetch('./data/health.json?v='+Date.now(),{cache:'no-store'});if(h.ok){collectionHealth=await h.json();collectionFailed=collectionHealth.status==='failed';}}catch(_){}
+  const selected=el('briefing-edition').value;
+  el('briefing-edition').innerHTML='<option value="current">현재 후보</option>'+history.map(b=>`<option value="${esc(b.briefing_date)}">${esc(b.briefing_date)} · ${b.items.length}건 · 보관 브리프</option>`).join('');
+  if([...el('briefing-edition').options].some(o=>o.value===selected))el('briefing-edition').value=selected;
+  render();
+ }
+ function text(){return edition?.items.length?['[여행기류 · 브리핑 후보]',`생성: ${edition.generated_at}`,`마지막 수집 성공: ${edition.last_successful_fetch||'미기재'}`,...edition.items.map((n,i)=>`${i+1}. ${n.title}\n${n.source} · ${n.published_at}\n${n.category} · ${(n.keywords||[]).join(' · ')}\n${n.url}`),'메타데이터 링크 모음 · 실제 발송 안 함'].join('\n\n'):'복사할 뉴스가 없습니다. 현재 선택한 브리프는 비어 있거나 확인할 수 없습니다.';}
+ function copy(){const value=text();if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(value).catch(()=>window.prompt('브리프 복사',value));else window.prompt('브리프 복사',value);}
+ el('briefing-edition').addEventListener('change',render);
+ window.BriefingUI={load,render,copy,text,get edition(){return edition;}};load();setInterval(load,300000);
+})();

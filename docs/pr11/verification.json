@@ -1,0 +1,33 @@
+{
+  "baseline_commit": "0737448",
+  "briefing": {
+    "generated_at": "2026-10-30T14:24:46+09:00",
+    "status": "no_recent_articles",
+    "item_count": 0,
+    "archive_seeded": false
+  },
+  "newsroom": {
+    "count": 36,
+    "last_successful_fetch": "2026-10-30T14:24:46+09:00",
+    "collection_status": "partial"
+  },
+  "statistics": [
+    {
+      "id": "kto_inbound",
+      "latest_period": "2026-09",
+      "latest_value": 2062042,
+      "source_url": "https://datalab.visitkorea.or.kr/site/portal/ex/bbs/View.do?cbIdx=1127&bcIdx=311425&pageIndex=1&cateCont=spt01",
+      "connected": true
+    },
+    {
+      "id": "kto_outbound",
+      "latest_period": "2026-09",
+      "latest_value": 2268409,
+      "source_url": "https://datalab.visitkorea.or.kr/site/portal/ex/bbs/View.do?cbIdx=1127&bcIdx=311425&pageIndex=1&cateCont=spt01",
+      "connected": true
+    }
+  ],
+  "financial_values_used": false,
+  "data_json_modified": false,
+  "weather_function_sha256": "48d4be16ed4476bdf01368eeaf8abe0f4b26e7abb9cfff7a03698f46985ec6d6"
+}

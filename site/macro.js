@@ -76,6 +76,7 @@
    el('macro-registry').innerHTML=db.indicators.map(i=>`<div class="source-row macro-registry-row"><div class="macro-registry-heading"><b>${esc(i.name)}</b><span class="pill ${i.connected?'':'amber'}">${esc(sourceState(i))}</span></div><p>${esc(i.publisher)} · ${i.frequency==='A'?'연간':'월간'} · ${esc(i.unit||'단위 미검증')}<br>최신 기준 ${esc(i.latest_period||'미연동')} · 최종 수집 ${esc(date(i.latest?.last_collected_at))}</p><details><summary>정의·집계 기준</summary>${esc(i.definition)}${!i.connected?'<p>'+esc(i.reason||'자료 경로 확인 필요')+'</p>':''}</details>${link(i.source_url,'공식 출처')}</div>`).join('');
   }
   renderCharts();
+  window.DataObservation?.render(db,health,failed||healthUnknown);
  }
  async function load(){
   if(loading)return;loading=true;

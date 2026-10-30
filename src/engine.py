@@ -9,11 +9,13 @@ from pathlib import Path
 
 if __package__:
     from . import collector as c
+    from .briefing import save as save_briefing
     from .discovery import Loader, AccessBlocked, items_from, feed_bytes
     from .publication import public_record
     from .editorial import project, exposure, is_statistical, statistical_assessment
 else:
     import collector as c
+    from briefing import save as save_briefing
     from discovery import Loader, AccessBlocked, items_from, feed_bytes
     from publication import public_record
     from editorial import project, exposure, is_statistical, statistical_assessment
@@ -195,7 +197,6 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
         result = c.run(approved_sources, fetcher=publication_feed, at=at, data_dir=stage,
                        state_dir=state_dir, reviews=reviews, retention_days=days, max_articles=4500)
         news = c.read_json(stage / 'news.json', original)
-        stage_briefing = c.read_json(stage / 'briefing.json', {})
         stage_health = c.read_json(stage / 'health.json', {})
     articles = news.get('articles', [])
     # Never stamp first_seen/published timestamps onto old records on every run.
@@ -232,15 +233,7 @@ def execute(sources, data_dir, state_dir, reviews=None, at=None, loader=None, da
                            'generated_at': news.get('generated_at'), 'last_successful_fetch': news.get('last_successful_fetch'),
                            'count': len(items), 'public_fields': list(public_record(items[0])) if items else ['title', 'source', 'published_at', 'url', 'category', 'keywords'],
                            'articles': [public_record(a) for a in items]})
-        briefing = {**stage_briefing, 'schema_version': 4}
-        # Rebuild from all eligible articles, not a previously truncated top 5.
-        # Unknown intraday times cannot be used to claim 'last 24 hours'.
-        recent = [a for a in newsroom if a['editorial']['tier'] != 'reference' and a.get('date_precision') != 'date'
-                  and at - dt.timedelta(days=1) <= c.timestamp(a['published_at']) <= at]
-        selected = sorted(recent, key=lambda a: (-a['editorial']['rank'], a['relevance'], a['published_at']), reverse=True)[:5]
-        briefing['items'] = [public_record(a) for a in selected]
-        briefing['status'] = 'candidates_ready' if selected else 'no_recent_articles'
-        c.write_atomic(data_dir / 'briefing.json', briefing)
+        save_briefing(newsroom, data_dir, state_dir, at, news.get('last_successful_fetch'), news.get('mode','live_rss'))
         if legacy_archive.exists():
             legacy_archive.unlink()  # full original is preserved outside the Pages directory
     # Failure keeps public projections byte-for-byte; metrics still use the

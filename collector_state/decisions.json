@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-30T16:10:40+09:00",
+  "checked_at": "2026-10-30T16:44:48+09:00",
   "scope": "successful_sources_this_run",
   "items": [
     {
@@ -207,7 +207,7 @@
     },
     {
       "id": "cc98d27f357d494461",
-      "title": "러닝은 편하게, 파크골프는 실내에서…신목동역 펀스테이션",
+      "title": "러닝도 파크골프도 OK! 신목동역 펀스테이션 개장",
       "url": "https://mediahub.seoul.go.kr/archives/2019894",
       "source_id": "seoul_culture",
       "relevance_evidence": {
@@ -312,6 +312,24 @@
         "signals": [],
         "impact_targets": [],
         "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
+      },
+      "decision": "exclude"
+    },
+    {
+      "id": "db244a6b755ae991dc",
+      "title": "조명 따라 정원 산책…퇴근 후 가을밤 '서울숲' 걸어볼까?",
+      "url": "https://mediahub.seoul.go.kr/archives/2019859",
+      "source_id": "seoul_culture",
+      "relevance_evidence": {
+        "rule_version": "0.2",
+        "label": "Irrelevant",
+        "decision": "exclude",
+        "category": null,
+        "score": 0,
+        "rules": [],
+        "signals": [],
+        "impact_targets": [],
+        "reason": "관광산업에 대한 구체적 대상·영향 근거가 없습니다."
       },
       "decision": "exclude"
     },
@@ -545,26 +563,6 @@
       "id": "83f2ba83534a2c3974",
       "title": "뛰고 배우고 기록으로 만나는 스포츠…'국립스포츠박물관' 생겼다",
       "url": "https://mediahub.seoul.go.kr/archives/2019832",
-      "source_id": "seoul_culture",
-      "relevance_evidence": {
-        "rule_version": "0.2",
-        "label": "Irrelevant",
-        "decision": "exclude",
-        "category": null,
-        "score": 0,
-        "rules": [
-          "cross_sentence_unproven"
-        ],
-        "signals": [],
-        "impact_targets": [],
-        "reason": "다른 산업 기사에서 관광 키워드만으로 영향 관계를 만들지 않습니다."
-      },
-      "decision": "exclude"
-    },
-    {
-      "id": "37d2ecadce202d55f7",
-      "title": "잠수교 뚜벅뚜벅 축제 피날레는 치킨 파티! 보행전용교로 새 출발",
-      "url": "https://mediahub.seoul.go.kr/archives/2019842",
       "source_id": "seoul_culture",
       "relevance_evidence": {
         "rule_version": "0.2",

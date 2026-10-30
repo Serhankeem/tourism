@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-30T16:10:40+09:00",
-  "last_successful_fetch": "2026-10-30T16:10:40+09:00",
+  "checked_at": "2026-10-30T16:44:48+09:00",
+  "last_successful_fetch": "2026-10-30T16:44:48+09:00",
   "status": "partial",
   "sources": [
     {
@@ -289,12 +289,12 @@
   "review_queue_count": 1,
   "discovery": {
     "schema_version": 3,
-    "checked_at": "2026-10-30T16:10:40+09:00",
+    "checked_at": "2026-10-30T16:44:48+09:00",
     "publication_result": "partial",
     "discovery_status": "partial",
     "received": 570,
-    "new_discoveries": 29,
-    "duplicate_observations": 342,
+    "new_discoveries": 14,
+    "duplicate_observations": 357,
     "new_auto_published": 0,
     "total_published": 40,
     "total_archived": 40,
@@ -374,8 +374,8 @@
       "문화·트렌드": 9,
       "경제·시장": 0
     },
-    "discovered_last24h": 339,
-    "discovered_last7d": 1170,
+    "discovered_last24h": 338,
+    "discovered_last7d": 1184,
     "auto_published_last24h": 4,
     "auto_published_last7d": 31,
     "originally_published_last24h": 4,
@@ -387,8 +387,8 @@
         "url": "https://www.mcst.go.kr/common/rss/press.jsp",
         "group": "public",
         "received": 10,
-        "new_discoveries": 1,
-        "duplicates": 9,
+        "new_discoveries": 0,
+        "duplicates": 10,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -411,10 +411,10 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9714285714285714,
+        "success_rate": 0.9722222222222222,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
-        "outcome": "discovered_not_publishable"
+        "outcome": "no_new_candidate"
       },
       {
         "id": "korea_net_travel",
@@ -496,8 +496,8 @@
         "url": "https://mediahub.seoul.go.kr/news/rss/06",
         "group": "public",
         "received": 20,
-        "new_discoveries": 3,
-        "duplicates": 17,
+        "new_discoveries": 1,
+        "duplicates": 19,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -520,7 +520,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9428571428571428,
+        "success_rate": 0.9444444444444444,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "discovered_not_publishable"
@@ -555,7 +555,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9428571428571428,
+        "success_rate": 0.9444444444444444,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -590,7 +590,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.7428571428571429,
+        "success_rate": 0.75,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -627,7 +627,7 @@
         "status": "error",
         "error_kind": "transport_error",
         "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
-        "success_rate": 0.37142857142857144,
+        "success_rate": 0.3611111111111111,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "fetch_failed"
@@ -1006,16 +1006,16 @@
         "url": "https://news.koreanair.com/feed/",
         "group": "company",
         "received": 10,
-        "new_discoveries": 0,
-        "duplicates": 10,
-        "rights_holds": 2,
+        "new_discoveries": 1,
+        "duplicates": 9,
+        "rights_holds": 1,
         "date_holds": 0,
         "invalid_metadata": 0,
         "outside_window": 0,
         "classifications": {
-          "Direct": 2,
+          "Direct": 1,
           "Indirect": 0,
-          "Irrelevant": 8
+          "Irrelevant": 9
         },
         "publication_policy": {
           "status": "review",
@@ -1033,7 +1033,7 @@
         "success_rate": 1.0,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
-        "outcome": "no_new_candidate"
+        "outcome": "discovered_not_publishable"
       },
       {
         "id": "tripcom_news",
@@ -1113,8 +1113,8 @@
         "url": "https://skift.com/feed/",
         "group": "media",
         "received": 10,
-        "new_discoveries": 1,
-        "duplicates": 9,
+        "new_discoveries": 0,
+        "duplicates": 10,
         "rights_holds": 1,
         "date_holds": 0,
         "invalid_metadata": 0,
@@ -1140,7 +1140,7 @@
         "success_rate": 1.0,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
-        "outcome": "discovered_not_publishable"
+        "outcome": "no_new_candidate"
       },
       {
         "id": "yonhap",
@@ -1148,8 +1148,8 @@
         "url": "https://www.yna.co.kr/rss/economy.xml",
         "group": "media",
         "received": 120,
-        "new_discoveries": 24,
-        "duplicates": 96,
+        "new_discoveries": 12,
+        "duplicates": 108,
         "rights_holds": 0,
         "date_holds": 0,
         "invalid_metadata": 0,

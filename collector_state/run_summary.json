@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "checked_at": "2026-10-30T13:53:06+09:00",
+  "checked_at": "2026-10-30T13:58:04+09:00",
   "publication_result": "partial",
   "discovery_status": "partial",
-  "received": 510,
-  "new_discoveries": 5,
-  "duplicate_observations": 305,
+  "received": 570,
+  "new_discoveries": 3,
+  "duplicate_observations": 367,
   "new_auto_published": 0,
   "total_published": 40,
   "total_archived": 40,
@@ -85,8 +85,8 @@
     "문화·트렌드": 9,
     "경제·시장": 0
   },
-  "discovered_last24h": 418,
-  "discovered_last7d": 1119,
+  "discovered_last24h": 397,
+  "discovered_last7d": 1122,
   "auto_published_last24h": 5,
   "auto_published_last7d": 31,
   "originally_published_last24h": 4,
@@ -98,8 +98,8 @@
       "url": "https://www.mcst.go.kr/common/rss/press.jsp",
       "group": "public",
       "received": 10,
-      "new_discoveries": 1,
-      "duplicates": 9,
+      "new_discoveries": 0,
+      "duplicates": 10,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -122,10 +122,10 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.967741935483871,
+      "success_rate": 0.96875,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "korea_net_travel",
@@ -206,9 +206,9 @@
       "name": "서울시 내 손안에 서울 문화",
       "url": "https://mediahub.seoul.go.kr/news/rss/06",
       "group": "public",
-      "received": 0,
-      "new_discoveries": 0,
-      "duplicates": 0,
+      "received": 20,
+      "new_discoveries": 1,
+      "duplicates": 19,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -216,7 +216,7 @@
       "classifications": {
         "Direct": 0,
         "Indirect": 0,
-        "Irrelevant": 0
+        "Irrelevant": 20
       },
       "publication_policy": {
         "status": "approved",
@@ -230,22 +230,20 @@
         "max_days": 90,
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
-      "status": "error",
-      "error_kind": "access_policy",
-      "error": "robots_unverified:transport_error",
-      "success_rate": 0.9354838709677419,
+      "status": "ok",
+      "success_rate": 0.9375,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "fetch_failed"
+      "outcome": "discovered_not_publishable"
     },
     {
       "id": "seoul_economy",
       "name": "서울시 내 손안에 서울 경제",
       "url": "https://mediahub.seoul.go.kr/news/rss/04",
       "group": "public",
-      "received": 0,
+      "received": 20,
       "new_discoveries": 0,
-      "duplicates": 0,
+      "duplicates": 20,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -253,7 +251,7 @@
       "classifications": {
         "Direct": 0,
         "Indirect": 0,
-        "Irrelevant": 0
+        "Irrelevant": 20
       },
       "publication_policy": {
         "status": "approved",
@@ -267,22 +265,20 @@
         "max_days": 90,
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
-      "status": "error",
-      "error_kind": "access_policy",
-      "error": "robots_unverified:transport_error",
-      "success_rate": 0.9354838709677419,
+      "status": "ok",
+      "success_rate": 0.9375,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "fetch_failed"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "seoul_transport",
       "name": "서울시 내 손안에 서울 교통",
       "url": "https://mediahub.seoul.go.kr/news/rss/01",
       "group": "public",
-      "received": 0,
+      "received": 20,
       "new_discoveries": 0,
-      "duplicates": 0,
+      "duplicates": 20,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -290,7 +286,7 @@
       "classifications": {
         "Direct": 0,
         "Indirect": 0,
-        "Irrelevant": 0
+        "Irrelevant": 20
       },
       "publication_policy": {
         "status": "approved",
@@ -304,13 +300,11 @@
         "max_days": 90,
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
-      "status": "error",
-      "error_kind": "access_policy",
-      "error": "robots_unverified:transport_error",
-      "success_rate": 0.7419354838709677,
+      "status": "ok",
+      "success_rate": 0.75,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "fetch_failed"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "seoul_environment",
@@ -342,9 +336,9 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "error",
-      "error_kind": "access_policy",
-      "error": "robots_unverified:transport_error",
-      "success_rate": 0.3548387096774194,
+      "error_kind": "transport_error",
+      "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
+      "success_rate": 0.34375,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "fetch_failed"
@@ -865,8 +859,8 @@
       "url": "https://www.yna.co.kr/rss/economy.xml",
       "group": "media",
       "received": 120,
-      "new_discoveries": 4,
-      "duplicates": 116,
+      "new_discoveries": 2,
+      "duplicates": 118,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,

@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "checked_at": "2026-10-30T11:14:33+09:00",
+  "checked_at": "2026-10-30T11:58:38+09:00",
   "publication_result": "partial",
   "discovery_status": "partial",
   "received": 570,
-  "new_discoveries": 44,
-  "duplicate_observations": 326,
+  "new_discoveries": 9,
+  "duplicate_observations": 361,
   "new_auto_published": 0,
   "total_published": 40,
   "total_archived": 40,
@@ -69,7 +69,7 @@
   },
   "newsroom_originally_published_last24h": 5,
   "newsroom_originally_published_last7d": 29,
-  "newsroom_newly_added_last24h": 9,
+  "newsroom_newly_added_last24h": 5,
   "new_backfilled": 0,
   "record_type_counts": {
     "news": 37,
@@ -85,9 +85,9 @@
     "문화·트렌드": 9,
     "경제·시장": 0
   },
-  "discovered_last24h": 469,
-  "discovered_last7d": 1094,
-  "auto_published_last24h": 9,
+  "discovered_last24h": 402,
+  "discovered_last7d": 1103,
+  "auto_published_last24h": 5,
   "auto_published_last7d": 31,
   "originally_published_last24h": 5,
   "originally_published_last7d": 29,
@@ -98,8 +98,8 @@
       "url": "https://www.mcst.go.kr/common/rss/press.jsp",
       "group": "public",
       "received": 10,
-      "new_discoveries": 2,
-      "duplicates": 8,
+      "new_discoveries": 0,
+      "duplicates": 10,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -122,10 +122,10 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9642857142857143,
+      "success_rate": 0.9655172413793104,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "korea_net_travel",
@@ -231,7 +231,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9642857142857143,
+      "success_rate": 0.9655172413793104,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -266,7 +266,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9642857142857143,
+      "success_rate": 0.9655172413793104,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -275,41 +275,6 @@
       "id": "seoul_transport",
       "name": "서울시 내 손안에 서울 교통",
       "url": "https://mediahub.seoul.go.kr/news/rss/01",
-      "group": "public",
-      "received": 20,
-      "new_discoveries": 0,
-      "duplicates": 20,
-      "rights_holds": 0,
-      "date_holds": 0,
-      "invalid_metadata": 0,
-      "outside_window": 0,
-      "classifications": {
-        "Direct": 0,
-        "Indirect": 0,
-        "Irrelevant": 20
-      },
-      "publication_policy": {
-        "status": "approved",
-        "scope": "metadata_only",
-        "terms_url": "https://www.seoul.go.kr/helper/copyright.do",
-        "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
-        "checked_at": "2026-10-27"
-      },
-      "backfill": {
-        "mode": "provided_feed_only",
-        "max_days": 90,
-        "limitation": "Only items currently returned by the official feed. No article or archive crawling."
-      },
-      "status": "ok",
-      "success_rate": 0.7857142857142857,
-      "new_auto_published": 0,
-      "new_newsroom_items": 0,
-      "outcome": "no_new_candidate"
-    },
-    {
-      "id": "seoul_environment",
-      "name": "서울시 내 손안에 서울 환경",
-      "url": "https://mediahub.seoul.go.kr/news/rss/05",
       "group": "public",
       "received": 0,
       "new_discoveries": 0,
@@ -338,10 +303,45 @@
       "status": "error",
       "error_kind": "transport_error",
       "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
-      "success_rate": 0.35714285714285715,
+      "success_rate": 0.7586206896551724,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "fetch_failed"
+    },
+    {
+      "id": "seoul_environment",
+      "name": "서울시 내 손안에 서울 환경",
+      "url": "https://mediahub.seoul.go.kr/news/rss/05",
+      "group": "public",
+      "received": 20,
+      "new_discoveries": 0,
+      "duplicates": 20,
+      "rights_holds": 0,
+      "date_holds": 0,
+      "invalid_metadata": 0,
+      "outside_window": 0,
+      "classifications": {
+        "Direct": 0,
+        "Indirect": 0,
+        "Irrelevant": 20
+      },
+      "publication_policy": {
+        "status": "approved",
+        "scope": "metadata_only",
+        "terms_url": "https://www.seoul.go.kr/helper/copyright.do",
+        "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
+        "checked_at": "2026-10-27"
+      },
+      "backfill": {
+        "mode": "provided_feed_only",
+        "max_days": 90,
+        "limitation": "Only items currently returned by the official feed. No article or archive crawling."
+      },
+      "status": "ok",
+      "success_rate": 0.3793103448275862,
+      "new_auto_published": 0,
+      "new_newsroom_items": 0,
+      "outcome": "no_new_candidate"
     },
     {
       "id": "sec_booking",
@@ -859,8 +859,8 @@
       "url": "https://www.yna.co.kr/rss/economy.xml",
       "group": "media",
       "received": 120,
-      "new_discoveries": 31,
-      "duplicates": 89,
+      "new_discoveries": 9,
+      "duplicates": 111,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -978,8 +978,8 @@
       "url": "https://www.ttlnews.com/rss/allArticle.xml",
       "group": "media",
       "received": 50,
-      "new_discoveries": 11,
-      "duplicates": 39,
+      "new_discoveries": 0,
+      "duplicates": 50,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -1012,7 +1012,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     }
   ],
   "outcome": "no_new_publications_with_source_errors"

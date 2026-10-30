@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "checked_at": "2026-10-31T00:05:33+09:00",
+  "checked_at": "2026-10-31T01:57:09+09:00",
   "publication_result": "partial",
   "discovery_status": "partial",
-  "received": 570,
-  "new_discoveries": 8,
-  "duplicate_observations": 363,
+  "received": 590,
+  "new_discoveries": 2,
+  "duplicate_observations": 389,
   "new_auto_published": 0,
   "total_published": 40,
   "total_archived": 40,
@@ -67,9 +67,9 @@
     "global_major": 0,
     "reference": 18
   },
-  "newsroom_originally_published_last24h": 2,
+  "newsroom_originally_published_last24h": 0,
   "newsroom_originally_published_last7d": 29,
-  "newsroom_newly_added_last24h": 4,
+  "newsroom_newly_added_last24h": 2,
   "new_backfilled": 0,
   "record_type_counts": {
     "news": 37,
@@ -85,11 +85,11 @@
     "문화·트렌드": 9,
     "경제·시장": 0
   },
-  "discovered_last24h": 367,
-  "discovered_last7d": 1275,
-  "auto_published_last24h": 4,
+  "discovered_last24h": 312,
+  "discovered_last7d": 1277,
+  "auto_published_last24h": 2,
   "auto_published_last7d": 31,
-  "originally_published_last24h": 2,
+  "originally_published_last24h": 0,
   "originally_published_last7d": 29,
   "sources": [
     {
@@ -122,7 +122,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.975609756097561,
+      "success_rate": 0.9761904761904762,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -231,7 +231,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9512195121951219,
+      "success_rate": 0.9523809523809523,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -266,7 +266,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9512195121951219,
+      "success_rate": 0.9523809523809523,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -301,7 +301,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.7317073170731707,
+      "success_rate": 0.7380952380952381,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -311,9 +311,9 @@
       "name": "서울시 내 손안에 서울 환경",
       "url": "https://mediahub.seoul.go.kr/news/rss/05",
       "group": "public",
-      "received": 0,
+      "received": 20,
       "new_discoveries": 0,
-      "duplicates": 0,
+      "duplicates": 20,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -321,7 +321,7 @@
       "classifications": {
         "Direct": 0,
         "Indirect": 0,
-        "Irrelevant": 0
+        "Irrelevant": 20
       },
       "publication_policy": {
         "status": "approved",
@@ -335,13 +335,11 @@
         "max_days": 90,
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
-      "status": "error",
-      "error_kind": "transport_error",
-      "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
-      "success_rate": 0.36585365853658536,
+      "status": "ok",
+      "success_rate": 0.38095238095238093,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "fetch_failed"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "sec_booking",
@@ -719,14 +717,14 @@
       "received": 10,
       "new_discoveries": 0,
       "duplicates": 10,
-      "rights_holds": 1,
+      "rights_holds": 2,
       "date_holds": 0,
       "invalid_metadata": 0,
       "outside_window": 0,
       "classifications": {
-        "Direct": 1,
+        "Direct": 2,
         "Indirect": 0,
-        "Irrelevant": 9
+        "Irrelevant": 8
       },
       "publication_policy": {
         "status": "review",
@@ -789,8 +787,8 @@
       "url": "https://stories.hilton.com/feed",
       "group": "company",
       "received": 10,
-      "new_discoveries": 1,
-      "duplicates": 9,
+      "new_discoveries": 0,
+      "duplicates": 10,
       "rights_holds": 5,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -816,7 +814,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "skift",
@@ -824,8 +822,8 @@
       "url": "https://skift.com/feed/",
       "group": "media",
       "received": 10,
-      "new_discoveries": 1,
-      "duplicates": 9,
+      "new_discoveries": 2,
+      "duplicates": 8,
       "rights_holds": 2,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -936,8 +934,8 @@
       "url": "https://www.traveldaily.co.kr/rss/allArticle.xml",
       "group": "media",
       "received": 50,
-      "new_discoveries": 2,
-      "duplicates": 48,
+      "new_discoveries": 0,
+      "duplicates": 50,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -970,7 +968,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     },
     {
       "id": "ttlnews",
@@ -978,8 +976,8 @@
       "url": "https://www.ttlnews.com/rss/allArticle.xml",
       "group": "media",
       "received": 50,
-      "new_discoveries": 4,
-      "duplicates": 46,
+      "new_discoveries": 0,
+      "duplicates": 50,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -1012,7 +1010,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
+      "outcome": "no_new_candidate"
     }
   ],
   "outcome": "no_new_publications_with_source_errors"

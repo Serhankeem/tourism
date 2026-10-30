@@ -1,0 +1,15 @@
+{
+  "method": "final validator recheck on actual downloaded bytes matching final live-run SHA256",
+  "series_file_sha256": "f2b383757aacea0645e0220488eaf31d65210d478f6f3f0abe414658dc4ef98d",
+  "crosscheck_file_sha256": "89faa1ef0141a9a2d024a5b93e2f5c804e8db77e8da138078d6a4d9b9b59bac1",
+  "verified_indicators": 7,
+  "verified_observations": 483,
+  "checks": [
+    "exact persons unit (reject thousand-person units)",
+    "latest month",
+    "prior-year same month",
+    "current-year cumulative",
+    "prior-year cumulative"
+  ],
+  "result": "passed"
+}

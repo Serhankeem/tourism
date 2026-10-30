@@ -36,3 +36,18 @@ python3 -m src.reports.report
 ```
 
 Research는 `reports.json`과 `reports_*` 원장만 사용하며 기존 Newsroom·KOSIS·기업공시 DB는 변경하지 않습니다. 주 1회 월요일 07:40 KST 예약 및 수동 실행을 지원합니다. v0.4는 별도 PR 검토 단계이며 main에 직접 병합하지 않습니다.
+
+## Macro Monitor v0.5
+
+공식 한국관광공사 XLSX로 방한·출국 핵심 2개와 국적별 5개 지표를 각각 69개월
+(2021-01~2026-09), 총 483개 관측값으로 초기 구축했습니다. 수입·지출은 정의·API 인증
+검증 전 미연동이며 임의의 수치로 채우지 않습니다. [출처·정의·실수집·정정·인증·검증](docs/v05/README.md).
+
+```bash
+python3 -m src.macro.engine --force
+python3 -m src.macro.report
+```
+
+Macro는 `macro.json`과 `macro_*` 원장만 사용합니다. 매일 12:20 KST 및 수동 재검증을
+구성했고 기존 뉴스·Research 저장/Pages 잠금과 호환됩니다. 운영 자동 실행과 공개 배포는
+PR 검토·병합 후 확인해야 합니다. Market Weather는 기존 미검증 시뮬레이션을 유지합니다.

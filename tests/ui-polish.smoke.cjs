@@ -20,7 +20,7 @@ const fs=require('node:fs');
    const page=await browser.newPage({viewport:{width,height:1000},isMobile:width===390});
    page.on('pageerror',e=>errors.push(e.message));
    for(const route of ['overview','news','research','briefing','macro','weather','about']){
-    await page.goto(base+'/#'+route);await page.waitForFunction(()=>!newsLoading&&window.ResearchLibrary?.database.reports.length>0);
+    await page.goto(base+'/#'+route);await page.waitForFunction(()=>!newsLoading&&window.ResearchLibrary?.database.reports.length>0&&window.MacroMonitor?.database?.indicators.length>0);
     if(route==='about')await page.waitForFunction(()=>document.querySelectorAll('#about-research-sources .source-status-row').length===9);
     assert.equal(await page.locator('#page-'+route).isVisible(),true);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,`${width}/${route}: horizontal overflow`);
@@ -33,7 +33,7 @@ const fs=require('node:fs');
      const selector=route==='overview'?'#chart-overview':'#chart-macro';
      const chart=await page.locator(selector+' svg').evaluate(svg=>({viewWidth:svg.viewBox.baseVal.width,renderWidth:svg.getBoundingClientRect().width,labels:[...svg.querySelectorAll('text')].map(n=>({text:n.textContent,rendered:parseFloat(n.getAttribute('font-size'))*svg.getBoundingClientRect().width/svg.viewBox.baseVal.width}))}));
      assert.ok(chart.labels.every(n=>n.rendered>=11.5),`${width}/${route}: unreadable chart labels`);
-     assert.equal(await page.locator(selector+' svg rect').count(),3,'No fabricated months');
+     const official=await page.evaluate(()=>MacroMonitor.database.indicators.find(i=>i.id==='kto_inbound'));const plotted=await page.locator(selector+' svg rect').evaluateAll(nodes=>nodes.map(n=>({period:n.dataset.period,value:Number(n.dataset.value)})));assert.ok(plotted.length>3,'Official monthly history replaces the legacy three points');for(const p of plotted)assert.ok(official.observations.some(o=>o.period===p.period&&o.value===p.value),'Only actual observed months/values');
     }
     if(route==='news'||route==='research'){
      const input=page.locator(route==='news'?'#news-search':'#research-search');

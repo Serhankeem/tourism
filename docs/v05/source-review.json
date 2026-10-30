@@ -1,0 +1,64 @@
+{
+  "checked_on": "2026-10-30",
+  "rows": [
+    {
+      "institution": "한국관광공사 / 데이터랩",
+      "url": "https://datalab.visitkorea.or.kr/",
+      "result": "HTTP 200 (HTTPS final main route)",
+      "provided_method": "official release links and downloadable XLSX",
+      "authentication": "none for verified spt01 monthly files",
+      "reuse": "release primary KOGL-0 marker verified; official-download-only notice respected; numeric statistics/metadata only",
+      "connected": "one official download source; 2 primary and 5 nationality indicators",
+      "publication_cycle": "monthly per official guide; exact scheduled day not verified",
+      "limitations": "generic catalog and terms redirect to HTTP root; stopped; root-advertised monthly release required"
+    },
+    {
+      "institution": "TOURGO",
+      "url": "https://know.tour.go.kr/customer/notice/detail19Re.do?seq=29781",
+      "result": "HTTP 200",
+      "provided_method": "public statistical notice; no attachment",
+      "authentication": "none for notice",
+      "reuse": "comparison of published statistical facts with attribution; notice prose not republished",
+      "connected": false,
+      "limitations": "API availability not verified; used for independent manual latest-value comparison only"
+    },
+    {
+      "institution": "한국은행 ECOS",
+      "url": "https://ecos.bok.or.kr/api/",
+      "result": "HTTP 200; official API documentation bundle read",
+      "provided_method": "official Open API; application screens and specification/code-search navigation verified",
+      "authentication": "user authentication key application: terms agreement, information entry, application completion",
+      "secret_name": "ECOS_API_KEY",
+      "cost_and_quota": "not verified in accessed documentation",
+      "connected": false,
+      "limitations": "no key configured; official table/item/unit/status mapping not verified; no data API or sample-key response used"
+    },
+    {
+      "institution": "KOSIS",
+      "url": "https://kosis.kr/openapi/",
+      "result": "HTTP 503; robots HTTP 503",
+      "provided_method": "official OpenAPI candidate",
+      "authentication": "key and application process require verification once official site is accessible",
+      "secret_name": "KOSIS_API_KEY",
+      "cost_and_quota": "not verified",
+      "connected": false,
+      "limitations": "network/origin failure location not established; no bypass, no table/item guessing"
+    },
+    {
+      "institution": "한국관광공사 OpenAPI 소개",
+      "url": "https://api.visitkorea.or.kr/",
+      "result": "HTTP 200 SPA shell",
+      "provided_method": "official OpenAPI introduction linked from DataLab",
+      "authentication": "monthly-tourism-statistics API auth scope unverified",
+      "connected": false,
+      "limitations": "existence of the introduction is not proof that the required monthly statistical API is provided"
+    },
+    {
+      "institution": "한국관광공사 영문 경로 후보",
+      "url": "https://knto.or.kr/eng/tourismStatics/keyFacts/KoreaMonthlyStatistics",
+      "result": "HTTP 200 soft-404 page (page not found)",
+      "connected": false,
+      "limitations": "not counted as accessible data"
+    }
+  ]
+}

@@ -1,0 +1,512 @@
+{
+  "pages": 28,
+  "widths": [
+    1440,
+    1024,
+    768,
+    390
+  ],
+  "jsErrors": [],
+  "results": [
+    {
+      "width": 1440,
+      "route": "overview",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 11
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "route": "news",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "route": "research",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "route": "briefing",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "route": "macro",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 59
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "route": "weather",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "route": "about",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "route": "overview",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 12
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "route": "news",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "route": "research",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "route": "briefing",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "route": "macro",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 58
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "route": "weather",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "route": "about",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "route": "overview",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 12
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "route": "news",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "route": "research",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "route": "briefing",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "route": "macro",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 16
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "route": "weather",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "route": "about",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "route": "overview",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 10
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "route": "news",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "route": "research",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "route": "briefing",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "route": "macro",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 10
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "route": "weather",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "route": "about",
+      "overflow": false,
+      "accessibility": {
+        "tool": "axe-core 4.14.0",
+        "violations": [],
+        "manualChecks": [
+          {
+            "id": "aria-valid-attr-value",
+            "nodes": 1
+          },
+          {
+            "id": "color-contrast",
+            "nodes": 1
+          }
+        ]
+      }
+    }
+  ]
+}

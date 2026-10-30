@@ -1,0 +1,186 @@
+{
+  "reference_period": "2026-09",
+  "release_published_at": "2026-10-28T10:10:00+09:00",
+  "last_live_verified_at": "2026-10-30T12:02:11.960495+09:00",
+  "release_url": "https://datalab.visitkorea.or.kr/site/portal/ex/bbs/View.do?cbIdx=1127&bcIdx=311425&pageIndex=1&cateCont=spt01",
+  "series_file_url": "https://datalab.visitkorea.or.kr/common/board/Download.do?bcIdx=311425&cbIdx=1127&streFileNm=da20f322-a2a3-4c02-846d-89668abdb7fa.xlsx",
+  "series_file_sha256": "f2b383757aacea0645e0220488eaf31d65210d478f6f3f0abe414658dc4ef98d",
+  "crosscheck_file_url": "https://datalab.visitkorea.or.kr/common/board/Download.do?bcIdx=311425&cbIdx=1127&streFileNm=5108262d-6de4-467f-90d0-36c43ae4baf7.xlsx",
+  "crosscheck_file_sha256": "89faa1ef0141a9a2d024a5b93e2f5c804e8db77e8da138078d6a4d9b9b59bac1",
+  "checks": [
+    "latest_month_total_and_country_values",
+    "prior_year_same_month",
+    "current_year_to_date",
+    "prior_year_to_date"
+  ],
+  "indicators": [
+    {
+      "id": "kto_inbound",
+      "name": "방한 외래관광객 수",
+      "unit": "명",
+      "period": "2026-09",
+      "value": 2062042,
+      "sheet": "입국",
+      "cell": "NZ4",
+      "comparison": {
+        "mom_pct": -8.16,
+        "yoy_pct": 21.1,
+        "ytd_value": 17110477,
+        "ytd_yoy_pct": 21.5,
+        "reference_period": "2026-09",
+        "mom_base_period": "2026-08",
+        "yoy_base_period": "2025-09",
+        "ytd_range": [
+          "2026-01",
+          "2026-09"
+        ]
+      },
+      "result": "matches_official_XLSX_monthly_and_YTD_tables"
+    },
+    {
+      "id": "kto_outbound",
+      "name": "국민 해외관광객 수",
+      "unit": "명",
+      "period": "2026-09",
+      "value": 2268409,
+      "sheet": "출국",
+      "cell": "NY4",
+      "comparison": {
+        "mom_pct": -6.71,
+        "yoy_pct": 1.46,
+        "ytd_value": 22081445,
+        "ytd_yoy_pct": 1.96,
+        "reference_period": "2026-09",
+        "mom_base_period": "2026-08",
+        "yoy_base_period": "2025-09",
+        "ytd_range": [
+          "2026-01",
+          "2026-09"
+        ]
+      },
+      "result": "matches_official_XLSX_monthly_and_YTD_tables"
+    },
+    {
+      "id": "kto_inbound_cn",
+      "name": "중국 국적 방한객 수",
+      "unit": "명",
+      "period": "2026-09",
+      "value": 656944,
+      "sheet": "입국",
+      "cell": "NZ36",
+      "comparison": {
+        "mom_pct": -20.63,
+        "yoy_pct": 30.56,
+        "ytd_value": 5473078,
+        "ytd_yoy_pct": 29.18,
+        "reference_period": "2026-09",
+        "mom_base_period": "2026-08",
+        "yoy_base_period": "2025-09",
+        "ytd_range": [
+          "2026-01",
+          "2026-09"
+        ]
+      },
+      "result": "matches_official_XLSX_monthly_and_YTD_tables"
+    },
+    {
+      "id": "kto_inbound_jp",
+      "name": "일본 국적 방한객 수",
+      "unit": "명",
+      "period": "2026-09",
+      "value": 419958,
+      "sheet": "입국",
+      "cell": "NZ11",
+      "comparison": {
+        "mom_pct": 0.3,
+        "yoy_pct": 13.29,
+        "ytd_value": 3118815,
+        "ytd_yoy_pct": 16.87,
+        "reference_period": "2026-09",
+        "mom_base_period": "2026-08",
+        "yoy_base_period": "2025-09",
+        "ytd_range": [
+          "2026-01",
+          "2026-09"
+        ]
+      },
+      "result": "matches_official_XLSX_monthly_and_YTD_tables"
+    },
+    {
+      "id": "kto_inbound_tw",
+      "name": "대만 국적 방한객 수",
+      "unit": "명",
+      "period": "2026-09",
+      "value": 208113,
+      "sheet": "입국",
+      "cell": "NZ12",
+      "comparison": {
+        "mom_pct": -15.15,
+        "yoy_pct": 34.27,
+        "ytd_value": 1864368,
+        "ytd_yoy_pct": 32.41,
+        "reference_period": "2026-09",
+        "mom_base_period": "2026-08",
+        "yoy_base_period": "2025-09",
+        "ytd_range": [
+          "2026-01",
+          "2026-09"
+        ]
+      },
+      "result": "matches_official_XLSX_monthly_and_YTD_tables"
+    },
+    {
+      "id": "kto_inbound_us",
+      "name": "미국 국적 방한객 수",
+      "unit": "명",
+      "period": "2026-09",
+      "value": 134348,
+      "sheet": "입국",
+      "cell": "NZ73",
+      "comparison": {
+        "mom_pct": 14.53,
+        "yoy_pct": 10.41,
+        "ytd_value": 1214075,
+        "ytd_yoy_pct": 10.77,
+        "reference_period": "2026-09",
+        "mom_base_period": "2026-08",
+        "yoy_base_period": "2025-09",
+        "ytd_range": [
+          "2026-01",
+          "2026-09"
+        ]
+      },
+      "result": "matches_official_XLSX_monthly_and_YTD_tables"
+    },
+    {
+      "id": "kto_inbound_vn",
+      "name": "베트남 국적 방한객 수",
+      "unit": "명",
+      "period": "2026-09",
+      "value": 51291,
+      "sheet": "입국",
+      "cell": "NZ23",
+      "comparison": {
+        "mom_pct": -13.5,
+        "yoy_pct": 11.5,
+        "ytd_value": 458107,
+        "ytd_yoy_pct": 10.59,
+        "reference_period": "2026-09",
+        "mom_base_period": "2026-08",
+        "yoy_base_period": "2025-09",
+        "ytd_range": [
+          "2026-01",
+          "2026-09"
+        ]
+      },
+      "result": "matches_official_XLSX_monthly_and_YTD_tables"
+    }
+  ],
+  "tourgo_manual_crosscheck": {
+    "url": "https://know.tour.go.kr/customer/notice/detail19Re.do?seq=29781",
+    "publication_date": "2026-10-28",
+    "inbound": 2062042,
+    "outbound": 2268409,
+    "method": "official_public_notice_read_for_comparison_only; not an automated supply source"
+  }
+}

@@ -54,6 +54,32 @@
       "url": "https://kosis.kr/openapi/",
       "auth_env": "KOSIS_API_KEY",
       "reason": "공식 경로와 robots HTTP 503, 인증·연간 조사표 미검증"
+    },
+    {
+      "id": "tourgo_tourism_balance",
+      "name": "TOURGO 일반여행 관광수지 (승인 대기)",
+      "enabled": false,
+      "requires_approval": true,
+      "method": "official_export_preparation_only",
+      "url": "https://know.tour.go.kr/stat/koreaTourIncomeDis19Re.do",
+      "start_period": "2021-01",
+      "approval": {
+        "collection": {
+          "approved": false,
+          "scope": "general_travel_monthly",
+          "evidence_ref": null,
+          "valid_from": null,
+          "valid_until": null
+        },
+        "publication": {
+          "approved": false,
+          "scope": "general_travel_monthly",
+          "evidence_ref": null,
+          "valid_from": null,
+          "valid_until": null
+        }
+      },
+      "reason": "외부 수치 게시·예약 다운로드 허용 범위 확인 전 비활성; 로컬 검증 모듈만 준비"
     }
   ],
   "indicators": [

@@ -25,7 +25,7 @@ const fs=require('node:fs');
     assert.equal(await page.locator('#page-'+route).isVisible(),true);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,`${width}/${route}: horizontal overflow`);
     const logo=await page.locator('#brand-logo').evaluate(i=>({loaded:i.naturalWidth>0,ratio:i.getBoundingClientRect().width/i.getBoundingClientRect().height,natural:i.naturalWidth/i.naturalHeight}));assert.ok(logo.loaded);assert.ok(Math.abs(logo.ratio-logo.natural)<.01);
-    const active=route==='overview'?null:route==='research'?'news':route;
+    const active=route==='overview'?null:route==='research'?'research':route;
     if(active)assert.equal(await page.locator(`.primary-navigation [data-nav="${active}"]`).getAttribute('aria-current'),'page');
     const touched=await page.locator('#page-'+route+' button:visible, #page-'+route+' select:visible').evaluateAll(nodes=>nodes.filter(n=>!n.disabled&&n.getBoundingClientRect().height<39).map(n=>({text:n.textContent.trim().slice(0,40),height:n.getBoundingClientRect().height})));
     assert.deepEqual(touched,[],`${width}/${route}: compact touch control`);

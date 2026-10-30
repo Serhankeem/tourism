@@ -7,7 +7,7 @@ redesign. It does not replace Research Library's collection and rights policies.
 
 - Primary / Deep Blue: `#173B73`; Accent / Orange: `#F47735`.
 - White and light neutral surfaces, navy/charcoal text, readable spacing.
-- Official user-supplied transparent logo: `site/assets/currentourism-logo.png`.
+- Official user-supplied transparent logo: `site/assets/currentourism_logo_transparent_3x.png`.
   Preserve original Korean lettering, map pin, curve, color and aspect ratio.
   Do not recreate or extract a different mark from the inline preview.
 - Entire logo is an accessible Overview home link on desktop and mobile.
@@ -16,8 +16,8 @@ redesign. It does not replace Research Library's collection and rights policies.
 
 ## Navigation and home
 
-- Sticky horizontal header: logo / Newsroom / Daily Briefing / Macro Monitor /
-  Market Weather / About. Five primary menus, visible active state.
+- UI 2.0 header: logo / 오늘의 관광 날씨는? / 뉴스 / 브리프 / 리서치 / 관광지표 / 소개.
+  Six primary menus; no English sublabels; visible active state.
 - Mobile toggle with expanded state, Escape dismissal and focus return;
   page selection closes the menu. No left sidebar.
 - Newsroom secondary navigation: 뉴스 / 리서치. Keep `#research` direct access,
@@ -30,11 +30,13 @@ redesign. It does not replace Research Library's collection and rights policies.
   its inputs, computation and reset remain unchanged. Home reflects its inputs.
 - Keep observed statistics, source/reference periods and actual/forecast labels;
   never fill missing months. Notes are dated editorial observations, not summaries.
-- Footer: brand, About, Data Sources and noncommercial notice.
+- Footer: original logo home link, 소개, Data Sources and noncommercial notice.
+- Kakao channel banner may be dismissed with localStorage persistence. No delivery activation.
+- Rain/cloudy/partly/sunny colors are shared between home and Weather Lab; model unchanged.
 
 ## About and provenance
 
-- About currentourism, References, Data Sources, Non-commercial Policy.
+- About Us, 프로젝트 목적, 운영 원칙, Data Sources table, Non-commercial Policy.
 - Retain prior source URLs, distinguish connected feeds from investigation targets,
   and distinguish latest network status from publication availability.
 - Free, ad-free, no paid subscription. Rights belong to publishers/rightsholders.

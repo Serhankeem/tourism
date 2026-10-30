@@ -79,7 +79,7 @@ const assert = require('node:assert/strict');
   // rather than incorrectly expecting every row to be visible at once.
   const seenLinks=new Map();
   for(let n=1;n<=Math.ceil(expectedCount/10);n++){
-   if(n>1)await page.locator('[data-news-page="'+n+'"][aria-label]').click();
+   if(n>1)await page.locator('[data-news-page="'+n+'"][aria-label="'+n+'페이지"]').click();
    const links=await page.locator('#news-items .news-title').evaluateAll(nodes=>nodes.map(a=>[a.getAttribute('href'),a.textContent]));
    for(const [url,title] of links){assert.ok(snapshot.articles.some(a=>a.url===url&&a.title===title));seenLinks.set(url,title);}
    for(const filing of archiveSnapshot.articles.filter(a=>(a.record_type||'news')!=='news'||a.archived_only)){

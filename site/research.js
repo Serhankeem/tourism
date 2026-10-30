@@ -39,7 +39,7 @@
    const dots=previous&&n>previous+1?'<span class="news-page-ellipsis">…</span>':'';previous=n;
    return `${dots}<button class="news-page-button ${n===state.page?'selected':''}" data-report-page="${n}" ${n===state.page?'aria-current="page"':''} aria-label="연구자료 ${n}페이지">${n}</button>`;
   }).join('');
-  el('research-page-buttons').innerHTML=`<button class="news-page-button" data-report-page="${state.page-1}" ${state.page===1?'disabled':''}>이전</button>${buttons}<button class="news-page-button" data-report-page="${state.page+1}" ${state.page===pages?'disabled':''}>다음</button>`;
+  el('research-page-buttons').innerHTML=`<button class="news-page-button" data-report-page="${state.page-1}" ${state.page===1?'disabled':''} aria-label="이전 페이지">&lt;</button>${buttons}<button class="news-page-button" data-report-page="${state.page+1}" ${state.page===pages?'disabled':''} aria-label="다음 페이지">&gt;</button>`;
  }
  function options(id,values,label){
   const node=el(id),current=node.value;

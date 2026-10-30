@@ -113,7 +113,7 @@
    <div class="kpi-grid" id="home-macro-kpis"><div class="card kpi"><span class="label">공식 월간 통계</span><div class="value">확인 중</div><div class="note">값과 기준기간 검증 전</div></div></div>
    <div class="dashboard-lower">
     <div class="card chart-card"><div class="chart-head"><h3>Inbound Tourism · 방한 수요 스냅샷</h3><div class="seg" id="chart-toggle-overview"><button class="sel" data-chart="count">방한객 수</button><button data-chart="growth">전년 동월비</button></div></div><div class="chart-meta" id="home-inbound-meta">검증된 월별 시계열을 확인하고 있습니다.</div><div class="chart-wrapper" id="chart-overview"></div><div class="chart-foot" id="home-inbound-foot">공식 원문과 수집 상태는 Macro Monitor에서 확인할 수 있습니다.</div></div>
-    <div class="card brief-card"><div class="tag">ANALYST'S NOTE / 24 OCT 2026</div><h3>늘어난 방문객이<br/>어떤 산업적 성과로<br/>이어지고 있을까?</h3><p>외래관광객 수가 늘어난 만큼 체류·소비·지역 확산까지 함께 살펴봐야 시장의 실제 성과를 판단할 수 있습니다.</p><div class="brief-points"><div class="brief-point"><b>01</b><div>9월 누적 방한객 증가세는 확인됐습니다.</div></div><div class="brief-point"><b>02</b><div>관광수입·소비 지표는 추가 연결이 필요합니다.</div></div><div class="brief-point"><b>03</b><div>연간 전망치는 확정 실적과 분리해 관리해야 합니다.</div></div></div><button class="text-link" style="margin-top:20px" data-goto="briefing">관련 브리핑 보기 →</button></div>
+    <section class="card brief-card" id="data-observation" aria-live="polite"><div class="tag">DATA OBSERVATION</div><h3>공식 통계 확인 중</h3><p>검증된 공개 Macro 통계만 사용합니다.</p></section>
    </div>
    <div class="home-research-link"><span><b>Research Library</b> · 관광산업 연구자료와 시장보고서</span><a href="#research" data-goto="research" class="text-link">리서치 탐색 →</a></div>
    <p class="footnote">Key Indicators와 Inbound Tourism은 Macro Monitor와 같은 공식 통계 DB를 사용합니다. 기준기간과 자료 확인일은 다릅니다. Market Weather는 별도의 미검증 시뮬레이션이며 실제 통계를 점수에 자동 반영하지 않습니다.</p>
@@ -135,8 +135,9 @@
   <section id="page-weather" class="page hide-section"><div class="eyebrow">SIGNALS / MARKET WEATHER</div><h1 class="page-title">Market Weather Lab</h1><p class="lead">경제지표를 날씨처럼 해석하는 컨셉. 아래 모형은 실제 시장 평가가 아닌 조정 가능한 시뮬레이션입니다.</p><div class="weather-main"><div class="weather-result"><div class="label-row"><span class="pill amber">SIMULATION ONLY</span><span style="font-size:11px;color:#C5D9F2">실제 공식 시장 종합지수 아님</span></div><div><div class="weather-icon" id="weather-icon">🌤️</div><h2 id="weather-title">구름 조금</h2><div class="score"><span id="weather-score">70</span><small> / 100</small></div><p id="weather-description">수요 성장 신호가 뚜렷하지만 추가 지표 확인이 필요합니다.</p></div><div style="border-top:1px solid #4D7DAE;padding-top:15px;font-size:11px;color:#C5D9F2">날씨와 점수는 아래 값을 바꾸면 즉시 재계산됩니다.</div></div><div class="card weather-inputs"><h3>시나리오 입력값 조정하기</h3><div class="slider-line"><header><label for="s-arrivals">방한객 전년 동월비</label><b id="v-arrivals">+21%</b></header><input id="s-arrivals" type="range" min="-30" max="35" step="1" value="21"/><small>기본값은 9월 보도 수치에 근접한 값입니다.</small></div><div class="slider-line"><header><label for="s-spend">관광소비 증감률 (가정)</label><b id="v-spend">+8%</b></header><input id="s-spend" type="range" min="-30" max="35" step="1" value="8"/><small>예시 데이터입니다. 실제 수집 수치가 아닙니다.</small></div><div class="slider-line"><header><label for="s-air">항공 공급 증감률 (가정)</label><b id="v-air">+6%</b></header><input id="s-air" type="range" min="-30" max="35" step="1" value="6"/><small>예시 데이터입니다. 실제 수집 수치가 아닙니다.</small></div><div style="display:flex;align-items:center;justify-content:space-between;gap:9px"><button class="btn ghost" id="reset-weather">초기화</button><span class="tiny">정량 모형 데모</span></div><div class="formula">점수 = 50 + 0.65 × 방한객 증가율 + 0.4 × 관광소비 증가율 + 0.25 × 항공공급 증가율, 0~100 범위로 제한. 가중치는 검증되지 않은 초기 예시이며 실서비스 적용 전 백테스트가 필요합니다.</div></div></div><div class="section-heading"><h2>실제 운영 전 필요한 것</h2></div><div class="grid-info" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px"><div class="card"><b>01 · 신뢰도</b><p class="news-desc" style="margin-top:8px">최소 3개 이상 독립 지표 확보. 결측 시 판정 유보.</p></div><div class="card"><b>02 · 시차 보정</b><p class="news-desc" style="margin-top:8px">월간 통계와 일간 뉴스의 발표 주기를 구분.</p></div><div class="card"><b>03 · 설명 가능성</b><p class="news-desc" style="margin-top:8px">점수, 가중치, 변화 요인, 원문 출처 공개.</p></div></div></section>
   <section id="page-briefing" class="page hide-section">
  <div class="eyebrow">AUTO / DAILY BRIEFING</div><h1 class="page-title">Daily Briefing</h1>
- <p class="lead">매일 10:30 KST 자동 생성되는 주요 뉴스 5건 후보 목록. 본문 분석과 카카오톡 실제 발송은 아직 연결되지 않았습니다.</p>
- <div class="card" style="max-width:840px">
+ <p class="lead">매일 10:30 KST 이후 첫 수집 성공 때 보관하는 주요 뉴스 최대 5건 후보. 메타데이터·원문 링크만 제공하며, 실제 발송·구독은 제공하지 않습니다.</p>
+ <div class="card briefing-edition">
+  <label class="briefing-picker">브리프 날짜 <select id="briefing-edition" aria-label="브리프 날짜"><option value="current">현재 후보</option></select></label><p id="briefing-dates" class="tiny" aria-live="polite"></p>
   <div class="heading-sub"><span class="pill" id="briefing-state">새 데이터 없음</span><button class="btn" id="copy-brief">브리핑 복사 ↗</button></div>
   <div id="briefing-news-list" style="margin-top:18px"><p>뉴스 수집 결과를 기다리고 있습니다.</p></div>
  </div>
@@ -224,17 +225,7 @@ const LEGACY_CATEGORIES={정책:'관광정책',수요:'인바운드',산업:'여
 function normalizeCategory(category){return LEGACY_CATEGORIES[category]||category;}
 let CURRENT_BRIEFING=null;
 let newsLoading=false;
-function copyBrief(){
- const lines=['[여행기류 currentourism · 뉴스 브리핑 후보]'];
- if(CURRENT_BRIEFING?.items?.length){
-  lines.push('생성: '+CURRENT_BRIEFING.generated_at, '');
-  CURRENT_BRIEFING.items.forEach((n,i)=>lines.push(`${i+1}. ${n.title} (${n.source} · ${n.published_at})\n${n.category} · ${(n.keywords||[]).join(', ')}\n${n.url}`));
-  lines.push('', '원문 제목·출처·발행일·링크·카테고리·키워드로 구성한 링크 모음입니다.');
- }else{lines.push('현재 24시간 내 최신 뉴스 브리핑 후보가 없습니다.');}
- const val=lines.join('\n');
- if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(val).catch(()=>window.prompt('내용 복사',val));}
- else{window.prompt('내용 복사',val);}
-}
+function copyBrief(){window.BriefingUI?.copy();}
 async function loadLiveNews(){
  if(newsLoading)return;
  newsLoading=true;
@@ -279,12 +270,7 @@ async function loadLiveNews(){
    keywords:Array.isArray(a.keywords)?a.keywords.filter(k=>typeof k==='string'):[]
   }))));
   renderNews();
-  const br=await fetch('./data/briefing.json?v='+Date.now(),{cache:'no-store'});
-  if(br.ok){CURRENT_BRIEFING=await br.json();CURRENT_BRIEFING.items=(CURRENT_BRIEFING.items||[]).filter(n=>(n.record_type||'news')==='news'&&n.source_id!=='kosis_recent'&&!/^KOSIS(?:\s|$)/i.test(n.source||'')&&(!n.editorial||['korea_direct','global_major'].includes(n.editorial.tier))).map(n=>({...n,category:normalizeCategory(n.category)}));const state=document.getElementById('briefing-state');
-    state.textContent=CURRENT_BRIEFING.mode==='fixture_demo'?'가상 테스트':(CURRENT_BRIEFING.items?.length?'브리핑 후보 생성':'새 기사 없음');
-    const list=document.getElementById('briefing-news-list');
-    list.innerHTML=(CURRENT_BRIEFING.items||[]).map((n,i)=>`<div class="news-item"><div class="news-meta"><span class="category">${escapeHtml(n.category)}</span>${escapeHtml(n.source)} · ${escapeHtml(n.published_at)}</div><h3 class="news-title">${escapeHtml(n.title)}</h3><p>${(n.keywords||[]).map(escapeHtml).join(' · ')}</p><a class="external" rel="noopener noreferrer" target="_blank" href="${escapeHtml(n.url)}">원문 보기 ↗</a></div>`).join('') || '<p>최근 24시간 내 분류된 새 기사 후보가 없습니다.</p>';
-  }
+  await window.BriefingUI?.load();
  }catch(e){
   status.textContent='NEWS NOT CONNECTED';sidebar.textContent='뉴스 수집 데이터 연결 전';
   note.textContent='뉴스 수집 결과가 아직 없습니다. GitHub에서 수집 작업을 실행한 후 표시됩니다. 거시지표는 과거 정적 샘플입니다.';
@@ -343,6 +329,8 @@ const KAKAO_CHANNEL_URL = '';
 })();
 </script>
 <script src="./research.js" defer></script>
+<script src="./briefing.js" defer></script>
+<script src="./observation.js" defer></script>
 <script src="./macro.js" defer></script>
 
 </body>

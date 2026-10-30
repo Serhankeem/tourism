@@ -58,7 +58,7 @@ const assert = require('node:assert/strict');
   assert.match(await page.locator('#news-page-total').textContent(),new RegExp('총 '+expectedCount+'건'));
   await page.locator('[data-nav="briefing"]').click();
   const briefing=await (await page.request.get(base+'/data/briefing.json')).json();
-  assert.equal(await page.locator('#briefing-state').textContent(),briefing.items.length?'브리핑 후보 생성':'새 기사 없음');
+  assert.match(await page.locator('#briefing-state').textContent(),briefing.items.length?/주요 뉴스 후보|이전 생성 후보/:/신규 뉴스 없음|이전 생성 후보/);
   // Compatibility: old categories still work with new filter buttons.
   await page.unroute('**/data/newsroom.json?*');
   const inverse={'관광정책':'정책','인바운드':'수요','여행산업':'산업','문화·트렌드':'지역','경제·시장':'리서치'};

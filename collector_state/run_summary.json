@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "checked_at": "2026-10-30T14:24:46+09:00",
+  "checked_at": "2026-10-30T14:51:14+09:00",
   "publication_result": "partial",
   "discovery_status": "partial",
-  "received": 590,
-  "new_discoveries": 7,
-  "duplicate_observations": 383,
+  "received": 570,
+  "new_discoveries": 12,
+  "duplicate_observations": 359,
   "new_auto_published": 0,
   "total_published": 40,
   "total_archived": 40,
@@ -69,7 +69,7 @@
   },
   "newsroom_originally_published_last24h": 4,
   "newsroom_originally_published_last7d": 29,
-  "newsroom_newly_added_last24h": 5,
+  "newsroom_newly_added_last24h": 4,
   "new_backfilled": 0,
   "record_type_counts": {
     "news": 37,
@@ -85,9 +85,9 @@
     "문화·트렌드": 9,
     "경제·시장": 0
   },
-  "discovered_last24h": 404,
-  "discovered_last7d": 1129,
-  "auto_published_last24h": 5,
+  "discovered_last24h": 344,
+  "discovered_last7d": 1141,
+  "auto_published_last24h": 4,
   "auto_published_last7d": 31,
   "originally_published_last24h": 4,
   "originally_published_last7d": 29,
@@ -122,7 +122,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9696969696969697,
+      "success_rate": 0.9705882352941176,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -207,8 +207,8 @@
       "url": "https://mediahub.seoul.go.kr/news/rss/06",
       "group": "public",
       "received": 20,
-      "new_discoveries": 0,
-      "duplicates": 20,
+      "new_discoveries": 2,
+      "duplicates": 18,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -231,10 +231,10 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9393939393939394,
+      "success_rate": 0.9411764705882353,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "no_new_candidate"
+      "outcome": "discovered_not_publishable"
     },
     {
       "id": "seoul_economy",
@@ -266,7 +266,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9393939393939394,
+      "success_rate": 0.9411764705882353,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -275,6 +275,43 @@
       "id": "seoul_transport",
       "name": "서울시 내 손안에 서울 교통",
       "url": "https://mediahub.seoul.go.kr/news/rss/01",
+      "group": "public",
+      "received": 0,
+      "new_discoveries": 0,
+      "duplicates": 0,
+      "rights_holds": 0,
+      "date_holds": 0,
+      "invalid_metadata": 0,
+      "outside_window": 0,
+      "classifications": {
+        "Direct": 0,
+        "Indirect": 0,
+        "Irrelevant": 0
+      },
+      "publication_policy": {
+        "status": "approved",
+        "scope": "metadata_only",
+        "terms_url": "https://www.seoul.go.kr/helper/copyright.do",
+        "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
+        "checked_at": "2026-10-27"
+      },
+      "backfill": {
+        "mode": "provided_feed_only",
+        "max_days": 90,
+        "limitation": "Only items currently returned by the official feed. No article or archive crawling."
+      },
+      "status": "error",
+      "error_kind": "transport_error",
+      "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
+      "success_rate": 0.7352941176470589,
+      "new_auto_published": 0,
+      "new_newsroom_items": 0,
+      "outcome": "fetch_failed"
+    },
+    {
+      "id": "seoul_environment",
+      "name": "서울시 내 손안에 서울 환경",
+      "url": "https://mediahub.seoul.go.kr/news/rss/05",
       "group": "public",
       "received": 20,
       "new_discoveries": 0,
@@ -301,45 +338,10 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.7575757575757576,
+      "success_rate": 0.38235294117647056,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
-    },
-    {
-      "id": "seoul_environment",
-      "name": "서울시 내 손안에 서울 환경",
-      "url": "https://mediahub.seoul.go.kr/news/rss/05",
-      "group": "public",
-      "received": 20,
-      "new_discoveries": 1,
-      "duplicates": 19,
-      "rights_holds": 0,
-      "date_holds": 0,
-      "invalid_metadata": 0,
-      "outside_window": 0,
-      "classifications": {
-        "Direct": 0,
-        "Indirect": 0,
-        "Irrelevant": 20
-      },
-      "publication_policy": {
-        "status": "approved",
-        "scope": "metadata_only",
-        "terms_url": "https://www.seoul.go.kr/helper/copyright.do",
-        "basis": "Existing official RSS service provides titles, dates and original links for metadata indexing; no article/description/image republication.",
-        "checked_at": "2026-10-27"
-      },
-      "backfill": {
-        "mode": "provided_feed_only",
-        "max_days": 90,
-        "limitation": "Only items currently returned by the official feed. No article or archive crawling."
-      },
-      "status": "ok",
-      "success_rate": 0.36363636363636365,
-      "new_auto_published": 0,
-      "new_newsroom_items": 0,
-      "outcome": "discovered_not_publishable"
     },
     {
       "id": "sec_booking",
@@ -857,8 +859,8 @@
       "url": "https://www.yna.co.kr/rss/economy.xml",
       "group": "media",
       "received": 120,
-      "new_discoveries": 6,
-      "duplicates": 114,
+      "new_discoveries": 9,
+      "duplicates": 111,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
@@ -892,16 +894,16 @@
       "url": "https://www.traveltimes.co.kr/rss/allArticle.xml",
       "group": "media",
       "received": 50,
-      "new_discoveries": 0,
+      "new_discoveries": 1,
       "duplicates": 30,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
-      "outside_window": 20,
+      "outside_window": 19,
       "classifications": {
         "Direct": 11,
         "Indirect": 0,
-        "Irrelevant": 19
+        "Irrelevant": 20
       },
       "publication_policy": {
         "status": "approved",
@@ -926,7 +928,7 @@
       "success_rate": 1.0,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
-      "outcome": "no_new_candidate"
+      "outcome": "discovered_not_publishable"
     },
     {
       "id": "traveldaily",

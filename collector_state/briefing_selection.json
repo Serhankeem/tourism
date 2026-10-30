@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "runs": [
+    {
+      "briefing_date": "2026-10-30",
+      "generated_at": "2026-10-30T14:51:14+09:00",
+      "mode": "live_rss",
+      "decisions": []
+    }
+  ]
+}

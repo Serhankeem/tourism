@@ -1,9 +1,11 @@
 {
-  "schema_version": 4,
-  "generated_at": "2026-10-30T14:24:46+09:00",
+  "schema_version": 5,
+  "generated_at": "2026-10-30T14:51:14+09:00",
+  "briefing_date": "2026-10-30",
+  "last_successful_fetch": "2026-10-30T14:51:14+09:00",
   "status": "no_recent_articles",
   "mode": "live_rss",
   "title": "관광산업 주요 뉴스 브리핑 후보",
   "items": [],
-  "notice": "브리핑 후보만 자동 생성. 카카오톡 발송 및 본문 기반 AI 요약은 미구현."
+  "notice": "메타데이터 기반 후보 선별 · 본문 요약·실제 발송·구독은 제공하지 않습니다."
 }

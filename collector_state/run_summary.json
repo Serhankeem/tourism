@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "checked_at": "2026-10-31T05:52:59+09:00",
+  "checked_at": "2026-10-31T07:49:07+09:00",
   "publication_result": "partial",
   "discovery_status": "partial",
   "received": 570,
-  "new_discoveries": 2,
-  "duplicate_observations": 369,
+  "new_discoveries": 10,
+  "duplicate_observations": 361,
   "new_auto_published": 0,
   "total_published": 40,
   "total_archived": 40,
@@ -85,8 +85,8 @@
     "문화·트렌드": 9,
     "경제·시장": 0
   },
-  "discovered_last24h": 307,
-  "discovered_last7d": 1280,
+  "discovered_last24h": 317,
+  "discovered_last7d": 1290,
   "auto_published_last24h": 0,
   "auto_published_last7d": 31,
   "originally_published_last24h": 0,
@@ -122,7 +122,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9772727272727273,
+      "success_rate": 0.9777777777777777,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -231,7 +231,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9545454545454546,
+      "success_rate": 0.9555555555555556,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -266,7 +266,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9545454545454546,
+      "success_rate": 0.9555555555555556,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -301,7 +301,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.75,
+      "success_rate": 0.7555555555555555,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -338,7 +338,7 @@
       "status": "error",
       "error_kind": "transport_error",
       "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
-      "success_rate": 0.38636363636363635,
+      "success_rate": 0.37777777777777777,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "fetch_failed"
@@ -719,14 +719,14 @@
       "received": 10,
       "new_discoveries": 0,
       "duplicates": 10,
-      "rights_holds": 1,
+      "rights_holds": 2,
       "date_holds": 0,
       "invalid_metadata": 0,
       "outside_window": 0,
       "classifications": {
-        "Direct": 1,
+        "Direct": 2,
         "Indirect": 0,
-        "Irrelevant": 9
+        "Irrelevant": 8
       },
       "publication_policy": {
         "status": "review",
@@ -824,16 +824,16 @@
       "url": "https://skift.com/feed/",
       "group": "media",
       "received": 10,
-      "new_discoveries": 1,
-      "duplicates": 9,
-      "rights_holds": 2,
+      "new_discoveries": 2,
+      "duplicates": 8,
+      "rights_holds": 1,
       "date_holds": 0,
       "invalid_metadata": 0,
       "outside_window": 0,
       "classifications": {
-        "Direct": 2,
+        "Direct": 1,
         "Indirect": 0,
-        "Irrelevant": 8
+        "Irrelevant": 9
       },
       "publication_policy": {
         "status": "review",
@@ -859,8 +859,8 @@
       "url": "https://www.yna.co.kr/rss/economy.xml",
       "group": "media",
       "received": 120,
-      "new_discoveries": 1,
-      "duplicates": 119,
+      "new_discoveries": 8,
+      "duplicates": 112,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,

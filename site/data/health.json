@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-31T01:57:09+09:00",
-  "last_successful_fetch": "2026-10-31T01:57:09+09:00",
+  "checked_at": "2026-10-31T04:01:53+09:00",
+  "last_successful_fetch": "2026-10-31T04:01:53+09:00",
   "status": "partial",
   "sources": [
     {
@@ -303,12 +303,12 @@
   "review_queue_count": 1,
   "discovery": {
     "schema_version": 3,
-    "checked_at": "2026-10-31T01:57:09+09:00",
+    "checked_at": "2026-10-31T04:01:53+09:00",
     "publication_result": "partial",
     "discovery_status": "partial",
     "received": 590,
-    "new_discoveries": 2,
-    "duplicate_observations": 389,
+    "new_discoveries": 1,
+    "duplicate_observations": 390,
     "new_auto_published": 0,
     "total_published": 40,
     "total_archived": 40,
@@ -372,7 +372,7 @@
     },
     "newsroom_originally_published_last24h": 0,
     "newsroom_originally_published_last7d": 29,
-    "newsroom_newly_added_last24h": 2,
+    "newsroom_newly_added_last24h": 0,
     "new_backfilled": 0,
     "record_type_counts": {
       "news": 37,
@@ -388,9 +388,9 @@
       "문화·트렌드": 9,
       "경제·시장": 0
     },
-    "discovered_last24h": 312,
-    "discovered_last7d": 1277,
-    "auto_published_last24h": 2,
+    "discovered_last24h": 307,
+    "discovered_last7d": 1278,
+    "auto_published_last24h": 0,
     "auto_published_last7d": 31,
     "originally_published_last24h": 0,
     "originally_published_last7d": 29,
@@ -425,7 +425,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9761904761904762,
+        "success_rate": 0.9767441860465116,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -534,7 +534,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9523809523809523,
+        "success_rate": 0.9534883720930233,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -569,7 +569,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.9523809523809523,
+        "success_rate": 0.9534883720930233,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -604,7 +604,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.7380952380952381,
+        "success_rate": 0.7441860465116279,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -639,7 +639,7 @@
           "limitation": "Only items currently returned by the official feed. No article or archive crawling."
         },
         "status": "ok",
-        "success_rate": 0.38095238095238093,
+        "success_rate": 0.3953488372093023,
         "new_auto_published": 0,
         "new_newsroom_items": 0,
         "outcome": "no_new_candidate"
@@ -1020,14 +1020,14 @@
         "received": 10,
         "new_discoveries": 0,
         "duplicates": 10,
-        "rights_holds": 2,
+        "rights_holds": 1,
         "date_holds": 0,
         "invalid_metadata": 0,
         "outside_window": 0,
         "classifications": {
-          "Direct": 2,
+          "Direct": 1,
           "Indirect": 0,
-          "Irrelevant": 8
+          "Irrelevant": 9
         },
         "publication_policy": {
           "status": "review",
@@ -1125,8 +1125,8 @@
         "url": "https://skift.com/feed/",
         "group": "media",
         "received": 10,
-        "new_discoveries": 2,
-        "duplicates": 8,
+        "new_discoveries": 1,
+        "duplicates": 9,
         "rights_holds": 2,
         "date_holds": 0,
         "invalid_metadata": 0,

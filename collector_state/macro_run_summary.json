@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-30T13:02:27.948907+09:00",
+  "checked_at": "2026-10-30T13:54:10.750593+09:00",
   "status": "not_due",
   "sources": [
     {
@@ -41,6 +41,13 @@
       "reason": "공식 경로와 robots HTTP 503, 인증·연간 조사표 미검증",
       "last_successful_check": null,
       "credential_status": "not_configured"
+    },
+    {
+      "id": "tourgo_tourism_balance",
+      "name": "TOURGO 일반여행 관광수지 (승인 대기)",
+      "status": "not_connected",
+      "reason": "collection_approval_required",
+      "last_successful_check": null
     }
   ],
   "new_observations": 0,
@@ -49,7 +56,7 @@
   "status_changes": 0,
   "successful_sources": 0,
   "attempted_sources": 0,
-  "pending_sources": 4,
+  "pending_sources": 5,
   "connected_indicators": 7,
   "connected_primary_indicators": 2,
   "observation_count": 483,

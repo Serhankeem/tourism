@@ -1,3 +1,4 @@
+const clickNav=require('./navigation-helper.cjs');
 /* Design-only responsive/accessibility regression using the real public databases.
    Optional AXE_SCRIPT_PATH points to a local axe-core browser bundle (not shipped). */
 const {chromium}=require('playwright');
@@ -60,8 +61,8 @@ const fs=require('node:fs');
    await page.locator('#research-search').fill(longest.title);assert.equal(await page.locator('#research-results h3').count(),1);assert.equal((await page.locator('#research-results h3').textContent()).trim(),longest.title);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'Long English title must wrap');
    if(width<=1024){
-    const toggle=page.locator('#menu-toggle');await toggle.click();assert.equal(await toggle.getAttribute('aria-expanded'),'true');await page.keyboard.press('Escape');assert.equal(await toggle.getAttribute('aria-expanded'),'false');assert.equal(await toggle.evaluate(n=>document.activeElement===n),true);
-    await toggle.click();await page.locator('.primary-navigation [data-nav="about"]').click();assert.equal(await toggle.getAttribute('aria-expanded'),'false');
+    const toggle=page.locator('#news-menu-toggle');await toggle.click();assert.equal(await toggle.getAttribute('aria-expanded'),'true');await page.keyboard.press('Escape');assert.equal(await toggle.getAttribute('aria-expanded'),'false');assert.equal(await toggle.evaluate(n=>document.activeElement===n),true);
+    await toggle.click();await clickNav(page,'about');assert.equal(await toggle.getAttribute('aria-expanded'),'false');
     await page.locator('#brand-logo').click();assert.equal(await page.locator('#page-overview').isVisible(),true);
    }
    await page.emulateMedia({reducedMotion:'reduce'});await page.locator('#brand-logo').focus();assert.equal(await page.locator('#brand-logo').evaluate(n=>getComputedStyle(n).animationName),'none');

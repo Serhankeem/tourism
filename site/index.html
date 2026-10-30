@@ -73,6 +73,7 @@
 <link rel="stylesheet" href="./currentourism.polish.css">
 <link rel="stylesheet" href="./macro.css">
 <link rel="stylesheet" href="./ui-2.css">
+<link rel="stylesheet" href="./navigation-research-v21.css">
 </head>
 <body>
 <div class="app">
@@ -82,12 +83,9 @@
    <img id="brand-logo" src="./assets/currentourism-new-airplane-logo.png?v=7f92affea61c5719" alt="여행기류" width="1774" height="887" hidden>
    <span id="brand-fallback">여행기류<small>currentourism</small></span>
   </a>
-  <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-navigation">메뉴 <span aria-hidden="true">☰</span></button>
   <nav id="primary-navigation" class="primary-navigation" aria-label="주 메뉴">
    <a href="#weather" data-nav="weather">오늘의 관광 날씨는?</a>
-   <a href="#news" data-nav="news">뉴스</a>
-   <a href="#briefing" data-nav="briefing">브리프</a>
-   <a href="#research" data-nav="research">리서치</a>
+   <div class="news-nav"><button type="button" id="news-menu-toggle" class="news-menu-toggle" aria-expanded="false" aria-controls="news-submenu">뉴스 <span aria-hidden="true">▾</span></button><div id="news-submenu" class="news-submenu" hidden><a href="#news" data-nav="news">뉴스</a><a href="#briefing" data-nav="briefing">데일리 브리핑</a><a href="#research" data-nav="research">리서치</a></div></div>
    <a href="#macro" data-nav="macro">관광지표</a>
    <a href="#about" data-nav="about">소개</a>
   </nav>
@@ -147,12 +145,12 @@
 <section id="page-research" class="page hide-section"><nav class="news-subnav" aria-label="뉴스룸 콘텐츠"><a href="#news" data-goto="news">뉴스</a><a href="#research" data-goto="research">리서치</a></nav>
  <div class="eyebrow">RESEARCH / LIBRARY</div><h1 class="page-title">Research Library</h1>
  <p class="lead">관광산업 연구보고서와 시장동향을 찾고, 발행기관의 공식 원문으로 연결합니다. 본문·PDF·이미지·AI 요약은 제공하지 않습니다.</p>
- <div class="research-summary"><div class="card"><span>전체 연구자료</span><b id="research-count">확인 중</b></div><div class="card"><span>최근 30일 발행</span><b id="research-recent-count">확인 중</b></div><div class="card"><span>자동 수집</span><b id="research-auto-count">확인 중</b></div><div class="card"><span>수동 등록</span><b id="research-manual-count">확인 중</b></div></div>
+ <section class="research-search-panel" aria-labelledby="research-search-heading"><div class="research-search-heading"><div><h2 id="research-search-heading">연구자료 검색</h2><p>제목·기관·분야·키워드로 찾고 상세 조건으로 좁혀 보세요.</p></div><button type="button" id="research-reset" class="filter-reset">검색·필터 초기화</button></div><label class="research-query" for="research-search">키워드 검색<input id="research-search" type="search" placeholder="제목·기관·분야·키워드 검색"></label><p id="research-filter-count" class="research-filter-count" role="status">적용 조건 0개</p><details id="research-filter-details" class="research-filter-details"><summary>상세 필터 <span id="research-filter-summary">0개 적용</span></summary><div class="research-controls"> <label>발행기관<select id="research-publisher"><option value="">전체 발행기관</option></select></label><label>기관 구분<select id="research-region"><option value="">국내·해외 전체</option><option>국내</option><option>해외</option></select></label>
+ <label>보고서 유형<select id="research-type"><option value="">전체 보고서 유형</option></select></label><label>연구 분야<select id="research-category"><option value="">전체 연구 분야</option></select></label><label>정렬<select id="research-sort"><option value="newest">최신순</option><option value="oldest">오래된순</option></select></label></div></details></section>
+ <details id="research-source-overview" class="research-source-overview"><summary>자료·기관별 현황 <span id="research-total-inline">확인 중</span></summary> <div class="research-summary"><div class="card"><span>전체 연구자료</span><b id="research-count">확인 중</b></div><div class="card"><span>최근 30일 발행</span><b id="research-recent-count">확인 중</b></div><div class="card"><span>자동 수집</span><b id="research-auto-count">확인 중</b></div><div class="card"><span>수동 등록</span><b id="research-manual-count">확인 중</b></div></div>
  <p class="research-status" id="research-status" role="status">검증된 연구자료를 불러오고 있습니다.</p><p class="tiny">최근 수집 확인: <span id="research-updated">확인 전</span></p>
  <div class="research-source-counts" id="research-source-counts" role="group" aria-label="기관별 발간물 현황"></div>
- <div class="research-controls"><label class="research-query">연구자료 검색<input id="research-search" type="search" placeholder="제목·기관·분야·키워드 검색"></label>
- <label>발행기관<select id="research-publisher"><option value="">전체 발행기관</option></select></label><label>기관 구분<select id="research-region"><option value="">국내·해외 전체</option><option>국내</option><option>해외</option></select></label>
- <label>보고서 유형<select id="research-type"><option value="">전체 보고서 유형</option></select></label><label>연구 분야<select id="research-category"><option value="">전체 연구 분야</option></select></label><label>정렬<select id="research-sort"><option value="newest">최신순</option><option value="oldest">오래된순</option></select></label></div>
+</details>
  <div class="card" style="padding:0"><div id="research-results"></div><div class="news-pagination"><span class="news-page-total" id="research-result-count">확인 중</span><div class="news-page-controls"><label>페이지당<select id="research-page-size"><option value="10">10개</option><option value="20">20개</option></select></label><nav class="research-page-buttons" id="research-page-buttons" aria-label="연구자료 페이지"></nav></div></div></div>
  <p class="research-date-note">연도·월만 확인되는 자료는 해당 정밀도로 표시합니다. 작성일·수정일을 발행일로 바꾸지 않습니다. 접근 구분이 미확인이면 원문에서 이용조건을 확인하세요.</p>
  <footer class="research-footer"><button class="text-link" data-goto="sources">Data Sources · 자료 출처 안내 →</button></footer>
@@ -185,8 +183,10 @@ function navigate(page,updateHash=true){
  document.getElementById('crumb').textContent=({overview:'Overview',news:'Newsroom',macro:'Macro Monitor',weather:'Market Weather',briefing:'Daily Briefing',about:'About',research:'Research Library'})[page];
  if(updateHash&&location.hash!=='#'+requested)history.pushState(null,'','#'+requested);
  document.body.classList.toggle('research-active',page==='research');document.body.classList.toggle('macro-active',page==='macro');
- document.getElementById('menu-toggle').setAttribute('aria-expanded','false');
- document.getElementById('primary-navigation').classList.remove('is-open');
+ const newsGroup=document.getElementById('news-menu-toggle');
+ const inNews=['news','briefing','research'].includes(page);newsGroup.classList.toggle('active',inNews);
+ if(inNews)newsGroup.setAttribute('aria-current','true');else newsGroup.removeAttribute('aria-current');
+ window.closeNewsMenu?.();
  if(page==='news')renderNews();if(page==='research')window.renderResearch?.();if(page==='macro'||page==='overview')drawCharts();
  if(requested==='sources')document.getElementById('data-sources').scrollIntoView({block:'start'});else window.scrollTo({top:0,behavior:'instant'});
 }

@@ -36,6 +36,16 @@ const fs=require('node:fs');
    assert.equal(await page.locator('.sources-table tbody tr').count(),7);
    assert.match(await page.locator('.sources-table').textContent(),/승인 대기 · 수치 미게시/);
    assert.equal(await page.locator('#page-about').getByText('Research Library 탐색 →').count(),0);
+   for(const id of ['news-source-details','research-source-details']){
+    const details=page.locator('#'+id),summary=details.locator('summary');
+    assert.equal(await details.evaluate(e=>e.open),false,'Source details default collapsed');
+    assert.ok(await page.locator('.sources-table').isVisible());
+    await summary.focus();await page.keyboard.press('Enter');
+    assert.equal(await details.evaluate(e=>e.open),true);
+    assert.ok(await details.locator('.source-status-grid').isVisible());
+    assert.ok(await details.locator('a[href]').count()>0,'Keep actual official source links');
+    await summary.click();assert.equal(await details.evaluate(e=>e.open),false);
+   }
    await page.screenshot({path:`${dir}/about-${width}.png`,fullPage:true});
    for(const route of ['about','news','research','macro','weather','briefing']){
     await page.evaluate(r=>navigate(r),route);

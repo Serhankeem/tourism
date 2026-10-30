@@ -33,3 +33,10 @@
 .weather-result .score small{color:var(--weather-ink);opacity:.85}
 .weather-result .weather-icon,.weather-panel .icon-big{width:fit-content;background:#FFFFFF99;border:1px solid var(--weather-line);border-radius:18px;padding:8px 12px;color:var(--weather-ink)}
 @media(max-width:650px){.kakao-banner .kakao-float{width:auto;height:auto;min-height:60px;border-radius:32px;padding:10px 48px 10px 10px}.kakao-banner .kakao-float .kakao-copy{display:grid}.kakao-banner-close{top:6px;right:6px}}
+
+/* Native details preserve keyboard disclosure behavior and source status DOM. */
+.source-details{margin:16px 0;border:1px solid #DFE8F3;background:#fff;border-radius:12px;overflow:hidden}
+.source-details>summary{cursor:pointer;min-height:48px;padding:16px 20px;color:#173B73;font-size:14px;font-weight:750;line-height:1.6}
+.source-details[open]>summary{border-bottom:1px solid #DFE8F3;background:#F5F8FD}
+.source-details>.tiny{padding:0 20px}.source-details>.source-status-grid{border:0;border-radius:0}
+.source-details>summary:focus-visible{outline:3px solid #8AB7EB;outline-offset:-3px}

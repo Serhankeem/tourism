@@ -1,5 +1,15 @@
 # UI 2.0 review
 
+**Merge blocker — replacement airplane logo is not yet available to this workspace.**
+Required original: 1774 × 887 PNG, SHA256
+`7f92affea61c57197f2b015576cb7bcaf604defb0ac270894157d8e94d070b7f`.
+The current 867 × 498 pin logo is **not** this replacement. The conversation
+preview appears solid orange and no downloadable original or matching workspace/
+latest-main asset was available. Do not regenerate, recolor, reconstruct or claim
+that the existing file is the requested new asset. Await a download URL/repo path.
+Current screenshots still show the old pin logo and are not final logo acceptance.
+
+
 Base: main b0a55ff. Branch: feat/ui-2-0-refresh. UI-only change; no merge or deployment.
 
 ## Changes
@@ -8,7 +18,7 @@ Base: main b0a55ff. Branch: feat/ui-2-0-refresh. UI-only change; no merge or dep
   Larger labels without English subtitles, direct Research access, a single active
   menu, existing mobile keyboard/Escape navigation retained.
 - Header/footer use the supplied `site/assets/currentourism_logo_transparent_3x.png`
-  original. It is readable and transparent; no new file was attached this turn.
+  original. This is the existing pin logo, not the newly requested airplane logo.
   No logo regeneration, pixel changes, cropping or recoloring. Original ratio and
   home links verified. The existing alias `currentourism-logo.png` is also retained.
 - Kakao banner has an independent accessible close button and localStorage
@@ -20,7 +30,9 @@ Base: main b0a55ff. Branch: feat/ui-2-0-refresh. UI-only change; no merge or dep
   remains 68, with identical weights, inputs, reset and calculation function.
 - About Us → 프로젝트 목적 → 운영 원칙 → Data Sources → Non-commercial Policy.
   Removed the About Research CTA; Research is directly in the header. Official
-  reference URLs remain in expandable lists; source-health displays are retained.
+  reference URLs remain in expandable lists. Newsroom and Research status lists
+  are now separate native details disclosures, collapsed by default, with keyboard
+  Enter/click operation and original actual statuses/links preserved.
 - Data Sources uses a semantic five-column table, with locally scrollable mobile
   overflow. It distinguishes connected visitor data, TOURGO approval pending,
   metadata-only news/research and unvalidated Weather simulation.
@@ -58,3 +70,14 @@ Base: main b0a55ff. Branch: feat/ui-2-0-refresh. UI-only change; no merge or dep
 
 The screenshots contain the existing public metadata and simulated UI, not new
 source data. Smaller 320px and tablet layouts were also checked by browser tests.
+
+## PR #10 follow-up verification
+
+- Python 210 passed; all six browser suites passed again.
+- Added explicit default-collapsed, keyboard Enter expansion, click collapse and
+  retained-source-link assertions at all four widths.
+- 390/1440 home/About screenshots refreshed for the disclosure change. These
+  retain the old logo until the original replacement file is supplied.
+- src/, data, workflows and tourism-balance permission gates remain unchanged.
+- New-logo SHA/1774×887/browser-cache/airplane screenshot verification is pending
+  the exact original PNG; existing-logo checks are not a substitute.

@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "checked_at": "2026-10-31T10:12:13+09:00",
+  "checked_at": "2026-10-31T11:14:43+09:00",
   "publication_result": "partial",
   "discovery_status": "partial",
   "received": 570,
-  "new_discoveries": 5,
-  "duplicate_observations": 366,
+  "new_discoveries": 2,
+  "duplicate_observations": 369,
   "new_auto_published": 0,
   "total_published": 40,
   "total_archived": 40,
@@ -85,8 +85,8 @@
     "문화·트렌드": 9,
     "경제·시장": 0
   },
-  "discovered_last24h": 318,
-  "discovered_last7d": 1295,
+  "discovered_last24h": 203,
+  "discovered_last7d": 1297,
   "auto_published_last24h": 0,
   "auto_published_last7d": 31,
   "originally_published_last24h": 0,
@@ -122,7 +122,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9782608695652174,
+      "success_rate": 0.9787234042553191,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -231,7 +231,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9565217391304348,
+      "success_rate": 0.9574468085106383,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -266,7 +266,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.9565217391304348,
+      "success_rate": 0.9574468085106383,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -303,7 +303,7 @@
       "status": "error",
       "error_kind": "transport_error",
       "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
-      "success_rate": 0.7391304347826086,
+      "success_rate": 0.723404255319149,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "fetch_failed"
@@ -338,7 +338,7 @@
         "limitation": "Only items currently returned by the official feed. No article or archive crawling."
       },
       "status": "ok",
-      "success_rate": 0.391304347826087,
+      "success_rate": 0.40425531914893614,
       "new_auto_published": 0,
       "new_newsroom_items": 0,
       "outcome": "no_new_candidate"
@@ -859,8 +859,8 @@
       "url": "https://www.yna.co.kr/rss/economy.xml",
       "group": "media",
       "received": 120,
-      "new_discoveries": 5,
-      "duplicates": 115,
+      "new_discoveries": 2,
+      "duplicates": 118,
       "rights_holds": 0,
       "date_holds": 0,
       "invalid_metadata": 0,
